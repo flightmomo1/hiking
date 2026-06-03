@@ -29,6 +29,12 @@ IB0B_ROOT = (
     / "outputs"
     / "ib0b_mainline_route_definition_v1_3b_control_points_only"
 )
+SEMANTIC_RISK_MAPPING_CSV = (
+    PROJECT_ROOT
+    / "configs"
+    / "risk_semantics"
+    / "osm_semantic_risk_mapping_v1_2_updated.csv"
+)
 
 OUT_ROOTS = {
     "ib1a": PROJECT_ROOT / "outputs" / "ib1_route_profile_v1_3b_contract_qa",
@@ -535,6 +541,8 @@ def main() -> int:
                 case_name,
                 "--semantic-csv",
                 str(semantic_csv),
+                "--mapping-csv",
+                str(SEMANTIC_RISK_MAPPING_CSV),
                 "--out-dir",
                 str(OUT_ROOTS["ib1c_audit"] / case_id),
             ],
@@ -552,6 +560,8 @@ def main() -> int:
                 str(semantic_csv),
                 "--semantic-geojson",
                 str(semantic_geojson),
+                "--mapping-csv",
+                str(SEMANTIC_RISK_MAPPING_CSV),
                 "--out-dir",
                 str(OUT_ROOTS["ib1c_risk"] / case_id),
             ],

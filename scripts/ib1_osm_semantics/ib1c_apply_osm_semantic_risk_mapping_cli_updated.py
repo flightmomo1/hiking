@@ -91,7 +91,7 @@ if args.mapping_csv is None:
         PROJECT_ROOT
         / "configs"
         / "risk_semantics"
-        / "osm_semantic_risk_mapping_v1.csv"
+        / "osm_semantic_risk_mapping_v1_2_updated.csv"
     )
 else:
     MAPPING_CSV = resolve_path(args.mapping_csv)
