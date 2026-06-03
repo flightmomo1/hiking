@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cc006498e747ecbb747ce2f761bf8f0d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_cc006498e747ecbb747ce2f761bf8f0d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_cc006498e747ecbb747ce2f761bf8f0d = L.map(
+                "map_cc006498e747ecbb747ce2f761bf8f0d",
+                {
+                    center: [25.16727876487649, 121.55814598698038],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 16,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_64fa348aafd773a2d6b430c05941fd9a = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_64fa348aafd773a2d6b430c05941fd9a.addTo(map_cc006498e747ecbb747ce2f761bf8f0d);
+        
+    
+            var feature_group_0ec3750b600451e391f013159d7ce797 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_0ec3750b600451e391f013159d7ce797.addTo(map_cc006498e747ecbb747ce2f761bf8f0d);
+        
+    
+            var feature_group_1a221499ba4b23d5d8f902ecf20f6615 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_1a221499ba4b23d5d8f902ecf20f6615.addTo(map_cc006498e747ecbb747ce2f761bf8f0d);
+        
+    
+            var feature_group_bbe3c7a1ec0868f2637014c54bef0813 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_507ffed73727da88c442698a14d52e4d = L.polyline(
+                [[25.1652446, 121.5590018], [25.1653015, 121.5588593], [25.1653329, 121.5587947], [25.1653632, 121.5587501], [25.1654228, 121.5587141], [25.1654607, 121.5586734]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_bbe3c7a1ec0868f2637014c54bef0813);
+        
+    
+        var popup_8c746a2813ad74ac68f92b1524b4cdac = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_cbcb863eb8f7464ef9634c51b63fd9f5 = $(`<div id="html_cbcb863eb8f7464ef9634c51b63fd9f5" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 492257358)<br><b>bridge:</b> no<br><b>highway:</b> service<br><b>surface:</b> concrete<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_8c746a2813ad74ac68f92b1524b4cdac.setContent(html_cbcb863eb8f7464ef9634c51b63fd9f5);
+            
+        
+
+        poly_line_507ffed73727da88c442698a14d52e4d.bindPopup(popup_8c746a2813ad74ac68f92b1524b4cdac)
+        ;
+
+        
+    
+    
+            feature_group_bbe3c7a1ec0868f2637014c54bef0813.addTo(map_cc006498e747ecbb747ce2f761bf8f0d);
+        
+    
+            var feature_group_02c5b961666f1878334806899e267df6 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_baf315d443fa84320307a49e22992738 = L.polyline(
+                [[25.1695035, 121.5555285], [25.1695197, 121.5554819], [25.1695197, 121.5554702], [25.1694973, 121.5554471], [25.1695085, 121.5553822], [25.1695018, 121.5553518], [25.1695411, 121.555299], [25.1695506, 121.5552799], [25.1695494, 121.5552253], [25.1695564, 121.5551876], [25.1695603, 121.5551371], [25.1695978, 121.5551171], [25.1696093, 121.5551004], [25.1696339, 121.5550443], [25.1696783, 121.5549943], [25.1696903, 121.554948], [25.1697045, 121.5549022], [25.1697056, 121.5548767], [25.1696941, 121.5548426], [25.1696761, 121.5548099], [25.1696679, 121.5547827], [25.1696767, 121.5547413], [25.1696828, 121.5547095], [25.1696576, 121.5546542], [25.1696583, 121.5546315], [25.1696748, 121.5546106]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_f9f106eb606796da9ddc9ca82001eff9 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_7a049b02b90c8f3e82385734ff29e388 = $(`<div id="html_7a049b02b90c8f3e82385734ff29e388" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 421201235)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_f9f106eb606796da9ddc9ca82001eff9.setContent(html_7a049b02b90c8f3e82385734ff29e388);
+            
+        
+
+        poly_line_baf315d443fa84320307a49e22992738.bindPopup(popup_f9f106eb606796da9ddc9ca82001eff9)
+        ;
+
+        
+    
+    
+            var poly_line_7aad07255232c50c73855732e1a02950 = L.polyline(
+                [[25.1698343, 121.5543847], [25.1698709, 121.5543767], [25.1699035, 121.5543427], [25.1699397, 121.5543375], [25.1699499, 121.5543263], [25.1699583, 121.554297], [25.1699824, 121.5542629], [25.1699981, 121.5542282], [25.170025, 121.5541945], [25.1700613, 121.5541702], [25.1700866, 121.5541508], [25.1700905, 121.5541257], [25.1701147, 121.5541113], [25.1701312, 121.5540912], [25.170134, 121.554068], [25.1701408, 121.5540595], [25.1701608, 121.5540604], [25.1701683, 121.5540447], [25.1702046, 121.5540384], [25.1702311, 121.5540244], [25.170253, 121.5540127], [25.1702991, 121.5540122], [25.1703162, 121.553999], [25.170373, 121.5538871], [25.1703804, 121.5538542], [25.1703748, 121.5538394], [25.1704158, 121.5537933], [25.1704241, 121.5537418], [25.1704463, 121.5536825], [25.1704608, 121.5536747], [25.1704517, 121.5536448], [25.1704501, 121.5536339], [25.170464, 121.5536167], [25.1704929, 121.5536132], [25.1705091, 121.5535991], [25.170535, 121.5535439], [25.1706067, 121.5535431], [25.1706264, 121.5535169], [25.1706764, 121.5534784]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_65e624b122e9d79ef14602dec6e42ea2 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_17d57ad66bf6ff9553b7143bdc8e5bc3 = $(`<div id="html_17d57ad66bf6ff9553b7143bdc8e5bc3" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 492111550)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_65e624b122e9d79ef14602dec6e42ea2.setContent(html_17d57ad66bf6ff9553b7143bdc8e5bc3);
+            
+        
+
+        poly_line_7aad07255232c50c73855732e1a02950.bindPopup(popup_65e624b122e9d79ef14602dec6e42ea2)
+        ;
+
+        
+    
+    
+            var poly_line_7efcbb505e96789165ce4ab1187373b5 = L.polyline(
+                [[25.165741, 121.5629463], [25.1657297, 121.5629127], [25.1657085, 121.5628899], [25.1657058, 121.562858], [25.1657069, 121.5628298], [25.165737, 121.5627342], [25.1657283, 121.5626395], [25.1657305, 121.5626085], [25.1657584, 121.5625781], [25.1657876, 121.5625249], [25.1658522, 121.5624965], [25.1659002, 121.5624696], [25.165959, 121.5624443], [25.166017, 121.5624145], [25.1660803, 121.5624149], [25.1661172, 121.5624233], [25.1661613, 121.5624337], [25.1662107, 121.5624616]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_01ebc0981f8e1978d8104f3d531e0149 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_ad90c26d735413959dd9a194d29e6384 = $(`<div id="html_ad90c26d735413959dd9a194d29e6384" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 585374844)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_01ebc0981f8e1978d8104f3d531e0149.setContent(html_ad90c26d735413959dd9a194d29e6384);
+            
+        
+
+        poly_line_7efcbb505e96789165ce4ab1187373b5.bindPopup(popup_01ebc0981f8e1978d8104f3d531e0149)
+        ;
+
+        
+    
+    
+            var poly_line_8cf859a1adbd117b5c733c6d9933fda6 = L.polyline(
+                [[25.1697494, 121.5544976], [25.1697876, 121.5544712], [25.169809, 121.5544456], [25.1698343, 121.5543847]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_133508c8c71a5987a0c510bde1333af6 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_65b2f7019cd7634a01761e9184636881 = $(`<div id="html_65b2f7019cd7634a01761e9184636881" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227684066)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_133508c8c71a5987a0c510bde1333af6.setContent(html_65b2f7019cd7634a01761e9184636881);
+            
+        
+
+        poly_line_8cf859a1adbd117b5c733c6d9933fda6.bindPopup(popup_133508c8c71a5987a0c510bde1333af6)
+        ;
+
+        
+    
+    
+            var poly_line_16b1088d1f8ded1208b13c26bc2d03c5 = L.polyline(
+                [[25.1692281, 121.5554757], [25.1692871, 121.5554951], [25.1693052, 121.5554893], [25.1693241, 121.5555158], [25.1693378, 121.5555131], [25.1693452, 121.5555294], [25.1693549, 121.5555271], [25.1693642, 121.5555195], [25.1693955, 121.5555256], [25.169416, 121.555521], [25.169422, 121.5555292], [25.1694209, 121.5555582], [25.169431, 121.5555702], [25.1694567, 121.5555816]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_fe685c4a8c298b5c8a05edd36bf0a3db = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_6faaf215494eb960e73833d33d1a82fe = $(`<div id="html_6faaf215494eb960e73833d33d1a82fe" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691460)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_fe685c4a8c298b5c8a05edd36bf0a3db.setContent(html_6faaf215494eb960e73833d33d1a82fe);
+            
+        
+
+        poly_line_16b1088d1f8ded1208b13c26bc2d03c5.bindPopup(popup_fe685c4a8c298b5c8a05edd36bf0a3db)
+        ;
+
+        
+    
+    
+            var poly_line_517b14f5424cd5c9a9ae4c8643b2d8bd = L.polyline(
+                [[25.1687437, 121.555376], [25.1687547, 121.5553753], [25.1688064, 121.5553848], [25.168828, 121.5553796], [25.1688631, 121.5553914], [25.1688791, 121.5553968]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_637c2c3e213db5f8e76b31cc2a0ff838 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_977b6076adf8460a92f21337bfa1e066 = $(`<div id="html_977b6076adf8460a92f21337bfa1e066" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691462)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_637c2c3e213db5f8e76b31cc2a0ff838.setContent(html_977b6076adf8460a92f21337bfa1e066);
+            
+        
+
+        poly_line_517b14f5424cd5c9a9ae4c8643b2d8bd.bindPopup(popup_637c2c3e213db5f8e76b31cc2a0ff838)
+        ;
+
+        
+    
+    
+            var poly_line_6303fbd379ec54041ef40b5c30bc75fd = L.polyline(
+                [[25.1682492, 121.5558755], [25.1682674, 121.555875], [25.1682837, 121.5558865], [25.168286, 121.555916], [25.1682989, 121.555934], [25.168315, 121.5559463], [25.1683206, 121.5559462], [25.1683426, 121.5559383], [25.1683716, 121.5559314], [25.1684146, 121.5558992], [25.1684263, 121.5558639], [25.1684183, 121.5558515], [25.1683887, 121.555835], [25.1683687, 121.555839], [25.168368, 121.5558231], [25.1683672, 121.5557934], [25.1683593, 121.5557661], [25.1683827, 121.5557394], [25.1683817, 121.5557085], [25.1683889, 121.5556869], [25.1684219, 121.5556348], [25.1684645, 121.5555985], [25.168481, 121.5555973], [25.1684756, 121.5556207], [25.1684814, 121.5556388], [25.1684976, 121.5556423], [25.1685384, 121.55562], [25.1685637, 121.5556128], [25.1685814, 121.5556161], [25.1685909, 121.5556094], [25.1685952, 121.5555931]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_3ce0e5197affaf70a617d2e3997b3b90 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_f825f634e7ffb0ca3d85db678141db3f = $(`<div id="html_f825f634e7ffb0ca3d85db678141db3f" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691464)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_3ce0e5197affaf70a617d2e3997b3b90.setContent(html_f825f634e7ffb0ca3d85db678141db3f);
+            
+        
+
+        poly_line_6303fbd379ec54041ef40b5c30bc75fd.bindPopup(popup_3ce0e5197affaf70a617d2e3997b3b90)
+        ;
+
+        
+    
+    
+            var poly_line_e2333ed89d4422ad393d7937d00aad15 = L.polyline(
+                [[25.1669356, 121.5566624], [25.166946, 121.556657], [25.1669552, 121.556652], [25.1669661, 121.5566365], [25.1670218, 121.5565238], [25.1670357, 121.5565022], [25.1670536, 121.5564874], [25.1670795, 121.5564842], [25.1671063, 121.556493], [25.1671757, 121.5565288], [25.1671936, 121.5565396], [25.1672105, 121.556539], [25.1672261, 121.5565315], [25.167264, 121.5564988], [25.1673204, 121.5564757], [25.16734, 121.5564743], [25.1673621, 121.5564856], [25.1673829, 121.5564883], [25.167404, 121.5564822], [25.1674123, 121.5564613], [25.1674128, 121.5564391], [25.1674253, 121.5564308], [25.1674306, 121.5564189], [25.1674211, 121.5563973], [25.1674412, 121.5563971], [25.167472, 121.556402], [25.1675201, 121.556387], [25.1675564, 121.5563969], [25.167615, 121.5564259], [25.1676346, 121.5564372], [25.1676487, 121.5564404], [25.1676562, 121.5564313], [25.1676499, 121.5563988], [25.1676595, 121.5563835], [25.167676, 121.5563884], [25.167692, 121.5563985], [25.1677118, 121.556394], [25.1677199, 121.5563795], [25.167737, 121.5563296], [25.1677502, 121.556314], [25.1677597, 121.556308], [25.1677798, 121.5563174], [25.1678016, 121.5563384], [25.1678198, 121.556376], [25.1678312, 121.5563934], [25.16785, 121.5563966], [25.1678708, 121.5563987], [25.1678935, 121.5563689], [25.1678892, 121.5563383], [25.1678888, 121.5562415], [25.1679279, 121.55625], [25.1679546, 121.5562401], [25.1679914, 121.5562483], [25.1680511, 121.5562527], [25.1680562, 121.5561998], [25.1680885, 121.5562093], [25.1681096, 121.5562189], [25.1681106, 121.5561665], [25.1681002, 121.5561488], [25.1680941, 121.5561409], [25.1681017, 121.5561368], [25.1681506, 121.5561521], [25.1681614, 121.5560933], [25.1681466, 121.5560631], [25.1681458, 121.5560556], [25.1681581, 121.5560532], [25.1682218, 121.5560837], [25.1682407, 121.5561002], [25.1682424, 121.5560849], [25.1682312, 121.5560612], [25.1681671, 121.5559865], [25.16818, 121.5559842], [25.16821, 121.5559902], [25.1682699, 121.5559885], [25.1682754, 121.5559777], [25.1682425, 121.555937], [25.1682202, 121.5558766], [25.1682492, 121.5558755]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_18debf9cddfc4138335eda1cc8a338c8 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_307dda3f703aa18f33d58c4b0faa0911 = $(`<div id="html_307dda3f703aa18f33d58c4b0faa0911" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691465)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> paving_stones<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_18debf9cddfc4138335eda1cc8a338c8.setContent(html_307dda3f703aa18f33d58c4b0faa0911);
+            
+        
+
+        poly_line_e2333ed89d4422ad393d7937d00aad15.bindPopup(popup_18debf9cddfc4138335eda1cc8a338c8)
+        ;
+
+        
+    
+    
+            var poly_line_3ad4de963127fa7f21b7589dbdc4879a = L.polyline(
+                [[25.1659311, 121.5569089], [25.1659198, 121.5568985], [25.1659219, 121.556883], [25.1659402, 121.5568696], [25.165967, 121.5568712], [25.1659903, 121.5568779], [25.1660105, 121.5568695], [25.1660259, 121.5568363], [25.1660488, 121.5568228], [25.1660649, 121.5568211], [25.1660825, 121.5568042], [25.1661099, 121.5567943], [25.1661312, 121.5567971], [25.1661506, 121.5568102], [25.1661886, 121.5567981], [25.1662174, 121.5567749], [25.1662398, 121.5567602], [25.1662715, 121.5566988], [25.1662841, 121.5566874], [25.1663074, 121.5566796], [25.166339, 121.5566415], [25.1663407, 121.5566173], [25.1663526, 121.5565832], [25.1663828, 121.5565775], [25.166396, 121.5565716], [25.1664224, 121.5565649], [25.1664834, 121.5565414], [25.1665303, 121.5565348], [25.1665954, 121.5565007], [25.166632, 121.5564913], [25.1666538, 121.556491], [25.1666601, 121.556526]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_a020a7b00d8b396d7542ca3551013203 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_b4962be77f0ea80fd3871b3b4eeb41a3 = $(`<div id="html_b4962be77f0ea80fd3871b3b4eeb41a3" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691468)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_a020a7b00d8b396d7542ca3551013203.setContent(html_b4962be77f0ea80fd3871b3b4eeb41a3);
+            
+        
+
+        poly_line_3ad4de963127fa7f21b7589dbdc4879a.bindPopup(popup_a020a7b00d8b396d7542ca3551013203)
+        ;
+
+        
+    
+    
+            var poly_line_a1a240f52e08d5d599bfe6cf248e6f1c = L.polyline(
+                [[25.1650255, 121.5601138], [25.1650064, 121.5600784], [25.1649829, 121.5600033]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_7d2b86a81db8a7a010ff01e0142f434a = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_e6dcda8a3f0868c62c76ea287753b058 = $(`<div id="html_e6dcda8a3f0868c62c76ea287753b058" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705216)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_7d2b86a81db8a7a010ff01e0142f434a.setContent(html_e6dcda8a3f0868c62c76ea287753b058);
+            
+        
+
+        poly_line_a1a240f52e08d5d599bfe6cf248e6f1c.bindPopup(popup_7d2b86a81db8a7a010ff01e0142f434a)
+        ;
+
+        
+    
+    
+            var poly_line_5a17b0aaa918461e4fe25e276a0b3be9 = L.polyline(
+                [[25.1661434, 121.5614667], [25.1661223, 121.5614626], [25.1660982, 121.561459], [25.1660716, 121.561443], [25.1660383, 121.561396], [25.1660256, 121.5613837], [25.1660021, 121.5613732], [25.1659839, 121.5613699], [25.1659612, 121.5613833], [25.1659413, 121.5613917], [25.1658991, 121.5614029], [25.1658803, 121.561428], [25.1658631, 121.5614391], [25.1658438, 121.5614374], [25.1658124, 121.5614197], [25.1657791, 121.5614007], [25.1657488, 121.5614052], [25.1657096, 121.5614019], [25.1656729, 121.5613853], [25.1656477, 121.5613473], [25.1656178, 121.5612881], [25.165595, 121.5612497], [25.1655581, 121.5612441], [25.1655237, 121.5612285], [25.165495, 121.5611701], [25.1654565, 121.5611324], [25.1653997, 121.5610525], [25.1653442, 121.5609632], [25.1652529, 121.560872], [25.1652011, 121.5608051], [25.1651647, 121.560741], [25.1650994, 121.560658], [25.1650554, 121.5605377], [25.1650173, 121.5603985], [25.1650168, 121.5603593], [25.1650156, 121.5602406], [25.1650299, 121.5601441], [25.1650255, 121.5601138]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_4adde4c22a09d4f3c92d04f1edfac278 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_5bd3949edb1dcb8a5f430754a687476f = $(`<div id="html_5bd3949edb1dcb8a5f430754a687476f" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705217)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> paving_stones<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_4adde4c22a09d4f3c92d04f1edfac278.setContent(html_5bd3949edb1dcb8a5f430754a687476f);
+            
+        
+
+        poly_line_5a17b0aaa918461e4fe25e276a0b3be9.bindPopup(popup_4adde4c22a09d4f3c92d04f1edfac278)
+        ;
+
+        
+    
+    
+            var poly_line_05fb9c5ab488df6a937cd556582c8e1c = L.polyline(
+                [[25.1663293, 121.5617149], [25.1663977, 121.5616709], [25.1664154, 121.5616711], [25.1664586, 121.5616798], [25.1664869, 121.5616767], [25.1665057, 121.5616695], [25.1665339, 121.5616439], [25.1665361, 121.5616261], [25.1665394, 121.5616045], [25.1665305, 121.5615919], [25.1665113, 121.5615688], [25.166498, 121.561566], [25.1664634, 121.5615695], [25.1664467, 121.5615722], [25.1664232, 121.5615536], [25.1663898, 121.5615458], [25.1663721, 121.5615306], [25.166339, 121.5614961], [25.1663224, 121.5614639], [25.1663024, 121.5614532], [25.166272, 121.5614389], [25.1662516, 121.5614349], [25.1662169, 121.5614476], [25.1661661, 121.5614617], [25.1661434, 121.5614667]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_543cbc4b7e2abf648c27ee24307c824a = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_804b75d3a671d080c5d8df99aeebf706 = $(`<div id="html_804b75d3a671d080c5d8df99aeebf706" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705218)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_543cbc4b7e2abf648c27ee24307c824a.setContent(html_804b75d3a671d080c5d8df99aeebf706);
+            
+        
+
+        poly_line_05fb9c5ab488df6a937cd556582c8e1c.bindPopup(popup_543cbc4b7e2abf648c27ee24307c824a)
+        ;
+
+        
+    
+    
+            var poly_line_0b62f99e5179f101e4b0d7e958898945 = L.polyline(
+                [[25.1662107, 121.5624616], [25.1662266, 121.562408], [25.1662286, 121.5623295], [25.1662586, 121.5622478], [25.1662599, 121.5622298], [25.1662256, 121.5622187], [25.1662142, 121.5622086], [25.16621, 121.5621959], [25.1662144, 121.5621789], [25.1662319, 121.5621686], [25.1662502, 121.5621598], [25.1662786, 121.5621264], [25.1663079, 121.5621015], [25.1663464, 121.5620696], [25.1663651, 121.5620354], [25.1663589, 121.5619914], [25.1663548, 121.5619455], [25.1663468, 121.5619221], [25.1663177, 121.5618853], [25.166293, 121.5618049], [25.1662956, 121.5617548], [25.1663012, 121.5617324], [25.1663293, 121.5617149]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_2c1b06969662fc12baa7cb5e1613faba = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_015cdfbd6c8ed6ec110a1d5cb062a78c = $(`<div id="html_015cdfbd6c8ed6ec110a1d5cb062a78c" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705219)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> paving_stones<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_2c1b06969662fc12baa7cb5e1613faba.setContent(html_015cdfbd6c8ed6ec110a1d5cb062a78c);
+            
+        
+
+        poly_line_0b62f99e5179f101e4b0d7e958898945.bindPopup(popup_2c1b06969662fc12baa7cb5e1613faba)
+        ;
+
+        
+    
+    
+            var poly_line_59e5736900f3695a70cecda1a11fdf52 = L.polyline(
+                [[25.1661728, 121.563309], [25.1661623, 121.5633121], [25.1661329, 121.5633226], [25.1660908, 121.5633224], [25.166039, 121.5632993], [25.1660006, 121.5632828], [25.1659587, 121.563259]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_43989246a71944bfd8d4a36701e07525 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_445c9f7c2759d051395f575c3fdda091 = $(`<div id="html_445c9f7c2759d051395f575c3fdda091" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705222)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_43989246a71944bfd8d4a36701e07525.setContent(html_445c9f7c2759d051395f575c3fdda091);
+            
+        
+
+        poly_line_59e5736900f3695a70cecda1a11fdf52.bindPopup(popup_43989246a71944bfd8d4a36701e07525)
+        ;
+
+        
+    
+    
+            var poly_line_20a60f5108fdd19d21b9078a894c8dbb = L.polyline(
+                [[25.1706764, 121.5534784], [25.1706939, 121.553457], [25.1707032, 121.5534475]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_02c5b961666f1878334806899e267df6);
+        
+    
+        var popup_790ad721fdf6eddf81c93eb85a369f0a = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_fb7cdaf6422cf45bc8a84e74de2e0674 = $(`<div id="html_fb7cdaf6422cf45bc8a84e74de2e0674" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227504496)<br><b>bridge:</b> no<br><b>highway:</b> steps<br><b>surface:</b> <br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_790ad721fdf6eddf81c93eb85a369f0a.setContent(html_fb7cdaf6422cf45bc8a84e74de2e0674);
+            
+        
+
+        poly_line_20a60f5108fdd19d21b9078a894c8dbb.bindPopup(popup_790ad721fdf6eddf81c93eb85a369f0a)
+        ;
+
+        
+    
+    
+            feature_group_02c5b961666f1878334806899e267df6.addTo(map_cc006498e747ecbb747ce2f761bf8f0d);
+        
+    
+            var feature_group_80e5d68caf92001e94652272ac0ee56e = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_1a6dbbd4ac18e4ccec558a329b3a7370 = L.polyline(
+                [[25.1652406, 121.5584708], [25.1652274, 121.5584412], [25.1651865, 121.5583857], [25.1651807, 121.5583355], [25.1651728, 121.55828], [25.1651034, 121.558086], [25.1651482, 121.5580066], [25.1651948, 121.5579691], [25.1652022, 121.557946], [25.1651973, 121.5578977], [25.1651735, 121.5578383], [25.1651913, 121.5577715], [25.1652051, 121.5577417], [25.1652043, 121.557718], [25.1651897, 121.5576857], [25.1651618, 121.5576388], [25.165162, 121.5575874], [25.1651716, 121.5575513], [25.1651919, 121.5575257], [25.1652173, 121.5574902], [25.1652411, 121.5574933], [25.165304, 121.5575218], [25.1653152, 121.5575171], [25.1653127, 121.5574567], [25.1653193, 121.5574224], [25.165373, 121.5574166], [25.1654231, 121.5573834], [25.1654387, 121.5573522], [25.1654499, 121.557347], [25.1655138, 121.5574175], [25.165537, 121.5574313], [25.1655613, 121.5574356], [25.1657069, 121.5573607], [25.1657391, 121.5573568], [25.1657825, 121.5573631], [25.1658187, 121.557364], [25.1659082, 121.5573465], [25.1659393, 121.5573084], [25.1660022, 121.5572284], [25.1660182, 121.5571981], [25.166016, 121.5571592], [25.1660161, 121.5571147], [25.1660133, 121.5570941], [25.1660002, 121.5570691], [25.1659827, 121.556977], [25.1659311, 121.5569089]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_52635da8e201f2ee429171fb7b200c15 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_e7f4d4510ba9862866e95d417c8199f9 = $(`<div id="html_e7f4d4510ba9862866e95d417c8199f9" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 53472035)<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_52635da8e201f2ee429171fb7b200c15.setContent(html_e7f4d4510ba9862866e95d417c8199f9);
+            
+        
+
+        poly_line_1a6dbbd4ac18e4ccec558a329b3a7370.bindPopup(popup_52635da8e201f2ee429171fb7b200c15)
+        ;
+
+        
+    
+    
+            var poly_line_5336a99ca104580d6f92961db86d0d91 = L.polyline(
+                [[25.1659587, 121.563259], [25.1659022, 121.5632059], [25.1658673, 121.5631884], [25.1658033, 121.5631263]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_b5d61e9be8469a9901519955565939c2 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_5d0c45a909abd7b7eec41bec49cccac4 = $(`<div id="html_5d0c45a909abd7b7eec41bec49cccac4" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 689317162)<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_b5d61e9be8469a9901519955565939c2.setContent(html_5d0c45a909abd7b7eec41bec49cccac4);
+            
+        
+
+        poly_line_5336a99ca104580d6f92961db86d0d91.bindPopup(popup_b5d61e9be8469a9901519955565939c2)
+        ;
+
+        
+    
+    
+            var poly_line_9d1f220a5e005bcc01e8d6d544b58b64 = L.polyline(
+                [[25.1649592, 121.5593135], [25.1649768, 121.559217], [25.1650155, 121.5591419], [25.1650699, 121.5590644], [25.1651146, 121.5590418], [25.1651782, 121.5590246], [25.1652171, 121.5590132], [25.1652446, 121.5590018]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_2ce1adefae379a45b3b2ddd86bc8ad54 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_159d322e9b77e9dfacdf7bcad4fd1032 = $(`<div id="html_159d322e9b77e9dfacdf7bcad4fd1032" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 720961391)<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_2ce1adefae379a45b3b2ddd86bc8ad54.setContent(html_159d322e9b77e9dfacdf7bcad4fd1032);
+            
+        
+
+        poly_line_9d1f220a5e005bcc01e8d6d544b58b64.bindPopup(popup_2ce1adefae379a45b3b2ddd86bc8ad54)
+        ;
+
+        
+    
+    
+            var poly_line_0f9c32d3fc19afe794556423c8fef817 = L.polyline(
+                [[25.1694567, 121.5555816], [25.169476, 121.5555883], [25.1694846, 121.5555842], [25.1695008, 121.5555536], [25.1695035, 121.5555285]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_41cbbca897de4a9a86175807b093bf1d = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_353aca0d9cc6b0e3295d8cb3b2a0ef3a = $(`<div id="html_353aca0d9cc6b0e3295d8cb3b2a0ef3a" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691459)<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> <br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_41cbbca897de4a9a86175807b093bf1d.setContent(html_353aca0d9cc6b0e3295d8cb3b2a0ef3a);
+            
+        
+
+        poly_line_0f9c32d3fc19afe794556423c8fef817.bindPopup(popup_41cbbca897de4a9a86175807b093bf1d)
+        ;
+
+        
+    
+    
+            var poly_line_315aa87d670d3cdf40777f99e7ad8e52 = L.polyline(
+                [[25.1688791, 121.5553968], [25.1689475, 121.5553711], [25.1689724, 121.5553787], [25.1689902, 121.5553883], [25.1690193, 121.5553805], [25.1691056, 121.5553963], [25.1691196, 121.5554048], [25.1691515, 121.5554317], [25.1691899, 121.5554691], [25.1692281, 121.5554757]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_3ed74728e2669f79042dcd7c7dec428d = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_9f36a5a2781aef060f1ad8e2c9407997 = $(`<div id="html_9f36a5a2781aef060f1ad8e2c9407997" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691461)<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_3ed74728e2669f79042dcd7c7dec428d.setContent(html_9f36a5a2781aef060f1ad8e2c9407997);
+            
+        
+
+        poly_line_315aa87d670d3cdf40777f99e7ad8e52.bindPopup(popup_3ed74728e2669f79042dcd7c7dec428d)
+        ;
+
+        
+    
+    
+            var poly_line_5d392194694c8586c298ab97a07fbfa4 = L.polyline(
+                [[25.1685952, 121.5555931], [25.1686057, 121.5555358], [25.1686169, 121.5555091], [25.1686375, 121.5554936], [25.1686685, 121.5554311], [25.1686822, 121.5554146], [25.1687142, 121.5553993], [25.1687437, 121.555376]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_7439c86c7d75b2adcecf60d04141501e = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_02cafbac8337e70826cb8efaee77c9c0 = $(`<div id="html_02cafbac8337e70826cb8efaee77c9c0" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691463)<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_7439c86c7d75b2adcecf60d04141501e.setContent(html_02cafbac8337e70826cb8efaee77c9c0);
+            
+        
+
+        poly_line_5d392194694c8586c298ab97a07fbfa4.bindPopup(popup_7439c86c7d75b2adcecf60d04141501e)
+        ;
+
+        
+    
+    
+            var poly_line_0eb4bdd7625ab1b6c720c378007bd8a1 = L.polyline(
+                [[25.1666601, 121.556526], [25.1666733, 121.5565428], [25.1667097, 121.5565652], [25.1667451, 121.5566127], [25.1667702, 121.5566298], [25.1668003, 121.5566443], [25.1668334, 121.5566636], [25.1668686, 121.5566696], [25.1669146, 121.5566665], [25.1669356, 121.5566624]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_3d5c8ceaf63f3507beae7b335085a10c = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_e1930ddd2972e629b045566d4d2a7374 = $(`<div id="html_e1930ddd2972e629b045566d4d2a7374" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691466)<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_3d5c8ceaf63f3507beae7b335085a10c.setContent(html_e1930ddd2972e629b045566d4d2a7374);
+            
+        
+
+        poly_line_0eb4bdd7625ab1b6c720c378007bd8a1.bindPopup(popup_3d5c8ceaf63f3507beae7b335085a10c)
+        ;
+
+        
+    
+    
+            var poly_line_10b9becd7e87378b7f141bcc24e4703c = L.polyline(
+                [[25.1654607, 121.5586734], [25.1654586, 121.558637], [25.1654246, 121.558585], [25.1653818, 121.5585276], [25.1653305, 121.5584783], [25.1652998, 121.55848], [25.1652689, 121.5584825], [25.1652406, 121.5584708]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_53b3fd89c9eedc45ed043ea353f36290 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_3f4b77ca5ede16bc703a0da0e29d0da5 = $(`<div id="html_3f4b77ca5ede16bc703a0da0e29d0da5" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691470)<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> concrete<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_53b3fd89c9eedc45ed043ea353f36290.setContent(html_3f4b77ca5ede16bc703a0da0e29d0da5);
+            
+        
+
+        poly_line_10b9becd7e87378b7f141bcc24e4703c.bindPopup(popup_53b3fd89c9eedc45ed043ea353f36290)
+        ;
+
+        
+    
+    
+            var poly_line_a25f480341a6a9f48eed978943c27457 = L.polyline(
+                [[25.1658033, 121.5631263], [25.1657707, 121.5630698], [25.1657556, 121.5630336], [25.1657495, 121.5629699], [25.165741, 121.5629463]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_f36658adda566c91ab978c84a9d20461 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_fd80af759994bc0746b2f073eb143815 = $(`<div id="html_fd80af759994bc0746b2f073eb143815" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705221)<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_f36658adda566c91ab978c84a9d20461.setContent(html_fd80af759994bc0746b2f073eb143815);
+            
+        
+
+        poly_line_a25f480341a6a9f48eed978943c27457.bindPopup(popup_f36658adda566c91ab978c84a9d20461)
+        ;
+
+        
+    
+    
+            var poly_line_274df1c94daf50bfa8850cd52f94d2e8 = L.polyline(
+                [[25.1696748, 121.5546106], [25.1697494, 121.5544976]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_dc9a5aa57d21216bade3405fd5459da3 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_1b59f005b9cafbbad4d674192a838fcd = $(`<div id="html_1b59f005b9cafbbad4d674192a838fcd" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1301449842)<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> sett<br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_dc9a5aa57d21216bade3405fd5459da3.setContent(html_1b59f005b9cafbbad4d674192a838fcd);
+            
+        
+
+        poly_line_274df1c94daf50bfa8850cd52f94d2e8.bindPopup(popup_dc9a5aa57d21216bade3405fd5459da3)
+        ;
+
+        
+    
+    
+            var poly_line_f5ea0ebf6e5df4e3dd753b56c9f545c3 = L.polyline(
+                [[25.1649592, 121.5593135], [25.1649963, 121.5593713], [25.1650172, 121.5594153], [25.1650254, 121.559467], [25.1650391, 121.5595213], [25.165062, 121.5596168], [25.1650742, 121.5596548], [25.1650882, 121.5596801], [25.1651049, 121.5597118], [25.1650942, 121.5597702], [25.1650563, 121.5597624], [25.1650226, 121.5597802], [25.1650071, 121.5598114], [25.1650001, 121.5598471], [25.1650085, 121.5598865], [25.1649829, 121.5600033]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_986c765b7c5f3d3b601ee6c302d60cd1 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_16dbeacb9422407173dd92783ca75140 = $(`<div id="html_16dbeacb9422407173dd92783ca75140" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 230730601)<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> <br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_986c765b7c5f3d3b601ee6c302d60cd1.setContent(html_16dbeacb9422407173dd92783ca75140);
+            
+        
+
+        poly_line_f5ea0ebf6e5df4e3dd753b56c9f545c3.bindPopup(popup_986c765b7c5f3d3b601ee6c302d60cd1)
+        ;
+
+        
+    
+    
+            var poly_line_e2b93820f3c3c67f595628bb54a2f931 = L.polyline(
+                [[25.1661924, 121.563378], [25.1661728, 121.563309]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_80e5d68caf92001e94652272ac0ee56e);
+        
+    
+        var popup_ed4089da1d20c758311800ad3ae18f8c = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_3b99e39ebbb81960fc4b45839fc1044d = $(`<div id="html_3b99e39ebbb81960fc4b45839fc1044d" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> 1228094366_2<br><b>bridge:</b> no<br><b>highway:</b> footway<br><b>surface:</b> <br><b>steps:</b> <br><b>起點 node:</b> None<br><b>終點 node:</b> None</div>`)[0];
+                popup_ed4089da1d20c758311800ad3ae18f8c.setContent(html_3b99e39ebbb81960fc4b45839fc1044d);
+            
+        
+
+        poly_line_e2b93820f3c3c67f595628bb54a2f931.bindPopup(popup_ed4089da1d20c758311800ad3ae18f8c)
+        ;
+
+        
+    
+    
+            feature_group_80e5d68caf92001e94652272ac0ee56e.addTo(map_cc006498e747ecbb747ce2f761bf8f0d);
+        
+    
+            var feature_group_94179fac4b08a8159be21cfee8420f4d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var layer_control_ce9e3b90f306d1c10e730132e49b29df_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_64fa348aafd773a2d6b430c05941fd9a,
+                },
+                overlays :  {
+                    "\u6a4b\u6bb5\uff080\uff09" : feature_group_0ec3750b600451e391f013159d7ce797,
+                    "road\uff080\uff09" : feature_group_1a221499ba4b23d5d8f902ecf20f6615,
+                    "service\uff081\uff09" : feature_group_bbe3c7a1ec0868f2637014c54bef0813,
+                    "steps\uff0815\uff09" : feature_group_02c5b961666f1878334806899e267df6,
+                    "trail\uff0812\uff09" : feature_group_80e5d68caf92001e94652272ac0ee56e,
+                    "others\uff080\uff09" : feature_group_94179fac4b08a8159be21cfee8420f4d,
+                },
+            };
+            let layer_control_ce9e3b90f306d1c10e730132e49b29df = L.control.layers(
+                layer_control_ce9e3b90f306d1c10e730132e49b29df_layers.base_layers,
+                layer_control_ce9e3b90f306d1c10e730132e49b29df_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_cc006498e747ecbb747ce2f761bf8f0d);
+
+        
+</script>
+</html>

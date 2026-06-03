@@ -1,0 +1,54 @@
+﻿semantic_group,source_field,source_value,derived_class,risk_domain,risk_meaning,risk_direction,base_score,weather_sensitive,needs_nlsc,needs_activity,implemented_in_ib1c,used_in_ib2,notes
+navigation,trail_visibility,excellent,clear_visibility,navigation_risk,路徑非常清楚，迷途風險低,lower,0.00,no,no,no,yes,no,OSM trail_visibility
+navigation,trail_visibility,good,clear_visibility,navigation_risk,路徑清楚，迷途風險低,lower,0.05,no,no,no,yes,no,OSM trail_visibility
+navigation,trail_visibility,intermediate,intermediate_visibility,navigation_risk,路徑可辨識度中等，需注意判路,higher,0.35,yes,no,no,yes,no,天候差時風險放大
+navigation,trail_visibility,bad,poor_visibility,navigation_risk,路徑不清楚，迷途或走錯路風險高,higher,0.80,yes,no,yes,yes,no,需結合 guidepost density / GPX 偏移
+navigation,trail_visibility,horrible,poor_visibility,navigation_risk,路徑極不清楚，導航風險高,higher,0.90,yes,no,yes,yes,no,高風險
+navigation,trail_visibility,no,poor_visibility,navigation_risk,幾乎無明顯路跡,higher,1.00,yes,no,yes,yes,no,高風險
+navigation,trail_visibility,unknown,unknown_visibility,navigation_risk,OSM 未標註可辨識度，屬不確定風險,higher,0.25,yes,no,no,yes,no,unknown 不應視為安全
+surface,surface,sett,paved_stone,slip_risk,石板或鋪石路面，乾燥時穩定但雨天可能濕滑,higher,0.25,yes,no,no,yes,no,絹絲瀑布命中很多
+surface,surface,asphalt,paved_asphalt,slip_risk,柏油鋪面，通常穩定但雨天仍需注意,lower,0.10,yes,no,no,yes,no,
+surface,surface,concrete,paved_concrete,slip_risk,水泥鋪面，濕滑時風險提高,higher,0.20,yes,no,no,yes,no,
+surface,surface,gravel,gravel_compacted,slip_risk,碎石或礫石，可能造成滑動或扭傷,higher,0.35,yes,no,no,yes,no,
+surface,surface,fine_gravel,gravel_compacted,slip_risk,細碎石路面，可能滑動,higher,0.30,yes,no,no,yes,no,
+surface,surface,dirt,natural_ground,slip_risk,自然土徑，雨後泥濘風險高,higher,0.45,yes,no,no,yes,no,
+surface,surface,earth,natural_ground,slip_risk,自然土徑，雨後泥濘風險高,higher,0.45,yes,no,no,yes,no,
+surface,surface,mud,natural_ground,slip_risk,泥濘路面，濕滑風險高,higher,0.75,yes,no,no,yes,no,
+surface,surface,wood,wood_boardwalk,slip_risk,木棧道或木面，雨後濕滑風險高,higher,0.60,yes,no,no,yes,no,
+surface,surface,rock,rock,slip_risk,岩面路段，濕滑或落差風險較高,higher,0.55,yes,yes,no,yes,no,
+route_type,highway,footway,footway,route_difficulty,一般步道或人行路徑,neutral,0.15,no,no,no,yes,no,
+route_type,highway,path,path,route_difficulty,山徑或小徑，需結合可辨識度與坡度判斷,higher,0.30,yes,no,no,yes,no,
+route_type,highway,steps,steps,effort_risk,階梯路段，增加體力負荷與下坡膝關節負擔,higher,0.45,yes,no,yes,yes,no,需與 slope / descent 結合
+route_type,highway,unclassified,road,route_difficulty,未分類道路或園區道路，若出現在登山路線上多半代表接近道路或入口接駁段,neutral,0.15,no,no,no,yes,no,需避免搶走 footway/path 語意；後續應加入步道優先規則
+route_type,highway,tertiary,road,route_difficulty,三級道路，通常代表車行道路或主要接近道路，登山風險本身較低但不屬山徑主體,neutral,0.10,no,no,no,yes,no,若大量出現需檢查 nearest highway 是否被道路搶走
+route_type,bridge,yes,bridge,route_continuity,橋梁可跨越溪溝、落差或不平地形，通常改善通行連續性並減少地勢起伏；其風險需視材質、護欄、寬度、水文與天候條件判斷,conditional,0.00,yes,yes,no,yes,no,不直接加風險；後續結合 surface、waterway、wetland、slope、handrail、width、weather 判斷濕滑或暴露風險
+route_type,ford,yes,ford,hydrology_risk,涉水或過溪路段，雨後風險明顯提高,higher,0.80,yes,yes,no,yes,no,
+route_type,tunnel,yes,tunnel,navigation_risk,隧道或遮蔽路段，可能影響視線與定位,neutral,0.30,no,no,no,yes,no,
+route_type,sac_scale,hiking,easy_hiking,route_difficulty,OSM SAC hiking 等級，表示一般健行難度,lower,0.10,no,no,no,yes,no,對應 ib1c 的 easy_hiking
+technical,handrail,yes,technical_context,technical_risk_hint,有扶手，通常代表該處需要輔助通行,higher,0.35,yes,yes,no,yes,no,不可單純當安全加分
+technical,safety_rope,yes,technical_context,technical_risk_hint,有繩索，通常代表地形較陡或較滑,higher,0.55,yes,yes,no,yes,no,
+technical,ladder,yes,technical_context,technical_risk_hint,梯具路段，技術性與暴露風險提高,higher,0.75,yes,yes,no,yes,no,
+technical,rungs,yes,technical_context,technical_risk_hint,踏釘或鐵件路段，技術性風險提高,higher,0.70,yes,yes,no,yes,no,
+technical,via_ferrata,yes,technical_context,technical_risk_hint,鐵道攀登或技術路段，需視為高技術風險,higher,0.95,yes,yes,no,yes,no,
+hazard,cliff,near,cliff_nearby,exposure_risk,鄰近崖線或落差地形，暴露風險提高,higher,0.85,yes,yes,no,yes,no,需結合 NLSC 坡度/等高線
+hazard,scree,near,scree_nearby,terrain_risk,碎石坡或崩積地，滑動與落石風險提高,higher,0.75,yes,yes,no,yes,no,
+hazard,bare_rock,near,bare_rock_nearby,terrain_risk,裸岩地形，濕滑與跌倒風險提高,higher,0.65,yes,yes,no,yes,no,
+hazard,landslide,near,landslide_nearby,terrain_risk,鄰近崩塌地或疑似滑動區,higher,0.90,yes,yes,no,yes,no,
+hydrology,waterway,near,waterway_nearby,hydrology_risk,鄰近溪流或水道，雨後濕滑與水位風險提高,higher,0.45,yes,yes,no,yes,no,
+hydrology,wetland,near,wetland_nearby,hydrology_risk,濕地或潮濕環境，泥濘與濕滑風險提高,higher,0.55,yes,yes,no,yes,no,
+hydrology,water_area,near,water_area_nearby,hydrology_risk,鄰近水域，需注意濕滑與水文環境,higher,0.40,yes,yes,no,yes,no,
+navigation_support,guidepost,near,guidepost_nearby,navigation_support,附近有路標，可降低部分導航不確定性,lower,-0.20,no,no,no,yes,no,未來應改成距離/密度
+navigation_support,trailhead,near,trailhead_nearby,navigation_support,鄰近登山口，有助於起終點定位,lower,-0.15,no,no,no,yes,no,
+navigation_support,peak,near,peak_nearby,landmark_context,鄰近山頂或高點地標，可作為路線控制點,neutral,0.00,no,no,no,yes,no,
+support,shelter,near,shelter_nearby,support_availability,附近有避難或遮蔽設施，可降低事故後果嚴重度,lower,-0.25,yes,no,no,yes,no,
+support,bench,near,bench_nearby,rest_availability,附近有座椅或休息點，有助疲勞恢復,lower,-0.10,no,no,no,yes,no,
+support,picnic_table,near,picnic_table_nearby,rest_availability,附近有休息設施,lower,-0.10,no,no,no,yes,no,
+support,drinking_water,near,drinking_water_nearby,support_availability,附近有飲水設施，可降低補給風險,lower,-0.20,no,no,no,yes,no,
+support,toilets,near,toilets_nearby,support_availability,附近有廁所，通常代表接近服務區或管理區,lower,-0.10,no,no,no,yes,no,
+support,information_office,near,information_office_nearby,support_availability,附近有資訊服務點，可提高支援能力,lower,-0.20,no,no,no,yes,no,
+lighting,lit,yes,lit_available,night_navigation_support,有照明支援，夜間路線辨識風險較低,lower,-0.20,no,no,no,yes,no,
+lighting,lit,no,lit_unavailable,night_navigation_risk,缺乏照明，夜間路線辨識風險提高,higher,0.50,no,no,no,yes,no,
+lighting,lit,unknown,unknown_lighting,night_navigation_risk,OSM 未標註照明狀態，夜間風險不可視為低風險,higher,0.25,no,no,no,yes,no,unknown 應給予不確定性懲罰
+lighting,street_lamp,near,street_lamp_nearby,night_navigation_support,附近有路燈，夜間支援較佳,lower,-0.20,no,no,no,yes,no,
+surface,surface,paving_stones,paved_stone,slip_risk,鋪石路面，乾燥時相對穩定但雨天可能濕滑,higher,0.20,yes,no,no,yes,no,冷水坑路線大量命中；風險低於碎石/泥土，但仍具天候敏感性
+route_type,highway,service,service_road,route_difficulty,服務道路或設施接近路段，通常通行條件較穩定但不屬山徑主體,neutral,0.10,no,no,no,yes,no,多見於登山口或設施接近段；若大量出現需檢查 nearest highway 是否被道路搶走

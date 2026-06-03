@@ -1,0 +1,3 @@
+﻿control_id,control_role,name,lat,lon,required,order
+via_up,ascent_via,上山必經點,25.165082087184047,121.55966911100028,true,2
+via_down,descent_via,下山必經點,25.16487469519971,121.55963745345083,true,4

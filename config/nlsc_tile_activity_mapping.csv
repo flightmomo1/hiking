@@ -1,0 +1,8 @@
+﻿case_id,route_name,source_type,center_lat,center_lon,nlsc_tile_id,status,note
+qixing_xiaoyoukeng_gpx_joyhike,七星山小油坑進出,gpx,25.173162,121.551325,97233NW,confirmed,使用者已確認；nlsc_raw/97233NW/向量25K/ContourL.shp 已存在
+qixing_lengshuikeng_xiaoyoukeng_gpx,冷水坑上七星山下小油坑,gpx,25.170920,121.555732,97233NW,confirmed,使用者已確認；nlsc_raw/97233NW/向量25K/ContourL.shp 已存在
+qixing_xiaoyoukeng_main_peak_20260315,小油坑七星山主峰,gpx,25.172433,121.550179,97233NW,confirmed,使用者新增 GPX；nlsc_raw/97233NW/向量25K/ContourL.shp 已存在
+qixing_lengshuikeng_main_peak_20260523,冷水坑到七星山主峰,gpx,25.167558,121.557366,97233NW,confirmed,使用者新增 GPX；nlsc_raw/97233NW/向量25K/ContourL.shp 已存在
+dakeng_trail_4_gpx_20260503,大坑4號步道,gpx,24.176343,120.790890,,pending,需查詢對應國土測繪25K圖幅並補入 nlsc_raw
+zhonghua_95peak_outback_20260526,中華科大至九五峰上下山合併,gpx,25.027650,121.594013,97233SW,confirmed,nlsc_raw/97233SW/向量25K/ContourL.shp 已存在且覆蓋 GPX bbox
+zhonghua_ust_jiuwufeng_roundtrip_biji,中華科大至九五峰上下山合併,gpx,25.027650,121.594013,97233SW,confirmed,nlsc_raw/97233SW/向量25K/ContourL.shp 已存在且覆蓋 GPX bbox

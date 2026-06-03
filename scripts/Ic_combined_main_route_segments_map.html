@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_44a82c87a753c55b2385178f68191638 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_44a82c87a753c55b2385178f68191638" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_44a82c87a753c55b2385178f68191638 = L.map(
+                "map_44a82c87a753c55b2385178f68191638",
+                {
+                    center: [25.166865824291868, 121.55814070227103],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 15,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d8981a5b1f2979ea0735a217ecf5b623 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d8981a5b1f2979ea0735a217ecf5b623.addTo(map_44a82c87a753c55b2385178f68191638);
+        
+    
+            var feature_group_0fca8a726abe35513addd611c988cb62 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_e709a676f773897dd0e7751d6cad42f8 = L.polyline(
+                [[25.1652446, 121.5590018], [25.1653015, 121.5588593], [25.1653329, 121.5587947], [25.1653632, 121.5587501], [25.1654228, 121.5587141], [25.1654607, 121.5586734]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_0fca8a726abe35513addd611c988cb62);
+        
+    
+        var popup_c631bc63bad79e1cb7e8d169891ba0ba = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_c87d1b89edb5ec7441372a3c2b45a2d3 = $(`<div id="html_c87d1b89edb5ec7441372a3c2b45a2d3" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 492257358)<br> <b>name:</b> 未命名段<br> <b>highway:</b> service<br> <b>surface:</b> concrete<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_c631bc63bad79e1cb7e8d169891ba0ba.setContent(html_c87d1b89edb5ec7441372a3c2b45a2d3);
+            
+        
+
+        poly_line_e709a676f773897dd0e7751d6cad42f8.bindPopup(popup_c631bc63bad79e1cb7e8d169891ba0ba)
+        ;
+
+        
+    
+    
+            feature_group_0fca8a726abe35513addd611c988cb62.addTo(map_44a82c87a753c55b2385178f68191638);
+        
+    
+            var feature_group_e925094a90d11b2421f71a089b24faf6 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_e4e7c2e7429c28bc22903cbb83ba3ab1 = L.polyline(
+                [[25.1695035, 121.5555285], [25.1695197, 121.5554819], [25.1695197, 121.5554702], [25.1694973, 121.5554471], [25.1695085, 121.5553822], [25.1695018, 121.5553518], [25.1695411, 121.555299], [25.1695506, 121.5552799], [25.1695494, 121.5552253], [25.1695564, 121.5551876], [25.1695603, 121.5551371], [25.1695978, 121.5551171], [25.1696093, 121.5551004], [25.1696339, 121.5550443], [25.1696783, 121.5549943], [25.1696903, 121.554948], [25.1697045, 121.5549022], [25.1697056, 121.5548767], [25.1696941, 121.5548426], [25.1696761, 121.5548099], [25.1696679, 121.5547827], [25.1696767, 121.5547413], [25.1696828, 121.5547095], [25.1696576, 121.5546542], [25.1696583, 121.5546315], [25.1696748, 121.5546106]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_fa220d4907b1f7890dd33b3f0b779e4b = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_5dc3b0d29e7f29443f7725d92c556cca = $(`<div id="html_5dc3b0d29e7f29443f7725d92c556cca" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 421201235)<br> <b>name:</b> 七星山步道主峰-東峰稜線<br> <b>highway:</b> steps<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_fa220d4907b1f7890dd33b3f0b779e4b.setContent(html_5dc3b0d29e7f29443f7725d92c556cca);
+            
+        
+
+        poly_line_e4e7c2e7429c28bc22903cbb83ba3ab1.bindPopup(popup_fa220d4907b1f7890dd33b3f0b779e4b)
+        ;
+
+        
+    
+    
+            var poly_line_d1c4790a91d22db1164f3510a8a4c14e = L.polyline(
+                [[25.1698343, 121.5543847], [25.1698709, 121.5543767], [25.1699035, 121.5543427], [25.1699397, 121.5543375], [25.1699499, 121.5543263], [25.1699583, 121.554297], [25.1699824, 121.5542629], [25.1699981, 121.5542282], [25.170025, 121.5541945], [25.1700613, 121.5541702], [25.1700866, 121.5541508], [25.1700905, 121.5541257], [25.1701147, 121.5541113], [25.1701312, 121.5540912], [25.170134, 121.554068], [25.1701408, 121.5540595], [25.1701608, 121.5540604], [25.1701683, 121.5540447], [25.1702046, 121.5540384], [25.1702311, 121.5540244], [25.170253, 121.5540127], [25.1702991, 121.5540122], [25.1703162, 121.553999], [25.170373, 121.5538871], [25.1703804, 121.5538542], [25.1703748, 121.5538394], [25.1704158, 121.5537933], [25.1704241, 121.5537418], [25.1704463, 121.5536825], [25.1704608, 121.5536747], [25.1704517, 121.5536448], [25.1704501, 121.5536339], [25.170464, 121.5536167], [25.1704929, 121.5536132], [25.1705091, 121.5535991], [25.170535, 121.5535439], [25.1706067, 121.5535431], [25.1706264, 121.5535169], [25.1706764, 121.5534784]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_6f8b3425beb3c8f11317a2ab0eecd280 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_02c521e3490a60607745ba0ecd7d3df9 = $(`<div id="html_02c521e3490a60607745ba0ecd7d3df9" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 492111550)<br> <b>name:</b> 七星山步道主峰-東峰稜線<br> <b>highway:</b> steps<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_6f8b3425beb3c8f11317a2ab0eecd280.setContent(html_02c521e3490a60607745ba0ecd7d3df9);
+            
+        
+
+        poly_line_d1c4790a91d22db1164f3510a8a4c14e.bindPopup(popup_6f8b3425beb3c8f11317a2ab0eecd280)
+        ;
+
+        
+    
+    
+            var poly_line_ff5c3e84168981ca8dc1a08653de221b = L.polyline(
+                [[25.165741, 121.5629463], [25.1657297, 121.5629127], [25.1657085, 121.5628899], [25.1657058, 121.562858], [25.1657069, 121.5628298], [25.165737, 121.5627342], [25.1657283, 121.5626395], [25.1657305, 121.5626085], [25.1657584, 121.5625781], [25.1657876, 121.5625249], [25.1658522, 121.5624965], [25.1659002, 121.5624696], [25.165959, 121.5624443], [25.166017, 121.5624145], [25.1660803, 121.5624149], [25.1661172, 121.5624233], [25.1661613, 121.5624337], [25.1662107, 121.5624616]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_4eb0e5e4ad2079ab865074c44d4bea9e = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_97d15a90b91568704f9444db7ee7bf09 = $(`<div id="html_97d15a90b91568704f9444db7ee7bf09" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 585374844)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> steps<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_4eb0e5e4ad2079ab865074c44d4bea9e.setContent(html_97d15a90b91568704f9444db7ee7bf09);
+            
+        
+
+        poly_line_ff5c3e84168981ca8dc1a08653de221b.bindPopup(popup_4eb0e5e4ad2079ab865074c44d4bea9e)
+        ;
+
+        
+    
+    
+            var poly_line_92f1967cb7f0b246804fd51c07ebb13e = L.polyline(
+                [[25.1697494, 121.5544976], [25.1697876, 121.5544712], [25.169809, 121.5544456], [25.1698343, 121.5543847]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_f2f3b5efd739ba5c33ad7eacfb4e67ef = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_a0f61c92c1109cdf38762de57241a23b = $(`<div id="html_a0f61c92c1109cdf38762de57241a23b" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227684066)<br> <b>name:</b> 七星山步道主峰-東峰稜線<br> <b>highway:</b> steps<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_f2f3b5efd739ba5c33ad7eacfb4e67ef.setContent(html_a0f61c92c1109cdf38762de57241a23b);
+            
+        
+
+        poly_line_92f1967cb7f0b246804fd51c07ebb13e.bindPopup(popup_f2f3b5efd739ba5c33ad7eacfb4e67ef)
+        ;
+
+        
+    
+    
+            var poly_line_9d81f977576db9c3f36294453c4f0a1a = L.polyline(
+                [[25.1692281, 121.5554757], [25.1692871, 121.5554951], [25.1693052, 121.5554893], [25.1693241, 121.5555158], [25.1693378, 121.5555131], [25.1693452, 121.5555294], [25.1693549, 121.5555271], [25.1693642, 121.5555195], [25.1693955, 121.5555256], [25.169416, 121.555521], [25.169422, 121.5555292], [25.1694209, 121.5555582], [25.169431, 121.5555702], [25.1694567, 121.5555816]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_49d209b075d3d342bb1f0f7df0217b0c = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_284460b6ecf1051b3ece4623f75ef15f = $(`<div id="html_284460b6ecf1051b3ece4623f75ef15f" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691460)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> steps<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_49d209b075d3d342bb1f0f7df0217b0c.setContent(html_284460b6ecf1051b3ece4623f75ef15f);
+            
+        
+
+        poly_line_9d81f977576db9c3f36294453c4f0a1a.bindPopup(popup_49d209b075d3d342bb1f0f7df0217b0c)
+        ;
+
+        
+    
+    
+            var poly_line_5ccb95acde67938bb9768624fed5a1d2 = L.polyline(
+                [[25.1687437, 121.555376], [25.1687547, 121.5553753], [25.1688064, 121.5553848], [25.168828, 121.5553796], [25.1688631, 121.5553914], [25.1688791, 121.5553968]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_b5a2294387f3de142d87e30c0dadc08c = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_0f99fb9687b498b1f7e36095ad4a587e = $(`<div id="html_0f99fb9687b498b1f7e36095ad4a587e" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691462)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> steps<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_b5a2294387f3de142d87e30c0dadc08c.setContent(html_0f99fb9687b498b1f7e36095ad4a587e);
+            
+        
+
+        poly_line_5ccb95acde67938bb9768624fed5a1d2.bindPopup(popup_b5a2294387f3de142d87e30c0dadc08c)
+        ;
+
+        
+    
+    
+            var poly_line_c25c5407f8e547d4c6c4e5a1a180e827 = L.polyline(
+                [[25.1682492, 121.5558755], [25.1682674, 121.555875], [25.1682837, 121.5558865], [25.168286, 121.555916], [25.1682989, 121.555934], [25.168315, 121.5559463], [25.1683206, 121.5559462], [25.1683426, 121.5559383], [25.1683716, 121.5559314], [25.1684146, 121.5558992], [25.1684263, 121.5558639], [25.1684183, 121.5558515], [25.1683887, 121.555835], [25.1683687, 121.555839], [25.168368, 121.5558231], [25.1683672, 121.5557934], [25.1683593, 121.5557661], [25.1683827, 121.5557394], [25.1683817, 121.5557085], [25.1683889, 121.5556869], [25.1684219, 121.5556348], [25.1684645, 121.5555985], [25.168481, 121.5555973], [25.1684756, 121.5556207], [25.1684814, 121.5556388], [25.1684976, 121.5556423], [25.1685384, 121.55562], [25.1685637, 121.5556128], [25.1685814, 121.5556161], [25.1685909, 121.5556094], [25.1685952, 121.5555931]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_6ec34a727d5cd9b05b60634e5b355202 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_00d3ee9898f2f8078f9b9e6f3df01ff3 = $(`<div id="html_00d3ee9898f2f8078f9b9e6f3df01ff3" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691464)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> steps<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_6ec34a727d5cd9b05b60634e5b355202.setContent(html_00d3ee9898f2f8078f9b9e6f3df01ff3);
+            
+        
+
+        poly_line_c25c5407f8e547d4c6c4e5a1a180e827.bindPopup(popup_6ec34a727d5cd9b05b60634e5b355202)
+        ;
+
+        
+    
+    
+            var poly_line_d2a9cfca85e61846959e044bf541a251 = L.polyline(
+                [[25.1669356, 121.5566624], [25.166946, 121.556657], [25.1669552, 121.556652], [25.1669661, 121.5566365], [25.1670218, 121.5565238], [25.1670357, 121.5565022], [25.1670536, 121.5564874], [25.1670795, 121.5564842], [25.1671063, 121.556493], [25.1671757, 121.5565288], [25.1671936, 121.5565396], [25.1672105, 121.556539], [25.1672261, 121.5565315], [25.167264, 121.5564988], [25.1673204, 121.5564757], [25.16734, 121.5564743], [25.1673621, 121.5564856], [25.1673829, 121.5564883], [25.167404, 121.5564822], [25.1674123, 121.5564613], [25.1674128, 121.5564391], [25.1674253, 121.5564308], [25.1674306, 121.5564189], [25.1674211, 121.5563973], [25.1674412, 121.5563971], [25.167472, 121.556402], [25.1675201, 121.556387], [25.1675564, 121.5563969], [25.167615, 121.5564259], [25.1676346, 121.5564372], [25.1676487, 121.5564404], [25.1676562, 121.5564313], [25.1676499, 121.5563988], [25.1676595, 121.5563835], [25.167676, 121.5563884], [25.167692, 121.5563985], [25.1677118, 121.556394], [25.1677199, 121.5563795], [25.167737, 121.5563296], [25.1677502, 121.556314], [25.1677597, 121.556308], [25.1677798, 121.5563174], [25.1678016, 121.5563384], [25.1678198, 121.556376], [25.1678312, 121.5563934], [25.16785, 121.5563966], [25.1678708, 121.5563987], [25.1678935, 121.5563689], [25.1678892, 121.5563383], [25.1678888, 121.5562415], [25.1679279, 121.55625], [25.1679546, 121.5562401], [25.1679914, 121.5562483], [25.1680511, 121.5562527], [25.1680562, 121.5561998], [25.1680885, 121.5562093], [25.1681096, 121.5562189], [25.1681106, 121.5561665], [25.1681002, 121.5561488], [25.1680941, 121.5561409], [25.1681017, 121.5561368], [25.1681506, 121.5561521], [25.1681614, 121.5560933], [25.1681466, 121.5560631], [25.1681458, 121.5560556], [25.1681581, 121.5560532], [25.1682218, 121.5560837], [25.1682407, 121.5561002], [25.1682424, 121.5560849], [25.1682312, 121.5560612], [25.1681671, 121.5559865], [25.16818, 121.5559842], [25.16821, 121.5559902], [25.1682699, 121.5559885], [25.1682754, 121.5559777], [25.1682425, 121.555937], [25.1682202, 121.5558766], [25.1682492, 121.5558755]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_6ada64de252f9344e5615f2f94e3abea = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_3e17875203f0ac64f06ba28311334741 = $(`<div id="html_3e17875203f0ac64f06ba28311334741" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691465)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> steps<br> <b>surface:</b> paving_stones<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_6ada64de252f9344e5615f2f94e3abea.setContent(html_3e17875203f0ac64f06ba28311334741);
+            
+        
+
+        poly_line_d2a9cfca85e61846959e044bf541a251.bindPopup(popup_6ada64de252f9344e5615f2f94e3abea)
+        ;
+
+        
+    
+    
+            var poly_line_1d95b6a08ab33dacd484e0aaf4b21e6c = L.polyline(
+                [[25.1659311, 121.5569089], [25.1659198, 121.5568985], [25.1659219, 121.556883], [25.1659402, 121.5568696], [25.165967, 121.5568712], [25.1659903, 121.5568779], [25.1660105, 121.5568695], [25.1660259, 121.5568363], [25.1660488, 121.5568228], [25.1660649, 121.5568211], [25.1660825, 121.5568042], [25.1661099, 121.5567943], [25.1661312, 121.5567971], [25.1661506, 121.5568102], [25.1661886, 121.5567981], [25.1662174, 121.5567749], [25.1662398, 121.5567602], [25.1662715, 121.5566988], [25.1662841, 121.5566874], [25.1663074, 121.5566796], [25.166339, 121.5566415], [25.1663407, 121.5566173], [25.1663526, 121.5565832], [25.1663828, 121.5565775], [25.166396, 121.5565716], [25.1664224, 121.5565649], [25.1664834, 121.5565414], [25.1665303, 121.5565348], [25.1665954, 121.5565007], [25.166632, 121.5564913], [25.1666538, 121.556491], [25.1666601, 121.556526]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_57901c57efba3009859248d2ad5c4568 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_79d9e61d1270cf194ca81cbcc2f5da4b = $(`<div id="html_79d9e61d1270cf194ca81cbcc2f5da4b" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691468)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> steps<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_57901c57efba3009859248d2ad5c4568.setContent(html_79d9e61d1270cf194ca81cbcc2f5da4b);
+            
+        
+
+        poly_line_1d95b6a08ab33dacd484e0aaf4b21e6c.bindPopup(popup_57901c57efba3009859248d2ad5c4568)
+        ;
+
+        
+    
+    
+            var poly_line_1cab8658184a972aa32cdbc5fb62e5bc = L.polyline(
+                [[25.1650255, 121.5601138], [25.1650064, 121.5600784], [25.1649829, 121.5600033]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_f4dfa4e6cc047a44b8dc6a67c8588198 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_691d456e74c91dd065dd8dc186f8052f = $(`<div id="html_691d456e74c91dd065dd8dc186f8052f" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705216)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> steps<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_f4dfa4e6cc047a44b8dc6a67c8588198.setContent(html_691d456e74c91dd065dd8dc186f8052f);
+            
+        
+
+        poly_line_1cab8658184a972aa32cdbc5fb62e5bc.bindPopup(popup_f4dfa4e6cc047a44b8dc6a67c8588198)
+        ;
+
+        
+    
+    
+            var poly_line_29d3fa7bbc30b52e59e6aa9d4b93f4b8 = L.polyline(
+                [[25.1661434, 121.5614667], [25.1661223, 121.5614626], [25.1660982, 121.561459], [25.1660716, 121.561443], [25.1660383, 121.561396], [25.1660256, 121.5613837], [25.1660021, 121.5613732], [25.1659839, 121.5613699], [25.1659612, 121.5613833], [25.1659413, 121.5613917], [25.1658991, 121.5614029], [25.1658803, 121.561428], [25.1658631, 121.5614391], [25.1658438, 121.5614374], [25.1658124, 121.5614197], [25.1657791, 121.5614007], [25.1657488, 121.5614052], [25.1657096, 121.5614019], [25.1656729, 121.5613853], [25.1656477, 121.5613473], [25.1656178, 121.5612881], [25.165595, 121.5612497], [25.1655581, 121.5612441], [25.1655237, 121.5612285], [25.165495, 121.5611701], [25.1654565, 121.5611324], [25.1653997, 121.5610525], [25.1653442, 121.5609632], [25.1652529, 121.560872], [25.1652011, 121.5608051], [25.1651647, 121.560741], [25.1650994, 121.560658], [25.1650554, 121.5605377], [25.1650173, 121.5603985], [25.1650168, 121.5603593], [25.1650156, 121.5602406], [25.1650299, 121.5601441], [25.1650255, 121.5601138]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_77b4b66e723d35e0e166bda07594c9e7 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_cc876a60d2d15ecb943431572ea091eb = $(`<div id="html_cc876a60d2d15ecb943431572ea091eb" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705217)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> steps<br> <b>surface:</b> paving_stones<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_77b4b66e723d35e0e166bda07594c9e7.setContent(html_cc876a60d2d15ecb943431572ea091eb);
+            
+        
+
+        poly_line_29d3fa7bbc30b52e59e6aa9d4b93f4b8.bindPopup(popup_77b4b66e723d35e0e166bda07594c9e7)
+        ;
+
+        
+    
+    
+            var poly_line_5cf7bb7fbb0e87ba5f12c41027d973b2 = L.polyline(
+                [[25.1663293, 121.5617149], [25.1663977, 121.5616709], [25.1664154, 121.5616711], [25.1664586, 121.5616798], [25.1664869, 121.5616767], [25.1665057, 121.5616695], [25.1665339, 121.5616439], [25.1665361, 121.5616261], [25.1665394, 121.5616045], [25.1665305, 121.5615919], [25.1665113, 121.5615688], [25.166498, 121.561566], [25.1664634, 121.5615695], [25.1664467, 121.5615722], [25.1664232, 121.5615536], [25.1663898, 121.5615458], [25.1663721, 121.5615306], [25.166339, 121.5614961], [25.1663224, 121.5614639], [25.1663024, 121.5614532], [25.166272, 121.5614389], [25.1662516, 121.5614349], [25.1662169, 121.5614476], [25.1661661, 121.5614617], [25.1661434, 121.5614667]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_2de8256c7fe9060e8b997cf392ab419f = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_ce18495b3b0b47c7220f4010946d5767 = $(`<div id="html_ce18495b3b0b47c7220f4010946d5767" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705218)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> steps<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_2de8256c7fe9060e8b997cf392ab419f.setContent(html_ce18495b3b0b47c7220f4010946d5767);
+            
+        
+
+        poly_line_5cf7bb7fbb0e87ba5f12c41027d973b2.bindPopup(popup_2de8256c7fe9060e8b997cf392ab419f)
+        ;
+
+        
+    
+    
+            var poly_line_da865f8ba178280e20be4948eeacb16b = L.polyline(
+                [[25.1662107, 121.5624616], [25.1662266, 121.562408], [25.1662286, 121.5623295], [25.1662586, 121.5622478], [25.1662599, 121.5622298], [25.1662256, 121.5622187], [25.1662142, 121.5622086], [25.16621, 121.5621959], [25.1662144, 121.5621789], [25.1662319, 121.5621686], [25.1662502, 121.5621598], [25.1662786, 121.5621264], [25.1663079, 121.5621015], [25.1663464, 121.5620696], [25.1663651, 121.5620354], [25.1663589, 121.5619914], [25.1663548, 121.5619455], [25.1663468, 121.5619221], [25.1663177, 121.5618853], [25.166293, 121.5618049], [25.1662956, 121.5617548], [25.1663012, 121.5617324], [25.1663293, 121.5617149]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_cb0a1a58634544927078f893a6984fbd = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_f8e0ce4feb3083761e5b7c0b42061b05 = $(`<div id="html_f8e0ce4feb3083761e5b7c0b42061b05" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705219)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> steps<br> <b>surface:</b> paving_stones<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_cb0a1a58634544927078f893a6984fbd.setContent(html_f8e0ce4feb3083761e5b7c0b42061b05);
+            
+        
+
+        poly_line_da865f8ba178280e20be4948eeacb16b.bindPopup(popup_cb0a1a58634544927078f893a6984fbd)
+        ;
+
+        
+    
+    
+            var poly_line_6309f9b67e9b2a9e9d2afad312329fcd = L.polyline(
+                [[25.1661728, 121.563309], [25.1661623, 121.5633121], [25.1661329, 121.5633226], [25.1660908, 121.5633224], [25.166039, 121.5632993], [25.1660006, 121.5632828], [25.1659587, 121.563259]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_eacd0f45c925c5613db992e9b4ec572d = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_53c9544640fbedaa555f5f7b6cad37b6 = $(`<div id="html_53c9544640fbedaa555f5f7b6cad37b6" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705222)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> steps<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_eacd0f45c925c5613db992e9b4ec572d.setContent(html_53c9544640fbedaa555f5f7b6cad37b6);
+            
+        
+
+        poly_line_6309f9b67e9b2a9e9d2afad312329fcd.bindPopup(popup_eacd0f45c925c5613db992e9b4ec572d)
+        ;
+
+        
+    
+    
+            var poly_line_45da3ce63cb4968510fde23fce5ad898 = L.polyline(
+                [[25.1706764, 121.5534784], [25.1706939, 121.553457], [25.1707032, 121.5534475]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e925094a90d11b2421f71a089b24faf6);
+        
+    
+        var popup_40dd33aeebf9681e0047e02ae4bf5edd = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_b984a9b6434c1432bc452b344b27b74f = $(`<div id="html_b984a9b6434c1432bc452b344b27b74f" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227504496)<br> <b>name:</b> 未命名段<br> <b>highway:</b> steps<br> <b>surface:</b> None<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_40dd33aeebf9681e0047e02ae4bf5edd.setContent(html_b984a9b6434c1432bc452b344b27b74f);
+            
+        
+
+        poly_line_45da3ce63cb4968510fde23fce5ad898.bindPopup(popup_40dd33aeebf9681e0047e02ae4bf5edd)
+        ;
+
+        
+    
+    
+            feature_group_e925094a90d11b2421f71a089b24faf6.addTo(map_44a82c87a753c55b2385178f68191638);
+        
+    
+            var feature_group_7839b9edb20068a60f688ea93e263280 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_29e3f7ce1a51029eeadb93d6f1b433c7 = L.polyline(
+                [[25.1652406, 121.5584708], [25.1652274, 121.5584412], [25.1651865, 121.5583857], [25.1651807, 121.5583355], [25.1651728, 121.55828], [25.1651034, 121.558086], [25.1651482, 121.5580066], [25.1651948, 121.5579691], [25.1652022, 121.557946], [25.1651973, 121.5578977], [25.1651735, 121.5578383], [25.1651913, 121.5577715], [25.1652051, 121.5577417], [25.1652043, 121.557718], [25.1651897, 121.5576857], [25.1651618, 121.5576388], [25.165162, 121.5575874], [25.1651716, 121.5575513], [25.1651919, 121.5575257], [25.1652173, 121.5574902], [25.1652411, 121.5574933], [25.165304, 121.5575218], [25.1653152, 121.5575171], [25.1653127, 121.5574567], [25.1653193, 121.5574224], [25.165373, 121.5574166], [25.1654231, 121.5573834], [25.1654387, 121.5573522], [25.1654499, 121.557347], [25.1655138, 121.5574175], [25.165537, 121.5574313], [25.1655613, 121.5574356], [25.1657069, 121.5573607], [25.1657391, 121.5573568], [25.1657825, 121.5573631], [25.1658187, 121.557364], [25.1659082, 121.5573465], [25.1659393, 121.5573084], [25.1660022, 121.5572284], [25.1660182, 121.5571981], [25.166016, 121.5571592], [25.1660161, 121.5571147], [25.1660133, 121.5570941], [25.1660002, 121.5570691], [25.1659827, 121.556977], [25.1659311, 121.5569089]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_9b4a8febc886edca0c60fbfdc902efc8 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_a367e20b4f8a211c16effe08bc6968e7 = $(`<div id="html_a367e20b4f8a211c16effe08bc6968e7" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 53472035)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> footway<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_9b4a8febc886edca0c60fbfdc902efc8.setContent(html_a367e20b4f8a211c16effe08bc6968e7);
+            
+        
+
+        poly_line_29e3f7ce1a51029eeadb93d6f1b433c7.bindPopup(popup_9b4a8febc886edca0c60fbfdc902efc8)
+        ;
+
+        
+    
+    
+            var poly_line_ddf166d04e2020d5349726f5dec6f954 = L.polyline(
+                [[25.1659587, 121.563259], [25.1659022, 121.5632059], [25.1658673, 121.5631884], [25.1658033, 121.5631263]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_0ccdad75f9183fcab4c9596e79c98df6 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_1f5d74c1e68024e8382e36722934f3f5 = $(`<div id="html_1f5d74c1e68024e8382e36722934f3f5" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 689317162)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> footway<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_0ccdad75f9183fcab4c9596e79c98df6.setContent(html_1f5d74c1e68024e8382e36722934f3f5);
+            
+        
+
+        poly_line_ddf166d04e2020d5349726f5dec6f954.bindPopup(popup_0ccdad75f9183fcab4c9596e79c98df6)
+        ;
+
+        
+    
+    
+            var poly_line_6ae423d318a195e0225e48fc343a588a = L.polyline(
+                [[25.1649592, 121.5593135], [25.1649768, 121.559217], [25.1650155, 121.5591419], [25.1650699, 121.5590644], [25.1651146, 121.5590418], [25.1651782, 121.5590246], [25.1652171, 121.5590132], [25.1652446, 121.5590018]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_427f2d76c75c0d564d1f1325b8e6a2d1 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_59e18498fcabb815fcf57cffd2eb0518 = $(`<div id="html_59e18498fcabb815fcf57cffd2eb0518" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 720961391)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> footway<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_427f2d76c75c0d564d1f1325b8e6a2d1.setContent(html_59e18498fcabb815fcf57cffd2eb0518);
+            
+        
+
+        poly_line_6ae423d318a195e0225e48fc343a588a.bindPopup(popup_427f2d76c75c0d564d1f1325b8e6a2d1)
+        ;
+
+        
+    
+    
+            var poly_line_e5ba92b8322f2c79db89cd47518b7092 = L.polyline(
+                [[25.1649829, 121.5600033], [25.1649776, 121.5599814], [25.1649728, 121.5599562], [25.1649549, 121.5599328], [25.1649447, 121.5599159], [25.1649245, 121.5599045], [25.1648612, 121.5596988], [25.1648659, 121.5596623], [25.1648877, 121.5596384], [25.164902, 121.5596225], [25.1649197, 121.5595908], [25.1649283, 121.5595381], [25.1649355, 121.5595042], [25.1649378, 121.5594437], [25.1649437, 121.5594083], [25.1649571, 121.5593702], [25.1649592, 121.5593135]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_252d58ddbad63a49e1b79db53ca975eb = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_340ea1b3b18346e12e4ba1fc0de568e9 = $(`<div id="html_340ea1b3b18346e12e4ba1fc0de568e9" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 720961392)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> footway<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_252d58ddbad63a49e1b79db53ca975eb.setContent(html_340ea1b3b18346e12e4ba1fc0de568e9);
+            
+        
+
+        poly_line_e5ba92b8322f2c79db89cd47518b7092.bindPopup(popup_252d58ddbad63a49e1b79db53ca975eb)
+        ;
+
+        
+    
+    
+            var poly_line_9c70f8caeeb8f7378a46ce87277501af = L.polyline(
+                [[25.1694567, 121.5555816], [25.169476, 121.5555883], [25.1694846, 121.5555842], [25.1695008, 121.5555536], [25.1695035, 121.5555285]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_b42d9d09488adcb675e669f8da3764bd = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_7b767b2d68a173ca6b4a02103ade0e9d = $(`<div id="html_7b767b2d68a173ca6b4a02103ade0e9d" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691459)<br> <b>name:</b> 七星山登山步道東峰線<br> <b>highway:</b> footway<br> <b>surface:</b> None<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_b42d9d09488adcb675e669f8da3764bd.setContent(html_7b767b2d68a173ca6b4a02103ade0e9d);
+            
+        
+
+        poly_line_9c70f8caeeb8f7378a46ce87277501af.bindPopup(popup_b42d9d09488adcb675e669f8da3764bd)
+        ;
+
+        
+    
+    
+            var poly_line_50ff3d34629ae3081813d7286604893f = L.polyline(
+                [[25.1688791, 121.5553968], [25.1689475, 121.5553711], [25.1689724, 121.5553787], [25.1689902, 121.5553883], [25.1690193, 121.5553805], [25.1691056, 121.5553963], [25.1691196, 121.5554048], [25.1691515, 121.5554317], [25.1691899, 121.5554691], [25.1692281, 121.5554757]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_a48b1f3d0772356c37695eeaed1a8f05 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_9124ea1831f24fe78aad92f30eb55d1a = $(`<div id="html_9124ea1831f24fe78aad92f30eb55d1a" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691461)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> footway<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_a48b1f3d0772356c37695eeaed1a8f05.setContent(html_9124ea1831f24fe78aad92f30eb55d1a);
+            
+        
+
+        poly_line_50ff3d34629ae3081813d7286604893f.bindPopup(popup_a48b1f3d0772356c37695eeaed1a8f05)
+        ;
+
+        
+    
+    
+            var poly_line_87cde627f48a9b371f66966fab4db7c1 = L.polyline(
+                [[25.1685952, 121.5555931], [25.1686057, 121.5555358], [25.1686169, 121.5555091], [25.1686375, 121.5554936], [25.1686685, 121.5554311], [25.1686822, 121.5554146], [25.1687142, 121.5553993], [25.1687437, 121.555376]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_651921b610062a2335c0156f0b927e2b = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_1a77fd170a1f18a5458684be3b805c4d = $(`<div id="html_1a77fd170a1f18a5458684be3b805c4d" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691463)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> footway<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_651921b610062a2335c0156f0b927e2b.setContent(html_1a77fd170a1f18a5458684be3b805c4d);
+            
+        
+
+        poly_line_87cde627f48a9b371f66966fab4db7c1.bindPopup(popup_651921b610062a2335c0156f0b927e2b)
+        ;
+
+        
+    
+    
+            var poly_line_14e8c042aada87e34fae24df4fd26f99 = L.polyline(
+                [[25.1666601, 121.556526], [25.1666733, 121.5565428], [25.1667097, 121.5565652], [25.1667451, 121.5566127], [25.1667702, 121.5566298], [25.1668003, 121.5566443], [25.1668334, 121.5566636], [25.1668686, 121.5566696], [25.1669146, 121.5566665], [25.1669356, 121.5566624]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_b5dc9570c9e2024d73d4cd6b85d30bf9 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_89fe0bab765e614c14f42b5ec4454b60 = $(`<div id="html_89fe0bab765e614c14f42b5ec4454b60" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691466)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> footway<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_b5dc9570c9e2024d73d4cd6b85d30bf9.setContent(html_89fe0bab765e614c14f42b5ec4454b60);
+            
+        
+
+        poly_line_14e8c042aada87e34fae24df4fd26f99.bindPopup(popup_b5dc9570c9e2024d73d4cd6b85d30bf9)
+        ;
+
+        
+    
+    
+            var poly_line_08781d30aff31c9ac27437bbd48d7677 = L.polyline(
+                [[25.1654607, 121.5586734], [25.1654586, 121.558637], [25.1654246, 121.558585], [25.1653818, 121.5585276], [25.1653305, 121.5584783], [25.1652998, 121.55848], [25.1652689, 121.5584825], [25.1652406, 121.5584708]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_3cdd909137a37fc5d21ddd6832767618 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_4eb78baf9f10da023c5625c732f4e0af = $(`<div id="html_4eb78baf9f10da023c5625c732f4e0af" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227691470)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> footway<br> <b>surface:</b> concrete<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_3cdd909137a37fc5d21ddd6832767618.setContent(html_4eb78baf9f10da023c5625c732f4e0af);
+            
+        
+
+        poly_line_08781d30aff31c9ac27437bbd48d7677.bindPopup(popup_3cdd909137a37fc5d21ddd6832767618)
+        ;
+
+        
+    
+    
+            var poly_line_32a38fedbed507b18ce918aafbbe9f09 = L.polyline(
+                [[25.1658033, 121.5631263], [25.1657707, 121.5630698], [25.1657556, 121.5630336], [25.1657495, 121.5629699], [25.165741, 121.5629463]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_a290dfefad89d9a9c57ef8f2d91fda5e = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_56b13d592957b98080654ea8d3d36874 = $(`<div id="html_56b13d592957b98080654ea8d3d36874" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1227705221)<br> <b>name:</b> 七星山步道冷水坑線<br> <b>highway:</b> footway<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_a290dfefad89d9a9c57ef8f2d91fda5e.setContent(html_56b13d592957b98080654ea8d3d36874);
+            
+        
+
+        poly_line_32a38fedbed507b18ce918aafbbe9f09.bindPopup(popup_a290dfefad89d9a9c57ef8f2d91fda5e)
+        ;
+
+        
+    
+    
+            var poly_line_f9851f6e35670469828b8542d96b58f9 = L.polyline(
+                [[25.1696748, 121.5546106], [25.1697494, 121.5544976]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_cb04e90e347d2657433f4cd2e881107b = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_738dfd12c42dabd726cdf3df294fd1ae = $(`<div id="html_738dfd12c42dabd726cdf3df294fd1ae" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1301449842)<br> <b>name:</b> 七星山步道主峰-東峰稜線<br> <b>highway:</b> footway<br> <b>surface:</b> sett<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_cb04e90e347d2657433f4cd2e881107b.setContent(html_738dfd12c42dabd726cdf3df294fd1ae);
+            
+        
+
+        poly_line_f9851f6e35670469828b8542d96b58f9.bindPopup(popup_cb04e90e347d2657433f4cd2e881107b)
+        ;
+
+        
+    
+    
+            var poly_line_58d97cc13ae3e14bef76ba2fe2278152 = L.polyline(
+                [[25.1649592, 121.5593135], [25.1649963, 121.5593713], [25.1650172, 121.5594153], [25.1650254, 121.559467], [25.1650391, 121.5595213], [25.165062, 121.5596168], [25.1650742, 121.5596548], [25.1650882, 121.5596801], [25.1651049, 121.5597118], [25.1650942, 121.5597702], [25.1650563, 121.5597624], [25.1650226, 121.5597802], [25.1650071, 121.5598114], [25.1650001, 121.5598471], [25.1650085, 121.5598865], [25.1649829, 121.5600033]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_10ac77beebe7bd01aefa694e4073fc1b = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_a86b2d0b2147d1af51bfc4a1c17dec98 = $(`<div id="html_a86b2d0b2147d1af51bfc4a1c17dec98" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 230730601)<br> <b>name:</b> 未命名段<br> <b>highway:</b> footway<br> <b>surface:</b> None<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_10ac77beebe7bd01aefa694e4073fc1b.setContent(html_a86b2d0b2147d1af51bfc4a1c17dec98);
+            
+        
+
+        poly_line_58d97cc13ae3e14bef76ba2fe2278152.bindPopup(popup_10ac77beebe7bd01aefa694e4073fc1b)
+        ;
+
+        
+    
+    
+            var poly_line_a41ac1dbbf3fb2b855db7a130038e583 = L.polyline(
+                [[25.166208, 121.5634342], [25.1661924, 121.563378], [25.1661728, 121.563309]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7839b9edb20068a60f688ea93e263280);
+        
+    
+        var popup_3bc6171cdfae9873e3420098553bd2c7 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_b25847b78250bed457fd332040ebe044 = $(`<div id="html_b25847b78250bed457fd332040ebe044" style="width: 100.0%; height: 100.0%;"><b>way_id:</b> ('way', 1228094366)<br> <b>name:</b> 未命名段<br> <b>highway:</b> footway<br> <b>surface:</b> None<br> <b>lanes:</b> None<br> <b>cycleway:both:</b> None<br> <b>bridge:</b> None<br> <b>bridge:structure:</b> None<br> <b>version:</b> <br> <b>changeset:</b> <br> <b>timestamp:</b> <br> <b>user:</b> <br> <b>uid:</b>  </div>`)[0];
+                popup_3bc6171cdfae9873e3420098553bd2c7.setContent(html_b25847b78250bed457fd332040ebe044);
+            
+        
+
+        poly_line_a41ac1dbbf3fb2b855db7a130038e583.bindPopup(popup_3bc6171cdfae9873e3420098553bd2c7)
+        ;
+
+        
+    
+    
+            feature_group_7839b9edb20068a60f688ea93e263280.addTo(map_44a82c87a753c55b2385178f68191638);
+        
+    
+            var feature_group_31e627404c359b5d1f3cb9a0e7275227 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_31e627404c359b5d1f3cb9a0e7275227.addTo(map_44a82c87a753c55b2385178f68191638);
+        
+    
+            var layer_control_bff91aafc559a5ff057d82f9c5fd20cc_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_d8981a5b1f2979ea0735a217ecf5b623,
+                },
+                overlays :  {
+                    "service\uff081\uff09" : feature_group_0fca8a726abe35513addd611c988cb62,
+                    "steps\uff0815\uff09" : feature_group_e925094a90d11b2421f71a089b24faf6,
+                    "trail\uff0813\uff09" : feature_group_7839b9edb20068a60f688ea93e263280,
+                    "\u6a4b\u6bb5\uff080\uff09" : feature_group_31e627404c359b5d1f3cb9a0e7275227,
+                },
+            };
+            let layer_control_bff91aafc559a5ff057d82f9c5fd20cc = L.control.layers(
+                layer_control_bff91aafc559a5ff057d82f9c5fd20cc_layers.base_layers,
+                layer_control_bff91aafc559a5ff057d82f9c5fd20cc_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_44a82c87a753c55b2385178f68191638);
+
+        
+</script>
+</html>

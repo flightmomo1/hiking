@@ -1,0 +1,31 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+.DS_Store
+
+# Local caches and generated data
+cache/
+osmnx_cache/
+nlsc_raw/
+osm_raw_output/
+osm_raw_output_v1_1/
+outputs/
+runs/
+weather/
+activity_input/
+
+# Large generated map/stat artifacts that exceed GitHub limits
+scripts/Il3b_closed_zones_with_stats.geojson
+scripts/Il3b_closed_zones_stats_map.html
+
+# SQLite databases and common geospatial/archive outputs
+*.sqlite
+*.sqlite3
+*.db
+*.gpkg
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.rar

@@ -1,0 +1,241 @@
+可以。你可以把下面這段當成「交接 Prompt」，貼到其他 GPT 分頁開頭。這段會讓其他分頁知道你目前的 **115_osm 專案資料架構、命名規則、輸出規則、以及 ib0 已經升級成 activity input 架構**。目前 ib0 腳本已經改成以 `PROJECT_ROOT = C:\mountain_work\115_osm` 為專案根目錄，並使用 `activity_input`、`osm_raw_output`、`outputs` 等結構。
+
+---
+
+## 給其他 GPT 分頁的交接 Prompt
+
+```text
+這是我的「山力分析 / 115_osm」目前最新資料架構與腳本規則，請後續回答都以這個架構為準。
+
+專案根目錄：
+C:\mountain_work\115_osm
+
+目前專案資料夾分工如下：
+
+1. 活動輸入資料
+C:\mountain_work\115_osm\activity_input
+
+採用「先分檔案類型，再分路線群組」：
+
+activity_input
+├─ gpx
+│  ├─ qixing_xiaoyoukeng_roundtrip
+│  ├─ qixing_lengshuikeng_to_xiaoyoukeng
+│  ├─ juansi_waterfall
+│  └─ dakeng_trail_4
+├─ fit
+│  ├─ qixing_xiaoyoukeng_roundtrip
+│  ├─ juansi_waterfall
+│  └─ ...
+└─ csv
+   ├─ juansi_waterfall
+   └─ ...
+
+ib0 之後使用：
+ACTIVITY_ROOT = PROJECT_ROOT / "activity_input"
+ACTIVITY_TYPE = "gpx" / "fit_csv" / "fit" / "csv"
+ROUTE_GROUP = "路線群組"
+ACTIVITY_NAME = "實際檔名"
+ACTIVITY_FP = ACTIVITY_ROOT / 類型資料夾 / ROUTE_GROUP / ACTIVITY_NAME
+
+例如：
+C:\mountain_work\115_osm\activity_input\csv\juansi_waterfall\3.csv
+
+
+2. OSM raw 底層圖資
+C:\mountain_work\115_osm\osm_raw_output
+
+正式使用已驗證 snapshot：
+C:\mountain_work\115_osm\osm_raw_output\qixing_lengshuikeng_xiaoyoukeng_v1_2_success_20260511
+
+腳本中應設定：
+IA1_VERSION = "v1.2"
+IA1_DATASET_ID = "qixing_lengshuikeng_xiaoyoukeng_v1_2_success_20260511"
+IA1_SNAPSHOT_TAG = "success_20260511"
+
+OSM highway raw layer：
+PROJECT_ROOT / "osm_raw_output" / IA1_DATASET_ID / "osm_highway_raw.geojson"
+
+不要再讀未凍結的：
+qixing_lengshuikeng_xiaoyoukeng
+
+除非是重新測試 ia1。
+
+
+3. NLSC 國土測繪等高線資料
+C:\mountain_work\115_osm\nlsc_raw
+
+目前 97233NW 圖幅放在：
+C:\mountain_work\115_osm\nlsc_raw\97233NW\向量25K
+
+腳本中建議設定：
+NLSC_TILE_ID = "97233NW"
+NLSC_DATASET_NAME = "向量25K"
+NLSC_CONTOUR_FP = PROJECT_ROOT / "nlsc_raw" / NLSC_TILE_ID / NLSC_DATASET_NAME / "ContourL.shp"
+
+Shapefile 檔名維持原始名稱，不要單獨改 ContourL.shp。
+
+
+4. scripts 腳本區
+C:\mountain_work\115_osm\scripts
+
+未來腳本要依 pipeline 分類，不要全部放在 scripts 根層：
+
+scripts
+├─ ia_osm
+├─ ib0_route_match
+├─ ib1_route_profile
+├─ ib2_route_risk
+├─ ib3_activity
+└─ runners
+
+ib0 系列腳本應放在：
+C:\mountain_work\115_osm\scripts\ib0_route_match
+
+包括：
+ib0_gpx_to_osm_route_v1.py
+ib0a_prune_matched_osm_route.py
+ib0b_route_mainline_extract.py
+ib0c_anchor_from_landmarks.py
+ib0d_trim_ordered_mainline_by_anchors.py
+
+
+5. outputs 輸出區
+所有新輸出都要集中到：
+C:\mountain_work\115_osm\outputs
+
+規則是：
+outputs / pipeline_stage / ROUTE_ID / files
+
+例如：
+outputs\ib0_route_match\qixing_xiaoyoukeng_roundtrip_joyhike
+outputs\ib0a_prune\qixing_xiaoyoukeng_roundtrip_joyhike
+outputs\ib0b_mainline\qixing_xiaoyoukeng_roundtrip_joyhike
+outputs\ib0c_anchor\qixing_xiaoyoukeng_roundtrip_joyhike
+outputs\ib0d_trimmed_mainline\qixing_xiaoyoukeng_roundtrip_joyhike
+outputs\ib1_route_profile\qixing_xiaoyoukeng_roundtrip_joyhike
+outputs\ib1_contour_features\qixing_xiaoyoukeng_roundtrip_joyhike
+outputs\ib2_route_risk\qixing_xiaoyoukeng_roundtrip_joyhike
+outputs\ib3_activity\qixing_xiaoyoukeng_roundtrip_joyhike
+
+舊式 output，例如：
+outputs\ib0_gpx_osm_match_output
+outputs\ib0b_output
+outputs\ib1g_v2_output
+outputs\ib2a_risk_profile_output
+
+先保留為 legacy，不要刪，但新腳本不要再寫入舊位置。
+
+
+6. runs 資料夾
+C:\mountain_work\115_osm\runs
+
+定義為歷史實驗 / 備份，不再作為正式 pipeline output。
+
+
+7. ib0 腳本目前狀態
+ib0 已從「只吃 GPX」升級成「活動軌跡輸入」。
+
+目前支援：
+- gpx
+- fit_csv
+
+概念是：
+GPX / FIT CSV / 未來 FIT / CSV
+→ load_activity_track()
+→ 統一轉成 WGS84 LineString
+→ 再做 OSM candidate matching
+
+ib0 主流程應使用：
+activity_line
+activity_gdf
+ACTIVITY_TYPE
+ACTIVITY_NAME
+ACTIVITY_FP
+
+不要再只用 gpx_line / GPX_NAME / GPX_FP 當唯一語意。
+
+metadata 應保留：
+pipeline_stage
+route_id
+ia1_version
+ia1_dataset_id
+ia1_snapshot_tag
+activity_type
+activity_source
+gpx_source  # 暫時保留給舊版 ib0a 相容
+osm_source
+matching parameters
+
+ib0 pipeline_stage 建議改為：
+ib0_activity_to_osm_route
+
+ib0 輸出檔名長期建議使用 activity_osm：
+{ROUTE_ID}_activity_osm_candidates.geojson
+{ROUTE_ID}_activity_osm_matched.geojson
+{ROUTE_ID}_activity_osm_match_summary.csv
+{ROUTE_ID}_activity_osm_matched_map.html
+
+如果下游 ib0a 還沒改，暫時可保留 gpx_osm 命名，但長期要統一成 activity_osm。
+
+
+8. 目前常用 ROUTE_ID / ROUTE_GROUP 建議
+
+七星山小油坑進出：
+ROUTE_GROUP = "qixing_xiaoyoukeng_roundtrip"
+ROUTE_ID = "qixing_xiaoyoukeng_roundtrip_joyhike"
+
+七星山冷水坑上、小油坑下：
+ROUTE_GROUP = "qixing_lengshuikeng_to_xiaoyoukeng"
+ROUTE_ID = "qixing_lengshuikeng_to_xiaoyoukeng"
+
+絹絲瀑布 FIT CSV：
+ROUTE_GROUP = "juansi_waterfall"
+ROUTE_ID = "juansi_waterfall_fitcsv_20260503"
+
+大坑 4 號步道：
+ROUTE_GROUP = "dakeng_trail_4"
+ROUTE_ID = "dakeng_trail_4_來源或日期"
+
+
+9. 執行方式
+從專案根目錄執行：
+
+cd C:\mountain_work\115_osm
+
+& ".\.venv\Scripts\python.exe" ".\scripts\ib0_route_match\ib0_gpx_to_osm_route_v1.py"
+
+不要再從舊的「七星山上山」資料夾作為主要工作目錄。
+
+
+10. 後續改腳本原則
+每一支腳本都要改成：
+PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+
+並使用：
+outputs / stage / ROUTE_ID
+
+例如 ib0a：
+input:
+outputs\ib0_route_match\{ROUTE_ID}\{ROUTE_ID}_activity_osm_matched.geojson
+
+output:
+outputs\ib0a_prune\{ROUTE_ID}\...
+
+不要再使用舊的：
+ib0_gpx_osm_match_output
+ib0b_output
+ib0c_anchor_output
+ib0d_output
+這類根目錄舊路徑。
+```
+
+---
+
+## 你貼給其他分頁時，可以再補一句
+
+```text
+請先不要大改演算法，優先幫我把腳本 input/output 路徑、ROUTE_ID、ACTIVITY_TYPE、IA1 snapshot、metadata 與 outputs/stage/ROUTE_ID 架構對齊。
+```
+
+這句很重要，因為現在你的主要工作不是重新發明方法，而是把所有腳本收斂到同一個可重現 pipeline 架構。

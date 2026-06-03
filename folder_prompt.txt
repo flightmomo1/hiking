@@ -1,0 +1,206 @@
+cd C:\mountain_work\115_osm
+
+& ".\.venv\Scripts\python.exe" -c @"
+from pathlib import Path
+import csv
+from datetime import datetime
+
+ROOT = Path(r'C:\mountain_work\115_osm')
+INVENTORY_OUT = ROOT / 'folder_inventory_depth4.csv'
+ROLE_AUDIT_OUT = ROOT / 'folder_role_audit_depth4.csv'
+MAX_DEPTH = 4
+
+EXCLUDE_DIRS = {
+    '.git',
+    '.venv',
+    '__pycache__',
+    '.pytest_cache',
+    'osmnx_cache',
+}
+
+FORMAL_CASES = {
+    'qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b',
+    'qixing_xiaoyoukeng_main_peak_20260315_osmrefresh_v1_3b',
+    'juansi_waterfall_fitcsv_20260503_osmrefresh_v1_3b',
+    'zhonghua_ust_jiuwufeng_roundtrip_biji_osmrefresh_v1_3b',
+}
+
+FORMAL_ROOTS = {
+    'activity_input': ('FORMAL_INPUT', 'activity source', 'current'),
+    'configs': ('CONFIG', 'route definitions and semantic risk mapping', 'current'),
+    'nlsc_raw': ('FORMAL_INPUT', 'NLSC contour source for IB1G/IB1E/IB2D', 'current'),
+    'osm_raw_output': ('FORMAL_OUTPUT', 'IA1 OSM raw output', 'current'),
+    'scripts': ('SOURCE', 'pipeline scripts', 'current'),
+    'runs': ('FREEZE_OR_HISTORY', 'handoff, changelog, freeze snapshots', 'mixed'),
+    'outputs/ia1_convergence_audit_v1_3b': ('AUDIT_EVIDENCE', 'IA1 convergence audit', 'current'),
+    'outputs/ib0_route_match': ('FORMAL_OUTPUT', 'IB0 route match output', 'current'),
+    'outputs/ib0_route_match_convergence_audit_v1_3b': ('AUDIT_EVIDENCE', 'IB0 route match convergence audit', 'current'),
+    'outputs/ib0c_anchor': ('REFERENCE', 'IB0C anchors; legacy/QA only, not formal trim authority', 'legacy_reference'),
+    'outputs/ib0a_control_points_osm_projection': ('FORMAL_OUTPUT', 'IB0A control point projection; PARTIAL/non-blocking', 'partial'),
+    'outputs/ib0a2_route_axis_anchor_component_qa': ('FORMAL_OUTPUT', 'IB0A-2 route-axis anchor/component QA', 'current'),
+    'outputs/ib0b_mainline_route_definition_v1_3b_control_points_only': ('FORMAL_OUTPUT', 'IB0B control-points-only route axis', 'current'),
+    'outputs/ib0d_trimmed_mainline_v1_3b_control_points_only_contract_qa': ('FORMAL_OUTPUT', 'IB0D contract QA; formal IB1 input', 'current'),
+    'outputs/ib1_route_profile_v1_3b_contract_qa': ('FORMAL_OUTPUT', 'IB1A route profile', 'current'),
+    'outputs/ib1c_route_profile_semantics_v1_3b_contract_qa': ('FORMAL_OUTPUT', 'IB1C OSM semantics', 'current'),
+    'outputs/ib1c_osm_semantic_audit_v1_3b_contract_qa': ('AUDIT_EVIDENCE', 'IB1C semantic audit', 'current'),
+    'outputs/ib1c_osm_semantic_risk_v1_3b_contract_qa': ('FORMAL_OUTPUT', 'IB1C semantic risk output', 'current_warn'),
+    'outputs/ib1g_contour_window_features_v1_3b_contract_qa': ('FORMAL_OUTPUT', 'IB1G NLSC contour window features', 'current'),
+    'outputs/ib1e_route_profile_contour_window_terrain_v1_3b_contract_qa': ('FORMAL_OUTPUT', 'IB1E formal IB2 input', 'current'),
+    'outputs/ib2_v2_route_risk_v1_3b_contract_qa': ('FORMAL_OUTPUT', 'IB2_v2 route risk scoring', 'current'),
+    'outputs/ib2d_route_risk_offline_map_v1_3b_contract_qa': ('FORMAL_OUTPUT', 'IB2D baseline route risk map/radar', 'current'),
+    'outputs/ai_engineer_handoff_dataset_v1': ('AUDIT_EVIDENCE', 'handoff inventory evidence, not formal pipeline output', 'current_reference'),
+    'outputs/ib0_route_axis_v1_3b_convergence_audit': ('AUDIT_EVIDENCE', 'IA1-IB0D convergence audit', 'current'),
+    'outputs/ib1_v1_3b_contract_qa_pipeline_summary': ('AUDIT_EVIDENCE', 'IB1 pipeline summary', 'current'),
+}
+
+SPECIAL_ROOTS = {
+    'config': ('REFERENCE_CONFIG', 'single-root legacy/reference config; includes nlsc_tile_activity_mapping.csv', 'document_in_index'),
+    'config/nlsc_tile_activity_mapping.csv': ('REFERENCE_CONFIG', 'historical NLSC tile mapping; not sole formal selector authority', 'document_in_index'),
+    'weather': ('FUTURE_LAYER', 'observed weather source; not integrated at IB2D', 'future_ib3_activity_layer'),
+    'osm_raw_output_v1_1': ('LEGACY', 'older IA1 raw output', 'do_not_use_current'),
+    'cache': ('CACHE', 'local cache', 'ignore_for_pipeline'),
+}
+
+def classify(rel_path: str, item_type: str):
+    rel = rel_path.replace('\\', '/')
+
+    if rel in FORMAL_ROOTS:
+        role, scope, status = FORMAL_ROOTS[rel]
+        return role, scope, status, 'yes' if status.startswith('current') else 'reference', 'no', 'listed formal/reference root'
+
+    if rel in SPECIAL_ROOTS:
+        role, scope, status = SPECIAL_ROOTS[rel]
+        return role, scope, status, 'no' if role in {'LEGACY', 'CACHE'} else 'reference', 'no', 'special known root'
+
+    top = rel.split('/')[0]
+
+    if '/_archived' in rel or rel.startswith('runs/_archived') or rel.startswith('outputs/_backup'):
+        return 'ARCHIVE', 'archived or backup material', 'historical', 'no', 'no', 'archive/backup path'
+
+    if '__pycache__' in rel or rel.endswith('.pyc'):
+        return 'CACHE', 'python cache', 'ignore', 'no', 'no', 'cache path'
+
+    if rel.startswith('outputs/ib3') or rel.startswith('scripts/ib3') or rel.startswith('weather'):
+        return 'FUTURE_LAYER', 'IB3 activity/behavior/weather layer', 'future_or_legacy', 'no', 'no', 'outside current IA1-IB2D checkpoint'
+
+    if rel.startswith('outputs/ib4') or rel.startswith('scripts/ib4') or rel.startswith('outputs/model_'):
+        return 'EXPERIMENTAL', 'IB4/personal/model artifacts', 'historical_or_future', 'no', 'no', 'outside current IA1-IB2D checkpoint'
+
+    if rel.startswith('scripts/ia_nlsc') or rel.startswith('scripts/ia2'):
+        return 'REFERENCE', 'older NLSC/IA2 scripts', 'legacy_reference', 'reference', 'no', 'not current IB1G/IB1E runner'
+
+    if rel.startswith('outputs/') and '_v1_3b_contract_qa' not in rel and 'convergence_audit' not in rel:
+        return 'LEGACY_OR_EXPERIMENTAL_OUTPUT', 'older/non-current output root', 'review_before_use', 'no', 'no', 'not listed as current formal root'
+
+    if top in {'activity_input', 'configs', 'nlsc_raw', 'osm_raw_output', 'outputs', 'runs', 'scripts'}:
+        return 'INHERITED', 'inherits role from nearest known parent', 'review_parent', 'maybe', 'no', 'not a specifically classified root'
+
+    return 'UNKNOWN', 'not classified by folder prompt', 'needs_review', 'unknown', 'unknown', 'add rule if it matters'
+
+inventory_rows = []
+role_rows = []
+
+for p in ROOT.rglob('*'):
+    rel = p.relative_to(ROOT)
+
+    if any(part in EXCLUDE_DIRS for part in rel.parts):
+        continue
+
+    depth = len(rel.parts)
+    if depth > MAX_DEPTH:
+        continue
+
+    rel_str = str(rel).replace('\\', '/')
+
+    try:
+        stat = p.stat()
+        size = stat.st_size if p.is_file() else ''
+        mtime = datetime.fromtimestamp(stat.st_mtime).strftime('%Y-%m-%d %H:%M:%S')
+    except Exception:
+        size = ''
+        mtime = ''
+
+    inventory_rows.append({
+        'relative_path': rel_str,
+        'name': p.name,
+        'type': 'dir' if p.is_dir() else 'file',
+        'depth': depth,
+        'size_bytes': size,
+        'modified_time': mtime,
+        'suffix': p.suffix.lower() if p.is_file() else '',
+    })
+
+    if depth <= 2 or rel_str in FORMAL_ROOTS or rel_str in SPECIAL_ROOTS:
+        role, scope, status, used, blocker, reason = classify(rel_str, 'dir' if p.is_dir() else 'file')
+        role_rows.append({
+            'relative_path': rel_str,
+            'name': p.name,
+            'type': 'dir' if p.is_dir() else 'file',
+            'depth': depth,
+            'role': role,
+            'stage_or_scope': scope,
+            'formal_status': status,
+            'used_by_current_pipeline': used,
+            'current_pipeline_blocker': blocker,
+            'reason': reason,
+            'recommended_action': (
+                'document in CURRENT_INDEX'
+                if role in {'REFERENCE_CONFIG', 'FUTURE_LAYER'}
+                else 'do not use as current formal input'
+                if role in {'LEGACY', 'CACHE', 'ARCHIVE', 'LEGACY_OR_EXPERIMENTAL_OUTPUT'}
+                else 'keep as current evidence/root'
+                if role in {'FORMAL_INPUT', 'FORMAL_OUTPUT', 'CONFIG', 'AUDIT_EVIDENCE', 'SOURCE'}
+                else 'review manually'
+            ),
+        })
+
+inventory_rows = sorted(
+    inventory_rows,
+    key=lambda r: (int(r['depth']), r['type'], r['relative_path'].lower())
+)
+role_rows = sorted(
+    role_rows,
+    key=lambda r: (int(r['depth']), r['relative_path'].lower())
+)
+
+with INVENTORY_OUT.open('w', newline='', encoding='utf-8-sig') as f:
+    writer = csv.DictWriter(
+        f,
+        fieldnames=[
+            'relative_path',
+            'name',
+            'type',
+            'depth',
+            'size_bytes',
+            'modified_time',
+            'suffix',
+        ],
+    )
+    writer.writeheader()
+    writer.writerows(inventory_rows)
+
+with ROLE_AUDIT_OUT.open('w', newline='', encoding='utf-8-sig') as f:
+    writer = csv.DictWriter(
+        f,
+        fieldnames=[
+            'relative_path',
+            'name',
+            'type',
+            'depth',
+            'role',
+            'stage_or_scope',
+            'formal_status',
+            'used_by_current_pipeline',
+            'current_pipeline_blocker',
+            'reason',
+            'recommended_action',
+        ],
+    )
+    writer.writeheader()
+    writer.writerows(role_rows)
+
+print(f'inventory_out: {INVENTORY_OUT}')
+print(f'role_audit_out: {ROLE_AUDIT_OUT}')
+print(f'inventory_rows: {len(inventory_rows)}')
+print(f'role_rows: {len(role_rows)}')
+"@
