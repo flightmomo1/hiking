@@ -1,4 +1,4 @@
-# Current pipeline status updated 20260604 THCI version comparison v1.0 / v1.0a / v1.0b
+# Current pipeline status updated 20260604 THCI version comparison v1.0 / v1.0a / v1.0b / v1.0c
 
 Run date: 2026-06-04
 
@@ -14,13 +14,48 @@ THCI radar v1.0b = CONVERGED_WITH_NAVIGATION_SEMANTICS_CALIBRATED
 THCI version comparison v1.0 / v1.0a / v1.0b = COMPLETED
 ```
 
-This README keeps the IB2 / IB2D v1.3b route-level baseline risk visualization checkpoint and updates THCI to the current v1.0b navigation-semantics-calibrated state with version comparison evidence.
+This README keeps the IB2 / IB2D v1.3b route-level baseline risk visualization checkpoint and updates THCI to the current v1.0c weather-semantics-calibrated display state. THCI v1.0b is preserved as the previous recommended baseline.
 
 ## Current recommended THCI branch
 
 ```text
-Recommended scoring root: outputs\thci_axis_scores_v1_0b\
-Recommended radar root:   outputs\thci_radar_v1_0b\
+Current recommended THCI display / scoring version = v1.0c
+Recommended scoring root: outputs\thci_axis_scores_v1_0c\
+Recommended radar root:   outputs\thci_radar_v1_0c\
+Recommended integrated root, auto left map:     outputs\ib2d_thci_radar_v1_0c\
+Recommended integrated root, IB2D PNG left map: outputs\ib2d_thci_radar_v1_0c_ib2d_png\
+```
+
+THCI v1.0c changes only `weather_impact_score`. The five non-weather axes are copied from v1.0b, and v1.0b remains available as the previous recommended baseline under:
+
+```text
+outputs\thci_axis_scores_v1_0b\
+outputs\thci_radar_v1_0b\
+```
+
+v1.0c promotion is backed by:
+
+```text
+scripts\thci_diagnose_weather_sensitivity_v1_0b.py
+scripts\thci_diagnose_weather_hydrology_topography_v1_0c_review.py
+scripts\audit_thci_v1_0c_weather_review_convergence.ps1
+scripts\audit_thci_v1_0c_official_display_convergence.ps1
+```
+
+The weather review decision is:
+
+```text
+THCI_V1_0C_WEATHER_REVIEW_STATUS = WEATHER_CALIBRATION_ESTABLISHED_WITH_HYDROLOGY_TOPOGRAPHY_REVIEW
+THCI_V1_0C_OFFICIAL_DISPLAY_STATUS = CURRENT_RECOMMENDED_VERSION
+```
+
+The Juansi waterfall route has hydrology-topography evidence for prior weather underestimation: high hydrology proximity, low-elevation hydrology overlap, water crossing presence, and elevated drainage accumulation proxy.
+
+## Previous recommended THCI branch
+
+```text
+Previous recommended scoring root: outputs\thci_axis_scores_v1_0b\
+Previous recommended radar root:   outputs\thci_radar_v1_0b\
 ```
 
 ## THCI version hierarchy
