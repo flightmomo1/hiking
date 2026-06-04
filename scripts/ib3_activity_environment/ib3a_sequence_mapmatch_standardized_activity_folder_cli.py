@@ -101,6 +101,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--old-mapmatched-root", default="outputs/ib3a_mapmatched_standardized_activity")
     parser.add_argument("--out-dir", default="outputs/ib3a_sequence_mapmatched_activity")
     parser.add_argument("--route-folder", default="", help="Optional route folder filter.")
+    parser.add_argument(
+        "--case-id",
+        default="",
+        help="Optional case id override. When set, this takes precedence over ROUTE_CASE_MAP.",
+    )
     parser.add_argument("--activity-ids", default="", help="Comma-separated activity ids like 37_1,33_1.")
     parser.add_argument("--top-k", type=int, default=8)
     parser.add_argument("--segment-m", type=float, default=20.0)
@@ -793,7 +798,7 @@ def run(args: argparse.Namespace) -> int:
     summary_rows = []
     for _, row in selected.iterrows():
         route_folder = str(row["route_folder"])
-        case_id = ROUTE_CASE_MAP.get(route_folder)
+        case_id = str(args.case_id).strip() or ROUTE_CASE_MAP.get(route_folder)
         subject_id = str(int(row["subject_id"])) if pd.notna(row["subject_id"]) else ""
         trial_id = int(row["trial_id"]) if pd.notna(row["trial_id"]) else 1
         activity_id = f"{subject_id}_{trial_id}"
