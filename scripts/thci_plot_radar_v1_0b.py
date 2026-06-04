@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Plot deterministic THCI v1.0b six-axis radar charts.
-
-The script reads precomputed THCI v1.0b axis scores only. It does not
-recalculate scores and does not call any runtime LLM.
-"""
+"""Plot deterministic THCI v1.0b six-axis radar charts."""
 
 from __future__ import annotations
 
+import argparse
 import json
 import math
 import os
@@ -29,12 +26,9 @@ except ModuleNotFoundError:
     raise
 
 
-AXIS_DEFINITION_CSV = (
-    PROJECT_ROOT / "configs" / "risk_semantics" / "thci_axis_definition_v1_0.csv"
-)
+AXIS_DEFINITION_CSV = PROJECT_ROOT / "configs" / "risk_semantics" / "thci_axis_definition_v1_0.csv"
 AXIS_SCORE_ROOT = PROJECT_ROOT / "outputs" / "thci_axis_scores_v1_0b"
 OUT_ROOT = PROJECT_ROOT / "outputs" / "thci_radar_v1_0b"
-
 SCORING_VERSION = "v1.0b"
 
 CASES = [
@@ -63,8 +57,30 @@ DEFAULT_AXIS_LABELS_ZH = {
 }
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--case-id", action="append", default=[])
+    parser.add_argument("--case-list", default=None)
+    return parser.parse_args()
+
+
+def resolve_cases(args: argparse.Namespace) -> tuple[list[str], bool]:
+    cases = list(args.case_id or [])
+    if args.case_list:
+        fp = Path(args.case_list)
+        if not fp.is_absolute():
+            fp = PROJECT_ROOT / fp
+        with fp.open("r", encoding="utf-8") as handle:
+            for line in handle:
+                item = line.strip()
+                if item and not item.startswith("#"):
+                    cases.append(item)
+    if not cases:
+        return list(CASES), False
+    return list(dict.fromkeys(cases)), True
+
+
 def load_axis_definition() -> dict[str, dict[str, str]]:
-    """Load THCI axis definitions keyed by axis_id."""
     if not AXIS_DEFINITION_CSV.exists():
         raise FileNotFoundError(AXIS_DEFINITION_CSV)
     df = pd.read_csv(AXIS_DEFINITION_CSV, low_memory=False)
@@ -82,9 +98,7 @@ def load_axis_definition() -> dict[str, dict[str, str]]:
 
 
 def load_axis_scores(case_id: str) -> tuple[pd.DataFrame, Path]:
-    """Load one case's precomputed THCI v1.0b axis score CSV."""
-    case_dir = AXIS_SCORE_ROOT / case_id
-    score_csv = case_dir / f"{case_id}_thci_axis_scores_v1_0b.csv"
+    score_csv = AXIS_SCORE_ROOT / case_id / f"{case_id}_thci_axis_scores_v1_0b.csv"
     if not score_csv.exists():
         raise FileNotFoundError(score_csv)
     df = pd.read_csv(score_csv, low_memory=False)
@@ -94,31 +108,25 @@ def load_axis_scores(case_id: str) -> tuple[pd.DataFrame, Path]:
 
 
 def load_axis_score_summary(case_id: str) -> tuple[dict[str, Any], Path]:
-    """Load one case's THCI v1.0b axis score summary JSON."""
-    case_dir = AXIS_SCORE_ROOT / case_id
-    score_summary_json = case_dir / f"{case_id}_thci_axis_score_summary_v1_0b.json"
-    if not score_summary_json.exists():
-        raise FileNotFoundError(score_summary_json)
-    with score_summary_json.open("r", encoding="utf-8") as handle:
-        summary = json.load(handle)
-    return summary, score_summary_json
+    summary_json = AXIS_SCORE_ROOT / case_id / f"{case_id}_thci_axis_score_summary_v1_0b.json"
+    if not summary_json.exists():
+        raise FileNotFoundError(summary_json)
+    with summary_json.open("r", encoding="utf-8") as handle:
+        return json.load(handle), summary_json
 
 
 def validate_axis_scores(score_df: pd.DataFrame) -> dict[str, Any]:
-    """Validate required axis score columns and numeric 0..1 values."""
     row = score_df.iloc[0]
     missing_axes = [axis for axis in AXIS_ORDER if axis not in score_df.columns]
     non_numeric_axes: list[str] = []
     out_of_range_axes: list[str] = []
     axis_scores: dict[str, float | None] = {}
-
     for axis in AXIS_ORDER:
         if axis in missing_axes:
             axis_scores[axis] = None
             continue
-        raw = row[axis]
         try:
-            value = float(raw)
+            value = float(row[axis])
         except (TypeError, ValueError):
             non_numeric_axes.append(axis)
             axis_scores[axis] = None
@@ -130,21 +138,19 @@ def validate_axis_scores(score_df: pd.DataFrame) -> dict[str, Any]:
         axis_scores[axis] = value
         if value < 0.0 or value > 1.0:
             out_of_range_axes.append(axis)
-
-    numeric_values = [value for value in axis_scores.values() if value is not None]
+    values = [value for value in axis_scores.values() if value is not None]
     return {
         "axis_scores": axis_scores,
         "missing_axes": missing_axes,
         "non_numeric_axes": non_numeric_axes,
         "out_of_range_axes": out_of_range_axes,
-        "score_min": min(numeric_values) if numeric_values else None,
-        "score_max": max(numeric_values) if numeric_values else None,
+        "score_min": min(values) if values else None,
+        "score_max": max(values) if values else None,
         "ok": not missing_axes and not non_numeric_axes and not out_of_range_axes,
     }
 
 
 def setup_chinese_font() -> str:
-    """Configure matplotlib for Traditional Chinese labels on Windows."""
     preferred = [
         "Microsoft JhengHei",
         "Microsoft YaHei",
@@ -168,17 +174,14 @@ def plot_radar(
     output_png: Path,
     dpi: int = 180,
 ) -> None:
-    """Plot and save one THCI v1.0b six-axis radar chart."""
     labels = [
-        axis_definitions.get(axis, {}).get("display_name_zh")
-        or DEFAULT_AXIS_LABELS_ZH.get(axis, axis)
+        axis_definitions.get(axis, {}).get("display_name_zh") or DEFAULT_AXIS_LABELS_ZH.get(axis, axis)
         for axis in AXIS_ORDER
     ]
     values = [axis_scores[axis] for axis in AXIS_ORDER]
     if any(value is None for value in values):
         raise ValueError(f"Cannot plot radar with missing values for {case_id}")
     numeric_values = [float(value) for value in values]
-
     angles = np.linspace(0, 2 * np.pi, len(AXIS_ORDER), endpoint=False).tolist()
     closed_angles = angles + angles[:1]
     closed_values = numeric_values + numeric_values[:1]
@@ -187,7 +190,6 @@ def plot_radar(
     ax = fig.add_subplot(111, polar=True)
     ax.set_theta_offset(np.pi / 2)
     ax.set_theta_direction(-1)
-
     ax.plot(closed_angles, closed_values, color="#355f8c", linewidth=2.2)
     ax.fill(closed_angles, closed_values, color="#5d87b6", alpha=0.22)
     ax.set_ylim(0, 1)
@@ -196,23 +198,9 @@ def plot_radar(
     ax.set_xticks(angles)
     ax.set_xticklabels(labels, fontsize=12)
     ax.grid(color="#b8c0c8", linewidth=0.8)
-
     for angle, value in zip(angles, numeric_values):
-        ax.text(
-            angle,
-            min(1.08, value + 0.08),
-            f"{value:.2f}",
-            ha="center",
-            va="center",
-            fontsize=10,
-        )
-
-    ax.set_title(
-        f"THCI v1.0b navigation semantics calibrated\n{case_id}",
-        va="bottom",
-        fontsize=13,
-        pad=26,
-    )
+        ax.text(angle, min(1.08, value + 0.08), f"{value:.2f}", ha="center", va="center", fontsize=10)
+    ax.set_title(f"THCI v1.0b navigation semantics calibrated\n{case_id}", va="bottom", fontsize=13, pad=26)
     output_png.parent.mkdir(parents=True, exist_ok=True)
     fig.tight_layout()
     fig.savefig(output_png, dpi=dpi, bbox_inches="tight")
@@ -220,24 +208,15 @@ def plot_radar(
 
 
 def _summary_count(summary: dict[str, Any], key: str) -> int:
-    value = summary.get(key, 0)
     try:
-        return int(value)
+        return int(summary.get(key, 0))
     except (TypeError, ValueError):
         return 0
 
 
-def _bool(value: Any) -> bool:
-    return str(value).strip().lower() in {"true", "1", "yes", "y"}
-
-
-def _previous_navigation_score(axis_score_summary: dict[str, Any]) -> float | None:
+def _previous_navigation_score(summary: dict[str, Any]) -> float | None:
     try:
-        return float(
-            axis_score_summary["axis_details"]["navigation_risk_score"][
-                "previous_v1_0a_navigation_risk_score"
-            ]
-        )
+        return float(summary["axis_details"]["navigation_risk_score"]["previous_v1_0a_navigation_risk_score"])
     except (KeyError, TypeError, ValueError):
         return None
 
@@ -247,7 +226,6 @@ def write_case_outputs(
     axis_definitions: dict[str, dict[str, str]],
     font_name: str,
 ) -> dict[str, Any]:
-    """Validate, plot, and write all per-case radar outputs."""
     score_df, score_csv = load_axis_scores(case_id)
     axis_score_summary, score_summary_json = load_axis_score_summary(case_id)
     validation = validate_axis_scores(score_df)
@@ -268,18 +246,16 @@ def write_case_outputs(
 
     proxy_features_n = _summary_count(axis_score_summary, "proxy_features_n")
     missing_features_n = _summary_count(axis_score_summary, "missing_features_n")
-
-    plot_rows = []
-    for idx, axis in enumerate(AXIS_ORDER, start=1):
-        plot_rows.append(
-            {
-                "axis_order": idx,
-                "axis_id": axis,
-                "display_name_zh": axis_definitions.get(axis, {}).get("display_name_zh")
-                or DEFAULT_AXIS_LABELS_ZH.get(axis, axis),
-                "score": validation["axis_scores"].get(axis),
-            }
-        )
+    plot_rows = [
+        {
+            "axis_order": idx,
+            "axis_id": axis,
+            "display_name_zh": axis_definitions.get(axis, {}).get("display_name_zh")
+            or DEFAULT_AXIS_LABELS_ZH.get(axis, axis),
+            "score": validation["axis_scores"].get(axis),
+        }
+        for idx, axis in enumerate(AXIS_ORDER, start=1)
+    ]
     pd.DataFrame(plot_rows).to_csv(output_plot_data_csv, index=False, encoding="utf-8-sig")
 
     if radar_status == "PASS":
@@ -314,14 +290,9 @@ def write_case_outputs(
         "matplotlib_font": font_name,
         "source_scoring_version": axis_score_summary.get("scoring_version"),
         "source_calibrated_from_v1_0a": axis_score_summary.get("calibrated_from_v1_0a"),
-        "source_navigation_semantics_calibrated": axis_score_summary.get(
-            "navigation_semantics_calibrated"
-        ),
+        "source_navigation_semantics_calibrated": axis_score_summary.get("navigation_semantics_calibrated"),
     }
-    output_summary_json.write_text(
-        json.dumps(summary, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    output_summary_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
 
     return {
         "case_id": case_id,
@@ -345,22 +316,25 @@ def write_case_outputs(
     }
 
 
-def write_batch_summary(case_rows: list[dict[str, Any]]) -> None:
-    """Write THCI v1.0b radar batch summary CSV."""
+def write_batch_summary(case_rows: list[dict[str, Any]], merge_existing: bool = False) -> None:
     batch_dir = OUT_ROOT / "_batch_summary"
     batch_dir.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(case_rows).to_csv(
-        batch_dir / "thci_radar_v1_0b_case_summary.csv",
-        index=False,
-        encoding="utf-8-sig",
-    )
+    out_fp = batch_dir / "thci_radar_v1_0b_case_summary.csv"
+    new_df = pd.DataFrame(case_rows)
+    if merge_existing and out_fp.exists():
+        old_df = pd.read_csv(out_fp, low_memory=False)
+        old_df = old_df[~old_df["case_id"].astype(str).isin(set(new_df["case_id"].astype(str)))]
+        new_df = pd.concat([old_df, new_df], ignore_index=True)
+    new_df.to_csv(out_fp, index=False, encoding="utf-8-sig")
 
 
 def main() -> int:
+    args = parse_args()
+    cases, is_cli_extension = resolve_cases(args)
     axis_definitions = load_axis_definition()
     font_name = setup_chinese_font()
     case_rows = []
-    for case_id in CASES:
+    for case_id in cases:
         row = write_case_outputs(case_id, axis_definitions, font_name)
         case_rows.append(row)
         print(
@@ -370,7 +344,7 @@ def main() -> int:
             f"v1_0b_nav={row['v1_0b_navigation_risk_score']} "
             f"proxy_features_n={row['proxy_features_n']} missing_features_n={row['missing_features_n']}"
         )
-    write_batch_summary(case_rows)
+    write_batch_summary(case_rows, merge_existing=is_cli_extension)
     print("batch summary:", OUT_ROOT / "_batch_summary" / "thci_radar_v1_0b_case_summary.csv")
     return 1 if any(row["radar_status"] == "FAIL" for row in case_rows) else 0
 

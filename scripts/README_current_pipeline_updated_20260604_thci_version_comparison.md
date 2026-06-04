@@ -119,3 +119,93 @@ runtime_llm_allowed = false
 ```
 
 LLM is not part of the THCI production scoring runtime. The THCI scoring branch uses fixed CSV configuration, deterministic scripts, fixed thresholds, proxy feature provenance, and convergence audits.
+
+## THCI v1.0c Weather Review Branch
+
+```text
+Recommended display branch remains: THCI v1.0b
+Weather calibration candidate branch: THCI v1.0c
+```
+
+v1.0c was added as a review branch for weather semantics calibration. It does
+not replace v1.0b as the recommended presentation version. The integrated
+display / radar recommendation remains:
+
+```text
+outputs\thci_axis_scores_v1_0b\
+outputs\thci_radar_v1_0b\
+outputs\ib2d_thci_radar_v1_0b_ib2d_png\
+```
+
+### v1.0c Scripts
+
+```text
+scripts\thci_diagnose_weather_sensitivity_v1_0b.py
+scripts\thci_compute_axis_scores_v1_0c.py
+scripts\thci_diagnose_weather_hydrology_topography_v1_0c_review.py
+scripts\audit_thci_v1_0c_weather_review_convergence.ps1
+```
+
+### v1.0c Output Roots
+
+```text
+outputs\thci_weather_sensitivity_diagnostics_v1_0b\
+outputs\thci_axis_scores_v1_0c\
+outputs\thci_weather_hydrology_topography_diagnostics_v1_0c_review\
+outputs\thci_v1_0c_weather_review_audit\
+```
+
+### v1.0c Scoring Boundary
+
+```text
+v1.0c recalibrates only weather_impact_score.
+physical_difficulty_score is copied from v1.0b.
+technical_difficulty_score is copied from v1.0b.
+baseline_hazard_score is copied from v1.0b.
+navigation_risk_score is copied from v1.0b.
+support_difficulty_score is copied from v1.0b.
+runtime_llm_allowed = false
+batch min-max normalization = false
+IB2D rerun = false
+v1.0b overwrite = false
+```
+
+### Hydrology-Topography Review Evidence
+
+The weather review branch adds a diagnostic distinction that hydrology risk
+should not be interpreted from water density alone. Rainwater tends to collect
+in route-relative low terrain, valley / drainage terrain, and stream crossing
+locations. The hydrology-topography diagnostic therefore records:
+
+```text
+hydrology_proximity_ratio
+low_elevation_hydrology_overlap_ratio
+water_crossing_presence
+water_crossing_rows_n
+water_crossing_length_m
+valley_or_low_terrain_proxy_ratio
+drainage_accumulation_proxy_score
+crossing_surge_score
+hydrology_topography_weather_note
+```
+
+### Juansi Weather Underestimation Evidence
+
+`juansi_waterfall_fitcsv_20260503_osmrefresh_v1_3b` is now the clearest weather
+underestimation review case:
+
+```text
+hydrology_proximity_ratio = 0.7724
+low_elevation_hydrology_overlap_ratio = 0.3374
+water_crossing_presence = true
+water_crossing_rows_n = 36
+drainage_accumulation_proxy_score = 0.8994
+crossing_surge_score = 0.3292
+```
+
+Audit decision:
+
+```text
+THCI_V1_0C_WEATHER_REVIEW_STATUS =
+WEATHER_CALIBRATION_ESTABLISHED_WITH_HYDROLOGY_TOPOGRAPHY_REVIEW
+```

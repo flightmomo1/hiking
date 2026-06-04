@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import argparse
 from pathlib import Path
 from typing import Any
 
@@ -30,6 +31,8 @@ if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
 import thci_compute_axis_scores_v1_0 as v10  # noqa: E402
+import thci_compute_axis_scores_v1_0a as v10a  # noqa: E402
+import thci_diagnose_feature_coverage_v1_0a as diag_v10a  # noqa: E402
 
 
 V10A_ROOT = PROJECT_ROOT / "outputs" / "thci_axis_scores_v1_0a"
@@ -50,6 +53,63 @@ INPUT_ROOTS = {
     / "outputs"
     / "ib0d_trimmed_mainline_v1_3b_control_points_only_contract_qa",
 }
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--case-id",
+        action="append",
+        default=[],
+        help="Run only the specified case_id. Can be repeated. Defaults to the four formal cases.",
+    )
+    parser.add_argument(
+        "--case-list",
+        default=None,
+        help="Optional text file containing one case_id per line. Blank lines and # comments are ignored.",
+    )
+    return parser.parse_args()
+
+
+def resolve_cases(args: argparse.Namespace) -> tuple[list[str], bool]:
+    cases = list(args.case_id or [])
+    if args.case_list:
+        case_list_fp = Path(args.case_list)
+        if not case_list_fp.is_absolute():
+            case_list_fp = PROJECT_ROOT / case_list_fp
+        with case_list_fp.open("r", encoding="utf-8") as handle:
+            for line in handle:
+                item = line.strip()
+                if item and not item.startswith("#"):
+                    cases.append(item)
+    if not cases:
+        return list(v10.CASES), False
+    deduped = list(dict.fromkeys(cases))
+    return deduped, True
+
+
+def ensure_v10a_prerequisites(case_id: str, config: dict[str, Any]) -> None:
+    """Create per-case diagnostics and v1.0a sidecars when a CLI-added case needs them."""
+    diag_fp = DIAG_ROOT / case_id / f"{case_id}_thci_feature_coverage_diagnostic_v1_0a.csv"
+    if not diag_fp.exists():
+        row = diag_v10a.diagnose_case(case_id)
+        diag_v10a.write_case_output(case_id, row)
+        merge_batch_summary(
+            DIAG_ROOT / "_batch_summary" / "thci_feature_coverage_diagnostic_v1_0a_case_summary.csv",
+            [pd.DataFrame([row])],
+            key="case_id",
+        )
+
+    v10a_score_fp = V10A_ROOT / case_id / f"{case_id}_thci_axis_scores_v1_0a.csv"
+    v10a_summary_fp = V10A_ROOT / case_id / f"{case_id}_thci_axis_score_summary_v1_0a.json"
+    if not v10a_score_fp.exists() or not v10a_summary_fp.exists():
+        case_scores, summary = v10a.compute_case_scores_v1_0a(case_id, config)
+        v10a.write_case_outputs(case_id, case_scores, summary)
+        merge_batch_summary(
+            V10A_ROOT / "_batch_summary" / "thci_axis_scores_v1_0a_case_summary.csv",
+            [case_scores],
+            key="case_id",
+        )
 
 
 def _num(value: Any, default: float = 0.0) -> float:
@@ -410,25 +470,44 @@ def write_case_outputs(case_id: str, case_scores: pd.DataFrame, summary: dict[st
     )
 
 
-def write_batch_summary(case_rows: list[pd.DataFrame]) -> None:
+def merge_batch_summary(out_fp: Path, case_rows: list[pd.DataFrame], key: str = "case_id") -> None:
+    out_fp.parent.mkdir(parents=True, exist_ok=True)
+    new_df = pd.concat(case_rows, ignore_index=True) if case_rows else pd.DataFrame()
+    if out_fp.exists():
+        old_df = pd.read_csv(out_fp, low_memory=False)
+        if key in old_df.columns and key in new_df.columns:
+            old_df = old_df[~old_df[key].astype(str).isin(set(new_df[key].astype(str)))]
+            new_df = pd.concat([old_df, new_df], ignore_index=True)
+    new_df.to_csv(out_fp, index=False, encoding="utf-8-sig")
+
+
+def write_batch_summary(case_rows: list[pd.DataFrame], merge_existing: bool = False) -> None:
     batch_dir = OUT_ROOT / "_batch_summary"
     batch_dir.mkdir(parents=True, exist_ok=True)
-    pd.concat(case_rows, ignore_index=True).to_csv(
-        batch_dir / "thci_axis_scores_v1_0b_case_summary.csv",
-        index=False,
-        encoding="utf-8-sig",
-    )
+    out_fp = batch_dir / "thci_axis_scores_v1_0b_case_summary.csv"
+    if merge_existing:
+        merge_batch_summary(out_fp, case_rows)
+    else:
+        pd.concat(case_rows, ignore_index=True).to_csv(
+            out_fp,
+            index=False,
+            encoding="utf-8-sig",
+        )
 
 
 def main() -> int:
+    args = parse_args()
+    cases, is_cli_extension = resolve_cases(args)
     config = v10.load_config_bundle()
     case_rows: list[pd.DataFrame] = []
-    for case_id in v10.CASES:
+    for case_id in cases:
+        if is_cli_extension:
+            ensure_v10a_prerequisites(case_id, config)
         case_scores, summary = compute_case_scores(case_id, config)
         write_case_outputs(case_id, case_scores, summary)
         case_rows.append(case_scores)
         print(case_scores.to_string(index=False))
-    write_batch_summary(case_rows)
+    write_batch_summary(case_rows, merge_existing=is_cli_extension)
     print("batch summary:", OUT_ROOT / "_batch_summary" / "thci_axis_scores_v1_0b_case_summary.csv")
     return 0
 
