@@ -1,0 +1,7 @@
+case_id,corridor_id,corridor_role,start_dist_m,end_dist_m,include_for_ascent,include_for_descent,weight,threshold_m,review_note
+qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b,via_up_corridor,branch_corridor,500,750,true,true,1.0,30,manual initial via_up-side corridor
+qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b,summit_shared_ascent,shared_corridor,750,1919,false,false,0.2,30,shared approach to summit; not primary branch discriminator
+qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b,summit_shared_descent,shared_corridor,1919,3150,false,false,0.2,30,shared descent from summit; not primary branch discriminator
+qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b,via_down_corridor,branch_corridor,3150,3400,true,true,1.0,30,manual initial via_down-side corridor
+qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b,via_up_ambiguous_window,ambiguous_corridor,500,750,true,true,0.0,50,spatially close to via_down; review required
+qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b,via_down_ambiguous_window,ambiguous_corridor,3150,3400,true,true,0.0,50,spatially close to via_up; review required
