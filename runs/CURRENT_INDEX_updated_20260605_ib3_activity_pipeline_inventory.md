@@ -24,6 +24,9 @@ Qixing repair candidate / review roots:
 - `outputs/ib3_activity_profile_visual_qa_v1_3b_qixing_via_corridor_repair_candidate`
 - `outputs/qixing_via_corridor_repaired_formal_visual_review_v1_3b`
 - `outputs/ib3_route_choice_inference_conclusion_v1_3b_qixing`
+- `outputs/ib3f_activity_route_features_v1_3b_qixing_repaired_review`
+- `outputs/ib3a2_qixing_wrong_branch_evidence_v1_3b`
+- `outputs/ib3a2_qixing_repaired_threshold_sensitivity_v1_3b`
 
 ## Current Scripts
 
@@ -39,6 +42,10 @@ IB3A / IB3A2 / IB3B:
 - `scripts/ib3_activity_environment/ib3a_sequence_mapmatch_standardized_activity_folder_cli.py`
 - `scripts/ib3_activity_environment/ib3a2_filter_mapmatched_activity_on_route.py`
 - `scripts/ib3_activity_environment/ib3b2_plot_activity_profile_1d_2d.py`
+- `scripts/ib3_activity_environment/ib3f_extract_activity_route_features_v1_3b.py`
+- `scripts/audit_ib3f_qixing_repaired_review_smoke_v1_3b.ps1`
+- `scripts/ib3_activity_environment/plot_ib3f_qixing_repaired_review_feature_summary_v1_3b.py`
+- `scripts/ib3_activity_environment/plot_ib3f_activity_story_map_v1_3b.py`
 
 Qixing repair and route-choice review:
 
@@ -55,6 +62,9 @@ Qixing repair and route-choice review:
 - `scripts/ib3_activity_environment/ib3_route_choice_inference_qixing_geometry_v2_v1_3b.py`
 - `scripts/ib3_activity_environment/plot_qixing_raw_gps_vs_projected_route_choice_qa_v1_3b.py`
 - `scripts/ib3_activity_environment/audit_qixing_route_choice_inference_conclusion_v1_3b.ps1`
+- `scripts/ib3_activity_environment/audit_ib3f_qixing_37_1_descent_wrong_branch_candidate_v1_3b.py`
+- `scripts/ib3_activity_environment/audit_ib3a2_qixing_repaired_threshold_sensitivity_v1_3b.py`
+- `scripts/ib3_activity_environment/audit_ib3a2_qixing_wrong_branch_evidence_v1_3b.py`
 
 ## Boundary Notes
 
@@ -64,11 +74,16 @@ Qixing repair and route-choice review:
 - Keep `route_choice_review_required = true`.
 - Do not force canonical branch classification.
 - Do not overwrite previous formal v1.3b roots.
+- IB3F qixing repaired review smoke status = `PASS_WITH_REVIEW_CASE`.
+- 37_1 local movement review status = `POSSIBLE_WRONG_BRANCH_REVIEW`.
+- Local movement evidence does not justify changing formal IB3A2 threshold; future work should add review-only flags.
 
 ## Next Recommended Stage
 
-Create IB3F activity feature extraction:
+Extend IB3F activity feature extraction:
 
 - `scripts/ib3_activity_environment/ib3f_extract_activity_route_features_v1_3b.py`
 
-This should consume IB3A sequence, IB3A2 on-route labels, IB1E route context, IB2 route risk, and optional THCI v1.0c context snapshot.
+This consumes IB3A sequence, IB3A2 on-route labels, IB1E route context, IB2 route risk, and optional THCI v1.0c context snapshot.
+
+Next step: extend from qixing repaired review smoke to broader formal / multi-activity batch, then integrate local movement review flags into IB3F feature outputs and story map.

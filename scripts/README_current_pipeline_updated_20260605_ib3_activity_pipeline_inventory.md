@@ -104,6 +104,55 @@ Relevant commit:
 
 - `3b7a561 Enhance IB3B2 activity profile visual QA roots and corridor overlay`
 
+## IB3F First Implementation
+
+IB3F activity route feature extraction v1.3b has a first qixing repaired review smoke implementation.
+
+Relevant commit:
+
+- `ca126f5 Add IB3F qixing repaired review feature smoke`
+
+Scripts:
+
+- `scripts/ib3_activity_environment/ib3f_extract_activity_route_features_v1_3b.py`
+- `scripts/audit_ib3f_qixing_repaired_review_smoke_v1_3b.ps1`
+- `scripts/ib3_activity_environment/plot_ib3f_qixing_repaired_review_feature_summary_v1_3b.py`
+- `scripts/ib3_activity_environment/plot_ib3f_activity_story_map_v1_3b.py`
+
+Smoke status:
+
+- `IB3F_QIXING_REPAIRED_REVIEW_SMOKE_STATUS = PASS_WITH_REVIEW_CASE`
+- `37_1` / `33_1` = `PASS_REVIEW_READY`
+- `15_1` = `REVIEW_REQUIRED_LOW_ON_ROUTE_RATIO`
+- speed / HR available for all three activities
+- route risk join coverage = 1.0 for all three activities
+
+## Qixing Local Movement Review Diagnostics
+
+Local movement review diagnostics were added for the visually suspicious 37_1 descent segment and qixing repaired threshold sensitivity review.
+
+Relevant commit:
+
+- `96da026 Add qixing local movement review diagnostics`
+
+Scripts:
+
+- `scripts/ib3_activity_environment/audit_ib3f_qixing_37_1_descent_wrong_branch_candidate_v1_3b.py`
+- `scripts/ib3_activity_environment/audit_ib3a2_qixing_repaired_threshold_sensitivity_v1_3b.py`
+- `scripts/ib3_activity_environment/audit_ib3a2_qixing_wrong_branch_evidence_v1_3b.py`
+
+Key result:
+
+- `WRONG_BRANCH_EVIDENCE_STATUS = POSSIBLE_WRONG_BRANCH_REVIEW`
+- heading_diff_median = 113.72 deg
+- heading_diff_p90 = 165.04 deg
+- offset remains low, so this does not justify changing the formal IB3A2 threshold
+
+Recommendation:
+
+- keep formal `usable_on_route` unchanged
+- add a future review-only `local_movement_review_required` / `possible_wrong_branch_review` flag
+
 ## Current Script Registry
 
 Current maintained groups:
@@ -123,9 +172,11 @@ Legacy v1b-v1h activity recovery and older IB3C adaptive speed / behavior script
 
 Weather, microclimate, and IB4 prototype tools remain research/prototype scripts. They are not the current formal THCI / IB3F pipeline.
 
-## Next Stage: IB3F Activity Feature Extraction Contract
+## Next Stage: Broader IB3F Activity Feature Extraction
 
-Recommended new script:
+IB3F now exists for qixing repaired review smoke. The next stage is to extend it to broader formal / multi-activity batch usage.
+
+Current script:
 
 - `scripts/ib3_activity_environment/ib3f_extract_activity_route_features_v1_3b.py`
 
@@ -173,5 +224,6 @@ Feature groups:
 - Do not overwrite previous formal v1.3b roots with qixing repaired roots without explicit review.
 - Do not describe the qixing repaired root as THCI v1.0c recomputed.
 - Do not force qixing activity route-choice into canonical branch classification.
+- Do not turn qixing local movement review diagnostics into formal IB3A2 threshold changes without a separate review.
 - Do not treat legacy v1b-v1h activity recovery outputs as current formal IB3.
 - Do not treat weather prototype scripts as current THCI / IB3F formal pipeline.

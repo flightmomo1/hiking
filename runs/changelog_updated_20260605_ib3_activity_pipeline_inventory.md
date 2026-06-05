@@ -49,8 +49,49 @@ Relevant commit:
 
 - `3b7a561 Enhance IB3B2 activity profile visual QA roots and corridor overlay`
 
+## IB3F First Implementation
+
+- Added first IB3F activity route feature extraction smoke for qixing repaired review.
+- `IB3F_QIXING_REPAIRED_REVIEW_SMOKE_STATUS = PASS_WITH_REVIEW_CASE`.
+- `37_1` / `33_1` = `PASS_REVIEW_READY`.
+- `15_1` = `REVIEW_REQUIRED_LOW_ON_ROUTE_RATIO`.
+- Speed / HR available for all three.
+- Route risk join coverage = 1.0 for all three.
+
+Relevant commit:
+
+- `ca126f5 Add IB3F qixing repaired review feature smoke`
+
+Scripts:
+
+- `scripts/ib3_activity_environment/ib3f_extract_activity_route_features_v1_3b.py`
+- `scripts/audit_ib3f_qixing_repaired_review_smoke_v1_3b.ps1`
+- `scripts/ib3_activity_environment/plot_ib3f_qixing_repaired_review_feature_summary_v1_3b.py`
+- `scripts/ib3_activity_environment/plot_ib3f_activity_story_map_v1_3b.py`
+
+## Qixing Local Movement Review Diagnostics
+
+- Added local movement diagnostics for 37_1 descent visual wrong-branch review.
+- `WRONG_BRANCH_EVIDENCE_STATUS = POSSIBLE_WRONG_BRANCH_REVIEW`.
+- heading_diff_median = 113.72 deg.
+- heading_diff_p90 = 165.04 deg.
+- Offset remains low, so this does not justify changing the formal IB3A2 threshold.
+- Recommendation: keep formal `usable_on_route` unchanged; add review-only `local_movement_review_required` / `possible_wrong_branch_review` flag in future.
+
+Relevant commit:
+
+- `96da026 Add qixing local movement review diagnostics`
+
+Scripts:
+
+- `scripts/ib3_activity_environment/audit_ib3f_qixing_37_1_descent_wrong_branch_candidate_v1_3b.py`
+- `scripts/ib3_activity_environment/audit_ib3a2_qixing_repaired_threshold_sensitivity_v1_3b.py`
+- `scripts/ib3_activity_environment/audit_ib3a2_qixing_wrong_branch_evidence_v1_3b.py`
+
 ## Next Stage
 
-Next engineering step: create IB3F activity feature extraction.
+Next engineering step: extend IB3F from qixing repaired review smoke to broader formal / multi-activity batch.
+
+Future enhancement: integrate local movement review flags into IB3F feature outputs and story map.
 
 Do not treat legacy v1b-v1h recovery or old IB3C adaptive behavior scripts as current formal IB3.
