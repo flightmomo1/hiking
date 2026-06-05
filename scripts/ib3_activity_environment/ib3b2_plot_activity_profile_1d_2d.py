@@ -30,6 +30,23 @@ warnings.filterwarnings("ignore", category=PerformanceWarning)
 GEOD = Geod(ellps="WGS84")
 DEFAULT_MAPMATCHED_ROOT = Path("outputs/ib3a_mapmatched_standardized_activity")
 DEFAULT_IB3A2_ROOT = Path("outputs/ib3a2_on_route_activity_filter")
+DEFAULT_ROUTE_CONTEXT_ROOT = Path("outputs/ib1e_route_profile_contour_window_terrain")
+DEFAULT_ROUTE_PROFILE_ROOT = Path("outputs/ib1_route_profile")
+INPUT_VERSION_NOTE = "v1_3b_thci_v1_0c_visual_qa"
+
+CORRIDOR_COLOR = {
+    "via_up_corridor": "#1b9e77",
+    "via_down_corridor": "#d95f02",
+    "summit_shared_ascent": "#7570b3",
+    "summit_shared_descent": "#66a61e",
+    "via_up_ambiguous_window": "#e7298a",
+    "via_down_ambiguous_window": "#a6761d",
+}
+CORRIDOR_ROLE_STYLE = {
+    "branch_corridor": {"alpha_1d": 0.16, "alpha_2d": 0.95, "lw": 7.0, "ls": "-"},
+    "shared_corridor": {"alpha_1d": 0.08, "alpha_2d": 0.45, "lw": 4.5, "ls": "--"},
+    "ambiguous_corridor": {"alpha_1d": 0.07, "alpha_2d": 0.30, "lw": 9.0, "ls": ":"},
+}
 
 
 QUALITY_COLOR = {
@@ -87,11 +104,39 @@ def parse_args() -> argparse.Namespace:
             "Use outputs/ib3a2_on_route_activity_filter_v3 when visualizing sequence v3 outputs."
         ),
     )
+    parser.add_argument(
+        "--route-context-root",
+        type=Path,
+        default=DEFAULT_ROUTE_CONTEXT_ROOT,
+        help=(
+            "Root containing route contour/terrain enriched CSVs. Default preserves legacy flow. "
+            "Use outputs/ib1e_route_profile_contour_window_terrain_v1_3b_contract_qa for current v1.3b QA."
+        ),
+    )
+    parser.add_argument(
+        "--route-profile-root",
+        type=Path,
+        default=DEFAULT_ROUTE_PROFILE_ROOT,
+        help=(
+            "Fallback root containing route profile CSVs. Default preserves legacy flow. "
+            "Use outputs/ib1_route_profile_v1_3b_contract_qa for current v1.3b QA."
+        ),
+    )
     parser.add_argument("--segment-m", type=float, default=250.0)
     parser.add_argument(
         "--out-dir",
         type=Path,
         default=Path("outputs/ib3b2_activity_profile_1d_2d"),
+    )
+    parser.add_argument("--visual-source", default="", help="Optional provenance note for repaired/candidate visual QA.")
+    parser.add_argument("--promotion-gate-status", default="", help="Optional promotion gate status to record in summary.")
+    parser.add_argument("--remap-review-note", default="", help="Optional remap review note to record in summary.")
+    parser.add_argument("--thci-recompute-status", default="", help="Optional THCI recompute status to record in summary.")
+    parser.add_argument(
+        "--corridor-definition-csv",
+        type=Path,
+        default=None,
+        help="Optional qixing branch corridor definition CSV for visual-only 1D/2D overlays.",
     )
     return parser.parse_args()
 
@@ -100,6 +145,90 @@ def require_file(path: Path, label: str) -> Path:
     if not path.exists():
         raise FileNotFoundError(f"Missing {label}: {path.resolve()}")
     return path
+
+
+def load_corridor_definition(path: Path | None, case_id: str) -> pd.DataFrame:
+    if path is None:
+        return pd.DataFrame()
+    require_file(path, "corridor definition CSV")
+    corridors = pd.read_csv(path)
+    if "case_id" in corridors.columns:
+        corridors = corridors[corridors["case_id"].astype(str) == str(case_id)].copy()
+    required = {
+        "corridor_id",
+        "corridor_role",
+        "start_dist_m",
+        "end_dist_m",
+        "include_for_ascent",
+        "include_for_descent",
+        "weight",
+        "threshold_m",
+        "review_note",
+    }
+    missing = sorted(required - set(corridors.columns))
+    if missing:
+        raise KeyError(f"Corridor definition missing columns: {missing}")
+    for col in ["start_dist_m", "end_dist_m", "weight", "threshold_m"]:
+        corridors[col] = pd.to_numeric(corridors[col], errors="coerce")
+    return corridors.dropna(subset=["start_dist_m", "end_dist_m"]).copy()
+
+
+def corridor_color(corridor_id: str) -> str:
+    return CORRIDOR_COLOR.get(str(corridor_id), "#334155")
+
+
+def corridor_style(role: str) -> dict:
+    return CORRIDOR_ROLE_STYLE.get(str(role), CORRIDOR_ROLE_STYLE["branch_corridor"])
+
+
+def add_corridor_bands_png(ax, corridors: pd.DataFrame) -> None:
+    if corridors.empty:
+        return
+    for _, row in corridors.iterrows():
+        style = corridor_style(row["corridor_role"])
+        ax.axvspan(
+            float(row["start_dist_m"]),
+            float(row["end_dist_m"]),
+            color=corridor_color(row["corridor_id"]),
+            alpha=style["alpha_1d"],
+            lw=0,
+            label=f"corridor:{row['corridor_id']}",
+        )
+
+
+def add_corridor_segments_png(ax, route: pd.DataFrame, corridors: pd.DataFrame) -> None:
+    if corridors.empty or route.empty or not {"dist_m", "x_m", "y_m"}.issubset(route.columns):
+        return
+    dist = pd.to_numeric(route["dist_m"], errors="coerce")
+    for _, row in corridors.iterrows():
+        seg = route[dist.between(float(row["start_dist_m"]), float(row["end_dist_m"]), inclusive="both")].copy()
+        if seg.empty:
+            continue
+        style = corridor_style(row["corridor_role"])
+        ax.plot(
+            seg["x_m"],
+            seg["y_m"],
+            color=corridor_color(row["corridor_id"]),
+            lw=style["lw"],
+            alpha=style["alpha_2d"],
+            ls=style["ls"],
+            solid_capstyle="round",
+            label=f"{row['corridor_id']} ({row['corridor_role']})",
+        )
+
+
+def corridor_svg_title(row: pd.Series) -> str:
+    text = "\n".join(
+        [
+            f"corridor_id = {row.get('corridor_id', '')}",
+            f"corridor_role = {row.get('corridor_role', '')}",
+            f"start_dist_m = {fmt_value(row.get('start_dist_m', ''), 3)}",
+            f"end_dist_m = {fmt_value(row.get('end_dist_m', ''), 3)}",
+            f"threshold_m = {fmt_value(row.get('threshold_m', ''), 3)}",
+            f"review_note = {row.get('review_note', '')}",
+        ]
+    )
+    return f"<title>{html.escape(text)}</title>"
 
 
 def to_bool_series(series: pd.Series) -> pd.Series:
@@ -612,12 +741,15 @@ def derive_stationary(df: pd.DataFrame) -> None:
     df["is_stationary"] = (direction == "stationary") | (speed < 0.2) | drift
 
 
-def read_route(case_id: str) -> pd.DataFrame:
-    contour_fp = Path(
-        f"outputs/ib1e_route_profile_contour_window_terrain/{case_id}/"
-        f"{case_id}_route_profile_contour_window_terrain_enriched.csv"
+def read_route(case_id: str, route_context_root: Path, route_profile_root: Path) -> pd.DataFrame:
+    route_context_root = Path(route_context_root)
+    route_profile_root = Path(route_profile_root)
+    contour_fp = (
+        route_context_root
+        / case_id
+        / f"{case_id}_route_profile_contour_window_terrain_enriched.csv"
     )
-    profile_fp = Path(f"outputs/ib1_route_profile/{case_id}/{case_id}_route_profile.csv")
+    profile_fp = route_profile_root / case_id / f"{case_id}_route_profile.csv"
     fp = contour_fp if contour_fp.exists() else require_file(profile_fp, "route profile")
     route = pd.read_csv(fp)
     if "dist_m" not in route.columns:
@@ -625,6 +757,11 @@ def read_route(case_id: str) -> pd.DataFrame:
     route = route.sort_values("dist_m").drop_duplicates("dist_m").reset_index(drop=True)
     route["route_point_index"] = route.index
     route["route_source_fp"] = str(fp)
+    route.attrs["route_context_root"] = str(route_context_root)
+    route.attrs["route_profile_root"] = str(route_profile_root)
+    route.attrs["route_context_csv"] = str(contour_fp) if contour_fp.exists() else ""
+    route.attrs["route_profile_csv"] = str(profile_fp) if profile_fp.exists() else ""
+    route.attrs["route_selected_csv"] = str(fp)
     add_route_bearing(route)
     add_route_phase(route)
 
@@ -995,7 +1132,16 @@ def build_route_line_segments(route: pd.DataFrame, segments: list[dict]) -> list
     return rows
 
 
-def write_png(out_png: Path, df: pd.DataFrame, route: pd.DataFrame, anchors: pd.DataFrame, segments: list[dict]) -> None:
+def write_png(
+    out_png: Path,
+    df: pd.DataFrame,
+    route: pd.DataFrame,
+    anchors: pd.DataFrame,
+    segments: list[dict],
+    corridors: pd.DataFrame | None = None,
+) -> None:
+    if corridors is None:
+        corridors = pd.DataFrame()
     df_time = sort_activity_time_order(df)
     df_1d = build_one_d_profile(df, route)
     df_p1, route_p1, panel1_info = add_panel1_mirror_columns(df, route)
@@ -1015,9 +1161,11 @@ def write_png(out_png: Path, df: pd.DataFrame, route: pd.DataFrame, anchors: pd.
     ax_map = fig.add_subplot(gs[4])
 
     ax_ele.grid(True, alpha=0.22)
+    add_corridor_bands_png(ax_ele, corridors)
 
     for ax in [ax_speed, ax_hr, ax_qa]:
         add_segment_bands(ax, segments)
+        add_corridor_bands_png(ax, corridors)
         ax.grid(True, alpha=0.22)
 
     ax_ele.plot(p1_route_x, route_p1["ele_gpx_m"], color="#1f2937", lw=0.9, alpha=0.7, label="GPX raw elevation")
@@ -1158,6 +1306,7 @@ def write_png(out_png: Path, df: pd.DataFrame, route: pd.DataFrame, anchors: pd.
     for coords, color, _ in route_segs:
         ax_map.plot(coords[:, 0], coords[:, 1], color=color, lw=5.0, alpha=0.9, solid_capstyle="round")
     ax_map.plot(route["x_m"], route["y_m"], color="#111827", lw=0.7, alpha=0.42, label="route axis")
+    add_corridor_segments_png(ax_map, route, corridors)
     ax_map.plot(df_time["x_m"], df_time["y_m"], color="#94a3b8", lw=0.65, alpha=0.55, label="raw activity trajectory")
     if {"matched_x_m", "matched_y_m"}.issubset(df.columns):
         ax_map.plot(df_time["matched_x_m"], df_time["matched_y_m"], color="#111827", lw=1.0, alpha=0.42, label="matched trajectory")
@@ -1339,7 +1488,16 @@ def activity_tooltip_rows(row: pd.Series) -> list[tuple[str, object, int]]:
     ]
 
 
-def write_html(out_html: Path, df: pd.DataFrame, route: pd.DataFrame, anchors: pd.DataFrame, segments: list[dict]) -> None:
+def write_html(
+    out_html: Path,
+    df: pd.DataFrame,
+    route: pd.DataFrame,
+    anchors: pd.DataFrame,
+    segments: list[dict],
+    corridors: pd.DataFrame | None = None,
+) -> None:
+    if corridors is None:
+        corridors = pd.DataFrame()
     df_time = sort_activity_time_order(df)
     df_1d = build_one_d_profile(df, route)
     route_len = float(max(route["dist_m"].max(), df["route_dist_m"].max(), 1.0))
@@ -1368,6 +1526,16 @@ def write_html(out_html: Path, df: pd.DataFrame, route: pd.DataFrame, anchors: p
                 parts.append(
                     f'<rect x="{x1:.1f}" y="{top}" width="{max(x2 - x1, 0):.1f}" height="{bottom - top}" '
                     f'fill="{seg["color"]}" opacity="0.075"/>'
+                )
+            for _, corridor in corridors.iterrows():
+                x1 = left + float(corridor["start_dist_m"]) / route_len * (right - left)
+                x2 = left + float(corridor["end_dist_m"]) / route_len * (right - left)
+                style = corridor_style(corridor["corridor_role"])
+                parts.append(
+                    f'<rect class="corridor-overlay corridor-{html.escape(str(corridor["corridor_id"]))}" '
+                    f'x="{x1:.1f}" y="{top}" width="{max(x2 - x1, 0):.1f}" height="{bottom - top}" '
+                    f'fill="{corridor_color(corridor["corridor_id"])}" opacity="{style["alpha_1d"]}">'
+                    f'{corridor_svg_title(corridor)}</rect>'
                 )
 
     route_xs = scale_x(route["dist_m"], route_len, left, right)
@@ -1454,6 +1622,22 @@ def write_html(out_html: Path, df: pd.DataFrame, route: pd.DataFrame, anchors: p
     for coords, color, seg in build_route_line_segments(route_map, segments):
         pts = " ".join(f"{mx(x):.1f},{my(y):.1f}" for x, y in coords)
         parts.append(f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="6" opacity="0.9" stroke-linecap="round"/>')
+    dist_route = pd.to_numeric(route_map["dist_m"], errors="coerce") if "dist_m" in route_map.columns else pd.Series(dtype=float)
+    for _, corridor in corridors.iterrows():
+        seg = route_map[
+            dist_route.between(float(corridor["start_dist_m"]), float(corridor["end_dist_m"]), inclusive="both")
+        ].copy()
+        if seg.empty:
+            continue
+        pts = " ".join(f"{mx(float(r['x_m'])):.1f},{my(float(r['y_m'])):.1f}" for _, r in seg.iterrows())
+        style = corridor_style(corridor["corridor_role"])
+        dash = f' stroke-dasharray="{"8 5" if style["ls"] == "--" else "3 5" if style["ls"] == ":" else ""}"' if style["ls"] != "-" else ""
+        parts.append(
+            f'<polyline class="corridor-overlay corridor-{html.escape(str(corridor["corridor_id"]))}" '
+            f'points="{pts}" fill="none" stroke="{corridor_color(corridor["corridor_id"])}" '
+            f'stroke-width="{style["lw"]:.1f}" opacity="{style["alpha_2d"]}" stroke-linecap="round"{dash}>'
+            f'{corridor_svg_title(corridor)}</polyline>'
+        )
     parts.append(svg_map_polyline(df_time, "x_m", "y_m", mx, my, "#94a3b8", 1.0, 0.55))
     if {"matched_x_m", "matched_y_m"}.issubset(df.columns):
         parts.append(svg_map_polyline(df_time, "matched_x_m", "matched_y_m", mx, my, "#111827", 1.2, 0.42))
@@ -1492,11 +1676,15 @@ def write_html(out_html: Path, df: pd.DataFrame, route: pd.DataFrame, anchors: p
         ("raw trajectory", "#94a3b8"),
         ("excluded/manual labels", "#dc2626"),
     ]
+    if not corridors.empty:
+        for _, corridor in corridors.iterrows():
+            legend.append((f"{corridor['corridor_id']}", corridor_color(corridor["corridor_id"])))
     lx = left
     for i, (label, color) in enumerate(legend):
-        x = lx + i * 175
-        parts.append(f'<line x1="{x}" y1="1380" x2="{x + 22}" y2="1380" stroke="{color}" stroke-width="3"/>')
-        parts.append(f'<text x="{x + 28}" y="1384" class="legend">{html.escape(label)}</text>')
+        x = lx + (i % 6) * 190
+        y = 1372 + (i // 6) * 16
+        parts.append(f'<line x1="{x}" y1="{y}" x2="{x + 22}" y2="{y}" stroke="{color}" stroke-width="3"/>')
+        parts.append(f'<text x="{x + 28}" y="{y + 4}" class="legend">{html.escape(label)}</text>')
 
     hover_rows = make_hover_rows(df, route_map, left, right, route_len)
     route_cursor_rows = make_route_cursor_rows(route_map, mx, my)
@@ -1821,7 +2009,16 @@ def write_summary(
     segments: list[dict],
     mapmatched_root: Path,
     ib3a2_root: Path,
+    route: pd.DataFrame,
+    visual_source: str = "",
+    promotion_gate_status: str = "",
+    remap_review_note: str = "",
+    thci_recompute_status: str = "",
+    corridor_definition_csv: Path | None = None,
+    corridors: pd.DataFrame | None = None,
 ) -> None:
+    if corridors is None:
+        corridors = pd.DataFrame()
     one_d_profile_row_count = int(np.floor(max(pd.to_numeric(df["route_dist_m"], errors="coerce").max(), 0) / ONE_D_PROFILE_BIN_M) + 1)
     speed_source = df["speed_source"].dropna().astype(str).mode()
     speed_source_value = speed_source.iloc[0] if not speed_source.empty else "unknown"
@@ -1893,8 +2090,22 @@ def write_summary(
         "activity_profile_1d_2d_summary",
         f"rows: {len(df)}",
         f"segments_250m: {len(segments)}",
+        f"input_version_note: {INPUT_VERSION_NOTE}",
+        f"visual_source: {visual_source}",
+        f"corridor_definition_csv: {Path(corridor_definition_csv).as_posix() if corridor_definition_csv else ''}",
+        f"corridor_overlay_enabled: {not corridors.empty}",
+        f"corridor_definition_version: {'qixing_branch_corridor_definition_v1_3b' if not corridors.empty else ''}",
+        f"corridors_n: {len(corridors)}",
         f"mapmatched_root: {Path(mapmatched_root).as_posix()}",
         f"ib3a2_root: {Path(ib3a2_root).as_posix()}",
+        f"route_context_root: {Path(route.attrs.get('route_context_root', '')).as_posix()}",
+        f"route_profile_root: {Path(route.attrs.get('route_profile_root', '')).as_posix()}",
+        f"route_context_csv: {Path(route.attrs.get('route_context_csv', '')).as_posix() if route.attrs.get('route_context_csv') else ''}",
+        f"route_profile_csv: {Path(route.attrs.get('route_profile_csv', '')).as_posix() if route.attrs.get('route_profile_csv') else ''}",
+        f"route_selected_csv: {Path(route.attrs.get('route_selected_csv', '')).as_posix()}",
+        f"promotion_gate_status: {promotion_gate_status}",
+        f"remap_review_note: {remap_review_note}",
+        f"thci_recompute_status: {thci_recompute_status}",
         f"legacy_ib3a2_labeled_flow: {use_legacy_ib3a2_flow(mapmatched_root)}",
         f"speed_input_source: {speed_input_source_value}",
         f"speed_source: {speed_source_value}",
@@ -2277,7 +2488,8 @@ def main() -> None:
     out_dir = args.out_dir / args.route_folder / args.activity_id
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    route = read_route(args.case_id)
+    route = read_route(args.case_id, args.route_context_root, args.route_profile_root)
+    corridors = load_corridor_definition(args.corridor_definition_csv, args.case_id)
 
     activity_full = read_activity_full(
         args.route_folder,
@@ -2314,10 +2526,23 @@ def main() -> None:
     out_csv = out_dir / f"{args.route_folder}_{args.activity_id}_activity_profile_1d_2d_plot_data.csv"
     out_summary = out_dir / f"{args.route_folder}_{args.activity_id}_activity_profile_1d_2d_summary.txt"
 
-    write_png(out_png, df, route, anchors, segments)
-    write_html(out_html, df, route, anchors, segments)
+    write_png(out_png, df, route, anchors, segments, corridors)
+    write_html(out_html, df, route, anchors, segments, corridors)
     write_plot_data(out_csv, df)
-    write_summary(out_summary, df, segments, args.mapmatched_root, args.ib3a2_root)
+    write_summary(
+        out_summary,
+        df,
+        segments,
+        args.mapmatched_root,
+        args.ib3a2_root,
+        route,
+        args.visual_source,
+        args.promotion_gate_status,
+        args.remap_review_note,
+        args.thci_recompute_status,
+        args.corridor_definition_csv,
+        corridors,
+    )
 
     event_rows, event_summary, event_map = maybe_write_event_qa(args, out_dir, df, route)
     phase_jump_qa = write_route_phase_jump_qa(args, out_dir, df)
@@ -2327,6 +2552,20 @@ def main() -> None:
     print(f"HTML: {out_html.resolve()}")
     print(f"plot data: {out_csv.resolve()}")
     print(f"summary: {out_summary.resolve()}")
+    print(f"input_version_note: {INPUT_VERSION_NOTE}")
+    print(f"mapmatched_root: {args.mapmatched_root}")
+    print(f"ib3a2_root: {args.ib3a2_root}")
+    print(f"route_context_root: {args.route_context_root}")
+    print(f"route_profile_root: {args.route_profile_root}")
+    print(f"route_context_csv: {route.attrs.get('route_context_csv', '')}")
+    print(f"route_profile_csv: {route.attrs.get('route_profile_csv', '')}")
+    print(f"route_selected_csv: {route.attrs.get('route_selected_csv', '')}")
+    print(f"visual_source: {args.visual_source}")
+    print(f"corridor_definition_csv: {args.corridor_definition_csv or ''}")
+    print(f"corridor_overlay_enabled: {not corridors.empty}")
+    print(f"promotion_gate_status: {args.promotion_gate_status}")
+    print(f"remap_review_note: {args.remap_review_note}")
+    print(f"thci_recompute_status: {args.thci_recompute_status}")
     if event_summary is not None:
         print(f"event QA rows: {event_rows.resolve()}")
         print(f"event QA summary: {event_summary.resolve()}")
