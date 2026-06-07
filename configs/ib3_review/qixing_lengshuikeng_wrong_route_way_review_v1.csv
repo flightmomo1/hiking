@@ -1,0 +1,3 @@
+﻿route_folder,activity_id,official_osm_type,official_osm_id,official_way_name,match_field,match_value,elapsed_start_sec,elapsed_end_sec,wrong_route_label,review_decision,review_reason
+qixing_lengshuikeng,*,way,586964086,七星山登山步道苗圃線,nearest_way_name,七星山登山步道苗圃線,,,WRONG_ROUTE_CANDIDATE_EPISODE,exclude_from_mainline_training,route-level wrong-route way for qixing_lengshuikeng
+qixing_lengshuikeng,*,way,558964794,七星山登山步道七星公園線,nearest_way_name,七星山登山步道七星公園線,,,WRONG_ROUTE_CANDIDATE_EPISODE,exclude_from_mainline_training,route-level wrong-route way for qixing_lengshuikeng
