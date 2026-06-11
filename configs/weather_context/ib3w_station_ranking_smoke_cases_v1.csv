@@ -1,0 +1,2 @@
+﻿case_id,activity_id,route_folder,input_csv,weather_db,top_n,tolerance_hours,bounding_margin_deg,notes
+qixing_lengshuikeng_33_1_station_ranking,qixing_lengshuikeng_33_1,qixing_lengshuikeng,outputs\ib3a_rc_backend_activity_enriched_v1l2_osm_radar_evidence_qixing_lengshuikeng_full26\qixing_lengshuikeng_33_1_backend_activity_enriched_v1l2_osm_radar_evidence.csv,C:\mountain_work\115_osm\weather\tw_weather_2026-05-01.sqlite3,10,3,0.35,"IB3W station ranking smoke case; top-N candidate ranking only; no formal joined dataset."
