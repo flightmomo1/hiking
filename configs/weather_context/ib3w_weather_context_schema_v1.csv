@@ -1,0 +1,42 @@
+column_name,column_group,required,nullable,example,description
+ib3w_schema_version,provenance,yes,no,v1,Schema version for IB3W weather context rows.
+generated_at,provenance,yes,no,2026-06-11T09:00:00+08:00,Timestamp when the context file is generated.
+source_db_path,provenance,yes,no,C:\mountain_work\115_osm\weather\tw_weather_2026-05-01.sqlite3,Weather SQLite database path or source identifier.
+source_db_snapshot_id,provenance,no,yes,unknown,Optional DB hash/version/snapshot id if available.
+route_folder,identity,yes,no,qixing_lengshuikeng,Route folder or route family id.
+case_id,identity,yes,no,qixing_lengshuikeng_main_peak_20260523,Route/case id aligned with upstream pipeline.
+activity_id,identity,no,yes,37_1,Activity id when context is activity-specific.
+window_id,identity,no,yes,win_000123,Window id when context is window-level.
+segment_id,identity,no,yes,seg_012,Segment id when context is segment-level.
+context_granularity,identity,yes,no,activity,"One of activity, route, window, segment."
+activity_start_time,temporal_alignment,no,yes,2026-05-23T08:00:00+08:00,Activity/window start time used for alignment.
+activity_end_time,temporal_alignment,no,yes,2026-05-23T11:30:00+08:00,Activity/window end time used for alignment.
+observation_start_time,temporal_alignment,no,yes,2026-05-23T08:00:00+08:00,Observation interval start time if applicable.
+observation_end_time,temporal_alignment,no,yes,2026-05-23T08:10:00+08:00,Observation interval end time if applicable.
+temporal_gap_min,temporal_alignment,no,yes,5,Minimum absolute gap in minutes between activity/window and observation.
+temporal_coverage_ratio,temporal_alignment,no,yes,0.85,Share of activity/window covered by acceptable observations.
+antecedent_window_hours,temporal_alignment,no,yes,24,Lookback window for antecedent rain/weather features.
+source_type,source,yes,no,weather_station,"Source category such as weather_station, rainfall_station, hydro_station, forecast, static_terrain."
+source_provider,source,no,yes,CWA,Provider name if known.
+station_id,source,no,yes,C0A980,Station/source id if applicable.
+station_name,source,no,yes,鞍部,Station/source name if applicable.
+source_table,source,no,yes,observations,Raw source DB table.
+source_column,source,no,yes,rainfall_mm,Raw source DB column.
+variable_name,value,yes,no,rainfall,"Canonical variable such as rainfall, temperature, humidity, wind_speed, wind_direction, water_level."
+value_numeric,value,no,yes,0.0,Observed or imputed numeric value. Null when missing.
+value_text,value,no,yes,UNKNOWN,Text value for categorical/unknown states.
+unit,value,no,yes,mm,Unit for numeric value.
+aggregation_method,value,no,yes,sum,"Aggregation method such as sum, mean, max, latest, nearest, carry_forward, interpolation."
+context_type,quality,yes,no,OBSERVED,"One of OBSERVED, IMPUTED, MISSING, INFERRED_FROM_BEHAVIOR. v1 excludes INFERRED_FROM_BEHAVIOR from observed/imputed context."
+missing_reason,quality,no,yes,NO_OBSERVATION_IN_WINDOW,"Reason for MISSING, e.g. NO_SOURCE, NO_OBSERVATION_IN_WINDOW, FAILED_QUALITY_GATE, UNSUPPORTED_VARIABLE."
+imputation_method,quality,no,yes,nearest_station_temporal_interpolation,Required when context_type=IMPUTED.
+confidence_score,quality,no,yes,0.72,0-1 confidence score from source quality and alignment gates.
+quality_flags,quality,no,yes,TEMPORAL_GAP_OK|ELEVATION_DIFF_WARN,Pipe-separated quality flags.
+station_distance_m,spatial_alignment,no,yes,1800,Distance from station/source to nearest route or representative point.
+route_distance_coverage_ratio,spatial_alignment,no,yes,0.62,Share of route/window adequately represented by selected source(s).
+elevation_diff_m,spatial_alignment,no,yes,120,Elevation difference between route/window and source station.
+source_rank,quality,no,yes,1,Rank among candidate sources after quality gating.
+source_count,quality,no,yes,3,Number of sources contributing to aggregation or imputation.
+conflict_flag,quality,no,yes,false,Whether candidate sources materially disagree.
+rewrite_boundary_flag,quality,no,yes,false,True if row exists to mark a deprecated fallback or blocked migration behavior.
+notes,provenance,no,yes,,Free-text notes for audit/debug only.
