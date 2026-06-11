@@ -1,0 +1,7 @@
+context_status,allowed_meaning,required_fields,forbidden_interpretation,notes
+OBSERVED,"可信來源在活動時間窗或容許時間窗內，有目標變數的實際觀測紀錄。","source;dataset_code;station_id;obs_time_start;obs_time_end;context_variable;value fields;quality_flag","不可把缺漏變數自動補值。","0 mm rainfall 只有在可信紀錄明確回報 0 時才可視為 OBSERVED。"
+IMPUTED,"使用明確方法、來源與品質 metadata 推估而來，非直接觀測。","source;dataset_code;context_variable;imputation_method;quality_flag;evidence_level","不可呈現為 observed weather。","只有 method 與 quality 明確時才可使用。"
+MISSING,"相關來源或測站存在，但目標時間窗缺少必要紀錄或變數。","source or station reference;context_variable;activity_time_start;activity_time_end;missing_reason","missing rainfall 不可變成 0 mm；missing wind 不可變成 calm。","weather context 是 optional evidence，因此 MISSING 是合法狀態。"
+UNKNOWN,"schema/source 存在，但品質、QC 或語意不足以判斷。","context_variable;activity_time_start;activity_time_end;unknown_reason","不可視為 normal 或 safe condition。","當紀錄存在但 QC 或來源解讀不可靠時使用。"
+NO_SOURCE,"對該 route/activity window 與目標變數找不到合適來源或測站。","context_variable;activity_time_start;activity_time_end;source_search_scope","不可暗示 normal weather 或 no hydrology issue。","候選測站搜尋失敗或無可信來源時使用。"
+INFERRED_FROM_BEHAVIOR,"保留給後續 IB3W/IB3M hypothesis layer；不屬於 v1 observed/imputed context。","hypothesis_method;behavior_evidence;confidence;separate_layer_id","不可與 OBSERVED 或 IMPUTED v1 context 混用。","adapter v1 不應輸出此狀態，僅作 reserved enum documentation。"

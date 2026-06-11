@@ -1,0 +1,12 @@
+rank_factor,description,required,preferred_direction,notes
+route_distance_m,"測站與 route/activity geometry 的距離。",true,"lower_is_better","不能只用距離選測站，必須搭配 coverage、recency、elevation、quality。"
+activity_time_coverage_ratio,"活動時間窗被有效觀測紀錄涵蓋的比例。",true,"higher_is_better","稍遠但 coverage 高的測站，可能優於較近但資料過舊的測站。"
+update_recency_minutes,"最新可信觀測與活動時間窗之間的時間差。",true,"lower_is_better","過舊資料應降權，或依情況標記為 MISSING/UNKNOWN。"
+elevation_delta_m,"測站海拔與路線／活動代表海拔的差距。",false,"lower_is_better","weather_observations 有 elevation_m；wra_station_metadata 目前沒有 elevation。"
+source_quality,"由 source_status、ingest_runs、qc_flag、domain trust 推估的來源品質。",true,"higher_is_better","ingest 失敗、source_status 過舊或 qc_flag 不佳時應降權。"
+variable_availability,"測站是否有目標變數，例如 precipitation、wind、temperature、humidity、water_level。",true,"higher_is_better","缺少變數不可轉換成 normal/zero/calm。"
+qc_acceptability,"觀測層級 qc_flag/check_result/check_desc 是否支持使用。",true,"higher_is_better","QC 不良或語意不明時，應降權或標記 UNKNOWN。"
+dataset_priority,"不同資料集對目標變數的優先順序。",true,"higher_is_better","專門 weather station 通常優於 air-quality 內的輔助 wind 欄位，除非 policy 明確允許 fallback。"
+admin_locality_match,"測站行政區與 route/activity 行政區是否相符。",false,"higher_is_better","行政區可輔助查詢，但不可凌駕物理距離與海拔代表性。"
+source_update_schedule_fit,"source schedule_mode 與 last_success_at 是否符合預期更新節奏。",false,"higher_is_better","使用 source_status 與 ingest_runs 進行 recency / operational gating。"
+raw_payload_available,"是否保留 raw_payload 供稽核。",true,"higher_is_better","為 evidence traceability 與後續 parser repair 必要欄位。"
