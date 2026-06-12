@@ -1,0 +1,44 @@
+﻿field_name,field_type,required,description,notes
+schema_version,string,yes,IB3W formal adapter schema version,Example: ib3w_activity_context_summary_v1
+case_id,string,yes,Adapter case id,Smoke/batch/formal case identifier
+activity_id,string,yes,Activity id,Example: qixing_lengshuikeng_33_1
+route_folder,string,yes,Route folder,Example: qixing_lengshuikeng
+context_variable,string,yes,Context variable name,precipitation_1hr wind_speed temperature water_level
+context_status,string,yes,Formal context status,OBSERVED MISSING NO_SOURCE UNKNOWN
+audit_status,string,yes,Detailed audit status,OBSERVED_IN_ACTIVITY OBSERVED_IN_TOLERANCE OUTSIDE_TOLERANCE NULL_VALUE_ONLY NO_STATION_RECORDS NO_VARIABLE_COLUMN
+selected_station_id,string,no,Selected station id,Blank when no source
+selected_station_name,string,no,Selected station name,Blank when no source
+selected_station_source,string,no,Weather/hydro source,Example: cwa wra
+selected_dataset_code,string,no,Dataset code,Source dataset identifier
+selected_candidate_rank,integer,no,Rank from station candidate list,Blank when no source
+selected_route_distance_m,float,no,Distance from activity representative location to station,meters
+selected_station_latitude,float,no,Selected station latitude,Optional in v1
+selected_station_longitude,float,no,Selected station longitude,Optional in v1
+selected_station_elevation_m,float,no,Station elevation,From source metadata or terrain lookup
+station_elevation_source,string,no,Station elevation source,db_elevation terrain_lookup unknown
+activity_representative_latitude,float,no,Activity representative latitude,Optional in v1
+activity_representative_longitude,float,no,Activity representative longitude,Optional in v1
+activity_representative_elevation_m,float,no,Activity representative elevation,Optional in v1
+elevation_delta_m,float,no,Absolute elevation difference between activity and station,Optional but recommended
+activity_start_time_utc,datetime,yes,Activity start time in UTC,Must not be guessed without timestamp source
+activity_end_time_utc,datetime,yes,Activity end time in UTC,Must not be guessed without timestamp source
+timestamp_epoch_used,string,yes,Timestamp epoch interpretation,unix garmin_fit explicit unknown
+tolerance_hours,float,yes,Temporal tolerance window hours,Used for coverage decision
+valid_records_total,integer,yes,Total valid records for variable at selected station,Variable-level count
+valid_records_in_activity,integer,yes,Valid records within activity window,Variable-level count
+valid_records_in_tolerance,integer,yes,Valid records within tolerance window,Variable-level count
+null_or_blank_records_total,integer,yes,Null/blank records for variable at selected station,Variable-level count
+variable_coverage_ratio_estimated,float,no,Estimated variable coverage ratio,Must be source-frequency aware in formal adapter
+nearest_valid_obs_relation,string,no,Relation of nearest valid observation,in_activity in_tolerance before_activity after_activity no_valid_variable_records
+nearest_valid_obs_time,datetime,no,Nearest valid observation time,Blank when no valid records
+nearest_valid_obs_gap_minutes,float,no,Signed gap to nearest valid observation,Negative may mean after activity depending relation
+nearest_valid_obs_gap_abs_minutes,float,no,Absolute gap to nearest valid observation,minutes
+nearest_valid_obs_value,float,no,Nearest valid observation value,Blank unless valid
+observed_value_mean,float,no,Observed mean value,Only populated when context_status OBSERVED
+observed_value_min,float,no,Observed minimum value,Only populated when context_status OBSERVED
+observed_value_max,float,no,Observed maximum value,Only populated when context_status OBSERVED
+observed_value_latest,float,no,Latest observed value in accepted window,Only populated when context_status OBSERVED
+observed_values_available,boolean,yes,Whether observed values are available,true only when context_status OBSERVED
+zero_fallback_detected,boolean,yes,Whether zero-valued normal fallback was produced,Must be false
+selection_rule,string,yes,Station/variable selection rule,Keep explicit for audit
+context_notes,string,no,Human-readable notes,No hidden fallback assumptions
