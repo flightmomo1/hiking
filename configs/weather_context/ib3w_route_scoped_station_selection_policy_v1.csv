@@ -1,0 +1,30 @@
+﻿field_name,policy,notes
+global_station_registry,required,Full station metadata cache; includes weather/water stations and terrain elevation when available
+route_geometry,required,Imported route geometry after IB0/IB1 route standardization
+route_buffer_m,required,Buffer distance used to select nearby stations
+route_centerline,required,Route line used for distance-to-route and nearest-route-km
+route_terrain_profile,required,IB1E/IB1G route terrain profile used for route elevation context
+station_id,required,Station identifier
+station_name,optional,Station display name
+station_type,required,weather or water
+station_latitude,required,Station latitude
+station_longitude,required,Station longitude
+station_elevation_m,required,Station elevation from DB or terrain lookup
+station_elevation_source,required,db_elevation terrain_lookup unknown
+distance_to_route_m,required,Shortest distance from station to route corridor/centerline
+distance_to_route_center_m,optional,Distance to route centroid/representative center
+distance_to_start_m,optional,Distance to route start
+distance_to_end_m,optional,Distance to route end
+nearest_route_km,required,Nearest route distance position for station projection
+route_nearest_elevation_m,optional,Route elevation near projected station location
+elevation_delta_m,optional,Absolute difference between station elevation and nearest route elevation
+station_quadrant,optional,Station relative quadrant around route center
+source_status,required,Source/ingest status for station data
+temporal_coverage_status,required,Temporal coverage status for requested activity/plan window
+variable_coverage_status,required,Variable-level availability status
+candidate_rank,required,Route-specific candidate rank
+candidate_role,required,primary secondary fallback excluded
+selection_scope,required,route_scoped; station candidates are selected per imported route
+fusion_scope,required,weather/hydro fusion consumes route-scoped candidates, not all global stations
+qixing_9station_prototype_status,required,Valid route-scoped prototype evidence; not a full global station cache
+notes,optional,Human-readable caveats
