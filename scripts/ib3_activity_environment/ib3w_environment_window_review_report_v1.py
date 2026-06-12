@@ -49,6 +49,121 @@ DEFAULT_GPX_SMOKE_ROOT = Path(
 DEFAULT_OUT_DIR = Path("outputs/ib3w_environment_window_review_report_v1")
 
 
+STATION_ELEVATION_REVIEW_CSV = Path(
+    "outputs/ib3w_station_elevation_map_full_valid_tiles_v1/"
+    "qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b/"
+    "station_elevation_context_adjusted_review.csv"
+)
+
+def load_station_elevation_evidence() -> pd.DataFrame:
+    """Load IB3W station elevation/context-adjusted review evidence.
+
+    This evidence is separate from weather DB elevation_m. It should not be
+    interpreted as weather representativeness.
+    """
+    columns = [
+        "station_id",
+        "station_name",
+        "station_elevation_m_final",
+        "elevation_final_status",
+        "elevation_final_confidence",
+        "elevation_final_nlsc_tile",
+        "context_adjusted_elevation_status",
+        "context_policy_action",
+        "low_confidence_context_class",
+    ]
+
+    out_columns = [
+        "station_id",
+        "nlsc_station_elevation_m",
+        "station_elevation_status",
+        "station_elevation_confidence",
+        "station_elevation_nlsc_tile",
+        "station_elevation_context_status",
+        "station_elevation_policy_action",
+        "station_elevation_context_class",
+        "station_elevation_join_status",
+    ]
+
+    if not STATION_ELEVATION_REVIEW_CSV.exists():
+        return pd.DataFrame(columns=out_columns)
+
+    df = pd.read_csv(STATION_ELEVATION_REVIEW_CSV, dtype={"station_id": str})
+
+    missing = [c for c in columns if c not in df.columns]
+    if missing:
+        raise ValueError(
+            f"Missing columns in station elevation review CSV: {missing}"
+        )
+
+    df = df[columns].copy()
+
+    # If duplicate station IDs ever exist, keep the first after original ordering.
+    df = df.drop_duplicates(subset=["station_id"], keep="first")
+
+    df["nlsc_station_elevation_m"] = pd.to_numeric(
+        df["station_elevation_m_final"],
+        errors="coerce",
+    ).round(1)
+
+    df = df.rename(
+        columns={
+            "elevation_final_status": "station_elevation_status",
+            "elevation_final_confidence": "station_elevation_confidence",
+            "elevation_final_nlsc_tile": "station_elevation_nlsc_tile",
+            "context_adjusted_elevation_status": "station_elevation_context_status",
+            "context_policy_action": "station_elevation_policy_action",
+            "low_confidence_context_class": "station_elevation_context_class",
+        }
+    )
+
+    df["station_elevation_join_status"] = "JOINED_STATION_ELEVATION_REVIEW"
+
+    return df[out_columns]
+
+
+def attach_station_elevation_evidence(station_review: pd.DataFrame) -> pd.DataFrame:
+    """Attach NLSC station elevation evidence to station review rows."""
+    out = station_review.copy()
+
+    if "station_elevation_m" in out.columns:
+        out = out.rename(
+            columns={"station_elevation_m": "weather_db_station_elevation_m"}
+        )
+    elif "weather_db_station_elevation_m" not in out.columns:
+        out["weather_db_station_elevation_m"] = ""
+
+    elev = load_station_elevation_evidence()
+
+    out = out.merge(
+        elev,
+        on="station_id",
+        how="left",
+    )
+
+    if "station_elevation_join_status" not in out.columns:
+        out["station_elevation_join_status"] = ""
+
+    out["station_elevation_join_status"] = out[
+        "station_elevation_join_status"
+    ].fillna("MISSING_STATION_ELEVATION_REVIEW_ROW")
+
+    for col in [
+        "nlsc_station_elevation_m",
+        "station_elevation_status",
+        "station_elevation_confidence",
+        "station_elevation_nlsc_tile",
+        "station_elevation_context_status",
+        "station_elevation_policy_action",
+        "station_elevation_context_class",
+    ]:
+        if col not in out.columns:
+            out[col] = ""
+        out[col] = out[col].fillna("")
+
+    return out
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Build IB3W environment window review report v1 from existing outputs."
@@ -454,6 +569,10 @@ def dataframe_html(
         view = view[[column for column in columns if column in view.columns]]
     if max_rows is not None:
         view = view.head(max_rows)
+    
+    # HTML display only: keep missing values blank, never convert them to zero.
+    view = view.fillna("")
+
     return add_status_classes(
         view.to_html(index=False, escape=True, border=0, classes="data-table")
     )
@@ -682,7 +801,7 @@ ul {{ padding-left: 22px; }}
   <h2>7. Nearest station table</h2>
   <div class="table-wrap">{dataframe_html(nearest_stations, [
       "station_rank_by_distance", "station_id", "station_name", "county_name",
-      "town_name", "nearest_activity_dist_m", "station_elevation_m",
+      "town_name", "nearest_activity_dist_m", "weather_db_station_elevation_m","nlsc_station_elevation_m","station_elevation_confidence","station_elevation_context_status",
       "observed_variable_count", "missing_variable_count",
       "observed_precipitation_zero_rows"
   ])}</div>
@@ -770,6 +889,10 @@ def main() -> None:
     summary = build_review_summary(backend, gpx)
     variable_status = build_variable_status(combined)
     station_review = build_station_review(combined, smoke_stations)
+
+    # Attach NLSC/context-adjusted station elevation evidence before CSV/HTML rendering.
+    station_review = attach_station_elevation_evidence(station_review)
+
     zero_audit = collect_zero_fallback_audit(
         backend_path,
         gpx_path,
@@ -786,7 +909,9 @@ def main() -> None:
         availability_summary,
         gpx_smoke_stations_path,
         gpx_smoke_summary,
+        STATION_ELEVATION_REVIEW_CSV,
     ]
+
     report_html = build_html(
         summary,
         variable_status,
@@ -802,6 +927,7 @@ def main() -> None:
     variable_csv = args.out_dir / "environment_window_variable_status.csv"
     station_csv = args.out_dir / "environment_window_station_review.csv"
     html_path = args.out_dir / "environment_window_review_report.html"
+
 
     summary.to_csv(summary_csv, index=False, encoding="utf-8-sig")
     variable_status.to_csv(variable_csv, index=False, encoding="utf-8-sig")
