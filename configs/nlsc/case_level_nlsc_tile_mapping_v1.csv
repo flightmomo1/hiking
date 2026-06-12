@@ -1,0 +1,6 @@
+﻿case_id,route_family,nlsc_tile,contour_relative_path,tile_source,tile_status,notes
+qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b,qixing_lengshuikeng,97233NW,nlsc_raw/97233NW/向量25K/ContourL.shp,ib1g_ib1e_existing_contract,CONFIRMED,"七星山冷水坑主峰路線；既有 IB1G/IB1E 使用 97233NW。"
+qixing_lengshuikeng_xiaoyoukeng_gpx_osmrefresh_v1_3b,qixing_lengshuikeng,97233NW,nlsc_raw/97233NW/向量25K/ContourL.shp,ib1g_ib1e_existing_contract,CONFIRMED,"七星山冷水坑至小油坑相關路線；沿用七星山 97233NW。"
+qixing_xiaoyoukeng_main_peak_20260315_osmrefresh_v1_3b,qixing_xiaoyoukeng,97233NW,nlsc_raw/97233NW/向量25K/ContourL.shp,ib1g_ib1e_existing_contract,CONFIRMED,"七星山小油坑主峰路線；沿用七星山 97233NW。"
+juansi_waterfall_fitcsv_20260503_osmrefresh_v1_3b,juansi_waterfall_lengshuikeng,97233NW,nlsc_raw/97233NW/向量25K/ContourL.shp,ib1g_ib1e_existing_contract,CONFIRMED,"絹絲瀑布至冷水坑；與七星山周邊同屬 97233NW。"
+zhonghua_ust_jiuwufeng_roundtrip_biji_osmrefresh_v1_3b,zhonghua_ust_jiuwufeng,97233SW,nlsc_raw/97233SW/向量25K/ContourL.shp,archived_changelog_handoff_correction,CONFIRMED_CORRECTED,"中華科大九五峰路線；已知應使用 97233SW，不是 97233NW。錯用 97233NW 會導致 slope unknown / contour_density_20m=0。"
