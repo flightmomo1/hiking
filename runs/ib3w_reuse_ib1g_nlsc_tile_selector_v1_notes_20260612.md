@@ -255,3 +255,57 @@ Status 建議：
     4. IB3B3 目前是 qixing prototype，不是正式 pipeline script。
     5. IB3W 應新增 route-candidate station terrain elevation lookup wrapper。
     6. 下一步應針對 route candidates 補 weather/water station elevation，再進 weather/hydro fusion。
+
+## 10. Addendum: Zhonghua case-level NLSC tile correction evidence
+
+後續搜尋確認，中華科大九五峰 case 曾經有明確 NLSC tile correction 紀錄。
+
+Archived handoff / changelog 中出現：
+
+    Zhonghua UST / Jiuwufeng uses NLSC tile 97233SW, not 97233NW.
+    NLSC tile = 97233SW
+    NLSC tile: 97233SW
+
+同時 freeze snapshot 中，zhonghua before snapshot 仍記錄：
+
+    contour_fp = C:\mountain_work\115_osm\nlsc_raw\97233NW\向量25K\ContourL.shp
+    nlsc_tile = 97233NW
+
+且相關 segment 的：
+
+    elev_min = null
+    elev_max = null
+    elev_range = null
+    slope_window = null
+    slope_band_window = unknown
+    contour_density_20m = 0
+
+判斷：
+
+    這是 route case 使用錯誤 NLSC tile 後產生的 terrain lookup failure evidence。
+
+因此前述結論需修正為：
+
+    IB1G 主腳本本身不是完整自動 tile selector，
+    但專案已有 case-level NLSC tile mapping / correction knowledge。
+
+對 IB3W 的影響：
+
+    route-candidate station terrain elevation lookup 不應完全重新猜 tile。
+    應優先讀取或重建 case-level NLSC tile mapping。
+    對已知 route case，優先使用該 route 的 NLSC tile。
+    對 candidate station 超出 route tile coverage 者，再進入 neighbor tile / contour inventory fallback。
+
+建議正式順序：
+
+    1. 建立 IB3W/IB1 shared case-level NLSC tile mapping policy。
+    2. 將 qixing 與 zhonghua 的 tile mapping 寫成可讀 config。
+    3. IB3W station lookup 先使用 route case tile。
+    4. 若 station 不在該 tile bounds 或查無 contour，再標記 NEED_NEIGHBOR_TILE_LOOKUP。
+    5. 最後才做 full contour inventory search。
+
+Known mapping：
+
+    qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b -> 97233NW
+    qixing_lengshuikeng_xiaoyoukeng_gpx_osmrefresh_v1_3b -> 97233NW
+    zhonghua_ust_jiuwufeng_roundtrip_biji_osmrefresh_v1_3b -> 97233SW
