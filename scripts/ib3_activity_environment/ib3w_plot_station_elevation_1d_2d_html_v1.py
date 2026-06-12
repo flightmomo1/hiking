@@ -15,6 +15,14 @@ STATUS_COLOR = {
     "FINAL_ELEVATION_MISSING": "#756bb1",
 }
 
+STATUS_COUNT_COLUMNS = {
+    "FINAL_ACCEPTABLE": "final_acceptable",
+    "FINAL_LOW_CONFIDENCE_REVIEW_REQUIRED": "final_low_confidence_review_required",
+    "FINAL_REVIEW_REQUIRED": "final_review_required",
+    "FINAL_LOOKUP_FAILED": "final_lookup_failed",
+    "FINAL_ELEVATION_MISSING": "final_elevation_missing",
+}
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -172,6 +180,36 @@ def prepare_station_plot_data(weather: pd.DataFrame, water: pd.DataFrame) -> pd.
     return stations
 
 
+def build_tile_distribution(case_id: str, stations: pd.DataFrame) -> pd.DataFrame:
+    columns = [
+        "case_id",
+        "elevation_final_nlsc_tile",
+        "station_rows",
+        "weather_rows",
+        "water_rows",
+        *STATUS_COUNT_COLUMNS.values(),
+    ]
+
+    tile_values = stations["elevation_final_nlsc_tile"].astype("string").str.strip()
+    tile_stations = stations.loc[tile_values.notna() & tile_values.ne("")].copy()
+    tile_stations["elevation_final_nlsc_tile"] = tile_values.loc[tile_stations.index]
+
+    rows = []
+    for tile, group in tile_stations.groupby("elevation_final_nlsc_tile", sort=True):
+        row = {
+            "case_id": case_id,
+            "elevation_final_nlsc_tile": str(tile),
+            "station_rows": int(len(group)),
+            "weather_rows": int((group["station_group"] == "weather").sum()),
+            "water_rows": int((group["station_group"] == "water").sum()),
+        }
+        for status, column in STATUS_COUNT_COLUMNS.items():
+            row[column] = int((group["elevation_final_status"] == status).sum())
+        rows.append(row)
+
+    return pd.DataFrame(rows, columns=columns)
+
+
 def build_1d_svg(route: pd.DataFrame, stations: pd.DataFrame) -> str:
     width = 1200
     height = 420
@@ -284,7 +322,13 @@ def to_records(df: pd.DataFrame, columns: list[str]) -> list[dict]:
     return rows
 
 
-def build_html(case_id: str, route: pd.DataFrame, stations: pd.DataFrame, svg_1d: str) -> str:
+def build_html(
+    case_id: str,
+    route: pd.DataFrame,
+    stations: pd.DataFrame,
+    tile_distribution: pd.DataFrame,
+    svg_1d: str,
+) -> str:
     route_records = to_records(route, ["lat", "lon", "dist_m", "route_elevation_m"])
     station_records = to_records(
         stations,
@@ -313,8 +357,10 @@ def build_html(case_id: str, route: pd.DataFrame, stations: pd.DataFrame, svg_1d
     summary = stations.groupby(["station_group", "elevation_final_status"]).size().reset_index(name="count")
     summary_html = summary.to_html(index=False, escape=True)
 
-    tile_summary = stations.groupby(["station_group", "elevation_final_nlsc_tile"]).size().reset_index(name="count")
-    tile_summary_html = tile_summary.to_html(index=False, escape=True)
+    tile_distribution_html = tile_distribution.drop(columns=["case_id"]).to_html(
+        index=False,
+        escape=True,
+    )
 
     status_legend = "".join(
         f'<span class="legend-item"><span class="swatch" style="background:{color}"></span>{status}</span>'
@@ -413,8 +459,8 @@ def build_html(case_id: str, route: pd.DataFrame, stations: pd.DataFrame, svg_1d
     <div>{status_legend}</div>
     <h3>Final status</h3>
     {summary_html}
-    <h3>Final tile</h3>
-    {tile_summary_html}
+    <h3>Tile distribution</h3>
+    {tile_distribution_html}
     <p class="note">
       Circle markers are weather stations. Square markers are water stations.
       Green indicates FINAL_ACCEPTABLE. Orange indicates FINAL_LOW_CONFIDENCE_REVIEW_REQUIRED.
@@ -550,17 +596,23 @@ def main() -> None:
     weather = normalize_stations(weather_csv, "weather")
     water = normalize_stations(water_csv, "water")
     stations = prepare_station_plot_data(weather, water)
+    tile_distribution = build_tile_distribution(case_id, stations)
 
     svg_1d = build_1d_svg(route, stations)
-    html = build_html(case_id, route, stations, svg_1d)
+    html = build_html(case_id, route, stations, tile_distribution, svg_1d)
 
     out_html = out_dir / "station_elevation_1d_2d_report.html"
     out_csv = out_dir / "station_elevation_plot_data.csv"
     summary_csv = out_dir / "station_elevation_map_summary.csv"
+    tile_distribution_csv = out_dir / "station_elevation_tile_distribution.csv"
 
     out_html.write_text(html, encoding="utf-8")
     stations.to_csv(out_csv, index=False, encoding="utf-8-sig")
+    tile_distribution.to_csv(tile_distribution_csv, index=False, encoding="utf-8-sig")
 
+    tile_counts = tile_distribution.set_index("elevation_final_nlsc_tile")["station_rows"].to_dict()
+    final_tiles = tile_distribution["elevation_final_nlsc_tile"].tolist()
+    tile_distribution_records = tile_distribution.drop(columns=["case_id"]).to_dict(orient="records")
     summary = pd.DataFrame([{
         "case_id": case_id,
         "route_rows": int(len(route)),
@@ -569,9 +621,16 @@ def main() -> None:
         "water_rows": int((stations["station_group"] == "water").sum()),
         "final_acceptable": int((stations["elevation_final_status"] == "FINAL_ACCEPTABLE").sum()),
         "final_low_confidence_review_required": int((stations["elevation_final_status"] == "FINAL_LOW_CONFIDENCE_REVIEW_REQUIRED").sum()),
-        "tile_97233NW": int((stations["elevation_final_nlsc_tile"].astype(str) == "97233NW").sum()),
-        "tile_97233SW": int((stations["elevation_final_nlsc_tile"].astype(str) == "97233SW").sum()),
+        "tile_97233NW": int(tile_counts.get("97233NW", 0)),
+        "tile_97233SW": int(tile_counts.get("97233SW", 0)),
         "zero_fallback_used": False,
+        "unique_final_tile_count": int(len(final_tiles)),
+        "final_tiles": "|".join(final_tiles),
+        "tile_distribution_json": json.dumps(
+            tile_distribution_records,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ),
     }])
     summary.to_csv(summary_csv, index=False, encoding="utf-8-sig")
 
@@ -583,6 +642,8 @@ def main() -> None:
     print("out_html:", out_html)
     print("out_csv:", out_csv)
     print("summary_csv:", summary_csv)
+    print("tile_distribution_csv:", tile_distribution_csv)
+    print(tile_distribution.to_string(index=False))
     print(summary.to_string(index=False))
 
 
