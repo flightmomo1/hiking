@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>IB3W Weather-Sensitive Feature Vector v1</title>
+<style>
+body {
+  margin: 0;
+  background: #f4f7f9;
+  color: #1f2937;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+header {
+  background: #25465f;
+  color: white;
+  padding: 26px 32px;
+}
+main {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 24px;
+}
+section {
+  background: white;
+  border: 1px solid #d9e1e7;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+}
+.card {
+  border: 1px solid #d9e1e7;
+  border-radius: 8px;
+  padding: 14px;
+  background: #fbfcfd;
+}
+.card strong {
+  display: block;
+  font-size: 24px;
+}
+.callout {
+  border-left: 5px solid #2b6f96;
+  background: #eef7fc;
+  padding: 12px 14px;
+  margin: 12px 0;
+}
+.table-wrap {
+  overflow-x: auto;
+}
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+.data-table th, .data-table td {
+  border: 1px solid #d9e1e7;
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+.data-table th {
+  background: #edf2f5;
+}
+code {
+  color: #18344a;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>IB3W Weather-Sensitive Feature Vector v1</h1>
+  <p>Activity-time weather observation vector. No risk score, no THCI, no missing-to-zero imputation.</p>
+</header>
+<main>
+<section>
+  <h2>1. Scope</h2>
+  <div class="callout">
+    This layer converts gate-approved representative weather features into a cleaner
+    activity-level feature vector. It does not decide mountain weather risk. Antecedent
+    precipitation and surface wetness are reserved for a later context layer.
+  </div>
+  <div class="cards">
+    <div class="card"><strong>27</strong><span>activities reviewed</span></div>
+    <div class="card"><strong>1</strong><span>activities with score-allowed weather vector</span></div>
+    <div class="card"><strong>26</strong><span>activities unavailable or blocked</span></div>
+    <div class="card"><strong>0</strong><span>zero fallback violations</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>2. Vector status distribution</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>weather_feature_vector_status</th>
+      <th>activity_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>WEATHER_FEATURE_VECTOR_AVAILABLE_PARTIAL</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>3. Score-allowed weather vectors</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>output_case</th>
+      <th>activity_id</th>
+      <th>weather_feature_vector_status</th>
+      <th>weather_sensitive_score_allowed</th>
+      <th>activity_time_rain_observation_status</th>
+      <th>activity_time_moisture_context_status</th>
+      <th>activity_time_wind_context_status</th>
+      <th>activity_time_pressure_context_status</th>
+      <th>antecedent_precipitation_context_status</th>
+      <th>surface_wetness_proxy_status</th>
+      <th>primary_station_coverage_ratio</th>
+      <th>primary_observed_row_ratio</th>
+      <th>weather_variable_coverage_ratio</th>
+      <th>precipitation_mm_available</th>
+      <th>precipitation_mm_mean_primary</th>
+      <th>precipitation_mm_max_primary</th>
+      <th>precipitation_observed_zero_flag</th>
+      <th>temperature_c_mean_primary</th>
+      <th>relative_humidity_pct_mean_primary</th>
+      <th>wind_speed_ms_mean_primary</th>
+      <th>wind_speed_ms_max_primary</th>
+      <th>pressure_hpa_partial_flag</th>
+      <th>pressure_hpa_mean_primary</th>
+      <th>available_weather_variable_set</th>
+      <th>missing_weather_variable_set</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_gpx_v1</td>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx</td>
+      <td>WEATHER_FEATURE_VECTOR_AVAILABLE_PARTIAL</td>
+      <td>True</td>
+      <td>OBSERVED_NO_RAIN</td>
+      <td>MOISTURE_CONTEXT_AVAILABLE</td>
+      <td>WIND_CONTEXT_AVAILABLE</td>
+      <td>PRESSURE_CONTEXT_AVAILABLE_PARTIAL</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>1.0</td>
+      <td>0.55</td>
+      <td>0.6</td>
+      <td>True</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>True</td>
+      <td>19.6708</td>
+      <td>92.4792</td>
+      <td>2.1604</td>
+      <td>5.6</td>
+      <td>True</td>
+      <td>918.3417</td>
+      <td>precipitation_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa</td>
+      <td>precipitation_10min_mm|precipitation_1hr_mm|visibility_m|weather</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>4. Full vector review</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>output_case</th>
+      <th>activity_id</th>
+      <th>weather_feature_vector_status</th>
+      <th>weather_sensitive_score_allowed</th>
+      <th>activity_time_rain_observation_status</th>
+      <th>activity_time_moisture_context_status</th>
+      <th>activity_time_wind_context_status</th>
+      <th>activity_time_pressure_context_status</th>
+      <th>antecedent_precipitation_context_status</th>
+      <th>surface_wetness_proxy_status</th>
+      <th>primary_station_coverage_ratio</th>
+      <th>primary_observed_row_ratio</th>
+      <th>weather_variable_coverage_ratio</th>
+      <th>precipitation_mm_available</th>
+      <th>precipitation_mm_mean_primary</th>
+      <th>precipitation_mm_max_primary</th>
+      <th>precipitation_observed_zero_flag</th>
+      <th>temperature_c_mean_primary</th>
+      <th>relative_humidity_pct_mean_primary</th>
+      <th>wind_speed_ms_mean_primary</th>
+      <th>wind_speed_ms_max_primary</th>
+      <th>pressure_hpa_partial_flag</th>
+      <th>pressure_hpa_mean_primary</th>
+      <th>available_weather_variable_set</th>
+      <th>missing_weather_variable_set</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_13_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_14_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_15_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_16_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_20_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_23_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_28_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_29_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_30_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_33_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_35_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_36_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_37_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_38_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_3_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_40_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_41_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_42_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_43_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_44_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_45_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_46_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_48_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_6_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_8_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_9_1</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>False</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>0.0</td>
+      <td></td>
+      <td>0.0</td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>False</td>
+      <td></td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_gpx_v1</td>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx</td>
+      <td>WEATHER_FEATURE_VECTOR_AVAILABLE_PARTIAL</td>
+      <td>True</td>
+      <td>OBSERVED_NO_RAIN</td>
+      <td>MOISTURE_CONTEXT_AVAILABLE</td>
+      <td>WIND_CONTEXT_AVAILABLE</td>
+      <td>PRESSURE_CONTEXT_AVAILABLE_PARTIAL</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>1.0</td>
+      <td>0.55</td>
+      <td>0.6</td>
+      <td>True</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>True</td>
+      <td>19.6708</td>
+      <td>92.4792</td>
+      <td>2.1604</td>
+      <td>5.6</td>
+      <td>True</td>
+      <td>918.3417</td>
+      <td>precipitation_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa</td>
+      <td>precipitation_10min_mm|precipitation_1hr_mm|visibility_m|weather</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>5. Summary</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>schema_version</th>
+      <th>summary_type</th>
+      <th>summary_key</th>
+      <th>activity_count</th>
+      <th>score_allowed_count</th>
+      <th>zero_fallback_true_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>weather_feature_vector_status</td>
+      <td>WEATHER_FEATURE_VECTOR_AVAILABLE_PARTIAL</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>weather_feature_vector_status</td>
+      <td>WEATHER_FEATURE_VECTOR_UNAVAILABLE</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>activity_time_rain_observation_status</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>activity_time_rain_observation_status</td>
+      <td>OBSERVED_NO_RAIN</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>activity_time_moisture_context_status</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>activity_time_moisture_context_status</td>
+      <td>MOISTURE_CONTEXT_AVAILABLE</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>activity_time_wind_context_status</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>activity_time_wind_context_status</td>
+      <td>WIND_CONTEXT_AVAILABLE</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>activity_time_pressure_context_status</td>
+      <td>BLOCKED_BY_GATE</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>activity_time_pressure_context_status</td>
+      <td>PRESSURE_CONTEXT_AVAILABLE_PARTIAL</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>antecedent_precipitation_context_status</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>27</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>surface_wetness_proxy_status</td>
+      <td>NOT_EVALUATED_IN_V1</td>
+      <td>27</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_vector_v1</td>
+      <td>overall</td>
+      <td>ALL_ACTIVITIES</td>
+      <td>27</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>6. Sources and boundaries</h2>
+  <ul>
+    <li>Representative features CSV: <code>outputs\ib3w_representative_environment_features_v1\activity_representative_environment_features.csv</code></li>
+    <li>Gate CSV: <code>outputs\ib3w_weather_sensitive_feature_gate_v1\activity_weather_sensitive_feature_gate.csv</code></li>
+    <li>No weather DB query is performed.</li>
+    <li>No antecedent precipitation lookback is performed in v1.</li>
+    <li>No route-surface wetness proxy is computed in v1.</li>
+    <li>No risk score or THCI integration is performed.</li>
+  </ul>
+</section>
+</main>
+</body>
+</html>
