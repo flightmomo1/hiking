@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>IB3W Weather-Sensitive Feature Gate v1</title>
+<style>
+body {
+  margin: 0;
+  background: #f4f7f9;
+  color: #1f2937;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+header {
+  background: #20374c;
+  color: white;
+  padding: 26px 32px;
+}
+main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
+}
+section {
+  background: white;
+  border: 1px solid #d9e1e7;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+}
+.card {
+  border: 1px solid #d9e1e7;
+  border-radius: 8px;
+  padding: 14px;
+  background: #fbfcfd;
+}
+.card strong {
+  display: block;
+  font-size: 24px;
+}
+.callout {
+  border-left: 5px solid #2b6f96;
+  background: #eef7fc;
+  padding: 12px 14px;
+  margin: 12px 0;
+}
+.table-wrap {
+  overflow-x: auto;
+}
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+.data-table th, .data-table td {
+  border: 1px solid #d9e1e7;
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+.data-table th {
+  background: #edf2f5;
+}
+code {
+  color: #18344a;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>IB3W Weather-Sensitive Feature Gate v1</h1>
+  <p>Read-only gate before weather-sensitive IB3 risk or THCI experiments.</p>
+</header>
+<main>
+<section>
+  <h2>1. Scope</h2>
+  <div class="callout">
+    This layer does not compute risk score. It only decides whether weather-sensitive
+    downstream features are unavailable, partially available, or blocked by QA.
+    Missing weather values remain missing.
+  </div>
+  <div class="cards">
+    <div class="card"><strong>27</strong><span>activities reviewed</span></div>
+    <div class="card"><strong>1</strong><span>activities allowed for observed-variable scoring</span></div>
+    <div class="card"><strong>26</strong><span>activities blocked or unavailable</span></div>
+    <div class="card"><strong>0</strong><span>zero fallback violations</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>2. Gate distribution</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>weather_sensitive_feature_gate</th>
+      <th>activity_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>WEATHER_FEATURE_AVAILABLE_PARTIAL_SCORE_ALLOWED_FOR_OBSERVED_VARIABLES_ONLY</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>3. Score-allowed activities</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>output_case</th>
+      <th>activity_id</th>
+      <th>representative_feature_status</th>
+      <th>weather_sensitive_feature_gate</th>
+      <th>weather_sensitive_score_allowed</th>
+      <th>zero_fallback_true_count</th>
+      <th>available_weather_variable_set</th>
+      <th>missing_weather_variable_set</th>
+      <th>weather_sensitive_feature_gate_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_gpx_v1</td>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx</td>
+      <td>PRIMARY_REPRESENTATIVE_FEATURES_AVAILABLE_PARTIAL</td>
+      <td>WEATHER_FEATURE_AVAILABLE_PARTIAL_SCORE_ALLOWED_FOR_OBSERVED_VARIABLES_ONLY</td>
+      <td>True</td>
+      <td>0</td>
+      <td>precipitation_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa</td>
+      <td>precipitation_10min_mm|precipitation_1hr_mm|visibility_m|weather</td>
+      <td>Primary representative station rows exist, but feature coverage is partial; consume only observed variables.</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>4. Blocked or unavailable activities</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>output_case</th>
+      <th>activity_id</th>
+      <th>representative_feature_status</th>
+      <th>weather_sensitive_feature_gate</th>
+      <th>weather_sensitive_score_allowed</th>
+      <th>zero_fallback_true_count</th>
+      <th>available_weather_variable_set</th>
+      <th>missing_weather_variable_set</th>
+      <th>weather_sensitive_feature_gate_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_13_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_14_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_15_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_16_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_20_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_23_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_28_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_29_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_30_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_33_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_35_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_36_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_37_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_38_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_3_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_40_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_41_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_42_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_43_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_44_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_45_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_46_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_48_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_6_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_8_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_9_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>5. Full gate review</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>output_case</th>
+      <th>activity_id</th>
+      <th>representative_feature_status</th>
+      <th>weather_sensitive_feature_gate</th>
+      <th>weather_sensitive_score_allowed</th>
+      <th>zero_fallback_true_count</th>
+      <th>available_weather_variable_set</th>
+      <th>missing_weather_variable_set</th>
+      <th>weather_sensitive_feature_gate_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_13_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_14_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_15_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_16_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_20_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_23_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_28_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_29_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_30_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_33_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_35_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_36_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_37_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_38_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_3_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_40_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_41_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_42_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_43_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_44_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_45_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_46_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_48_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_6_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_8_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_9_1</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>False</td>
+      <td>0</td>
+      <td></td>
+      <td>precipitation_mm|precipitation_10min_mm|precipitation_1hr_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa|visibility_m|weather</td>
+      <td>No primary representative station rows are available for this activity; do not compute weather-sensitive features.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_gpx_v1</td>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx</td>
+      <td>PRIMARY_REPRESENTATIVE_FEATURES_AVAILABLE_PARTIAL</td>
+      <td>WEATHER_FEATURE_AVAILABLE_PARTIAL_SCORE_ALLOWED_FOR_OBSERVED_VARIABLES_ONLY</td>
+      <td>True</td>
+      <td>0</td>
+      <td>precipitation_mm|temperature_c|relative_humidity_pct|wind_speed_ms|wind_direction_deg|pressure_hpa</td>
+      <td>precipitation_10min_mm|precipitation_1hr_mm|visibility_m|weather</td>
+      <td>Primary representative station rows exist, but feature coverage is partial; consume only observed variables.</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>6. Summary</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>schema_version</th>
+      <th>summary_type</th>
+      <th>summary_key</th>
+      <th>activity_count</th>
+      <th>score_allowed_count</th>
+      <th>zero_fallback_true_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_gate_v1</td>
+      <td>weather_sensitive_feature_gate</td>
+      <td>WEATHER_FEATURE_AVAILABLE_PARTIAL_SCORE_ALLOWED_FOR_OBSERVED_VARIABLES_ONLY</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_gate_v1</td>
+      <td>weather_sensitive_feature_gate</td>
+      <td>WEATHER_FEATURE_UNAVAILABLE_DO_NOT_SCORE</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_gate_v1</td>
+      <td>representative_feature_status</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_gate_v1</td>
+      <td>representative_feature_status</td>
+      <td>PRIMARY_REPRESENTATIVE_FEATURES_AVAILABLE_PARTIAL</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_weather_sensitive_feature_gate_v1</td>
+      <td>overall</td>
+      <td>ALL_ACTIVITIES</td>
+      <td>27</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>7. Source and non-goals</h2>
+  <ul>
+    <li>Source features CSV: <code>outputs\ib3w_representative_environment_features_v1\activity_representative_environment_features.csv</code></li>
+    <li>No weather DB query is performed.</li>
+    <li>No risk score is computed.</li>
+    <li>No THCI integration is performed.</li>
+    <li>No missing-to-zero imputation is allowed.</li>
+  </ul>
+</section>
+</main>
+</body>
+</html>
