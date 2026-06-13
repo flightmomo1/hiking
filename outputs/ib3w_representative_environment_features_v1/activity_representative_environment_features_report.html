@@ -1,0 +1,1337 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>IB3W Representative Environment Features v1</title>
+<style>
+body {
+  margin: 0;
+  background: #f4f7f9;
+  color: #1f2937;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+header {
+  background: #20374c;
+  color: white;
+  padding: 26px 32px;
+}
+main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
+}
+section {
+  background: white;
+  border: 1px solid #d9e1e7;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+}
+.card {
+  border: 1px solid #d9e1e7;
+  border-radius: 8px;
+  padding: 14px;
+  background: #fbfcfd;
+}
+.card strong {
+  display: block;
+  font-size: 24px;
+}
+.callout {
+  border-left: 5px solid #2b6f96;
+  background: #eef7fc;
+  padding: 12px 14px;
+  margin: 12px 0;
+}
+.warn {
+  border-left: 5px solid #b7791f;
+  background: #fff8e6;
+  padding: 12px 14px;
+  margin: 12px 0;
+}
+.table-wrap {
+  overflow-x: auto;
+}
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+.data-table th, .data-table td {
+  border: 1px solid #d9e1e7;
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+.data-table th {
+  background: #edf2f5;
+}
+code {
+  color: #18344a;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>IB3W Representative Environment Features v1</h1>
+  <p>Activity-level representative weather features from primary mountain station candidates.</p>
+</header>
+<main>
+<section>
+  <h2>1. Scope and guardrails</h2>
+  <div class="callout">
+    This report reads the representative features CSV and summary CSV only.
+    It does not query the weather DB, does not change adapter output, does not compute
+    risk score, and does not fill missing values with zero.
+  </div>
+  <div class="cards">
+    <div class="card"><strong>27</strong><span>activities reviewed</span></div>
+    <div class="card"><strong>26</strong><span>activities with no primary representative rows</span></div>
+    <div class="card"><strong>1</strong><span>activities with partial primary representative features</span></div>
+    <div class="card"><strong>0</strong><span>zero fallback violations</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>2. Primary representative station set</h2>
+  <p><strong>Station IDs:</strong> <code>466910|466930|A0A460|C0AC40</code></p>
+  <p><strong>Station names:</strong> <code>大屯山|文化大學|陽明山|鞍部</code></p>
+  <div class="warn">
+    Observed zero precipitation is preserved as an observed value. It is not equivalent to
+    missing-to-zero fallback. The zero fallback count must remain zero.
+  </div>
+</section>
+
+<section>
+  <h2>3. Representative feature status distribution</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>representative_feature_status</th>
+      <th>activity_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>PRIMARY_REPRESENTATIVE_FEATURES_AVAILABLE_PARTIAL</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>4. Output case distribution</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>output_case</th>
+      <th>activity_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_gpx_v1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>5. GPX positive case representative features</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>output_case</th>
+      <th>activity_id</th>
+      <th>primary_candidate_station_ids</th>
+      <th>primary_station_count_present_in_activity_window</th>
+      <th>primary_observed_row_count</th>
+      <th>primary_missing_row_count</th>
+      <th>representative_feature_status</th>
+      <th>precipitation_mm_primary_observed_station_count</th>
+      <th>precipitation_mm_primary_value_mean_of_station_means</th>
+      <th>temperature_c_primary_observed_station_count</th>
+      <th>temperature_c_primary_value_mean_of_station_means</th>
+      <th>relative_humidity_pct_primary_observed_station_count</th>
+      <th>relative_humidity_pct_primary_value_mean_of_station_means</th>
+      <th>wind_speed_ms_primary_observed_station_count</th>
+      <th>wind_speed_ms_primary_value_max</th>
+      <th>zero_fallback_true_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_gpx_v1</td>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>4</td>
+      <td>22</td>
+      <td>18</td>
+      <td>PRIMARY_REPRESENTATIVE_FEATURES_AVAILABLE_PARTIAL</td>
+      <td>4</td>
+      <td>0.0</td>
+      <td>4</td>
+      <td>19.6708</td>
+      <td>4</td>
+      <td>92.4792</td>
+      <td>4</td>
+      <td>5.6</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>6. GPX variable-level details</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>output_case</th>
+      <th>activity_id</th>
+      <th>precipitation_mm_primary_observed_station_count</th>
+      <th>precipitation_mm_primary_value_min</th>
+      <th>precipitation_mm_primary_value_max</th>
+      <th>precipitation_mm_primary_value_mean_of_station_means</th>
+      <th>precipitation_mm_primary_value_sum_of_station_sums</th>
+      <th>precipitation_mm_obs_count_zero_sum</th>
+      <th>precipitation_mm_obs_count_positive_sum</th>
+      <th>precipitation_10min_mm_primary_observed_station_count</th>
+      <th>precipitation_1hr_mm_primary_observed_station_count</th>
+      <th>temperature_c_primary_observed_station_count</th>
+      <th>temperature_c_primary_value_mean_of_station_means</th>
+      <th>relative_humidity_pct_primary_observed_station_count</th>
+      <th>relative_humidity_pct_primary_value_mean_of_station_means</th>
+      <th>wind_speed_ms_primary_observed_station_count</th>
+      <th>wind_speed_ms_primary_value_max</th>
+      <th>wind_direction_deg_primary_observed_station_count</th>
+      <th>pressure_hpa_primary_observed_station_count</th>
+      <th>visibility_m_primary_observed_station_count</th>
+      <th>weather_primary_observed_station_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_gpx_v1</td>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx</td>
+      <td>4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>38</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>19.6708</td>
+      <td>4</td>
+      <td>92.4792</td>
+      <td>4</td>
+      <td>5.6</td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>7. Backend 2024 activities without primary representative rows</h2>
+  <p>
+    These activities retain the previous audit conclusion: the 2024 backend activities do
+    not overlap the weather DB observation window, so no representative feature values are
+    synthesized.
+  </p>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>output_case</th>
+      <th>activity_id</th>
+      <th>primary_candidate_station_ids</th>
+      <th>primary_station_count_present_in_activity_window</th>
+      <th>primary_observed_row_count</th>
+      <th>primary_missing_row_count</th>
+      <th>representative_feature_status</th>
+      <th>precipitation_mm_primary_observed_station_count</th>
+      <th>precipitation_mm_primary_value_mean_of_station_means</th>
+      <th>temperature_c_primary_observed_station_count</th>
+      <th>temperature_c_primary_value_mean_of_station_means</th>
+      <th>relative_humidity_pct_primary_observed_station_count</th>
+      <th>relative_humidity_pct_primary_value_mean_of_station_means</th>
+      <th>wind_speed_ms_primary_observed_station_count</th>
+      <th>wind_speed_ms_primary_value_max</th>
+      <th>zero_fallback_true_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_13_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_14_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_15_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_16_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_20_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_23_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_28_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_29_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_30_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_33_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_35_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_36_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_37_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_38_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_3_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_40_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_41_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_42_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_43_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_44_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_45_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_46_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_48_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_6_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_8_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_9_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>8. Full activity feature review</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>output_case</th>
+      <th>activity_id</th>
+      <th>primary_candidate_station_ids</th>
+      <th>primary_station_count_present_in_activity_window</th>
+      <th>primary_observed_row_count</th>
+      <th>primary_missing_row_count</th>
+      <th>representative_feature_status</th>
+      <th>precipitation_mm_primary_observed_station_count</th>
+      <th>precipitation_mm_primary_value_mean_of_station_means</th>
+      <th>temperature_c_primary_observed_station_count</th>
+      <th>temperature_c_primary_value_mean_of_station_means</th>
+      <th>relative_humidity_pct_primary_observed_station_count</th>
+      <th>relative_humidity_pct_primary_value_mean_of_station_means</th>
+      <th>wind_speed_ms_primary_observed_station_count</th>
+      <th>wind_speed_ms_primary_value_max</th>
+      <th>zero_fallback_true_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_13_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_14_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_15_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_16_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_20_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_23_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_28_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_29_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_30_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_33_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_35_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_36_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_37_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_38_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_3_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_40_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_41_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_42_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_43_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_44_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_45_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_46_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_48_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_6_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_8_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>qixing_lengshuikeng_9_1</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_gpx_v1</td>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx</td>
+      <td>466910|466930|A0A460|C0AC40</td>
+      <td>4</td>
+      <td>22</td>
+      <td>18</td>
+      <td>PRIMARY_REPRESENTATIVE_FEATURES_AVAILABLE_PARTIAL</td>
+      <td>4</td>
+      <td>0.0</td>
+      <td>4</td>
+      <td>19.6708</td>
+      <td>4</td>
+      <td>92.4792</td>
+      <td>4</td>
+      <td>5.6</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>9. Summary table</h2>
+  <div class="table-wrap"><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>schema_version</th>
+      <th>summary_type</th>
+      <th>summary_key</th>
+      <th>activity_count</th>
+      <th>zero_fallback_true_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ib3w_representative_environment_features_v1</td>
+      <td>representative_feature_status</td>
+      <td>NO_PRIMARY_REPRESENTATIVE_ROWS</td>
+      <td>26</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_representative_environment_features_v1</td>
+      <td>representative_feature_status</td>
+      <td>PRIMARY_REPRESENTATIVE_FEATURES_AVAILABLE_PARTIAL</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_representative_environment_features_v1</td>
+      <td>output_case</td>
+      <td>qixing_lengshuikeng_full26_backend_2024_v1</td>
+      <td>26</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_representative_environment_features_v1</td>
+      <td>output_case</td>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_gpx_v1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>ib3w_representative_environment_features_v1</td>
+      <td>overall</td>
+      <td>ALL_ACTIVITIES</td>
+      <td>27</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table></div>
+</section>
+
+<section>
+  <h2>10. Source files and limitations</h2>
+  <ul>
+    <li>Features CSV: <code>outputs\ib3w_representative_environment_features_v1\activity_representative_environment_features.csv</code></li>
+    <li>Summary CSV: <code>outputs\ib3w_representative_environment_features_v1\activity_representative_environment_features_summary.csv</code></li>
+    <li>No risk score is computed in this report layer.</li>
+    <li>No THCI integration is performed in this report layer.</li>
+    <li>No station fusion weighting is performed in this report layer.</li>
+    <li>Missing remains missing; only observed zero precipitation remains zero.</li>
+  </ul>
+</section>
+</main>
+</body>
+</html>
