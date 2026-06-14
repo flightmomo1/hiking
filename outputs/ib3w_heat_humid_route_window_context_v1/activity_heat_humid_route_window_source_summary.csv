@@ -1,0 +1,2 @@
+﻿source_file,time_col,route_distance_col,lat_col,lon_col,read_status,skip_reason,window_count,activity_id,case_id,activity_start_time_utc,activity_end_time_utc,weather_row_count_for_activity
+outputs\ib4_activity_output\actual_gpx_9stations\qixing_activity_risk_overlay_points.csv,time,route_dist_m,lat,lon,OK,,16,qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx,qixing_lengshuikeng,2026-04-10T21:35:47+00:00,2026-04-10T23:54:30+00:00,59
