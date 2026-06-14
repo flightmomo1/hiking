@@ -1,0 +1,17 @@
+output_field,output_group,expected_type,nullable_allowed,generated_in_this_branch,scoring_allowed_in_this_branch,description,notes
+usable_activity_ids,USABLE_ACTIVITY_SET,string_list,True,False,False,Future identifiers passing all usable activity gates,Not generated in this design branch
+review_activity_ids,USABLE_ACTIVITY_SET,string_list,True,False,False,Future identifiers retained for review only,Review status is not an ability judgment
+comparable_group_id,COMPARABLE_GROUP,string,True,False,False,Future reviewed comparable activity group identifier,Separate cross-route groups where required
+comparable_group_definition,COMPARABLE_GROUP,string,True,False,False,Future route endpoint distance elevation and terrain grouping definition,Must include explicit tolerances
+route_normalized_performance_summary,ROUTE_NORMALIZED_PERFORMANCE_SUMMARY,structured_string,True,False,False,Future descriptive summary of route-normalized candidate indicators,Candidate indicators are not scores
+route_normalized_indicator_coverage,ROUTE_NORMALIZED_PERFORMANCE_SUMMARY,structured_string,True,False,False,Future availability and missingness summary for candidate indicators,Missing values remain missing
+weather_context_coverage,WEATHER_CONTEXT_COVERAGE,structured_string,True,False,False,Future observed and unavailable weather context coverage,Weather is explanatory context
+weather_context_strata_summary,WEATHER_CONTEXT_COVERAGE,structured_string,True,False,False,Future comparable-group performance summaries by weather context,No direct weather penalties
+quality_gate_summary,QUALITY_GATE_SUMMARY,structured_string,True,False,False,Future usable review-only and excluded gate outcomes,A gate outcome is not an ability rating
+quality_gate_rule_version,QUALITY_GATE_SUMMARY,string,True,False,False,Future identifier of the reviewed quality gate contract,Required for auditability
+ability_estimate_status,ABILITY_ESTIMATE_CANDIDATE,string,True,False,False,Future status such as insufficient evidence or review candidate,No status is generated here
+ability_estimate_scope,ABILITY_ESTIMATE_CANDIDATE,string,True,False,False,Future route family and population scope of an estimate,Scope must prevent overgeneralization
+usable_activity_count,ABILITY_ESTIMATE_CANDIDATE,integer,True,False,False,Future number of usable activities supporting an estimate,Multiple activities are required
+review_activity_count,ABILITY_ESTIMATE_CANDIDATE,integer,True,False,False,Future number of review-only activities excluded from formal estimation,Review count is not a negative score
+ability_estimate_confidence,ABILITY_ESTIMATE_CANDIDATE,string,True,False,False,Future confidence category supported by sample and quality evidence,No confidence is generated here
+ability_estimate_review_note,REVIEW_NOTE,string,True,False,False,Future human-readable explanation of evidence limits and review needs,Must not use high or low ability language without an authorized estimate
