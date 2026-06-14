@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <title>IB3W CODiS Weather Profile Report v1</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", Arial, sans-serif;
+      margin: 28px;
+      color: #1f2937;
+      background: #f8fafc;
+    }
+    h1, h2, h3 { color: #0f172a; }
+    .note {
+      padding: 12px 16px;
+      background: #fff7ed;
+      border-left: 5px solid #f97316;
+      margin: 18px 0;
+      line-height: 1.6;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 12px;
+      margin: 18px 0 26px;
+    }
+    .metric-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+    }
+    .metric-title {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+    .metric-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .metric-subtitle {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 6px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      margin: 12px 0 28px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 960px;
+      font-size: 13px;
+    }
+    th, td {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+    th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+      position: sticky;
+      top: 0;
+    }
+    tr:hover td { background: #f8fafc; }
+    ul { line-height: 1.8; }
+    .small { color: #64748b; font-size: 12px; }
+    .footer { margin-top: 30px; color: #64748b; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>IB3W CODiS Weather Profile Report v1</h1>
+  <div class="note">
+    <strong>邊界：</strong>IB3W CODiS weather profile report is descriptive evidence only. It does not authorize THCI scoring, radar scoring, or final hiking risk scoring.
+    本報告只將 IB3W CODiS merged context 轉成可讀的天候輪廓；描述標籤不是風險分數。
+  </div>
+
+  <h2>總覽</h2>
+  <div class="cards">
+    <div class="metric-card"><div class="metric-title">活動數</div><div class="metric-value">27</div><div class="metric-subtitle">27 activities</div></div>
+    <div class="metric-card"><div class="metric-title">觀測天候值</div><div class="metric-value">243</div><div class="metric-subtitle">27 × 9 variables</div></div>
+    <div class="metric-card"><div class="metric-title">CODiS-only 活動</div><div class="metric-value">26</div><div class="metric-subtitle">2024 historical</div></div>
+    <div class="metric-card"><div class="metric-title">Direct/Mixed 活動</div><div class="metric-value">1</div><div class="metric-subtitle">2026 direct + CODiS</div></div>
+    <div class="metric-card"><div class="metric-title">高濕活動</div><div class="metric-value">14</div><div class="metric-subtitle">RH ≥ 90%</div></div>
+    <div class="metric-card"><div class="metric-title">有降雨活動</div><div class="metric-value">2</div><div class="metric-subtitle">precipitation &gt; 0</div></div>
+    <div class="metric-card"><div class="metric-title">無降雨活動</div><div class="metric-value">25</div><div class="metric-subtitle">precipitation = 0</div></div>
+    <div class="metric-card"><div class="metric-title">最大陣風</div><div class="metric-value">14.7 m/s</div><div class="metric-subtitle">descriptive only</div></div>
+  </div>
+
+  <h2>天候變數分布</h2>
+  <div class="table-wrap"><table><thead><tr><th>變數</th><th>觀測數</th><th>缺值數</th><th>最小</th><th>中位數</th><th>平均</th><th>最大</th></tr></thead><tbody><tr><td>氣溫 °C</td><td>27</td><td>0</td><td>21.2</td><td>24.5</td><td>24.3</td><td>25.9</td></tr><tr><td>相對濕度 %</td><td>27</td><td>0</td><td>86</td><td>90.4</td><td>90.5</td><td>100</td></tr><tr><td>測站氣壓 hPa</td><td>27</td><td>0</td><td>914</td><td>918.6</td><td>918</td><td>935.7</td></tr><tr><td>平均風速 m/s</td><td>27</td><td>0</td><td>1.4</td><td>2.1</td><td>2.4</td><td>4.8</td></tr><tr><td>最大陣風 m/s</td><td>27</td><td>0</td><td>5.7</td><td>7.1</td><td>7.9</td><td>14.7</td></tr><tr><td>降雨量 mm</td><td>27</td><td>0</td><td>0</td><td>0</td><td>1.7</td><td>44.5</td></tr><tr><td>日照分鐘</td><td>27</td><td>0</td><td>0</td><td>222</td><td>231.6</td><td>354</td></tr><tr><td>UV 指數</td><td>27</td><td>0</td><td>1</td><td>7</td><td>7.9</td><td>11</td></tr></tbody></table></div>
+
+  <h2>極值摘要</h2>
+  <ul>
+    <li><strong>最高氣溫：</strong>2024-08-04，28_1，25.9 °C</li>
+    <li><strong>最高濕度：</strong>2024-09-22，9_1，100 %</li>
+    <li><strong>最大陣風：</strong>2024-09-17，3_1，14.7 m/s</li>
+    <li><strong>最大降雨量：</strong>2024-09-22，9_1，44.5 mm</li>
+    <li><strong>最低日照：</strong>2024-09-22，9_1，0 min</li>
+    <li><strong>最高 UV：</strong>2024-08-25，33_1，11 </li>
+  </ul>
+
+  <h2>活動天候摘要表</h2>
+  <div class="table-wrap"><table><thead><tr><th>日期</th><th>活動</th><th>來源</th><th>氣溫</th><th>濕度</th><th>氣壓</th><th>風速</th><th>陣風</th><th>降雨</th><th>日照</th><th>UV</th><th>描述標籤</th></tr></thead><tbody><tr><td>2024-07-22</td><td>6_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>25.8</td><td>87.6</td><td>916.6</td><td>2.5</td><td>10.4</td><td>0</td><td>354</td><td>10</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、陣風 ≥10 m/s、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-04</td><td>36_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>25.3</td><td>90.4</td><td>918.7</td><td>1.7</td><td>7.1</td><td>0</td><td>198</td><td>6</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-04</td><td>30_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>25.3</td><td>90.4</td><td>918.7</td><td>1.7</td><td>7.1</td><td>0</td><td>198</td><td>6</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-04</td><td>37_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>25.6</td><td>89.6</td><td>918.6</td><td>1.8</td><td>7.1</td><td>0</td><td>222</td><td>7</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-04</td><td>35_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>25.3</td><td>90.4</td><td>918.7</td><td>1.7</td><td>7.1</td><td>0</td><td>198</td><td>6</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-04</td><td>15_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>25.3</td><td>90.4</td><td>918.7</td><td>1.7</td><td>7.1</td><td>0</td><td>198</td><td>6</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-04</td><td>28_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>25.9</td><td>88.2</td><td>918.5</td><td>1.9</td><td>7.1</td><td>0</td><td>222</td><td>7</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-11</td><td>16_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>24.8</td><td>88.8</td><td>914.1</td><td>1.4</td><td>7.6</td><td>0</td><td>198</td><td>6</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-11</td><td>23_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>25.1</td><td>88</td><td>914</td><td>1.5</td><td>7.6</td><td>0</td><td>246</td><td>9</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-11</td><td>20_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>24.8</td><td>88.8</td><td>914.1</td><td>1.4</td><td>7.6</td><td>0</td><td>198</td><td>6</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-11</td><td>8_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>25.1</td><td>88</td><td>914</td><td>1.5</td><td>7.6</td><td>0</td><td>246</td><td>9</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-11</td><td>14_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>24.8</td><td>88.8</td><td>914.1</td><td>1.4</td><td>7.6</td><td>0</td><td>198</td><td>6</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-11</td><td>13_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>25.1</td><td>88</td><td>914</td><td>1.5</td><td>7.6</td><td>0</td><td>246</td><td>9</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-19</td><td>48_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>23.2</td><td>95.4</td><td>916</td><td>2.1</td><td>11.4</td><td>0</td><td>36</td><td>6</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、陣風 ≥10 m/s、UV ≥6</td></tr><tr><td>2024-08-24</td><td>29_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>24</td><td>94.2</td><td>920.2</td><td>2.1</td><td>5.8</td><td>1</td><td>204</td><td>7</td><td>有觀測降雨、高濕 ≥90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-25</td><td>44_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>23.8</td><td>91.4</td><td>919</td><td>3.1</td><td>6.8</td><td>0</td><td>300</td><td>11</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-25</td><td>45_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>23.8</td><td>91.4</td><td>919</td><td>3.1</td><td>6.8</td><td>0</td><td>300</td><td>11</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-25</td><td>43_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>24.1</td><td>90.8</td><td>918.9</td><td>3.2</td><td>6.8</td><td>0</td><td>336</td><td>11</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-25</td><td>41_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>23.8</td><td>91.4</td><td>919</td><td>3.1</td><td>6.8</td><td>0</td><td>300</td><td>11</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-25</td><td>33_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>23.8</td><td>91.4</td><td>919</td><td>3.1</td><td>6.8</td><td>0</td><td>300</td><td>11</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-25</td><td>38_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>24.1</td><td>90.8</td><td>918.9</td><td>3.2</td><td>6.8</td><td>0</td><td>336</td><td>11</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-25</td><td>40_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>24.5</td><td>89.6</td><td>919</td><td>3.2</td><td>6.8</td><td>0</td><td>336</td><td>11</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-26</td><td>46_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>23.9</td><td>89.7</td><td>917.1</td><td>3.1</td><td>7.4</td><td>0</td><td>294</td><td>8</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-08-26</td><td>42_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>23.9</td><td>89.7</td><td>917.1</td><td>3.1</td><td>7.4</td><td>0</td><td>294</td><td>8</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-09-17</td><td>3_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>23.1</td><td>94</td><td>916.4</td><td>4.8</td><td>14.7</td><td>0</td><td>186</td><td>6</td><td>無觀測降雨、高濕 ≥90%、有陣風觀測、陣風 ≥10 m/s、日照 ≥60 分、UV ≥6</td></tr><tr><td>2024-09-22</td><td>9_1</td><td>OBSERVED_HISTORICAL_CODIS</td><td>22</td><td>100</td><td>917.5</td><td>4.3</td><td>14.5</td><td>44.5</td><td>0</td><td>1</td><td>有觀測降雨、高濕 ≥90%、有陣風觀測、陣風 ≥10 m/s、累積降雨 ≥5 mm、無日照</td></tr><tr><td>2026-04-11</td><td>xiaoyoukeng_20260410</td><td>MIXED_DIRECT_AND_CODIS</td><td>21.2</td><td>86</td><td>935.7</td><td>1.5</td><td>5.7</td><td>0</td><td>108</td><td>6</td><td>無觀測降雨、濕度 &lt;90%、有陣風觀測、日照 ≥60 分、UV ≥6</td></tr></tbody></table></div>
+
+  <div class="footer">
+    Generated by ib3w_codis_weather_profile_report_v1.
+    Inputs: outputs\ib3w_codis_merged_context_weather_distribution_v1\activity_weather_profile_wide.csv, outputs\ib3w_codis_merged_context_weather_distribution_v1\weather_variable_distribution_summary.csv, outputs\ib3w_codis_merged_context_weather_distribution_v1\activity_weather_distribution_summary.csv.
+  </div>
+</body>
+</html>
