@@ -1,0 +1,8 @@
+﻿feature_family,example_fields,time_effect_type,correct_interpretation_zh,do_not_claim_zh
+temperature,"temperature_mean_c, temperature_max_c",INSTANT_OR_NEAR_REAL_TIME_STATE,活動通過該路段時的近即時氣溫背景。,不可宣稱為多年氣候，亦不可單獨推論中暑或熱傷害。
+relative_humidity,"relative_humidity_mean_pct, relative_humidity_max_pct",INSTANT_OR_NEAR_REAL_TIME_STATE,活動通過該路段時的近即時濕度背景。,不可單獨宣稱霧、低雲、路面濕滑或熱傷害。
+wind,"wind_speed_mean_ms, wind_speed_max_ms, wind_direction_deg",INSTANT_OR_NEAR_REAL_TIME_STATE_OR_SHORT_INTERVAL_SUMMARY,活動通過該路段時的近即時風速/短時段風況背景。,不可當成路線每一點的實測風場；地形遮蔽需另行處理。
+precipitation,"precipitation_mm, precipitation_10min_mm, precipitation_1hr_mm",INTERVAL_ACCUMULATION_ENDING_AT_OBS_TIME,觀測時間之前一段時間已發生的降雨量。,不可解讀為觀測時間當下正在下多少雨。
+antecedent_rain,rain_lookback_6h/24h/72h/7d,ANTECEDENT_LOOKBACK_CONTEXT,活動前幾小時到幾天的降雨背景。,不可直接宣稱實測土壤含水、路面濕滑、溪水暴漲或邊坡危險。
+surface_wetness_or_hydrologic_response,"surface_wetness_proxy, hydrologic_response_proxy",DELAYED_RESPONSE_PROXY,由前期降雨、濕度、日照/乾燥條件推估的延後效應 proxy。,不可宣稱為直接觀測到的路面、水位或土壤狀態。
+water_level,water_level_m,INSTANT_OR_NEAR_REAL_TIME_STATE_WITH_ANTECEDENT_CAUSE,水位高度本身是近即時狀態；造成水位的降雨可能發生在更早時間。,不可把水位升高解讀成當下才開始降雨。

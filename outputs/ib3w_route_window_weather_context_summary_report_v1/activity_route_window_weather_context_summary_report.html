@@ -1,0 +1,441 @@
+﻿<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>IB3W Route-window Weather Context Summary Report v1</title>
+<style>
+body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 24px; background: #f6f8fa; color: #1f2937; }
+section { background: white; border: 1px solid #d9e1e7; border-radius: 10px; padding: 18px; margin-bottom: 16px; }
+table { border-collapse: collapse; width: 100%; font-size: 12px; }
+th, td { border: 1px solid #d9e1e7; padding: 6px 8px; text-align: left; vertical-align: top; }
+th { background: #edf2f5; }
+pre { white-space: pre-wrap; font-size: 13px; line-height: 1.5; }
+.wrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<h1>IB3W Route-window Weather Context Summary Report v1</h1>
+<section>
+<p>Readable report layer for route-window temperature / humidity / wind variation and antecedent weather background.</p>
+<p>No WBGT, no UV, no direct sunshine, no heat illness diagnosis, no medical judgment, no THCI, no final hiking risk score, no missing-to-zero imputation.</p>
+<p>Route-window rows: 16; zero fallback violations: 0</p>
+</section>
+<section><h2>Narrative</h2><pre># IB3W Route-window Weather Context Summary Report v1<br>
+<br>
+- activity_id: `qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx`<br>
+- route_window_count: 16<br>
+- route_distance_range_m: 0–4000<br>
+- local_time_range: 2026-04-11 05:35:47 → 2026-04-11 07:54:30<br>
+<br>
+## 路段當下環境變化<br>
+<br>
+- 氣溫：19.3°C → 21.5°C，變化 2.2°C。<br>
+- 相對濕度：92.6% → 87.7%，變化 -4.9%。<br>
+- 風速：1.1 m/s → 1.8 m/s，變化 0.7 m/s。<br>
+<br>
+活動通過不同路段時，氣溫隨時間與路段逐步上升、相對濕度下降、風速略增；但全路段 heat index 未達標準計算門檻，available weather 不支持 heat/humid stress。<br>
+<br>
+## 前期天氣背景<br>
+<br>
+出發前 6h 觀測降雨背景值：0.5；出發前 24h 觀測降雨背景值：0.5；出發前 72h 觀測降雨背景值：7.5；出發前 7d 觀測降雨背景值：61.0；最後一次觀測降雨時間：2026-04-10T16:00:00+00:00；距活動開始約 5.596 小時前仍有觀測降雨；最後降雨測站：C0AC40<br>
+<br>
+前期降雨是 lookback context：代表活動前某段時間曾發生觀測降雨，不能直接當成活動當下正在下雨。<br>
+<br>
+## 時間語意與判讀邊界<br>
+<br>
+- temperature / humidity / wind：近即時或短時段狀態，適合對應活動通過路段。<br>
+- precipitation：區間累積，代表觀測時間之前一段時間已發生的雨量。<br>
+- antecedent rain：活動前 lookback 背景，不能直接宣稱路面濕滑或土壤含水。<br>
+- water level 若未來納入：水位是近即時狀態，但造成水位的降雨可能有延後效應。<br>
+- 本報告不宣稱 WBGT、UV、直接日照、中暑/熱傷害、醫療判斷、THCI 或 final hiking risk。<br>
+- missing weather remains missing；zero_fallback_true_count 必須為 0。</pre></section>
+<section><h2>Route-window trend summary</h2><div class="wrap"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>schema_version</th>
+      <th>activity_id</th>
+      <th>route_window_count</th>
+      <th>route_distance_min_m</th>
+      <th>route_distance_max_m</th>
+      <th>activity_start_time_local</th>
+      <th>activity_end_time_local</th>
+      <th>temperature_mean_first_c</th>
+      <th>temperature_mean_last_c</th>
+      <th>temperature_mean_delta_c</th>
+      <th>temperature_mean_min_c</th>
+      <th>temperature_mean_max_c</th>
+      <th>temperature_variation_status</th>
+      <th>relative_humidity_mean_first_pct</th>
+      <th>relative_humidity_mean_last_pct</th>
+      <th>relative_humidity_mean_delta_pct</th>
+      <th>relative_humidity_mean_min_pct</th>
+      <th>relative_humidity_mean_max_pct</th>
+      <th>relative_humidity_variation_status</th>
+      <th>wind_speed_mean_first_ms</th>
+      <th>wind_speed_mean_last_ms</th>
+      <th>wind_speed_mean_delta_ms</th>
+      <th>wind_speed_mean_min_ms</th>
+      <th>wind_speed_mean_max_ms</th>
+      <th>wind_speed_variation_status</th>
+      <th>heat_index_computed_window_count</th>
+      <th>daytime_heat_window_positive_count</th>
+      <th>heat_humid_route_window_context_status_distribution</th>
+      <th>all_windows_heat_humid_not_supported</th>
+      <th>zero_fallback_true_count</th>
+      <th>route_window_variation_conclusion_zh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ib3w_route_window_weather_context_summary_report_v1</td>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx</td>
+      <td>16</td>
+      <td>0.0</td>
+      <td>4000.0</td>
+      <td>2026-04-11 05:35:47</td>
+      <td>2026-04-11 07:54:30</td>
+      <td>19.3316</td>
+      <td>21.5263</td>
+      <td>2.1947</td>
+      <td>19.3316</td>
+      <td>21.5263</td>
+      <td>TEMPERATURE_INCREASING_ALONG_ACTIVITY_TIME_ROUTE</td>
+      <td>92.6316</td>
+      <td>87.7368</td>
+      <td>-4.8948</td>
+      <td>87.7368</td>
+      <td>92.9375</td>
+      <td>HUMIDITY_DECREASING_ALONG_ACTIVITY_TIME_ROUTE</td>
+      <td>1.1474</td>
+      <td>1.8474</td>
+      <td>0.7</td>
+      <td>1.1474</td>
+      <td>1.8474</td>
+      <td>WIND_SPEED_INCREASING_ALONG_ACTIVITY_TIME_ROUTE</td>
+      <td>0</td>
+      <td>0</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER=16</td>
+      <td>True</td>
+      <td>0</td>
+      <td>活動通過不同路段時，氣溫隨時間與路段逐步上升、相對濕度下降、風速略增；但全路段 heat index 未達標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+  </tbody>
+</table></div></section>
+<section><h2>Antecedent weather background</h2><div class="wrap"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>schema_version</th>
+      <th>activity_id</th>
+      <th>antecedent_context_available</th>
+      <th>antecedent_source_csv</th>
+      <th>activity_start_time_from_antecedent</th>
+      <th>rain_lookback_6h_value</th>
+      <th>rain_lookback_24h_value</th>
+      <th>rain_lookback_72h_value</th>
+      <th>rain_lookback_7d_value</th>
+      <th>last_observed_rain_time</th>
+      <th>hours_since_last_observed_rain</th>
+      <th>last_observed_rain_station</th>
+      <th>antecedent_weather_background_zh</th>
+      <th>precipitation_time_effect_type</th>
+      <th>antecedent_time_effect_type</th>
+      <th>delayed_effect_boundary</th>
+      <th>antecedent_raw_row_json</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ib3w_route_window_weather_context_summary_report_v1</td>
+      <td>qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx</td>
+      <td>True</td>
+      <td>outputs\ib3w_antecedent_precipitation_context_v1\activity_antecedent_precipitation_context.csv</td>
+      <td>2026-04-10T21:35:47+00:00</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>7.5</td>
+      <td>61.0</td>
+      <td>2026-04-10T16:00:00+00:00</td>
+      <td>5.596</td>
+      <td>C0AC40</td>
+      <td>出發前 6h 觀測降雨背景值：0.5；出發前 24h 觀測降雨背景值：0.5；出發前 72h 觀測降雨背景值：7.5；出發前 7d 觀測降雨背景值：61.0；最後一次觀測降雨時間：2026-04-10T16:00:00+00:00；距活動開始約 5.596 小時前仍有觀測降雨；最後降雨測站：C0AC40</td>
+      <td>INTERVAL_ACCUMULATION_ENDING_AT_OBS_TIME_OR_LOOKBACK_CONTEXT</td>
+      <td>ANTECEDENT_LOOKBACK_CONTEXT</td>
+      <td>可作為前期天氣背景；不可直接宣稱實測路面濕滑、土壤含水、溪水暴漲或邊坡不穩。</td>
+      <td>{"schema_version": "ib3w_antecedent_precipitation_context_v1", "output_case": "qixing_lengshuikeng_xiaoyoukeng_20260410_gpx_v1", "case_id": "qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx", "activity_id": "qixing_lengshuikeng_xiaoyoukeng_20260410_biji_gpx", "activity_start_time_utc": "2026-04-10T21:35:47+00:00", "activity_end_time_utc": "2026-04-10T23:54:30+00:00", "activity_duration_min": "138.717", "weather_feature_vector_status": "WEATHER_FEATURE_VECTOR_AVAILABLE_PARTIAL", "weather_sensitive_score_allowed": "True", "weather_sensitive_feature_gate": "WEATHER_FEATURE_AVAILABLE_PARTIAL_SCORE_ALLOWED_FOR_OBSERVED_VARIABLES_ONLY", "zero_fallback_true_count": "0", "primary_candidate_station_ids": "466910|466930|A0A460|C0AC40", "primary_station_count_policy": "4", "precipitation_amount_semantics": "RAW_OBSERVED_PRECIPITATION_MM_NOT_SUMMED_AS_LOOKBACK_ACCUMULATION", "source_weather_db": "weather\\tw_weather_2026-05-01.sqlite3", "source_vector_csv": "outputs\\ib3w_weather_sensitive_feature_vector_v1\\activity_weather_sensitive_feature_vector.csv", "scope_note": "Lookback precipitation observation context only. No risk score, no THCI, no final surface wetness judgment, no missing-to-zero imputation.", "rain_lookback_6h_status": "PRECIPITATION_LOOKBACK_OBSERVED_RAIN", "rain_lookback_6h_row_count": "111", "rain_lookback_6h_nonnull_row_count": "108", "rain_lookback_6h_null_row_count": "3", "rain_lookback_6h_observed_station_count": "4", "rain_lookback_6h_positive_station_count": "1", "rain_lookback_6h_missing_station_count": "0", "rain_lookback_6h_observed_station_ids": "466910|466930|A0A460|C0AC40", "rain_lookback_6h_positive_station_ids": "C0AC40", "rain_lookback_6h_zero_observation_count": "107", "rain_lookback_6h_positive_observation_count": "1", "rain_lookback_6h_max_observed_precipitation_mm": "0.5", "rain_lookback_6h_mean_observed_precipitation_mm": "0.0046", "rain_lookback_6h_observed_any": "True", "rain_lookback_6h_positive_observed_flag": "True", "rain_lookback_6h_observed_zero_flag": "False", "rain_lookback_24h_status": "PRECIPITATION_LOOKBACK_OBSERVED_RAIN", "rain_lookback_24h_row_count": "436", "rain_lookback_24h_nonnull_row_count": "432", "rain_lookback_24h_null_row_count": "4", "rain_lookback_24h_observed_station_count": "4", "rain_lookback_24h_positive_station_count": "1", "rain_lookback_24h_missing_station_count": "0", "rain_lookback_24h_observed_station_ids": "466910|466930|A0A460|C0AC40", "rain_lookback_24h_positive_station_ids": "C0AC40", "rain_lookback_24h_zero_observation_count": "413", "rain_lookback_24h_positive_observation_count": "19", "rain_lookback_24h_max_observed_precipitation_mm": "0.5", "rain_lookback_24h_mean_observed_precipitation_mm": "0.022", "rain_lookback_24h_observed_any": "True", "rain_lookback_24h_positive_observed_flag": "True", "rain_lookback_24h_observed_zero_flag": "False", "rain_lookback_72h_status": "PRECIPITATION_LOOKBACK_OBSERVED_RAIN", "rain_lookback_72h_row_count": "1318", "rain_lookback_72h_nonnull_row_count": "1277", "rain_lookback_72h_null_row_count": "41", "rain_lookback_72h_observed_station_count": "4", "rain_lookback_72h_positive_station_count": "4", "rain_lookback_72h_missing_station_count": "0", "rain_lookback_72h_observed_station_ids": "466910|466930|A0A460|C0AC40", "rain_lookback_72h_positive_station_ids": "466910|466930|A0A460|C0AC40", "rain_lookback_72h_zero_observation_count": "560", "rain_lookback_72h_positive_observation_count": "717", "rain_lookback_72h_max_observed_precipitation_mm": "7.5", "rain_lookback_72h_mean_observed_precipitation_mm": "1.6391", "rain_lookback_72h_observed_any": "True", "rain_lookback_72h_positive_observed_flag": "True", "rain_lookback_72h_observed_zero_flag": "False", "rain_lookback_7d_status": "PRECIPITATION_LOOKBACK_OBSERVED_RAIN", "rain_lookback_7d_row_count": "3049", "rain_lookback_7d_nonnull_row_count": "2937", "rain_lookback_7d_null_row_count": "112", "rain_lookback_7d_observed_station_count": "4", "rain_lookback_7d_positive_station_count": "4", "rain_lookback_7d_missing_station_count": "0", "rain_lookback_7d_observed_station_ids": "466910|466930|A0A460|C0AC40", "rain_lookback_7d_positive_station_ids": "466910|466930|A0A460|C0AC40", "rain_lookback_7d_zero_observation_count": "770", "rain_lookback_7d_positive_observation_count": "2167", "rain_lookback_7d_max_observed_precipitation_mm": "61.0", "rain_lookback_7d_mean_observed_precipitation_mm": "8.3525", "rain_lookback_7d_observed_any": "True", "rain_lookback_7d_positive_observed_flag": "True", "rain_lookback_7d_observed_zero_flag": "False", "positive_rain_local_dates_count_lookback_7d": "8", "positive_rain_local_dates_lookback_7d": "2026-04-04|2026-04-05|2026-04-06|2026-04-07|2026-04-08|2026-04-09|2026-04-10|2026-04-11", "max_observed_precipitation_lookback_7d_mm": "61.0", "hours_since_last_observed_rain": "5.596", "last_observed_rain_time_utc": "2026-04-10T16:00:00+00:00", "last_observed_rain_station_ids": "C0AC40", "last_observed_rain_station_names": "大屯山", "last_observed_rain_precipitation_mm_max": "0.5", "antecedent_precipitation_context_status": "ANTECEDENT_PRECIPITATION_OBSERVED_RAIN", "antecedent_precipitation_context_reason": "At least one positive precipitation observation was found in the 7-day lookback window.", "antecedent_precipitation_data_quality": "ANTECEDENT_PRECIPITATION_DATA_FULL", "rain_lookback_6h_start_utc": "2026-04-10T15:35:47+00:00", "rain_lookback_6h_end_utc": "2026-04-10T21:35:47+00:00", "rain_lookback_24h_start_utc": "2026-04-09T21:35:47+00:00", "rain_lookback_24h_end_utc": "2026-04-10T21:35:47+00:00", "rain_lookback_72h_start_utc": "2026-04-07T21:35:47+00:00", "rain_lookback_72h_end_utc": "2026-04-10T21:35:47+00:00", "rain_lookback_7d_start_utc": "2026-04-03T21:35:47+00:00", "rain_lookback_7d_end_utc": "2026-04-10T21:35:47+00:00"}</td>
+    </tr>
+  </tbody>
+</table></div></section>
+<section><h2>Route-window environment variation</h2><div class="wrap"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>route_distance_label</th>
+      <th>window_start_time_local</th>
+      <th>window_end_time_local</th>
+      <th>temperature_mean_c</th>
+      <th>temperature_max_c</th>
+      <th>relative_humidity_mean_pct</th>
+      <th>wind_speed_mean_ms</th>
+      <th>heat_index_status</th>
+      <th>heat_humid_route_window_context_status</th>
+      <th>route_window_environment_interpretation_zh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0-250m</td>
+      <td>2026-04-11 05:35:47</td>
+      <td>2026-04-11 05:40:15</td>
+      <td>19.3316</td>
+      <td>21.3</td>
+      <td>92.6316</td>
+      <td>1.1474</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>250-500m</td>
+      <td>2026-04-11 05:40:21</td>
+      <td>2026-04-11 05:49:47</td>
+      <td>19.3562</td>
+      <td>21.3</td>
+      <td>92.8125</td>
+      <td>1.2500</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>500-750m</td>
+      <td>2026-04-11 05:49:53</td>
+      <td>2026-04-11 06:04:00</td>
+      <td>19.4316</td>
+      <td>21.3</td>
+      <td>92.7895</td>
+      <td>1.1895</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>750-1000m</td>
+      <td>2026-04-11 05:58:24</td>
+      <td>2026-04-11 06:09:23</td>
+      <td>19.4187</td>
+      <td>21.1</td>
+      <td>92.9375</td>
+      <td>1.2937</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>1000-1250m</td>
+      <td>2026-04-11 06:09:29</td>
+      <td>2026-04-11 06:16:34</td>
+      <td>19.5687</td>
+      <td>21.7</td>
+      <td>92.9375</td>
+      <td>1.3062</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>1250-1500m</td>
+      <td>2026-04-11 06:16:40</td>
+      <td>2026-04-11 06:27:46</td>
+      <td>19.7529</td>
+      <td>22.3</td>
+      <td>92.8235</td>
+      <td>1.2889</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>1500-1750m</td>
+      <td>2026-04-11 06:26:52</td>
+      <td>2026-04-11 06:37:52</td>
+      <td>19.7850</td>
+      <td>22.5</td>
+      <td>92.8000</td>
+      <td>1.4550</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>1750-2000m</td>
+      <td>2026-04-11 06:37:58</td>
+      <td>2026-04-11 06:53:36</td>
+      <td>20.2364</td>
+      <td>22.9</td>
+      <td>92.0909</td>
+      <td>1.3409</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>2000-2250m</td>
+      <td>2026-04-11 06:53:41</td>
+      <td>2026-04-11 07:11:04</td>
+      <td>20.6318</td>
+      <td>23.2</td>
+      <td>91.0909</td>
+      <td>1.5773</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>2250-2500m</td>
+      <td>2026-04-11 07:11:10</td>
+      <td>2026-04-11 07:16:58</td>
+      <td>20.6947</td>
+      <td>23.2</td>
+      <td>90.9474</td>
+      <td>1.6579</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>2500-2750m</td>
+      <td>2026-04-11 07:17:04</td>
+      <td>2026-04-11 07:26:11</td>
+      <td>20.8000</td>
+      <td>23.6</td>
+      <td>90.5455</td>
+      <td>1.6727</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>2750-3000m</td>
+      <td>2026-04-11 07:22:14</td>
+      <td>2026-04-11 07:34:38</td>
+      <td>20.8870</td>
+      <td>23.8</td>
+      <td>90.1304</td>
+      <td>1.8043</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>3000-3250m</td>
+      <td>2026-04-11 07:34:44</td>
+      <td>2026-04-11 07:40:17</td>
+      <td>21.2455</td>
+      <td>24.2</td>
+      <td>89.0909</td>
+      <td>1.7636</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>3250-3500m</td>
+      <td>2026-04-11 07:40:23</td>
+      <td>2026-04-11 07:46:59</td>
+      <td>21.3105</td>
+      <td>24.2</td>
+      <td>88.7368</td>
+      <td>1.8053</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>3500-3750m</td>
+      <td>2026-04-11 07:47:05</td>
+      <td>2026-04-11 07:54:18</td>
+      <td>21.4455</td>
+      <td>24.3</td>
+      <td>88.1364</td>
+      <td>1.8136</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+    <tr>
+      <td>3750-4000m</td>
+      <td>2026-04-11 07:54:24</td>
+      <td>2026-04-11 07:54:30</td>
+      <td>21.5263</td>
+      <td>24.3</td>
+      <td>87.7368</td>
+      <td>1.8474</td>
+      <td>HEAT_INDEX_NOT_COMPUTED_TEMPERATURE_BELOW_STANDARD_THRESHOLD</td>
+      <td>HEAT_HUMID_ROUTE_WINDOW_CONTEXT_NOT_SUPPORTED_BY_AVAILABLE_WEATHER</td>
+      <td>此路段通過時有氣溫/濕度/風速觀測；但氣溫低於 heat index 標準計算門檻，available weather 不支持 heat/humid stress。</td>
+    </tr>
+  </tbody>
+</table></div></section>
+<section><h2>Weather time-effect feature contract</h2><div class="wrap"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>feature_family</th>
+      <th>example_fields</th>
+      <th>time_effect_type</th>
+      <th>correct_interpretation_zh</th>
+      <th>do_not_claim_zh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>temperature</td>
+      <td>temperature_mean_c, temperature_max_c</td>
+      <td>INSTANT_OR_NEAR_REAL_TIME_STATE</td>
+      <td>活動通過該路段時的近即時氣溫背景。</td>
+      <td>不可宣稱為多年氣候，亦不可單獨推論中暑或熱傷害。</td>
+    </tr>
+    <tr>
+      <td>relative_humidity</td>
+      <td>relative_humidity_mean_pct, relative_humidity_max_pct</td>
+      <td>INSTANT_OR_NEAR_REAL_TIME_STATE</td>
+      <td>活動通過該路段時的近即時濕度背景。</td>
+      <td>不可單獨宣稱霧、低雲、路面濕滑或熱傷害。</td>
+    </tr>
+    <tr>
+      <td>wind</td>
+      <td>wind_speed_mean_ms, wind_speed_max_ms, wind_direction_deg</td>
+      <td>INSTANT_OR_NEAR_REAL_TIME_STATE_OR_SHORT_INTERVAL_SUMMARY</td>
+      <td>活動通過該路段時的近即時風速/短時段風況背景。</td>
+      <td>不可當成路線每一點的實測風場；地形遮蔽需另行處理。</td>
+    </tr>
+    <tr>
+      <td>precipitation</td>
+      <td>precipitation_mm, precipitation_10min_mm, precipitation_1hr_mm</td>
+      <td>INTERVAL_ACCUMULATION_ENDING_AT_OBS_TIME</td>
+      <td>觀測時間之前一段時間已發生的降雨量。</td>
+      <td>不可解讀為觀測時間當下正在下多少雨。</td>
+    </tr>
+    <tr>
+      <td>antecedent_rain</td>
+      <td>rain_lookback_6h/24h/72h/7d</td>
+      <td>ANTECEDENT_LOOKBACK_CONTEXT</td>
+      <td>活動前幾小時到幾天的降雨背景。</td>
+      <td>不可直接宣稱實測土壤含水、路面濕滑、溪水暴漲或邊坡危險。</td>
+    </tr>
+    <tr>
+      <td>surface_wetness_or_hydrologic_response</td>
+      <td>surface_wetness_proxy, hydrologic_response_proxy</td>
+      <td>DELAYED_RESPONSE_PROXY</td>
+      <td>由前期降雨、濕度、日照/乾燥條件推估的延後效應 proxy。</td>
+      <td>不可宣稱為直接觀測到的路面、水位或土壤狀態。</td>
+    </tr>
+    <tr>
+      <td>water_level</td>
+      <td>water_level_m</td>
+      <td>INSTANT_OR_NEAR_REAL_TIME_STATE_WITH_ANTECEDENT_CAUSE</td>
+      <td>水位高度本身是近即時狀態；造成水位的降雨可能發生在更早時間。</td>
+      <td>不可把水位升高解讀成當下才開始降雨。</td>
+    </tr>
+  </tbody>
+</table></div></section>
+</body>
+</html>
