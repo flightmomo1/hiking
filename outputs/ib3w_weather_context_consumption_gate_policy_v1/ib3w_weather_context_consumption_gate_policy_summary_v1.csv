@@ -1,0 +1,2 @@
+﻿"schema_version","gate_row_count","allow_context_only_count","allow_proxy_review_only_count","block_weather_unavailable_count","block_zero_fallback_count","block_unsupported_direct_claim_count","zero_fallback_policy_present","weather_unavailable_policy_present","proxy_review_policy_present","final_score_boundary_present"
+"ib3w_weather_context_consumption_gate_policy_v1","11","2","4","2","1","2","True","True","True","True"
