@@ -1,0 +1,2 @@
+﻿schema_version,fixture_case_count,expected_allowed_count,expected_blocked_count,actual_allowed_count,actual_blocked_count,dry_run_actual_invocation_count,enforcement_violation_count,fixture_smoke_conclusion
+ib3m_weather_gate_enforced_radar_consumer_fixture_smoke_v1,2,1,1,1,1,0,0,PASS

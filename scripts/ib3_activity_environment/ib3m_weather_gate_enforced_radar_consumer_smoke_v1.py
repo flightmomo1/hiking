@@ -9,6 +9,7 @@ from typing import Any
 SCHEMA_VERSION = "ib3m_weather_gate_enforced_radar_consumer_smoke_v1"
 NOT_AUTHORIZED = "NOT_AUTHORIZED_BY_IB3W_GATE"
 RADAR_CONSUMER = "scripts/thci_plot_radar_v1_0c.py"
+BLOCKING_GATE_PREFIX = "BLOCK_SCORE_"
 
 
 def read_csv_rows(path: Path) -> list[dict[str, str]]:
@@ -35,6 +36,7 @@ def is_not_authorized(value: Any) -> bool:
 
 
 def evaluate_row(row: dict[str, str]) -> dict[str, Any]:
+    gate = str(row.get("weather_context_consumption_gate") or "").strip()
     downstream_score_allowed = to_bool(row.get("downstream_score_allowed"))
     thci_not_authorized = is_not_authorized(row.get("thci_authorization_status"))
     radar_not_authorized = is_not_authorized(row.get("radar_authorization_status"))
@@ -43,14 +45,14 @@ def evaluate_row(row: dict[str, str]) -> dict[str, Any]:
     )
 
     blocking_reasons: list[str] = []
+    if gate.startswith(BLOCKING_GATE_PREFIX):
+        blocking_reasons.append(f"blocking_weather_context_gate:{gate}")
     if not downstream_score_allowed:
         blocking_reasons.append("downstream_score_allowed_not_true")
     if thci_not_authorized:
         blocking_reasons.append("thci_not_authorized_by_ib3w_gate")
     if radar_not_authorized:
         blocking_reasons.append("radar_not_authorized_by_ib3w_gate")
-    if final_risk_not_authorized:
-        blocking_reasons.append("final_hiking_risk_not_authorized_by_ib3w_gate")
 
     invocation_allowed = not blocking_reasons
 
@@ -62,14 +64,15 @@ def evaluate_row(row: dict[str, str]) -> dict[str, Any]:
         "schema_version": SCHEMA_VERSION,
         "case_id": row.get("case_id", ""),
         "activity_id": row.get("activity_id", ""),
-        "weather_context_consumption_gate": row.get(
-            "weather_context_consumption_gate", ""
-        ),
+        "weather_context_consumption_gate": gate,
         "downstream_score_allowed": str(downstream_score_allowed),
         "thci_authorization_status": row.get("thci_authorization_status", ""),
         "radar_authorization_status": row.get("radar_authorization_status", ""),
         "final_hiking_risk_authorization_status": row.get(
             "final_hiking_risk_authorization_status", ""
+        ),
+        "final_hiking_risk_authorized_for_separate_consumer": str(
+            not final_risk_not_authorized
         ),
         "radar_consumer": RADAR_CONSUMER,
         "radar_consumer_invocation_allowed": str(invocation_allowed),
