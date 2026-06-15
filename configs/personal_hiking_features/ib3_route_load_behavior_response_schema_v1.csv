@@ -1,0 +1,54 @@
+field_name,output_level,field_group,source_field_or_rule,aggregation,required,missing_policy,interpretation_boundary
+schema_version,window|activity|audit,identity,constant,constant,True,fail,Schema identifier only
+activity_id_short,window|activity,identity,usability gate activity_id_short,identity,True,fail,Activity identity only
+activity_id_full,window|activity,identity,usability gate activity_id_full,identity,True,fail,Activity identity only
+fixture_activity,window|activity,fixture_scope,configured fixture activity ids,constant True,True,fail,Small smoke membership only
+route_distance_window_start_m,window,route_axis,floor(v1l2_ib2_dist_m / 50) * 50,50m bin,True,drop row and audit,Canonical route-distance evidence
+route_distance_window_end_m,window,route_axis,route_distance_window_start_m + 50,50m bin,True,drop row and audit,Canonical route-distance evidence
+route_phase,window,route_axis,route_phase,group key,True,preserve UNKNOWN,Separates repeated route-distance traversal where available
+point_count,window,coverage,row count,count,True,fail,Evidence coverage only
+duration_observed_sec,window,behavior,dt_sec,sum valid values where 0 < dt_sec <= 30,True,blank if unavailable,Observed valid interval duration
+elapsed_time_span_sec,window,behavior,elapsed_sec,max minus min,True,blank if unavailable,Span is not summed active duration
+speed_mps_median,window,behavior,calibrated_speed_mps,median,True,blank if unavailable,Descriptive movement response
+speed_mps_p25,window,behavior,calibrated_speed_mps,p25 inclusive,False,blank if unavailable,Descriptive movement response
+speed_mps_p75,window,behavior,calibrated_speed_mps,p75 inclusive,False,blank if unavailable,Descriptive movement response
+stopped_ratio,window,behavior,movement_state == STOPPED,count / point_count,True,blank if unavailable,Observed state ratio; not an ability judgment
+low_speed_ratio,window,behavior,movement_state == SLOW_MOVING or calibrated_speed_mps <= 0.25,count / point_count excluding STOPPED,True,blank if unavailable,Observed low-speed evidence; not a penalty
+heart_rate_bpm_median,window,behavior,heart_rate_bpm,median,False,blank if unavailable,Physiology context only
+heart_rate_bpm_p75,window,behavior,heart_rate_bpm,p75 inclusive,False,blank if unavailable,Physiology context only
+heart_rate_bpm_p90,window,behavior,heart_rate_bpm,p90 inclusive,False,blank if unavailable,Physiology context only
+calibrated_slope_pct_median,window,route_load,calibrated_slope_pct,median,False,blank if unavailable,Route-load evidence; never use legacy gain
+calibrated_slope_pct_p75_abs,window,route_load,abs(calibrated_slope_pct),p75 inclusive,False,blank if unavailable,Route-load evidence; never use legacy gain
+route_profile_elevation_min_m,window,route_load,elevation_profile_ele_smooth_m,min,False,blank if unavailable,Route-profile elevation context
+route_profile_elevation_max_m,window,route_load,elevation_profile_ele_smooth_m,max,False,blank if unavailable,Route-profile elevation context
+route_profile_elevation_range_m,window,route_load,elevation_profile_ele_smooth_m,max minus min,False,blank if unavailable,Not cumulative ascent or descent
+ib2_terrain_evidence_median,window,route_load,ib2_terrain_score,median,False,blank if unavailable,Existing IB2 route evidence; not a personal ability label
+ib2_effort_evidence_median,window,route_load,ib2_effort_score,median,False,blank if unavailable,Existing IB2 route evidence; not a personal ability label
+ib2_exposure_evidence_median,window,route_load,ib2_exposure_score,median,False,blank if unavailable,Existing IB2 route evidence; not a personal ability label
+ib2_risk_band_evidence,window,route_load,ib2_risk_band,mode,False,blank if unavailable,Existing route-risk band evidence only
+route_load_context_band,window,route_load,descriptive slope/effort/risk-band rule,descriptive classification,True,fail,Window load context only; not an ability class
+osm_exposure_types,window,environment,near_*_flag,distinct pipe-delimited exposure names,False,blank if unavailable,Proximity exposure does not prove facility use
+near_steps_ratio,window,environment,near_steps_flag,mean boolean,False,blank if unavailable,Exposure ratio only
+near_guidepost_ratio,window,environment,near_guidepost_flag,mean boolean,False,blank if unavailable,Exposure ratio only
+near_shelter_ratio,window,environment,near_shelter_flag,mean boolean,False,blank if unavailable,Exposure ratio only
+near_waterway_ratio,window,environment,near_waterway_flag,mean boolean,False,blank if unavailable,Exposure ratio only
+near_cliff_ratio,window,environment,near_cliff_flag,mean boolean,False,blank if unavailable,Exposure ratio only
+near_road_ratio,window,environment,near_road_flag,mean boolean,False,blank if unavailable,Exposure ratio only
+nearest_environment_feature_distance_m_min,window,environment,selected nearest_*_dist_m,min,False,blank if unavailable,Nearest mapped evidence only
+temperature_c,window|activity,weather,activity route-profile ascent feature row,activity-level attach,False,blank; never zero-fill,Observed weather context only
+relative_humidity_pct,window|activity,weather,activity route-profile ascent feature row,activity-level attach,False,blank; never zero-fill,Observed weather context only
+precipitation_mm,window|activity,weather,activity route-profile ascent feature row,activity-level attach,False,blank; never zero-fill,Observed weather context only
+wind_speed_ms,window|activity,weather,activity route-profile ascent feature row,activity-level attach,False,blank; never zero-fill,Observed weather context only
+wind_gust_ms,window|activity,weather,activity route-profile ascent feature row,activity-level attach,False,blank; never zero-fill,Observed weather context only
+uv_index,window|activity,weather,activity route-profile ascent feature row,activity-level attach,False,blank; never zero-fill,Observed weather context only
+weather_context_flags,window|activity,weather,candidate_weather_context_flags_reattached,activity-level attach,False,blank if unavailable,Flags are descriptive context and not penalties
+weather_context_available,window|activity,weather,any numeric weather value present,boolean,True,False when unavailable,Availability gate only
+window_qa_flags,window,qa,source review flags and missing-field checks,distinct pipe-delimited flags,True,blank when none,Review evidence only
+high_load_window_count,activity,summary,route_load_context_band == HIGH_ROUTE_LOAD_EVIDENCE,count,True,fail,Descriptive window count; no person ranking
+high_load_speed_mps_median,activity,summary,window speed where high-load evidence,median,False,blank if unavailable,Behavior evidence under route-load context
+high_load_stopped_ratio_mean,activity,summary,window stopped ratio where high-load evidence,mean,False,blank if unavailable,Behavior evidence under route-load context
+high_load_low_speed_ratio_mean,activity,summary,window low-speed ratio where high-load evidence,mean,False,blank if unavailable,Behavior evidence under route-load context
+high_load_heart_rate_bpm_median,activity,summary,window HR where high-load evidence,median,False,blank if unavailable,Physiology evidence under route-load context
+legacy_gain_fields_used_count,audit,boundary,blocked legacy field usage counter,count,True,must be 0,Any nonzero value fails the smoke
+prohibited_score_rank_class_generated_count,audit,boundary,generated prohibited output field counter,count,True,must be 0,Any nonzero value fails the smoke
+audit_conclusion,audit,qa,all smoke checks,gate conclusion,True,fail,PASS only confirms schema and fixture evidence flow
