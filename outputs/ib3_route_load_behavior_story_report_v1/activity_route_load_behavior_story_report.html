@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>IB3 Route Load Behavior Story Report v1</title>
+<style>
+body {
+  font-family: Arial, "Noto Sans TC", sans-serif;
+  margin: 24px;
+  color: #1f2933;
+  line-height: 1.55;
+}
+.note {
+  background: #fff8dc;
+  border-left: 5px solid #b7791f;
+  padding: 12px 14px;
+  margin: 16px 0;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+.card {
+  border: 1px solid #d8dee4;
+  border-radius: 10px;
+  padding: 14px;
+  background: #f8fafc;
+}
+.card strong {
+  display: block;
+  font-size: 24px;
+}
+.card span {
+  color: #52606d;
+  font-size: 12px;
+}
+.table-wrap {
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+  margin: 12px 0 26px;
+}
+th, td {
+  border: 1px solid #d8dee4;
+  padding: 7px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: #eef2f6;
+}
+.story-table tr:nth-child(even) td {
+  background: #fbfdff;
+}
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.case-card {
+  border: 1px solid #d8dee4;
+  border-radius: 10px;
+  padding: 12px;
+  background: #ffffff;
+}
+.case-card h3 {
+  margin: 0 0 8px;
+}
+.case-card p {
+  margin: 4px 0;
+}
+.small {
+  color: #52606d;
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<h1>IB3 Route Load Behavior Story Report v1</h1>
+
+<p class="note">
+<strong>報表邊界：</strong>
+本報表僅將既有 full25 descriptive evidence 重新整理成較直觀的故事型 HTML。
+不重算原始 evidence、不排名活動或登山者、不產生 ability score/rank/class，
+也不產生 THCI、radar 或 final hiking risk score。OSM proximity 僅代表 exposure，
+天候僅為活動層級 context，不作因果推論。
+</p>
+
+
+    <div class="cards">
+      <div class="card"><strong>25</strong><span>usable activity summaries</span></div>
+      <div class="card"><strong>2054</strong><span>50m route-distance windows</span></div>
+      <div class="card"><strong>50m</strong><span>window size</span></div>
+      <div class="card"><strong>0</strong><span>legacy gain fields used</span></div>
+      <div class="card"><strong>0</strong><span>score / rank / class generated</span></div>
+    </div>
+    
+
+<h2>1. Route-distance story map</h2>
+<p>
+這個表把路線依 500m 距離帶彙整，幫助快速理解沿著路線距離軸時，
+route-load evidence、速度、低速點比例、HR 與 OSM exposure 如何共同出現。
+這不是因果分析，也不是上行／下行分析。
+</p>
+<div class="table-wrap"><table class="story-table"><thead><tr><th>route distance band</th><th>window rows</th><th>dominant route-load evidence</th><th>mean window median speed (m/s)</th><th>mean low-speed point ratio</th><th>mean HR median</th><th>top OSM exposure</th></tr></thead><tbody><tr><td>0-500m</td><td>250</td><td>MODERATE_ROUTE_LOAD_EVIDENCE</td><td>0.73</td><td>0.148</td><td>144.3</td><td>road, steps, waterway, guidepost</td></tr>
+<tr><td>500-1000m</td><td>222</td><td>LOWER_ROUTE_LOAD_EVIDENCE</td><td>0.90</td><td>0.107</td><td>142.3</td><td>road, guidepost, shelter, peak</td></tr>
+<tr><td>1000-1500m</td><td>250</td><td>HIGH_ROUTE_LOAD_EVIDENCE</td><td>0.67</td><td>0.205</td><td>147.9</td><td>road, steps</td></tr>
+<tr><td>1500-2000m</td><td>250</td><td>HIGH_ROUTE_LOAD_EVIDENCE</td><td>0.48</td><td>0.294</td><td>146.8</td><td>road, steps, guidepost, peak</td></tr>
+<tr><td>2000-2500m</td><td>250</td><td>MODERATE_ROUTE_LOAD_EVIDENCE</td><td>0.54</td><td>0.218</td><td>145.1</td><td>road, steps, guidepost, peak</td></tr>
+<tr><td>2500-3000m</td><td>250</td><td>HIGH_ROUTE_LOAD_EVIDENCE</td><td>0.47</td><td>0.314</td><td>151.3</td><td>road, steps</td></tr>
+<tr><td>3000-3500m</td><td>249</td><td>LOWER_ROUTE_LOAD_EVIDENCE</td><td>0.98</td><td>0.070</td><td>142.5</td><td>road, guidepost, peak, shelter</td></tr>
+<tr><td>3500-4000m</td><td>233</td><td>MODERATE_ROUTE_LOAD_EVIDENCE</td><td>0.74</td><td>0.138</td><td>149.5</td><td>road, steps, shelter, guidepost</td></tr>
+<tr><td>4000-4500m</td><td>100</td><td>MODERATE_ROUTE_LOAD_EVIDENCE</td><td>0.85</td><td>0.121</td><td>135.4</td><td>road, steps, waterway, guidepost</td></tr></tbody></table></div>
+
+<h2>2. Route load × low-speed point ratio matrix</h2>
+<p>
+這個矩陣顯示不同 route-load evidence label 下，低速點比例分布。
+請注意 route-load label 是 descriptive rule/evidence label，不是能力等級或正式風險分數。
+</p>
+<div class="table-wrap"><table><thead><tr><th>route-load evidence</th><th>ZERO</th><th>GT_0_LT_0P10</th><th>0P10_TO_LT_0P25</th><th>GE_0P25</th></tr></thead><tbody><tr><td>LOWER_ROUTE_LOAD_EVIDENCE</td><td>129 (6.3%)</td><td>165 (8.0%)</td><td>77 (3.7%)</td><td>49 (2.4%)</td></tr>
+<tr><td>MODERATE_ROUTE_LOAD_EVIDENCE</td><td>69 (3.4%)</td><td>297 (14.5%)</td><td>284 (13.8%)</td><td>270 (13.1%)</td></tr>
+<tr><td>HIGH_ROUTE_LOAD_EVIDENCE</td><td>54 (2.6%)</td><td>191 (9.3%)</td><td>183 (8.9%)</td><td>286 (13.9%)</td></tr></tbody></table></div>
+
+<h2>3. OSM / facility exposure overview</h2>
+<p>
+OSM features 僅代表圖資標記與活動路線視窗的鄰近或 exposure evidence。
+不能解讀為使用者實際使用設施，也不能推論設施造成停留或速度變化。
+</p>
+<div class="table-wrap"><table><thead><tr><th>OSM exposure type</th><th>window count</th><th>window ratio</th><th>note</th></tr></thead><tbody><tr><td>road</td><td>2054</td><td>100.0%</td><td>100% exposure likely; weak comparison</td></tr>
+<tr><td>steps</td><td>1536</td><td>74.8%</td><td>exposure only</td></tr>
+<tr><td>guidepost</td><td>554</td><td>27.0%</td><td>exposure only</td></tr>
+<tr><td>peak</td><td>299</td><td>14.6%</td><td>exposure only</td></tr>
+<tr><td>waterway</td><td>245</td><td>11.9%</td><td>exposure only</td></tr>
+<tr><td>shelter</td><td>166</td><td>8.1%</td><td>exposure only</td></tr>
+<tr><td>trailhead</td><td>50</td><td>2.4%</td><td>exposure only</td></tr></tbody></table></div>
+
+<h2>4. Activity case profiles</h2>
+<p>
+以下活動卡片依來源順序展示，不是排名。欄位中的 stopped / low-speed ratio 為 point ratio，
+不是時間比例。
+</p>
+<div class="case-grid">
+
+        <div class="case-card">
+          <h3>3_1</h3>
+          <p><b>Windows</b>: 81</p>
+          <p><b>Median speed</b>: 0.702273 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.174861</p>
+          <p><b>Stopped point ratio mean</b>: 0.008893</p>
+          <p><b>HR median</b>: 115 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 20</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>8_1</h3>
+          <p><b>Windows</b>: 84</p>
+          <p><b>Median speed</b>: 0.641725 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.237735</p>
+          <p><b>Stopped point ratio mean</b>: 0.012961</p>
+          <p><b>HR median</b>: 166 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 22</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>9_1</h3>
+          <p><b>Windows</b>: 81</p>
+          <p><b>Median speed</b>: 0.590467 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.25849</p>
+          <p><b>Stopped point ratio mean</b>: 0.006544</p>
+          <p><b>HR median</b>: 146.5 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 26</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>13_1</h3>
+          <p><b>Windows</b>: 80</p>
+          <p><b>Median speed</b>: 0.669343 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.218352</p>
+          <p><b>Stopped point ratio mean</b>: 0.014726</p>
+          <p><b>HR median</b>: 155 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 26</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>14_1</h3>
+          <p><b>Windows</b>: 84</p>
+          <p><b>Median speed</b>: 0.839099 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.145467</p>
+          <p><b>Stopped point ratio mean</b>: 0.008795</p>
+          <p><b>HR median</b>: 140 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 23</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>15_1</h3>
+          <p><b>Windows</b>: 81</p>
+          <p><b>Median speed</b>: 0.905109 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.079904</p>
+          <p><b>Stopped point ratio mean</b>: 0</p>
+          <p><b>HR median</b>: 160.5 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 18</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>16_1</h3>
+          <p><b>Windows</b>: 83</p>
+          <p><b>Median speed</b>: 0.60218 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.212015</p>
+          <p><b>Stopped point ratio mean</b>: 0.076112</p>
+          <p><b>HR median</b>: 136.5 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 24</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>20_1</h3>
+          <p><b>Windows</b>: 79</p>
+          <p><b>Median speed</b>: 0.619883 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.10797</p>
+          <p><b>Stopped point ratio mean</b>: 0</p>
+          <p><b>HR median</b>: 150 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 17</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>23_1</h3>
+          <p><b>Windows</b>: 83</p>
+          <p><b>Median speed</b>: 0.494604 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.117245</p>
+          <p><b>Stopped point ratio mean</b>: 0</p>
+          <p><b>HR median</b>: 132 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 31</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>28_1</h3>
+          <p><b>Windows</b>: 84</p>
+          <p><b>Median speed</b>: 0.598755 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.260677</p>
+          <p><b>Stopped point ratio mean</b>: 0.009183</p>
+          <p><b>HR median</b>: 152 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 34</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>29_1</h3>
+          <p><b>Windows</b>: 84</p>
+          <p><b>Median speed</b>: 0.72892 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.082942</p>
+          <p><b>Stopped point ratio mean</b>: 0</p>
+          <p><b>HR median</b>: 145 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 33</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>30_1</h3>
+          <p><b>Windows</b>: 82</p>
+          <p><b>Median speed</b>: 0.728279 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.018863</p>
+          <p><b>Stopped point ratio mean</b>: 0.000081</p>
+          <p><b>HR median</b>: 146 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 64</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>33_1</h3>
+          <p><b>Windows</b>: 81</p>
+          <p><b>Median speed</b>: 0.900778 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.125172</p>
+          <p><b>Stopped point ratio mean</b>: 0.014483</p>
+          <p><b>HR median</b>: 152 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 25</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>35_1</h3>
+          <p><b>Windows</b>: 84</p>
+          <p><b>Median speed</b>: 0.752911 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.066548</p>
+          <p><b>Stopped point ratio mean</b>: 0</p>
+          <p><b>HR median</b>: 153.5 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 25</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>36_1</h3>
+          <p><b>Windows</b>: 81</p>
+          <p><b>Median speed</b>: 0.673549 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.185324</p>
+          <p><b>Stopped point ratio mean</b>: 0.012852</p>
+          <p><b>HR median</b>: 179 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 14</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>37_1</h3>
+          <p><b>Windows</b>: 80</p>
+          <p><b>Median speed</b>: 0.634813 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.225504</p>
+          <p><b>Stopped point ratio mean</b>: 0.022764</p>
+          <p><b>HR median</b>: 161 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 18</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>38_1</h3>
+          <p><b>Windows</b>: 81</p>
+          <p><b>Median speed</b>: 0.54872 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.066292</p>
+          <p><b>Stopped point ratio mean</b>: 0.000032</p>
+          <p><b>HR median</b>: 121 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 60</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>40_1</h3>
+          <p><b>Windows</b>: 81</p>
+          <p><b>Median speed</b>: 0.677926 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.221763</p>
+          <p><b>Stopped point ratio mean</b>: 0.009423</p>
+          <p><b>HR median</b>: 146.5 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 32</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>41_1</h3>
+          <p><b>Windows</b>: 83</p>
+          <p><b>Median speed</b>: 0.796136 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.173066</p>
+          <p><b>Stopped point ratio mean</b>: 0.003524</p>
+          <p><b>HR median</b>: 151 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 22</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>42_1</h3>
+          <p><b>Windows</b>: 84</p>
+          <p><b>Median speed</b>: 0.497648 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.32626</p>
+          <p><b>Stopped point ratio mean</b>: 0.030715</p>
+          <p><b>HR median</b>: 138.25 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 31</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>43_1</h3>
+          <p><b>Windows</b>: 84</p>
+          <p><b>Median speed</b>: 0.450511 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.355164</p>
+          <p><b>Stopped point ratio mean</b>: 0.037286</p>
+          <p><b>HR median</b>: 128 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 25</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>44_1</h3>
+          <p><b>Windows</b>: 80</p>
+          <p><b>Median speed</b>: 0.995302 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.144703</p>
+          <p><b>Stopped point ratio mean</b>: 0.01661</p>
+          <p><b>HR median</b>: 166 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 40</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>45_1</h3>
+          <p><b>Windows</b>: 81</p>
+          <p><b>Median speed</b>: 0.847411 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.155366</p>
+          <p><b>Stopped point ratio mean</b>: 0.00668</p>
+          <p><b>HR median</b>: 159 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 29</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>46_1</h3>
+          <p><b>Windows</b>: 84</p>
+          <p><b>Median speed</b>: 0.511706 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.319905</p>
+          <p><b>Stopped point ratio mean</b>: 0.028583</p>
+          <p><b>HR median</b>: 127.5 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 28</p>
+        </div>
+        
+        <div class="case-card">
+          <h3>48_1</h3>
+          <p><b>Windows</b>: 84</p>
+          <p><b>Median speed</b>: 0.452268 m/s</p>
+          <p><b>Low-speed point ratio mean</b>: 0.333654</p>
+          <p><b>Stopped point ratio mean</b>: 0.046376</p>
+          <p><b>HR median</b>: 109.25 bpm</p>
+          <p><b>Rule-flagged high-load windows</b>: 27</p>
+        </div>
+        
+</div>
+
+<h2>5. Interpretation boundaries</h2>
+<p>
+以下限制來自 full25 descriptive review addendum。這些限制必須保留在 6.5.1 文字與後續展示中。
+</p>
+<div class="table-wrap"><table><thead><tr><th>review item</th><th>affected field</th><th>finding</th><th>interpretation boundary</th><th>recommended action</th></tr></thead><tbody><tr><td>ROUTE_PHASE_LIMITATION</td><td>route_phase</td><td>2054/2054 windows (100.00%) are UNKNOWN.</td><td>Full25 evidence cannot distinguish ascent, descent, or a single directional pass through a route window.</td><td>Do not write ascent-versus-descent or pass-specific comparisons.</td></tr>
+<tr><td>ELAPSED_SPAN_LIMITATION</td><td>elapsed_time_span_sec</td><td>The field is max(elapsed_sec)-min(elapsed_sec) inside a route bin; the same route bin may aggregate observations from multiple separated periods.</td><td>It is an aggregation span, not route-window traversal time.</td><td>Exclude from completion-time or single-pass duration statements.</td></tr>
+<tr><td>SLOPE_EVIDENCE_LIMITATION</td><td>calibrated_slope_pct_median|calibrated_slope_pct_p75_abs</td><td>Slope coverage is 978/2054 (47.61%); SLOPE_REVIEW_PRESENT appears in 2051/2054 windows (99.85%).</td><td>Calibrated slope must not be the primary 6.5.1 route-load source.</td><td>Retain only as secondary reviewed context.</td></tr>
+<tr><td>NEAREST_ENVIRONMENT_DISTANCE_LIMITATION</td><td>nearest_environment_feature_distance_m_min</td><td>2054/2054 values (100.00%) are zero.</td><td>The generic minimum distance cannot distinguish environment exposure.</td><td>Do not use; prefer feature-specific near_*_ratio fields.</td></tr>
+<tr><td>ROAD_CLIFF_EXPOSURE_LIMITATION</td><td>near_road_ratio|near_cliff_ratio</td><td>near_road_ratio is positive in 2054/2054 windows; near_cliff_ratio is positive in 0/2054 windows.</td><td>All-positive or all-zero exposure has no within-dataset contrast.</td><td>Exclude road and cliff proximity from comparative claims.</td></tr>
+<tr><td>SCHEMA_FULL25_ALIGNMENT</td><td>fixture_activity|usable_activity|fixture scope</td><td>The existing schema and Markdown still describe a three-case fixture while the full25 output uses usable_activity.</td><td>The full25 artifact must not be represented as fully covered by the fixture contract.</td><td>Use this addendum until a dedicated full25 schema contract is approved.</td></tr>
+<tr><td>CAUSAL_AND_PERSONAL_INFERENCE_BOUNDARY</td><td>all descriptive evidence</td><td>The evidence is observational, route-window aggregated, and contains activity-level weather and mapped proximity context.</td><td>Do not infer causality, personal ability, personal risk, or actual facility use.</td><td>Limit conclusions to descriptive patterns and evidence coverage.</td></tr></tbody></table></div>
+
+<h2>6. Source audit</h2>
+<div class="table-wrap"><table><thead><tr><th>metric</th><th>value</th></tr></thead><tbody><tr><td>source_window_rows</td><td>2054</td></tr>
+<tr><td>source_activity_summary_rows</td><td>25</td></tr>
+<tr><td>source_audit_conclusion</td><td>PASS_ROUTE_LOAD_BEHAVIOR_RESPONSE_FULL25_DESCRIPTIVE_ONLY</td></tr>
+<tr><td>story_report_generated</td><td>True</td></tr>
+<tr><td>legacy_gain_fields_used_count</td><td>0</td></tr>
+<tr><td>weather_zero_fill_count</td><td>0</td></tr>
+<tr><td>prohibited_score_rank_class_generated_count</td><td>0</td></tr>
+<tr><td>generated_score_like_fields_in_story_source</td><td></td></tr>
+<tr><td>route_phase_distribution</td><td>UNKNOWN:2054</td></tr>
+<tr><td>story_report_boundary</td><td>DESCRIPTIVE_VISUAL_REPORT_ONLY_NO_SCORE_NO_RANK_NO_CLASS_NO_CAUSALITY</td></tr></tbody></table></div>
+
+</body>
+</html>
