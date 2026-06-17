@@ -1,0 +1,8 @@
+﻿profile_id,route_folder,check_name,check_status,check_value,details
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,source_files_available,PASS,2.0,2/2
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,window_rows_present,PASS,2054.0,weather context windows generated
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,weather_context_available_ratio,PASS,1.0,weather fields are carried forward without zero-fill
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,weather_missing_not_imputed,PASS,0.0,missing weather remains a review class and is not imputed
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,weather_zero_fill_absent,PASS,1.0,"script does not fill missing weather with 0, no-rain, safe, or normal values"
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,forbidden_columns_absent,PASS,0.0,NONE
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,interpretation_boundary_present,PASS,1.0,interpretation_boundary field generated in profile outputs
