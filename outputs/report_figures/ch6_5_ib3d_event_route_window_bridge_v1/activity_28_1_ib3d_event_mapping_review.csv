@@ -1,0 +1,14 @@
+﻿event_id,event_type,start_elapsed_sec,end_elapsed_sec,activity_point_count_in_interval,safe_route_point_count_in_interval,route_dist_min_m,route_dist_max_m,event_mapping_status,event_mapping_reason
+1,high_hr_recovery_stop,1918.0,1934.0,17,16,2804.0,2804.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+2,high_hr_recovery_stop,1996.0,2041.0,46,46,2769.0,2769.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+3,short_pause,2053.0,2087.0,35,35,2766.0,2766.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+4,short_pause,2109.0,2158.0,50,50,2767.0,2767.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+5,short_pause,2160.0,2189.0,30,30,2766.0,2766.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+6,short_pause,2191.0,2247.0,57,57,2765.0,2765.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+7,short_pause,2249.0,2274.0,26,26,2764.0,2764.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+8,short_pause,2295.0,2310.0,16,16,2765.0,2765.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+9,high_hr_recovery_stop,2537.0,2561.0,25,25,2669.0,2669.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+10,high_hr_recovery_stop,3132.0,3153.0,22,22,2382.0,2382.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+12,short_pause,5580.0,5636.0,57,57,3240.0,3240.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+13,short_pause,5658.0,5691.0,34,34,3243.0,3243.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+14,terminal_artifact,6585.0,8621.0,2050,36,4187.392949094119,4187.392949094119,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance

@@ -1,0 +1,5 @@
+﻿event_id,event_type,start_elapsed_sec,end_elapsed_sec,activity_point_count_in_interval,safe_route_point_count_in_interval,route_dist_min_m,route_dist_max_m,event_mapping_status,event_mapping_reason
+1,high_hr_recovery_stop,1194.0,1209.0,16,16,2865.0,2865.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+2,high_hr_recovery_stop,1290.0,1307.0,18,18,2814.0,2814.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+4,short_pause,4081.0,4107.0,27,27,2550.0,2550.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+5,terminal_artifact,5310.0,7210.0,1914,12,4187.392949094119,4187.392949094119,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance

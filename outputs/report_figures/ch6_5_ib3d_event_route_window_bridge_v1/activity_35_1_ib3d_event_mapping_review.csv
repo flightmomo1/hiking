@@ -1,0 +1,2 @@
+﻿event_id,event_type,start_elapsed_sec,end_elapsed_sec,activity_point_count_in_interval,safe_route_point_count_in_interval,route_dist_min_m,route_dist_max_m,event_mapping_status,event_mapping_reason
+1,terminal_artifact,5561.0,7549.0,6096,0,,,REVIEW_REQUIRED,event interval has IB3A2 elapsed-time points but no safe route distance

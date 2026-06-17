@@ -1,0 +1,12 @@
+﻿event_id,event_type,start_elapsed_sec,end_elapsed_sec,activity_point_count_in_interval,safe_route_point_count_in_interval,route_dist_min_m,route_dist_max_m,event_mapping_status,event_mapping_reason
+1,short_pause,2.0,30.0,29,29,0.0,0.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+2,high_hr_recovery_stop,1074.0,1093.0,20,19,2805.0,2805.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+3,high_hr_recovery_stop,1654.0,1674.0,21,21,2388.0,2388.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+4,high_hr_recovery_stop,1686.0,1703.0,18,18,2380.0,2380.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+5,high_hr_recovery_stop,2006.0,2036.0,31,31,2098.0,2098.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+7,high_hr_recovery_stop,3919.0,3957.0,39,39,2384.0,2384.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+8,short_pause,3959.0,3978.0,20,20,2383.0,2383.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+9,short_pause,4099.0,4119.0,21,21,2547.0,2547.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+10,short_pause,4121.0,4170.0,50,50,2548.0,2548.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+11,short_pause,4297.0,4317.0,21,21,2663.0,2663.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+12,terminal_artifact,5134.0,6992.0,1872,23,4187.392949094119,4187.392949094119,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance

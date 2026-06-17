@@ -1,0 +1,14 @@
+﻿event_id,event_type,start_elapsed_sec,end_elapsed_sec,activity_point_count_in_interval,safe_route_point_count_in_interval,route_dist_min_m,route_dist_max_m,event_mapping_status,event_mapping_reason
+1,short_pause,1.0,17.0,17,17,0.0,0.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+2,high_hr_recovery_stop,1646.0,1665.0,20,20,2814.0,2814.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+3,high_hr_recovery_stop,1694.0,1711.0,18,18,2808.0,2808.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+4,high_hr_recovery_stop,3199.0,3256.0,58,58,2098.0,2098.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+5,high_hr_recovery_stop,3868.0,4019.0,152,152,2386.0,2386.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+6,short_pause,4386.0,4401.0,16,16,2590.0,2590.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+7,short_pause,4403.0,4427.0,25,25,2591.0,2591.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+8,short_pause,4568.0,4583.0,16,16,2659.0,2659.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+9,short_pause,4854.0,4872.0,19,19,2797.0,2797.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+10,short_pause,4940.0,4957.0,18,18,2814.0,2814.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+11,short_pause,5910.0,5927.0,18,18,3773.0,3773.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+12,short_pause,6600.0,6628.0,29,29,4187.0,4187.392949094119,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+13,terminal_artifact,6652.0,8642.0,4747,0,,,REVIEW_REQUIRED,event interval has IB3A2 elapsed-time points but no safe route distance

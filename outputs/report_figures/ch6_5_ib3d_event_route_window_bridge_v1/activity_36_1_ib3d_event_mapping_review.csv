@@ -1,0 +1,13 @@
+﻿event_id,event_type,start_elapsed_sec,end_elapsed_sec,activity_point_count_in_interval,safe_route_point_count_in_interval,route_dist_min_m,route_dist_max_m,event_mapping_status,event_mapping_reason
+1,high_hr_recovery_stop,1577.0,1600.0,24,24,2817.0,2817.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+2,high_hr_recovery_stop,1949.0,2039.0,91,91,2675.0,2675.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+3,high_hr_recovery_stop,2595.0,2683.0,89,89,2381.0,2381.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+5,high_hr_recovery_stop,3396.0,3416.0,21,21,2104.0,2104.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+6,high_hr_recovery_stop,3418.0,3445.0,28,28,2105.0,2105.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+7,high_hr_recovery_stop,3461.0,3483.0,23,23,2105.0,2105.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+8,high_hr_recovery_stop,4057.0,4077.0,21,21,2389.0,2389.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+9,high_hr_recovery_stop,4079.0,4095.0,17,17,2388.0,2388.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+10,high_hr_recovery_stop,4105.0,4121.0,17,17,2388.0,2388.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+11,high_hr_recovery_stop,5592.0,5608.0,17,17,3793.0,3793.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+12,high_hr_recovery_stop,5667.0,5690.0,24,24,3850.0,3850.0,ROUTE_WINDOW_OVERLAY_READY,event interval has IB3A2 elapsed-time points with reliable route distance
+14,terminal_artifact,6048.0,8000.0,1966,0,,,REVIEW_REQUIRED,event interval has IB3A2 elapsed-time points but no safe route distance
