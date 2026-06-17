@@ -1,0 +1,10 @@
+﻿profile_id,route_folder,check_name,check_status,check_value,details
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,activity_coverage_count,PASS,25.0,13_1|14_1|15_1|16_1|20_1|23_1|28_1|29_1|30_1|33_1|35_1|36_1|37_1|38_1|3_1|40_1|41_1|42_1|43_1|44_1|45_1|46_1|48_1|8_1|9_1
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,route_load_context_band_domain,PASS,0.0,NONE
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,route_phase_for_profile_domain,PASS,0.0,NONE
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,uphill_downhill_windows_present,PASS,858.0,uphill=360;downhill=498
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,slope_missing_ratio_review,PASS_WITH_SLOPE_MISSING_REVIEW,0.523856,SLOPE_MISSING is retained as separate review phase and is not imputed.
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,weather_zero_fill_absent,PASS,1.0,script does not fill missing weather with zero/no-rain/safe values
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,source_files_available,PASS,7.0,7/7
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,forbidden_columns_absent,PASS,0.0,NONE
+qixing_lengshuikeng_activity_group_full25,qixing_lengshuikeng,interpretation_boundary_present,PASS,1.0,interpretation_boundary field generated in profile outputs
