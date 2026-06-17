@@ -1,0 +1,4 @@
+﻿group_label,activity_count,completion_time_min_median,temperature_c_median,relative_humidity_pct_median,precipitation_mm_median,wind_gust_ms_median,uv_index_median,weather_adverse_context_count,weather_context_summary
+fast,9,119.6667,24.0,91.4,0.0,6.8,7.0,9,WEATHER_ADVERSE_CONTEXT_PRESENT
+middle,8,139.2833,24.95,89.2,0.0,7.6,6.5,8,WEATHER_ADVERSE_CONTEXT_PRESENT
+slow,8,171.3,24.1,89.7,0.0,7.4,8.0,8,WEATHER_ADVERSE_CONTEXT_PRESENT

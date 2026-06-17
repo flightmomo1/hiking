@@ -1,0 +1,4 @@
+﻿group_label,activity_count,completion_time_min_median,completion_time_min_min,completion_time_min_max,routine_window_ratio_median,review_window_ratio_median,conservative_window_ratio_median,turnaround_review_window_ratio_median,candidate_window_ratio_median,low_speed_ratio_median,stopped_ratio_median,heart_rate_median,data_quality_summary
+fast,9,119.6667,109.3667,126.8333,0.240964,0.185185,0.296296,0.283951,0.428571,0.068182,0.0,152.0,DESCRIPTIVE_MEDIANS_FROM_AVAILABLE_FIELDS
+middle,8,139.28335,128.1833,149.95,0.248457,0.200031,0.203704,0.333333,0.475595,0.177803,0.0,151.0,DESCRIPTIVE_MEDIANS_FROM_AVAILABLE_FIELDS
+slow,8,171.3,158.5167,192.7833,0.231742,0.215577,0.219545,0.329317,0.532917,0.242482,0.0,130.0,DESCRIPTIVE_MEDIANS_FROM_AVAILABLE_FIELDS

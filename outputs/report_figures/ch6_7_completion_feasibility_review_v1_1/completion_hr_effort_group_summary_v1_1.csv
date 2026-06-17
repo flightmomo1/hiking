@@ -1,0 +1,4 @@
+﻿group_label,activity_count,completion_time_min_median,heart_rate_bpm_median_group_median,heart_rate_bpm_p75_group_median,heart_rate_bpm_p90_group_median,activity_relative_high_hr_window_ratio_median,high_or_very_high_load_hr_median,high_or_very_high_load_high_hr_window_ratio_median,early_checkpoint_hr_median,early_checkpoint_high_hr_window_ratio_median,hr_context_available_count,hr_context_missing_count,hr_effort_group_interpretation
+fast,9,119.6667,152.0,161.0,165.0,0.259259,157.75,0.340426,161.0,0.571429,9,0,HIGH_HR_EFFORT_EVIDENCE_PRESENT
+middle,8,139.28335,151.0,162.5,167.1,0.26088,158.75,0.358696,166.0,0.642858,8,0,HIGH_HR_EFFORT_EVIDENCE_PRESENT
+slow,8,171.3,130.0,143.125,154.8,0.256136,138.5,0.376272,142.75,0.571429,8,0,HIGH_HR_EFFORT_EVIDENCE_PRESENT

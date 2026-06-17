@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <title>第 6.7 節 路線規劃脈絡整合 v1.1 報表</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; margin: 28px; color: #0f172a; }
+    h1, h2 { color: #1e293b; }
+    .note { background: #f8fafc; border-left: 5px solid #64748b; padding: 12px 16px; margin: 16px 0; }
+    .pass { color: #166534; font-weight: 700; }
+    .warn { color: #b45309; font-weight: 700; }
+    .data-table { border-collapse: collapse; font-size: 12px; width: 100%; margin: 12px 0 24px; }
+    .data-table th { background: #e2e8f0; text-align: left; padding: 7px; }
+    .data-table td { border-bottom: 1px solid #e2e8f0; padding: 6px; vertical-align: top; }
+    .metric-grid { display: grid; grid-template-columns: repeat(4, minmax(160px, 1fr)); gap: 10px; }
+    .metric { background: #f1f5f9; padding: 10px 12px; border-radius: 8px; }
+    .metric .label { color: #475569; font-size: 12px; }
+    .metric .value { font-size: 19px; font-weight: 700; margin-top: 4px; }
+    img { max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; }
+    code { background: #f1f5f9; padding: 1px 4px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+  <h1>第 6.7 節 路線規劃脈絡整合 v1.1 報表</h1>
+  <p class="pass">Audit: PASS_CH6_7_PLANNING_CONTEXT_FUSION_V1_1_RULE_CALIBRATED_DESCRIPTIVE_ONLY</p>
+  <div class="note">本報表為描述性行程規劃脈絡展示層，不產生能力分數、能力排名、能力等級、THCI 分數、雷達分數、最終登山風險分數、路線適合度分數或個人體能分數。天候資料除非具備安全的 route-window 對應來源，否則僅作為 activity-level 背景。IB3D 事件僅為註解證據，不作因果判定。OSM proximity 不代表實際設施使用。</div>
+
+  <h2>Summary Metrics</h2>
+  <div class="metric-grid"><div class="metric"><div class="label">route windows</div><div class="value">2054</div></div>
+<div class="metric"><div class="label">activities</div><div class="value">25</div></div>
+<div class="metric"><div class="label">caution segments</div><div class="value">979</div></div>
+<div class="metric"><div class="label">candidate joins</div><div class="value">958</div></div>
+<div class="metric"><div class="label">routine windows</div><div class="value">494</div></div>
+<div class="metric"><div class="label">weather-only escalation</div><div class="value">0</div></div>
+<div class="metric"><div class="label">event-only escalation</div><div class="value">0</div></div>
+<div class="metric"><div class="label">forbidden columns</div><div class="value">NONE</div></div></div>
+
+  <h2>PNG Summary Figure</h2>
+  <p>Standalone PNG: <code>D:\mountain_work\115_osm\outputs\report_figures\ch6_7_planning_context_fusion_report_v1_1\planning_context_fusion_report_v1_1.png</code></p>
+  <img src="planning_context_fusion_report_v1_1.png" alt="CH6.7 planning context fusion v1.1 summary figure">
+ 
+  <h2>Activity × Route Distance Heatmap</h2>
+  <p>顯示不同活動在標準路線距離軸上的 planning caution level 分布。</p>
+  <img src="planning_caution_activity_route_heatmap_v1_1.png" alt="activity route distance planning caution heatmap">
+
+  <h2>Representative Activity Profiles</h2>
+  <p>背景帶為 planning caution level，黑線為路線負荷背景指標；此圖用於說明注意區段如何落在標準路線距離軸上。</p>
+  <img src="planning_caution_profile_3_1_v1_1.png" alt="planning caution profile 3_1">
+  <br><br>
+  <img src="planning_caution_profile_37_1_v1_1.png" alt="planning caution profile 37_1">
+
+  <h2>Planning Caution Level Distribution</h2>
+  <table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>planning_caution_level</th>
+      <th>window_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ROUTINE_PLANNING_CONTEXT</td>
+      <td>494</td>
+    </tr>
+    <tr>
+      <td>REVIEW_FOR_CONSERVATIVE_PLANNING</td>
+      <td>414</td>
+    </tr>
+    <tr>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>498</td>
+    </tr>
+    <tr>
+      <td>TURNAROUND_CONDITION_REVIEW_RECOMMENDED</td>
+      <td>648</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Route-Load Band x Planning Caution</h2>
+  <table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>planning_caution_level</th>
+      <th>route_load_context_band</th>
+      <th>ROUTINE_PLANNING_CONTEXT</th>
+      <th>REVIEW_FOR_CONSERVATIVE_PLANNING</th>
+      <th>CONSERVATIVE_PLANNING_RECOMMENDED</th>
+      <th>TURNAROUND_CONDITION_REVIEW_RECOMMENDED</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>LOWER_ROUTE_LOAD_CONTEXT</td>
+      <td>302</td>
+      <td>253</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>MODERATE_ROUTE_LOAD_CONTEXT</td>
+      <td>192</td>
+      <td>161</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>0</td>
+      <td>0</td>
+      <td>48</td>
+      <td>648</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>四層規劃脈絡架構</h2>
+  <table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>層級</th>
+      <th>系統使用方式</th>
+      <th>是否可單獨提高提醒等級</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A. 路線負荷證據</td>
+      <td>作為規劃提醒主線，描述坡度、高程、階梯、地形、支援、暴露與路線敏感脈絡。</td>
+      <td>可以</td>
+      <td>但仍屬描述性規劃證據，不是最終風險分數。</td>
+    </tr>
+    <tr>
+      <td>B. 天候情境</td>
+      <td>描述活動當日或預報時段之溫度、濕度、降雨、風速、陣風與 UV。</td>
+      <td>不可以</td>
+      <td>只能在路線負荷或強 route context 存在時，加強保守規劃理由。</td>
+    </tr>
+    <tr>
+      <td>C. 活動行為反應</td>
+      <td>比對使用者在類似高負荷區段是否有低速、停留或高心率反應。</td>
+      <td>不可以</td>
+      <td>它是反應證據，不回頭定義路線負荷。</td>
+    </tr>
+    <tr>
+      <td>D. 事件註解</td>
+      <td>標註 high-HR recovery、short pause、off-route rest 等事件。</td>
+      <td>不可以</td>
+      <td>只作註解，不作因果判定。</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Activity Summary</h2>
+  <table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>activity_id_short</th>
+      <th>windows_n</th>
+      <th>candidate_windows_n</th>
+      <th>routine_planning_context_windows_n</th>
+      <th>review_for_conservative_planning_windows_n</th>
+      <th>conservative_planning_recommended_windows_n</th>
+      <th>turnaround_condition_review_windows_n</th>
+      <th>planning_caution_window_ratio</th>
+      <th>turnaround_condition_review_window_ratio</th>
+      <th>event_annotation_windows_n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>13_1</td>
+      <td>80</td>
+      <td>38</td>
+      <td>20</td>
+      <td>14</td>
+      <td>19</td>
+      <td>27</td>
+      <td>75.0%</td>
+      <td>33.8%</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>14_1</td>
+      <td>84</td>
+      <td>28</td>
+      <td>19</td>
+      <td>19</td>
+      <td>22</td>
+      <td>24</td>
+      <td>77.4%</td>
+      <td>28.6%</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>15_1</td>
+      <td>81</td>
+      <td>35</td>
+      <td>19</td>
+      <td>15</td>
+      <td>24</td>
+      <td>23</td>
+      <td>76.5%</td>
+      <td>28.4%</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <td>16_1</td>
+      <td>83</td>
+      <td>41</td>
+      <td>20</td>
+      <td>18</td>
+      <td>18</td>
+      <td>27</td>
+      <td>75.9%</td>
+      <td>32.5%</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>20_1</td>
+      <td>79</td>
+      <td>38</td>
+      <td>20</td>
+      <td>16</td>
+      <td>15</td>
+      <td>28</td>
+      <td>74.7%</td>
+      <td>35.4%</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <td>23_1</td>
+      <td>83</td>
+      <td>44</td>
+      <td>19</td>
+      <td>19</td>
+      <td>16</td>
+      <td>29</td>
+      <td>77.1%</td>
+      <td>34.9%</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <td>28_1</td>
+      <td>84</td>
+      <td>40</td>
+      <td>20</td>
+      <td>20</td>
+      <td>16</td>
+      <td>28</td>
+      <td>76.2%</td>
+      <td>33.3%</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>29_1</td>
+      <td>84</td>
+      <td>39</td>
+      <td>19</td>
+      <td>17</td>
+      <td>21</td>
+      <td>27</td>
+      <td>77.4%</td>
+      <td>32.1%</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <td>30_1</td>
+      <td>82</td>
+      <td>39</td>
+      <td>20</td>
+      <td>15</td>
+      <td>22</td>
+      <td>25</td>
+      <td>75.6%</td>
+      <td>30.5%</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <td>33_1</td>
+      <td>81</td>
+      <td>27</td>
+      <td>21</td>
+      <td>14</td>
+      <td>25</td>
+      <td>21</td>
+      <td>74.1%</td>
+      <td>25.9%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>35_1</td>
+      <td>84</td>
+      <td>36</td>
+      <td>19</td>
+      <td>17</td>
+      <td>25</td>
+      <td>23</td>
+      <td>77.4%</td>
+      <td>27.4%</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <td>36_1</td>
+      <td>81</td>
+      <td>36</td>
+      <td>22</td>
+      <td>17</td>
+      <td>16</td>
+      <td>26</td>
+      <td>72.8%</td>
+      <td>32.1%</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>37_1</td>
+      <td>80</td>
+      <td>37</td>
+      <td>21</td>
+      <td>14</td>
+      <td>20</td>
+      <td>25</td>
+      <td>73.8%</td>
+      <td>31.2%</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>38_1</td>
+      <td>81</td>
+      <td>45</td>
+      <td>19</td>
+      <td>16</td>
+      <td>18</td>
+      <td>28</td>
+      <td>76.5%</td>
+      <td>34.6%</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <td>3_1</td>
+      <td>81</td>
+      <td>37</td>
+      <td>20</td>
+      <td>15</td>
+      <td>20</td>
+      <td>26</td>
+      <td>75.3%</td>
+      <td>32.1%</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>40_1</td>
+      <td>81</td>
+      <td>42</td>
+      <td>21</td>
+      <td>14</td>
+      <td>17</td>
+      <td>29</td>
+      <td>74.1%</td>
+      <td>35.8%</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>41_1</td>
+      <td>83</td>
+      <td>41</td>
+      <td>20</td>
+      <td>16</td>
+      <td>18</td>
+      <td>29</td>
+      <td>75.9%</td>
+      <td>34.9%</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>42_1</td>
+      <td>84</td>
+      <td>46</td>
+      <td>19</td>
+      <td>18</td>
+      <td>19</td>
+      <td>28</td>
+      <td>77.4%</td>
+      <td>33.3%</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>43_1</td>
+      <td>84</td>
+      <td>47</td>
+      <td>18</td>
+      <td>19</td>
+      <td>20</td>
+      <td>27</td>
+      <td>78.6%</td>
+      <td>32.1%</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>44_1</td>
+      <td>80</td>
+      <td>22</td>
+      <td>20</td>
+      <td>13</td>
+      <td>32</td>
+      <td>15</td>
+      <td>75.0%</td>
+      <td>18.8%</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>45_1</td>
+      <td>81</td>
+      <td>30</td>
+      <td>20</td>
+      <td>15</td>
+      <td>25</td>
+      <td>21</td>
+      <td>75.3%</td>
+      <td>25.9%</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>46_1</td>
+      <td>84</td>
+      <td>44</td>
+      <td>19</td>
+      <td>19</td>
+      <td>16</td>
+      <td>30</td>
+      <td>77.4%</td>
+      <td>35.7%</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>48_1</td>
+      <td>84</td>
+      <td>45</td>
+      <td>21</td>
+      <td>18</td>
+      <td>18</td>
+      <td>27</td>
+      <td>75.0%</td>
+      <td>32.1%</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>8_1</td>
+      <td>84</td>
+      <td>38</td>
+      <td>20</td>
+      <td>20</td>
+      <td>16</td>
+      <td>28</td>
+      <td>76.2%</td>
+      <td>33.3%</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>9_1</td>
+      <td>81</td>
+      <td>43</td>
+      <td>18</td>
+      <td>16</td>
+      <td>20</td>
+      <td>27</td>
+      <td>77.8%</td>
+      <td>33.3%</td>
+      <td>54</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Representative Planning Caution Segments</h2>
+  <p>Sorted by caution level and segment length. These are descriptive planning-review segments, not risk scores.</p>
+  <table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>activity_id_short</th>
+      <th>segment_start_m</th>
+      <th>segment_end_m</th>
+      <th>segment_length_m</th>
+      <th>dominant_planning_caution_level</th>
+      <th>dominant_route_load_context_band</th>
+      <th>planning_caution_reason_flags_merged</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>44_1</td>
+      <td>3600</td>
+      <td>4100</td>
+      <td>500</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT|ROUTE_LOAD_BEHAVIOR_CANDIDATE</td>
+    </tr>
+    <tr>
+      <td>15_1</td>
+      <td>3600</td>
+      <td>3950</td>
+      <td>350</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>33_1</td>
+      <td>200</td>
+      <td>550</td>
+      <td>350</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>VERY_HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>35_1</td>
+      <td>3600</td>
+      <td>3950</td>
+      <td>350</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|ROUTE_LOAD_BEHAVIOR_CANDIDATE|VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>44_1</td>
+      <td>200</td>
+      <td>550</td>
+      <td>350</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>VERY_HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>45_1</td>
+      <td>3600</td>
+      <td>3950</td>
+      <td>350</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>14_1</td>
+      <td>3600</td>
+      <td>3900</td>
+      <td>300</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>33_1</td>
+      <td>3650</td>
+      <td>3950</td>
+      <td>300</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>37_1</td>
+      <td>3650</td>
+      <td>3950</td>
+      <td>300</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>3_1</td>
+      <td>3600</td>
+      <td>3900</td>
+      <td>300</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>15_1</td>
+      <td>250</td>
+      <td>500</td>
+      <td>250</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>VERY_HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|HIGH_ROUTE_LOAD_CONTEXT|ROUTE_LOAD_BEHAVIOR_CANDIDATE</td>
+    </tr>
+    <tr>
+      <td>35_1</td>
+      <td>250</td>
+      <td>500</td>
+      <td>250</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>VERY_HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>36_1</td>
+      <td>3650</td>
+      <td>3900</td>
+      <td>250</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>45_1</td>
+      <td>250</td>
+      <td>500</td>
+      <td>250</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>VERY_HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>13_1</td>
+      <td>3600</td>
+      <td>3800</td>
+      <td>200</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>20_1</td>
+      <td>3600</td>
+      <td>3800</td>
+      <td>200</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>29_1</td>
+      <td>3600</td>
+      <td>3800</td>
+      <td>200</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_RAIN_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>30_1</td>
+      <td>3600</td>
+      <td>3800</td>
+      <td>200</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>41_1</td>
+      <td>3600</td>
+      <td>3800</td>
+      <td>200</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>42_1</td>
+      <td>3600</td>
+      <td>3800</td>
+      <td>200</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>43_1</td>
+      <td>3600</td>
+      <td>3800</td>
+      <td>200</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>8_1</td>
+      <td>300</td>
+      <td>500</td>
+      <td>200</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT|ROUTE_LOAD_BEHAVIOR_CANDIDATE</td>
+    </tr>
+    <tr>
+      <td>8_1</td>
+      <td>3600</td>
+      <td>3800</td>
+      <td>200</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>9_1</td>
+      <td>3600</td>
+      <td>3800</td>
+      <td>200</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_RAIN_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>14_1</td>
+      <td>400</td>
+      <td>550</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>14_1</td>
+      <td>1200</td>
+      <td>1350</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>15_1</td>
+      <td>1200</td>
+      <td>1350</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|ROUTE_LOAD_BEHAVIOR_CANDIDATE</td>
+    </tr>
+    <tr>
+      <td>16_1</td>
+      <td>1200</td>
+      <td>1350</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>16_1</td>
+      <td>3650</td>
+      <td>3800</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>23_1</td>
+      <td>1200</td>
+      <td>1350</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>28_1</td>
+      <td>400</td>
+      <td>550</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>28_1</td>
+      <td>3600</td>
+      <td>3750</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>29_1</td>
+      <td>1200</td>
+      <td>1350</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_RAIN_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>35_1</td>
+      <td>1200</td>
+      <td>1350</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|ROUTE_LOAD_BEHAVIOR_CANDIDATE</td>
+    </tr>
+    <tr>
+      <td>40_1</td>
+      <td>3600</td>
+      <td>3750</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>42_1</td>
+      <td>1200</td>
+      <td>1350</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>42_1</td>
+      <td>2850</td>
+      <td>3000</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>43_1</td>
+      <td>1200</td>
+      <td>1350</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>43_1</td>
+      <td>2850</td>
+      <td>3000</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT</td>
+    </tr>
+    <tr>
+      <td>44_1</td>
+      <td>1750</td>
+      <td>1900</td>
+      <td>150</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED</td>
+      <td>HIGH_ROUTE_LOAD_CONTEXT</td>
+      <td>ROUTE_LOAD_BEHAVIOR_CANDIDATE|HIGH_ROUTE_LOAD_CONTEXT|IB2_NAVIGATION_CONTEXT|WEATHER_HIGH_UV_CONTEXT|WEATHER_HUMID_CONTEXT|WEATHER_WIND_GUST_CONTEXT|VERY_HIGH_ROUTE_LOAD_CONTEXT</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Audit Fields</h2>
+  <table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>route_window_row_count</th>
+      <th>activity_summary_row_count</th>
+      <th>caution_segment_row_count</th>
+      <th>candidate_join_count</th>
+      <th>input_candidate_row_count</th>
+      <th>ib2_route_risk_aggregation_rows</th>
+      <th>ib2_join_coverage</th>
+      <th>weather_attach_coverage</th>
+      <th>event_annotation_join_coverage</th>
+      <th>routine_planning_context_count</th>
+      <th>lower_or_moderate_escalated_by_weather_only_count</th>
+      <th>event_only_escalation_count</th>
+      <th>weather_metadata_only_escalation_count</th>
+      <th>slope_fallback_only_escalation_count</th>
+      <th>planning_caution_level_distribution</th>
+      <th>v1_planning_caution_level_distribution</th>
+      <th>missing_weather_count</th>
+      <th>terminal_artifact_review_only_count</th>
+      <th>weather_zero_fill_performed</th>
+      <th>forbidden_output_columns_absent</th>
+      <th>forbidden_output_columns</th>
+      <th>route_phase_unknown_ascent_descent_comparison_performed</th>
+      <th>audit_conclusion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2054</td>
+      <td>25</td>
+      <td>979</td>
+      <td>958</td>
+      <td>958</td>
+      <td>84</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.274586</td>
+      <td>494</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED:498 | REVIEW_FOR_CONSERVATIVE_PLANNING:414 | ROUTINE_PLANNING_CONTEXT:494 | TURNAROUND_CONDITION_REVIEW_RECOMMENDED:648</td>
+      <td>CONSERVATIVE_PLANNING_RECOMMENDED:498 | REVIEW_FOR_CONSERVATIVE_PLANNING:908 | TURNAROUND_CONDITION_REVIEW_RECOMMENDED:648</td>
+      <td>0</td>
+      <td>16</td>
+      <td>False</td>
+      <td>True</td>
+      <td>NONE</td>
+      <td>False</td>
+      <td>PASS_CH6_7_PLANNING_CONTEXT_FUSION_V1_1_RULE_CALIBRATED_DESCRIPTIVE_ONLY</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Run Report Excerpt</h2>
+  <pre># CH6.7 Planning Context Fusion v1.1 Rule-Calibrated Run Report
+
+## Inputs
+
+- route_load_windows: `D:\mountain_work\115_osm\outputs\report_figures\ch6_5_route_load_context_index_v1\route_load_context_windows_v1.csv`
+- route_load_candidates: `D:\mountain_work\115_osm\outputs\report_figures\ch6_5_route_load_context_index_v1\route_load_behavior_response_candidate_windows_v1.csv`
+- route_load_activity_summary: `D:\mountain_work\115_osm\outputs\report_figures\ch6_5_route_load_context_index_v1\route_load_context_activity_summary_v1.csv`
+- ib2_route_risk: `D:\mountain_work\115_osm\outputs\ib2_v2_route_risk_v1_3b_contract_qa\qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b\qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b_route_risk_v2.csv`
+- weather_profile: `D:\mountain_work\115_osm\outputs\ib3w_codis_weather_profile_report_v1\activity_weather_profile_report_table.csv`
+- weather_performance_join: `D:\mountain_work\115_osm\outputs\ib3w_activity_weather_performance_join_v1\activity_weather_performance_join.csv`
+- event_overlay_glob: `D:\mountain_work\115_osm\outputs\report_figures\ch6_5_ib3d_event_route_window_bridge_v1\activity_*_ib3d_event_route_window_overlay.csv`
+- v1_route_windows: `D:\mountain_work\115_osm\outputs\report_figures\ch6_7_planning_context_fusion_v1\planning_context_route_windows_v1.csv`
+
+## Output Summary
+
+- route_window_row_count: `2054`
+- activity_summary_row_count: `25`
+- caution_segment_row_count: `979`
+- candidate_join_count: `958`
+- input_candidate_row_count: `958`
+- ib2_route_risk_aggregation_rows: `84`
+- ib2_join_coverage: `1.0`
+- weather_attach_coverage: `1.0`
+- event_annotation_join_coverage: `0.274586`
+- routine_planning_context_count: `494`
+- lower_or_moderate_escalated_by_weather_only_count: `0`
+- event_only_escalation_count: `0`
+- weather_metadata_only_escalation_count: `0`
+- slope_fallback_only_escalation_count: `0`
+- planning_caution_level_distribution: `CONSERVATIVE_PLANNING_RECOMMENDED:498 | REVIEW_FOR_CONSERVATIVE_PLANNING:414 | ROUTINE_PLANNING_CONTEXT:494 | TURNAROUND_CONDITION_REVIEW_RECOMMENDED:648`
+- v1_planning_caution_level_distribution: `CONSERVATIVE_PLANNING_RECOMMENDED:498 | REVIEW_FOR_CONSERVATIVE_PLANNING:908 | TURNAROUND_CONDITION_REVIEW_RECOMMENDED:648`
+- missing_weather_count: `0`
+- terminal_artifact_review_only_count: `16`
+- weather_zero_fill_performed: `False`
+- forbidden_output_columns_absent: `True`
+- forbidden_output_columns: `NONE`
+- route_phase_unknown_ascent_descent_comparison_performed: `False`
+- audit_conclusion: `PASS_CH6_7_PLANNING_CONTEXT_FUSION_V1_1_RULE_CALIBRATED_DESCRIPTIVE_ONLY`
+
+## Planning Caution Level Distribution
+
+- CONSERVATIVE_PLANNING_RECOMMENDED: 498
+- REVIEW_FOR_CONSERVATIVE_PLANNING: 414
+- ROUTINE_PLANNING_CONTEXT: 494
+- TURNAROUND_CONDITION_REVIEW_RECOMMENDED: 648
+
+## Boundaries
+
+- descriptive planning context evidence only
+- v1.1 calibrates planning caution rules so weather metadata, event annotations, and slope fallback QA do not escalate caution levels by themselves
+- IB2_WEATHER_SENSITIVE_ROUTE_EXPOSURE_CONTEXT is retained as route context evidence but is not a standalone escalation trigger in v1.1
+- not ability scoring
+- not route suitability scoring
+- not final hiking risk assessment
+- not THCI / radar score
+- route-load context index remains route/terrain/map-derived
+- behavior response is evidence only and does not compute route-load index
+- weather is activity-level context unless explicitly window-level and safely joined
+- no weather zero-fill
+- IB3D/event evidence is annotation only and must not be interpreted as causality
+- OSM proximity must not be interpreted as actual facility use
+- terminal artifact is review-only and not used for planning caution level
+- route_phase UNKNOWN is not used for ascent/descent ability comparison</pre>
+</body>
+</html>
