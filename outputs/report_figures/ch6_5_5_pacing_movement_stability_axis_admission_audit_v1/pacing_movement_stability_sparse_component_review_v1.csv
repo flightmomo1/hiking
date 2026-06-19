@@ -1,0 +1,2 @@
+﻿component_id,raw_metric,activity_rows,zero_raw_value_count,nonzero_raw_value_count,zero_raw_value_ratio,review_note
+stopped_clustering_inverse_index,stopped_cluster_max_run_fraction,25,8,17,0.32,"Stopped clustering is sparse. It is acceptable as one bounded component in the composite, but must not be interpreted as a standalone stop/stall ability or safety score."
