@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CH6.5.5 300s Movement Consumption Integration Review v1</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 24px; color: #1f2933; }
+h1, h2 { margin-bottom: 8px; }
+.boundary { border-left: 4px solid #687078; padding: 8px 12px; background: #f5f7f8; }
+.status { font-weight: 700; }
+table.data { border-collapse: collapse; font-size: 12px; margin: 12px 0 24px; }
+table.data th, table.data td { border: 1px solid #d6dde3; padding: 5px 7px; }
+table.data th { background: #eef2f5; }
+</style>
+</head>
+<body>
+<h1>CH6.5.5 300s Movement Consumption Integration Review v1</h1>
+<p class="status">PASS_CH6_5_5_300S_MOVEMENT_CONSUMPTION_INTEGRATION_REVIEW_V1_DESCRIPTIVE_ONLY</p>
+<p class="boundary">CH6.5.5 300s movement consumption integration review v1 is an integration review layer only. It inventories scripts that may reference 300s movement evidence and checks whether they consume the QA gate policy. It does not compute or authorize radar scores, ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</p>
+
+<h2>Audit</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>consumption_audit_conclusion</th>
+      <th>scanned_script_count</th>
+      <th>self_component_script_count</th>
+      <th>scripts_referencing_300s_movement_evidence_count</th>
+      <th>scripts_referencing_consumption_gate_policy_count</th>
+      <th>consumption_gate_gap_count</th>
+      <th>gap_review_row_count</th>
+      <th>zero_fill_used</th>
+      <th>forbidden_score_rank_class_fields_present</th>
+      <th>forbidden_fields</th>
+      <th>radar_scoring_absent</th>
+      <th>ability_scoring_absent</th>
+      <th>ranking_absent</th>
+      <th>class_label_absent</th>
+      <th>decision_label_absent</th>
+      <th>diagnosis_absent</th>
+      <th>causal_claim_absent</th>
+      <th>audit_conclusion</th>
+      <th>review_reasons</th>
+      <th>interpretation_boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PASS_CH6_5_5_300S_MOVEMENT_QA_GATE_CONSUMPTION_V1_DESCRIPTIVE_ONLY</td>
+      <td>19</td>
+      <td>5</td>
+      <td>5</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NONE</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>PASS_CH6_5_5_300S_MOVEMENT_CONSUMPTION_INTEGRATION_REVIEW_V1_DESCRIPTIVE_ONLY</td>
+      <td>NONE</td>
+      <td>CH6.5.5 300s movement consumption integration review v1 is an integration review layer only. It inventories scripts that may reference 300s movement evidence and checks whether they consume the QA gate policy. It does not compute or authorize radar scores, ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Consumption Gap Review</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>gap_status</th>
+      <th>script_path</th>
+      <th>review_recommendation</th>
+      <th>required_action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NO_CONSUMPTION_GATE_GAP_DETECTED</td>
+      <td>NONE</td>
+      <td>No downstream script requiring remediation was detected by token scan.</td>
+      <td>NONE</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Script Inventory</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>script_path</th>
+      <th>references_300s_movement_evidence</th>
+      <th>references_consumption_gate_policy</th>
+      <th>self_component</th>
+      <th>integration_status</th>
+      <th>matched_evidence_tokens</th>
+      <th>matched_consumption_tokens</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>scripts/make_ch6_5_5_300s_movement_consumption_integration_review_v1.py</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>SELF_COMPONENT_OK</td>
+      <td>movement_300s|300s_movement|horizontal_300s|vertical_300s|hr_at_representative_300s|movement_hr_ascent|movement_hr_pause_recovery|ch6_5_5_movement_300s_corrected_data_study</td>
+      <td>movement_300s_consumption_gate_policy_v1|movement_300s_consumption_activity_summary_v1|movement_300s_consumption_window_review_v1|ch6_5_5_300s_movement_qa_gate_consumption_v1|route_continuity_300s_gate|positive_delta_artifact_guard</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_300s_movement_evidence_admission_review_v1.py</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>SELF_COMPONENT_OK</td>
+      <td>movement_300s|300s_movement|horizontal_300s|vertical_300s|hr_at_representative_300s|ch6_5_5_movement_300s_corrected_data_study</td>
+      <td>route_continuity_300s_gate|positive_delta_artifact_guard</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_300s_movement_qa_gate_consumption_v1.py</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>SELF_COMPONENT_OK</td>
+      <td>movement_300s|300s_movement|horizontal_300s|vertical_300s|hr_at_representative_300s|ch6_5_5_movement_300s_corrected_data_study</td>
+      <td>movement_300s_consumption_gate_policy_v1|movement_300s_consumption_activity_summary_v1|movement_300s_consumption_window_review_v1|ch6_5_5_300s_movement_qa_gate_consumption_v1|route_continuity_300s_gate|positive_delta_artifact_guard</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_activity_history_numeric_attribution_docs.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_activity_history_numeric_attribution_v0_5.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_activity_history_primary_relabel_v0_4.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_movement_300s_corrected_data_study_v1.py</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>SELF_COMPONENT_OK</td>
+      <td>movement_300s|horizontal_300s|vertical_300s|movement_hr_ascent|movement_hr_pause_recovery|ch6_5_5_movement_300s_corrected_data_study</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_movement_300s_corrected_data_study_v1_1.py</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>SELF_COMPONENT_OK</td>
+      <td>movement_300s|horizontal_300s|vertical_300s|movement_hr_ascent|movement_hr_pause_recovery|ch6_5_5_movement_300s_corrected_data_study</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_pacing_movement_stability_axis_admission_audit_v1.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_pacing_movement_stability_axis_v1.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_personal_activity_performance_radar_preview_v0_2.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_personal_activity_performance_radar_report_safe_v0_3.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_personal_activity_performance_radar_report_safe_v1_terrain_axis.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_personal_activity_performance_radar_v0.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_personal_profile_metadata_join_v0_2.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_5_personal_profile_metadata_split_v0_3.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_6_terrain_movement_efficiency_axis_admission_audit_v1_2.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_6_terrain_movement_efficiency_evidence_v1.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>scripts/make_ch6_5_route_load_context_index_v1.py</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NO_300S_MOVEMENT_EVIDENCE_REFERENCE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
