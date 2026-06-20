@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CH6.5.5 deviation correction event-chain review v1</title>
+  <style>
+    body { font-family: Arial, "Microsoft JhengHei", sans-serif; margin: 32px; color: #172326; background: #f7f8f4; }
+    h1, h2 { margin-bottom: 0.35rem; }
+    .note { max-width: 980px; line-height: 1.5; }
+    .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; background: #ece6d8; color: #513f17; font-weight: 700; }
+    table { border-collapse: collapse; width: 100%; margin: 14px 0 28px; background: white; font-size: 13px; }
+    th, td { border: 1px solid #d8dfda; padding: 7px 8px; vertical-align: top; }
+    th { background: #e8efeb; text-align: left; }
+    code { background: #eef2ef; padding: 2px 4px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>CH6.5.5 Deviation Correction Event-Chain Review v1</h1>
+  <p><span class="badge">Admission review only</span></p>
+  <p class="note">Route-following stability is already available as a governed limited proxy, but deviation correction cannot be upgraded from route issue keywords alone. It requires a validated deviation-start -&gt; correction/rejoin event chain.</p>
+  <p class="note"><strong>Retained decision:</strong> <code>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</code></p>
+  <p class="note">Retain deviation_correction_ability as missing evidence annotation. Route-following stability has governed limited proxy evidence, but deviation correction requires validated deviation-start -&gt; correction/rejoin event chains. Current evidence does not provide complete baseline coverage and must not be inferred from route issue keywords.</p>
+  <p class="note">CH6.5.5 deviation_correction_ability event-chain review v1 is an admission review only. It does not compute or authorize ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</p>
+
+  <h2>Audit</h2>
+  <p><code>PASS_CH6_5_5_DEVIATION_CORRECTION_EVENT_CHAIN_REVIEW_V1_RETAIN_MISSING_EVIDENCE</code></p>
+  <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>baseline_activity_count</th>
+      <th>extra_source_count</th>
+      <th>extra_source_admitted_count</th>
+      <th>terminal_artifact_excluded</th>
+      <th>route_following_proxy_not_reused_as_correction_score</th>
+      <th>deviation_correction_output_mode_recommendation</th>
+      <th>zero_fill_used</th>
+      <th>forbidden_fields_present</th>
+      <th>forbidden_fields</th>
+      <th>candidate_event_count</th>
+      <th>complete_chain_candidate_count_total</th>
+      <th>baseline_complete_chain_activity_count</th>
+      <th>audit_conclusion</th>
+      <th>review_reasons</th>
+      <th>interpretation_boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>25</td>
+      <td>1</td>
+      <td>0</td>
+      <td>True</td>
+      <td>True</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NONE</td>
+      <td>207</td>
+      <td>0</td>
+      <td>0</td>
+      <td>PASS_CH6_5_5_DEVIATION_CORRECTION_EVENT_CHAIN_REVIEW_V1_RETAIN_MISSING_EVIDENCE</td>
+      <td>NONE</td>
+      <td>CH6.5.5 deviation_correction_ability event-chain review v1 is an admission review only. It does not compute or authorize ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Admission Decision</h2>
+  <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>axis_id</th>
+      <th>axis_label_zh</th>
+      <th>recommended_axis_output_mode</th>
+      <th>admission_decision</th>
+      <th>baseline_activity_count</th>
+      <th>baseline_with_complete_chain_candidate_count</th>
+      <th>required_future_review</th>
+      <th>retained_reason</th>
+      <th>allowed_use</th>
+      <th>disallowed_use</th>
+      <th>interpretation_boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>deviation_correction_ability</td>
+      <td>偏離修正能力</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>25</td>
+      <td>0</td>
+      <td>deviation_start_to_correction_rejoin_event_chain_validation</td>
+      <td>Retain deviation_correction_ability as missing evidence annotation. Route-following stability has governed limited proxy evidence, but deviation correction requires validated deviation-start -&gt; correction/rejoin event chains. Current evidence does not provide complete baseline coverage and must not be inferred from route issue keywords.</td>
+      <td>missing-evidence annotation and event-chain review planning</td>
+      <td>ability score|ability rank|ability class|final risk score|route suitability score|go/no-go decision</td>
+      <td>CH6.5.5 deviation_correction_ability event-chain review v1 is an admission review only. It does not compute or authorize ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Activity Review Status</h2>
+  <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>chain_review_status</th>
+      <th>activity_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>NO_NON_TERMINAL_DEVIATION_CHAIN_EVIDENCE</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>UNRESOLVED_OR_SINGLE_EVENT_CHAIN_CANDIDATE</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>BLOCKED_EXTRA_SOURCE_NOT_BASELINE</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Candidate Event Roles</h2>
+  <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>event_role</th>
+      <th>event_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NAVIGATION_CHECK_CANDIDATE</td>
+      <td>178</td>
+    </tr>
+    <tr>
+      <td>TERMINAL_ARTIFACT_EXCLUDED</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>REJOIN_CANDIDATE</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>DEVIATION_START_CANDIDATE</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Activity Review</h2>
+  <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>activity_id</th>
+      <th>study_population_status</th>
+      <th>baseline_population_gate</th>
+      <th>detector_file_found</th>
+      <th>route_issue_event_count</th>
+      <th>deviation_start_candidate_count</th>
+      <th>navigation_check_candidate_count</th>
+      <th>rejoin_candidate_count</th>
+      <th>complete_chain_candidate_count</th>
+      <th>unresolved_deviation_candidate_count</th>
+      <th>terminal_artifact_excluded_count</th>
+      <th>chain_review_status</th>
+      <th>admission_status</th>
+      <th>missing_or_review_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>5</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>6_1</td>
+      <td>EXTRA_SOURCE_ACTIVITY_NOT_IN_RADAR_BASELINE</td>
+      <td>BLOCKED_EXTRA_SOURCE</td>
+      <td>True</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>BLOCKED_EXTRA_SOURCE_NOT_BASELINE</td>
+      <td>NOT_ADMITTED_EXTRA_SOURCE</td>
+      <td>Extra source activity is outside the radar baseline population.</td>
+    </tr>
+    <tr>
+      <td>8_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>6</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>9_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>13_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>14_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>7</td>
+      <td>0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>15_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NO_NON_TERMINAL_DEVIATION_CHAIN_EVIDENCE</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Detector-covered activity has no non-terminal deviation correction event-chain evidence.</td>
+    </tr>
+    <tr>
+      <td>16_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>16</td>
+      <td>0</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>20_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NO_NON_TERMINAL_DEVIATION_CHAIN_EVIDENCE</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Detector-covered activity has no non-terminal deviation correction event-chain evidence.</td>
+    </tr>
+    <tr>
+      <td>23_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NO_NON_TERMINAL_DEVIATION_CHAIN_EVIDENCE</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Detector-covered activity has no non-terminal deviation correction event-chain evidence.</td>
+    </tr>
+    <tr>
+      <td>28_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>9</td>
+      <td>0</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>29_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NO_NON_TERMINAL_DEVIATION_CHAIN_EVIDENCE</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Detector-covered activity has no non-terminal deviation correction event-chain evidence.</td>
+    </tr>
+    <tr>
+      <td>30_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NO_NON_TERMINAL_DEVIATION_CHAIN_EVIDENCE</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Detector-covered activity has no non-terminal deviation correction event-chain evidence.</td>
+    </tr>
+    <tr>
+      <td>33_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>35_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NO_NON_TERMINAL_DEVIATION_CHAIN_EVIDENCE</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Detector-covered activity has no non-terminal deviation correction event-chain evidence.</td>
+    </tr>
+    <tr>
+      <td>36_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>UNRESOLVED_OR_SINGLE_EVENT_CHAIN_CANDIDATE</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Detected off-route or rejoin-like candidate events do not establish a validated deviation-start -&gt; correction/rejoin chain.</td>
+    </tr>
+    <tr>
+      <td>37_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>6</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>UNRESOLVED_OR_SINGLE_EVENT_CHAIN_CANDIDATE</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Detected off-route or rejoin-like candidate events do not establish a validated deviation-start -&gt; correction/rejoin chain.</td>
+    </tr>
+    <tr>
+      <td>38_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NO_NON_TERMINAL_DEVIATION_CHAIN_EVIDENCE</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Detector-covered activity has no non-terminal deviation correction event-chain evidence.</td>
+    </tr>
+    <tr>
+      <td>40_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>41_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>42_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>18</td>
+      <td>0</td>
+      <td>18</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>43_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>29</td>
+      <td>0</td>
+      <td>29</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>44_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>5</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>45_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>46_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>25</td>
+      <td>0</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+    <tr>
+      <td>48_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>True</td>
+      <td>36</td>
+      <td>0</td>
+      <td>36</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ROUTE_ISSUE_ONLY_NO_DEVIATION_CORRECTION_CHAIN</td>
+      <td>RETAIN_AS_MISSING_EVIDENCE_ANNOTATION_REQUIRES_EVENT_CHAIN_VALIDATION</td>
+      <td>Route-following issue evidence exists, but it is not deviation correction chain evidence.</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
