@@ -1,0 +1,4 @@
+﻿route_following_adjusted_band,navigation_exposure_level,activity_count,adjusted_proxy_median,prior_proxy_median,wrong_branch_evidence_total,active_off_route_evidence_total,anchor_miss_evidence_total
+HIGH_ROUTE_FOLLOWING_ADJUSTED,HIGH_NAVIGATION_EXPOSURE,11,100.0,100.0,0.0,0.0,0.0
+LOW_ROUTE_FOLLOWING_ADJUSTED,HIGH_NAVIGATION_EXPOSURE,2,66.5,39.235,0.0,2.0,0.0
+MID_ROUTE_FOLLOWING_ADJUSTED,HIGH_NAVIGATION_EXPOSURE,12,82.5,31.1,0.0,0.0,0.0
