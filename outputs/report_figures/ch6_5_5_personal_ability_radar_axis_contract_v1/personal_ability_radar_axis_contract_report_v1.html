@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CH6.5.5 Personal Ability Radar Axis Contract v1</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 24px; color: #1f2933; }
+h1, h2 { margin-bottom: 8px; }
+.boundary { border-left: 4px solid #687078; padding: 8px 12px; background: #f5f7f8; }
+.status { font-weight: 700; }
+table.data { border-collapse: collapse; font-size: 12px; margin: 12px 0 24px; }
+table.data th, table.data td { border: 1px solid #d6dde3; padding: 5px 7px; vertical-align: top; }
+table.data th { background: #eef2f5; }
+</style>
+</head>
+<body>
+<h1>CH6.5.5 Personal Ability Radar Axis Contract v1</h1>
+<p class="status">PASS_CH6_5_5_PERSONAL_ABILITY_RADAR_AXIS_CONTRACT_V1_GOVERNANCE_ONLY</p>
+<p class="boundary">CH6.5.5 personal ability radar axis contract v1 is an axis-governance layer only. It defines whether each proposed personal hiking ability axis may appear in a future radar chart and under what evidence / gate conditions. It does not compute or authorize radar scores, ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</p>
+
+<h2>Audit</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>axis_count</th>
+      <th>numeric_axis_count</th>
+      <th>limited_proxy_axis_count</th>
+      <th>descriptive_annotation_axis_count</th>
+      <th>missing_evidence_annotation_axis_count</th>
+      <th>excluded_axis_count</th>
+      <th>evidence_catalog_count</th>
+      <th>evidence_found_count</th>
+      <th>zero_fill_used</th>
+      <th>forbidden_score_rank_class_fields_present</th>
+      <th>forbidden_fields</th>
+      <th>radar_scoring_absent</th>
+      <th>ability_scoring_absent</th>
+      <th>ranking_absent</th>
+      <th>class_label_absent</th>
+      <th>decision_label_absent</th>
+      <th>diagnosis_absent</th>
+      <th>causal_claim_absent</th>
+      <th>audit_conclusion</th>
+      <th>review_reasons</th>
+      <th>interpretation_boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>11</td>
+      <td>0</td>
+      <td>2</td>
+      <td>5</td>
+      <td>4</td>
+      <td>0</td>
+      <td>12</td>
+      <td>12</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NONE</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>PASS_CH6_5_5_PERSONAL_ABILITY_RADAR_AXIS_CONTRACT_V1_GOVERNANCE_ONLY</td>
+      <td>NONE</td>
+      <td>CH6.5.5 personal ability radar axis contract v1 is an axis-governance layer only. It defines whether each proposed personal hiking ability axis may appear in a future radar chart and under what evidence / gate conditions. It does not compute or authorize radar scores, ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Axis Contract</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>axis_id</th>
+      <th>axis_label_zh</th>
+      <th>axis_domain</th>
+      <th>axis_status</th>
+      <th>axis_output_mode</th>
+      <th>evidence_maturity</th>
+      <th>radar_output_permission</th>
+      <th>required_consumption_gates</th>
+      <th>fallback_status</th>
+      <th>missing_evidence_reason</th>
+      <th>allowed_use</th>
+      <th>disallowed_use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>endurance_sustained_movement</td>
+      <td>持續耐力</td>
+      <td>activity_performance</td>
+      <td>DESCRIPTIVE_ONLY</td>
+      <td>DESCRIPTIVE_ANNOTATION</td>
+      <td>LIMITED_COVERAGE_300S_EVIDENCE</td>
+      <td>ALLOW_TEXT_ANNOTATION_ONLY</td>
+      <td>baseline_population_gate|route_continuity_300s_gate</td>
+      <td>RETAIN_AS_DESCRIPTIVE_SUPPORTING_EVIDENCE</td>
+      <td>Horizontal 300s evidence covers only limited baseline activities; admission review did not admit it as standalone radar axis.</td>
+      <td>text annotation describing limited sustained-movement evidence</td>
+      <td>numeric radar axis value|standalone ability ranking|score generation</td>
+    </tr>
+    <tr>
+      <td>uphill_load_tolerance</td>
+      <td>上坡負荷承受力</td>
+      <td>activity_performance</td>
+      <td>DESCRIPTIVE_ONLY</td>
+      <td>DESCRIPTIVE_ANNOTATION</td>
+      <td>LIMITED_COVERAGE_VERTICAL_300S_EVIDENCE</td>
+      <td>ALLOW_TEXT_ANNOTATION_ONLY</td>
+      <td>baseline_population_gate|route_continuity_300s_gate|positive_delta_artifact_guard|hr_validity_gate</td>
+      <td>RETAIN_AS_DESCRIPTIVE_VERTICAL_CONTEXT</td>
+      <td>Vertical 300s evidence covers limited baseline activities and is not admitted as standalone radar axis.</td>
+      <td>text annotation describing limited uphill-load evidence</td>
+      <td>numeric radar axis value|standalone ability ranking|score generation|medical diagnosis</td>
+    </tr>
+    <tr>
+      <td>terrain_movement_efficiency</td>
+      <td>地形移動效率</td>
+      <td>terrain_response</td>
+      <td>SUPPORTED_LIMITED</td>
+      <td>LIMITED_PROXY_AXIS</td>
+      <td>SUPPORTED_TERRAIN_MOVEMENT_EVIDENCE</td>
+      <td>ALLOW_LIMITED_PROXY_WITH_LABEL</td>
+      <td>baseline_population_gate|route_continuity_300s_gate</td>
+      <td>LIMITED_PROXY_IF_PRIMARY_AXIS_PRESENT</td>
+      <td>If terrain movement evidence file is absent, show as insufficient instead of zero.</td>
+      <td>limited proxy radar axis with clear evidence label</td>
+      <td>final ability score|rank|class</td>
+    </tr>
+    <tr>
+      <td>pacing_movement_stability</td>
+      <td>穩定移動能力</td>
+      <td>activity_history</td>
+      <td>SUPPORTED_LIMITED</td>
+      <td>LIMITED_PROXY_AXIS</td>
+      <td>SUPPORTED_ACTIVITY_HISTORY</td>
+      <td>ALLOW_LIMITED_PROXY_WITH_LABEL</td>
+      <td>baseline_population_gate|route_continuity_300s_gate</td>
+      <td>LIMITED_PROXY_IF_PRIMARY_AXIS_PRESENT</td>
+      <td>If pacing / movement stability evidence is absent, show as insufficient instead of zero.</td>
+      <td>limited proxy radar axis with activity-history label</td>
+      <td>final ability score|rank|class</td>
+    </tr>
+    <tr>
+      <td>hr_load_management_recovery</td>
+      <td>HR負荷管理與恢復能力</td>
+      <td>physiological_context</td>
+      <td>SUPPORTED_LIMITED</td>
+      <td>DESCRIPTIVE_ANNOTATION</td>
+      <td>HR_CONTEXT_AVAILABLE_NOT_MEDICAL</td>
+      <td>ALLOW_TEXT_ANNOTATION_ONLY</td>
+      <td>baseline_population_gate|hr_validity_gate</td>
+      <td>TEXT_CONTEXT_ONLY</td>
+      <td>HR evidence depends on device validity and estimated HRmax; it should not be a medical or standalone ability axis.</td>
+      <td>load-management annotation and evidence context</td>
+      <td>medical diagnosis|standalone ability axis|rank|class</td>
+    </tr>
+    <tr>
+      <td>weather_performance_maintenance</td>
+      <td>天候條件下表現維持</td>
+      <td>environment_response</td>
+      <td>LIMITED_PROXY</td>
+      <td>DESCRIPTIVE_ANNOTATION</td>
+      <td>LIMITED_PROXY_ACTIVITY_WEATHER_CONTEXT</td>
+      <td>ALLOW_TEXT_ANNOTATION_ONLY</td>
+      <td>baseline_population_gate|weather_context_gate</td>
+      <td>LIMITED_PROXY_OR_INSUFFICIENT_IF_WEATHER_CONTEXT_MISSING</td>
+      <td>Weather evidence remains context / proxy and does not isolate weather tolerance as a personal ability.</td>
+      <td>weather-context annotation</td>
+      <td>weather tolerance score|go/no-go decision|risk score</td>
+    </tr>
+    <tr>
+      <td>route_following_stability</td>
+      <td>路線跟隨穩定性</td>
+      <td>navigation_behavior</td>
+      <td>INSUFFICIENT_EVIDENCE</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>QA_GATE_AVAILABLE_BUT_NOT_ABILITY_AXIS</td>
+      <td>SHOW_AS_INSUFFICIENT_EVIDENCE</td>
+      <td>baseline_population_gate|route_continuity_300s_gate</td>
+      <td>INSUFFICIENT_EVIDENCE</td>
+      <td>Route continuity is admitted as QA gate only, not as route-following ability evidence.</td>
+      <td>missing-evidence annotation and QA gate explanation</td>
+      <td>numeric route-following ability axis|navigation score|rank</td>
+    </tr>
+    <tr>
+      <td>deviation_correction_ability</td>
+      <td>偏離修正能力</td>
+      <td>navigation_behavior</td>
+      <td>INSUFFICIENT_EVIDENCE</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>NO_FORMAL_DEVIATION_RECOVERY_FIELD</td>
+      <td>SHOW_AS_INSUFFICIENT_EVIDENCE</td>
+      <td>baseline_population_gate|route_continuity_300s_gate</td>
+      <td>INSUFFICIENT_EVIDENCE</td>
+      <td>No formal field currently measures deviation, correction latency, backtracking, or rejoin behavior.</td>
+      <td>missing-evidence annotation</td>
+      <td>numeric deviation-correction ability axis|navigation score|rank</td>
+    </tr>
+    <tr>
+      <td>risk_response_experience</td>
+      <td>風險應對經驗</td>
+      <td>risk_behavior</td>
+      <td>INSUFFICIENT_EVIDENCE</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>NO_FORMAL_RISK_RESPONSE_OUTCOME_FIELD</td>
+      <td>SHOW_AS_INSUFFICIENT_EVIDENCE</td>
+      <td>baseline_population_gate</td>
+      <td>INSUFFICIENT_EVIDENCE</td>
+      <td>Current evidence does not formally observe risk recognition, avoidance, fallback, or decision behavior.</td>
+      <td>missing-evidence annotation</td>
+      <td>risk handling score|safety decision|go/no-go decision</td>
+    </tr>
+    <tr>
+      <td>autonomous_completion_readiness</td>
+      <td>自主完成能力</td>
+      <td>completion_behavior</td>
+      <td>LIMITED_PROXY</td>
+      <td>DESCRIPTIVE_ANNOTATION</td>
+      <td>COMPLETION_CONTEXT_AVAILABLE_NOT_SELF_SUFFICIENCY</td>
+      <td>ALLOW_TEXT_ANNOTATION_ONLY</td>
+      <td>baseline_population_gate</td>
+      <td>LIMITED_PROXY_OR_INSUFFICIENT_IF_COMPLETION_CONTEXT_MISSING</td>
+      <td>Completion evidence does not prove autonomous navigation, supply, equipment, or team-support independence.</td>
+      <td>completion-context annotation</td>
+      <td>self-sufficiency score|route suitability score|go/no-go decision</td>
+    </tr>
+    <tr>
+      <td>supply_equipment_support</td>
+      <td>補給／裝備支援</td>
+      <td>support_preparedness</td>
+      <td>INSUFFICIENT_EVIDENCE</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>NO_PERSONAL_SUPPLY_EQUIPMENT_DATA</td>
+      <td>SHOW_AS_INSUFFICIENT_EVIDENCE</td>
+      <td></td>
+      <td>INSUFFICIENT_EVIDENCE</td>
+      <td>No personal supply, equipment, hydration, nutrition, packing, or support data is available.</td>
+      <td>missing-evidence annotation</td>
+      <td>equipment readiness score|preparedness class|go/no-go decision</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Evidence Inventory</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>evidence_id</th>
+      <th>evidence_found</th>
+      <th>evidence_path</th>
+      <th>row_count</th>
+      <th>column_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>radar_baseline_axis_table_v1_terrain_axis</td>
+      <td>True</td>
+      <td>outputs\script_inputs\ch6_5_5_radar_v1_axis_refinement_input_pack_v1\radar_baseline\personal_activity_performance_radar_report_safe_axis_table_v1_terrain_axis.csv</td>
+      <td>175</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>pacing_movement_stability_axis_v1</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_pacing_movement_stability_axis_v1\pacing_movement_stability_axis_v1.csv</td>
+      <td>25</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>pacing_movement_stability_axis_admission_audit</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_pacing_movement_stability_axis_admission_audit_v1\pacing_movement_stability_axis_admission_audit_v1.csv</td>
+      <td>1</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>terrain_movement_efficiency_axis_admission</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_6_terrain_movement_efficiency_axis_admission_audit_v1_2\terrain_movement_efficiency_axis_admission_audit_v1_2.csv</td>
+      <td>1</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <td>personal_profile_metadata_join</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_profile_metadata_join_v0_2\personal_profile_metadata_join_v0_2.csv</td>
+      <td>25</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>route_load_match_review</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_8_personal_route_load_readiness_review_v1_1\personal_route_load_readiness_review_v1_1.csv</td>
+      <td>26</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <td>weather_behavior_context</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_report_figures_v1_2\ch6_4_weather_context_summary_v1_2.csv</td>
+      <td>9</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>movement_300s_admission_review</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_300s_movement_evidence_admission_review_v1\movement_300s_admission_axis_decision_v1.csv</td>
+      <td>7</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>movement_300s_qa_gate_consumption</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_300s_movement_qa_gate_consumption_v1\movement_300s_consumption_gate_policy_v1.csv</td>
+      <td>6</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>movement_300s_consumption_integration_review</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_300s_movement_consumption_integration_review_v1\movement_300s_integration_audit_v1.csv</td>
+      <td>1</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>completion_feasibility_review</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_8_personal_route_load_readiness_review_v1_1\personal_route_load_readiness_review_v1_1.csv</td>
+      <td>26</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <td>hr_lifecycle_recovery_profile</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_7_hr_recovery_from_ib3c_events_v1\activity_hr_recovery_activity_summary_from_ib3c_v1.csv</td>
+      <td>26</td>
+      <td>22</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
