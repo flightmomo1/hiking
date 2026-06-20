@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <title>CH6.5.5 Route-following ? Navigation Challenge Context Interpretation v1</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 2rem; line-height: 1.55; }
+    h1, h2 { color: #222; }
+    table { border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th, td { border: 1px solid #ddd; padding: 0.35rem 0.55rem; vertical-align: top; }
+    th { background: #f3f3f3; }
+    code { background: #f6f6f6; padding: 0.1rem 0.25rem; }
+    .boundary { border-left: 4px solid #999; padding-left: 1rem; color: #444; }
+  </style>
+</head>
+<body>
+  <h1>CH6.5.5 Route-following ? Navigation Challenge Context Interpretation v1</h1>
+  <p class="boundary">Route-following ? navigation-challenge context interpretation only. Not a personal ability axis, ability score, rank, class, radar score, final hiking risk score, route suitability score, go/no-go decision, medical diagnosis, or causal claim.</p>
+  <h2>Audit summary</h2>
+  <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>metric</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>input_root_exists</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>route_following_navigation_context_exists</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>activity_navigation_context_exists</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>route_navigation_context_exists</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>input_audit_conclusion</td>
+      <td>PASS_CH6_5_5_NAVIGATION_CHALLENGE_CONTEXT_CONSUMPTION_V1_1_GOVERNED_CONTEXT_AVAILABLE</td>
+    </tr>
+    <tr>
+      <td>input_admission_decision</td>
+      <td>ADMIT_AS_NAVIGATION_CHALLENGE_CONTEXT_SOURCE</td>
+    </tr>
+    <tr>
+      <td>source_inventory_count</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>input_route_following_context_count</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>output_interpretation_count</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>context_available_count</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>review_recommended_count</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>group_summary_count</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>excluded_activity_ids</td>
+      <td>6_1</td>
+    </tr>
+    <tr>
+      <td>excluded_activity_found_in_input_count</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>excluded_activity_found_in_output_count</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>extra_source_6_1_excluded</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>zero_fill_used</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>ch6_5_axis_contract_not_modified</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>radar_not_modified</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>data_table_not_modified</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>navigation_challenge_not_added_as_axis</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>forbidden_fields_present</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>ability_scoring_absent</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>ranking_absent</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>class_label_absent</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>decision_label_absent</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>admission_decision</td>
+      <td>ADMIT_AS_ROUTE_FOLLOWING_NAVIGATION_CONTEXT_INTERPRETATION</td>
+    </tr>
+    <tr>
+      <td>audit_conclusion</td>
+      <td>PASS_CH6_5_5_ROUTE_FOLLOWING_NAVIGATION_CONTEXT_INTERPRETATION_V1_GOVERNED_CONTEXT_AVAILABLE</td>
+    </tr>
+    <tr>
+      <td>interpretation_boundary</td>
+      <td>Route-following ? navigation-challenge context interpretation only. Not a personal ability axis, ability score, rank, class, radar score, final hiking risk score, route suitability score, go/no-go decision, medical diagnosis, or causal claim.</td>
+    </tr>
+  </tbody>
+</table>
+  <h2>Route navigation context</h2>
+  <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>case_id</th>
+      <th>route_source_path</th>
+      <th>route_length_m</th>
+      <th>route_length_km</th>
+      <th>governed_topology_context_status</th>
+      <th>governed_decision_point_exposure_count</th>
+      <th>governed_fork_exposure_count</th>
+      <th>governed_topology_node_count_at_decision_points</th>
+      <th>governed_side_branch_reference_count</th>
+      <th>decision_point_exposure_per_km</th>
+      <th>fork_exposure_per_km</th>
+      <th>route_dist_min_m</th>
+      <th>route_dist_max_m</th>
+      <th>context_source</th>
+      <th>interpretation_boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>juansi_waterfall</td>
+      <td>outputs/ib1c_route_profile_semantics/juansi_waterfall_fitcsv_20260503/juansi_waterfall_fitcsv_20260503_route_profile_semantic_enriched.csv</td>
+      <td>3971.511</td>
+      <td>3.971511</td>
+      <td>GOVERNED_TOPOLOGY_CONTEXT_AVAILABLE</td>
+      <td>40</td>
+      <td>40</td>
+      <td>40</td>
+      <td>63</td>
+      <td>10.071733</td>
+      <td>10.071733</td>
+      <td>0</td>
+      <td>3971.511</td>
+      <td>ib1_route_topology_generator_node_degree_v1_1</td>
+      <td>Navigation-challenge exposure context consumption only. Not a personal ability axis, ability score, rank, class, radar score, final hiking risk score, route suitability score, go/no-go decision, medical diagnosis, or causal claim.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng</td>
+      <td>outputs/ib1c_route_profile_semantics/qixing_lengshuikeng_main_peak_20260523/qixing_lengshuikeng_main_peak_20260523_route_profile_semantic_enriched.csv</td>
+      <td>4187.393</td>
+      <td>4.187393</td>
+      <td>GOVERNED_TOPOLOGY_CONTEXT_AVAILABLE</td>
+      <td>654</td>
+      <td>654</td>
+      <td>654</td>
+      <td>1232</td>
+      <td>156.183095</td>
+      <td>156.183095</td>
+      <td>0</td>
+      <td>4172</td>
+      <td>ib1_route_topology_generator_node_degree_v1_1</td>
+      <td>Navigation-challenge exposure context consumption only. Not a personal ability axis, ability score, rank, class, radar score, final hiking risk score, route suitability score, go/no-go decision, medical diagnosis, or causal claim.</td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_xiaoyoukeng</td>
+      <td>outputs/ib1c_route_profile_semantics_v1_3b_contract_qa/qixing_lengshuikeng_xiaoyoukeng_gpx_osmrefresh_v1_3b/qixing_lengshuikeng_xiaoyoukeng_gpx_osmrefresh_v1_3b_route_profile_semantic_enriched.csv</td>
+      <td>3695.908</td>
+      <td>3.695908</td>
+      <td>GOVERNED_TOPOLOGY_CONTEXT_AVAILABLE</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>7</td>
+      <td>1.623417</td>
+      <td>1.623417</td>
+      <td>24</td>
+      <td>3695.908</td>
+      <td>ib1_route_topology_generator_node_degree_v1_1</td>
+      <td>Navigation-challenge exposure context consumption only. Not a personal ability axis, ability score, rank, class, radar score, final hiking risk score, route suitability score, go/no-go decision, medical diagnosis, or causal claim.</td>
+    </tr>
+    <tr>
+      <td>qixing_xiaoyoukeng</td>
+      <td>outputs/ib1c_route_profile_semantics/qixing_xiaoyoukeng_main_peak_20260315/qixing_xiaoyoukeng_main_peak_20260315_route_profile_semantic_enriched.csv</td>
+      <td>3330.242</td>
+      <td>3.330242</td>
+      <td>GOVERNED_TOPOLOGY_CONTEXT_AVAILABLE</td>
+      <td>388</td>
+      <td>388</td>
+      <td>388</td>
+      <td>867</td>
+      <td>116.50805</td>
+      <td>116.50805</td>
+      <td>0</td>
+      <td>3330.242</td>
+      <td>ib1_route_topology_generator_node_degree_v1_1</td>
+      <td>Navigation-challenge exposure context consumption only. Not a personal ability axis, ability score, rank, class, radar score, final hiking risk score, route suitability score, go/no-go decision, medical diagnosis, or causal claim.</td>
+    </tr>
+    <tr>
+      <td>zhonghua_ust_jiuwufeng</td>
+      <td>outputs/ib1c_route_profile_semantics_v1_3b_contract_qa/zhonghua_ust_jiuwufeng_roundtrip_biji_osmrefresh_v1_3b/zhonghua_ust_jiuwufeng_roundtrip_biji_osmrefresh_v1_3b_route_profile_semantic_enriched.csv</td>
+      <td>5447.778</td>
+      <td>5.447778</td>
+      <td>GOVERNED_TOPOLOGY_CONTEXT_AVAILABLE</td>
+      <td>269</td>
+      <td>269</td>
+      <td>269</td>
+      <td>677</td>
+      <td>49.37793</td>
+      <td>49.37793</td>
+      <td>6</td>
+      <td>5424</td>
+      <td>ib1_route_topology_generator_node_degree_v1_1</td>
+      <td>Navigation-challenge exposure context consumption only. Not a personal ability axis, ability score, rank, class, radar score, final hiking risk score, route suitability score, go/no-go decision, medical diagnosis, or causal claim.</td>
+    </tr>
+  </tbody>
+</table>
+  <h2>Interpretation group summary</h2>
+  <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>route_following_band</th>
+      <th>navigation_exposure_level</th>
+      <th>route_following_navigation_interpretation_label</th>
+      <th>route_following_navigation_review_flag</th>
+      <th>activity_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HIGH_ROUTE_FOLLOWING</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_ROUTE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>NO_REVIEW_FLAG</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>MID_ROUTE_FOLLOWING</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>NO_REVIEW_FLAG</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>LOW_ROUTE_FOLLOWING</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>LOW_ROUTE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_REVIEW</td>
+      <td>REVIEW_RECOMMENDED</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+  <h2>Source inventory</h2>
+  <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>source_name</th>
+      <th>source_path</th>
+      <th>exists</th>
+      <th>row_count</th>
+      <th>source_role</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>route_following_with_navigation_context_v1_1</td>
+      <td>outputs\report_figures\ch6_5_5_navigation_challenge_context_consumption_v1_1\route_following_with_navigation_context_v1_1.csv</td>
+      <td>True</td>
+      <td>25</td>
+      <td>primary_route_following_navigation_join</td>
+      <td>Primary input from CH6.5.5 navigation challenge context consumption v1_1.</td>
+    </tr>
+    <tr>
+      <td>activity_navigation_challenge_context_v1_1</td>
+      <td>outputs\report_figures\ch6_5_5_navigation_challenge_context_consumption_v1_1\activity_navigation_challenge_context_v1_1.csv</td>
+      <td>True</td>
+      <td>25</td>
+      <td>activity_navigation_context</td>
+      <td>Used to fill activity-level exposure fields if missing in primary join.</td>
+    </tr>
+    <tr>
+      <td>route_navigation_challenge_context_v1_1</td>
+      <td>outputs\report_figures\ch6_5_5_navigation_challenge_context_consumption_v1_1\route_navigation_challenge_context_v1_1.csv</td>
+      <td>True</td>
+      <td>5</td>
+      <td>route_navigation_context_threshold_reference</td>
+      <td>Used to define relative navigation exposure bands from route-level context distribution.</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
