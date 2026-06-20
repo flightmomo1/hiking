@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>IB1 route topology generator node-degree v1.1</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 24px; line-height: 1.45; }
+table { border-collapse: collapse; margin: 12px 0; width: 100%; font-size: 13px; }
+th, td { border: 1px solid #ddd; padding: 6px 8px; vertical-align: top; }
+th { background: #f6f6f6; text-align: left; }
+code { background: #f6f6f6; padding: 1px 4px; }
+.status { font-weight: 700; }
+</style>
+</head>
+<body>
+<h1>IB1 route topology generator node-degree v1.1</h1>
+<p class="status">Audit conclusion: <code>PASS_IB1_ROUTE_TOPOLOGY_GENERATOR_NODE_DEGREE_V1_1_GOVERNED_SOURCE_CANDIDATE</code></p>
+<p>This report is route-topology source governance only. It does not compute an ability score, rank, class, final hiking risk score, route suitability score, go/no-go decision, medical diagnosis, or causal claim.</p>
+<h2>Admission</h2>
+<table><tr><th>context_id</th><td>navigation_challenge_exposure</td></tr><tr><th>context_label_zh</th><td>導航挑戰暴露</td></tr><tr><th>decision</th><td>ADMIT_AS_GOVERNED_FORK_DECISION_POINT_SOURCE_CANDIDATE</td></tr><tr><th>recommended_use</th><td>upstream source candidate for future navigation-challenge exposure context only</td></tr><tr><th>not_personal_ability_axis</th><td>True</td></tr><tr><th>not_navigation_ability_score</th><td>True</td></tr><tr><th>not_go_no_go_decision</th><td>True</td></tr><tr><th>usable_osm_graph_topology_source_count</th><td>149</td></tr><tr><th>usable_route_position_source_count</th><td>5</td></tr><tr><th>governed_fork_candidate_count</th><td>1357</td></tr><tr><th>governed_decision_point_candidate_count</th><td>1357</td></tr><tr><th>decision_reason</th><td>OSM/graph topology and route-position sources were parsed and produced governed decision-point candidates.</td></tr><tr><th>interpretation_boundary</th><td>Route topology generator/source governance only. Not an ability score, rank, class, final hiking risk score, route suitability score, go/no-go decision, medical diagnosis, or causal claim.</td></tr></table>
+<h2>Audit</h2>
+<table><tr><th>source_inventory_count</th><td>2055</td></tr><tr><th>usable_osm_graph_topology_source_count</th><td>149</td></tr><tr><th>usable_route_position_source_count</th><td>5</td></tr><tr><th>usable_node_degree_source_count</th><td>149</td></tr><tr><th>usable_adjacent_edge_source_count</th><td>149</td></tr><tr><th>usable_side_branch_source_count</th><td>149</td></tr><tr><th>generated_node_count</th><td>33918</td></tr><tr><th>generated_edge_count</th><td>98821</td></tr><tr><th>generated_side_branch_count</th><td>5434</td></tr><tr><th>governed_fork_candidate_count</th><td>1357</td></tr><tr><th>governed_decision_point_candidate_count</th><td>1357</td></tr><tr><th>heuristic_fork_like_candidate_count_from_prior_review</th><td>2337</td></tr><tr><th>heuristic_decision_point_like_candidate_count_from_prior_review</th><td>2337</td></tr><tr><th>route_dist_available_count</th><td>33918</td></tr><tr><th>lat_lon_available_count</th><td>33918</td></tr><tr><th>zero_fill_used</th><td>False</td></tr><tr><th>ch6_5_axis_contract_not_modified</th><td>True</td></tr><tr><th>radar_not_modified</th><td>True</td></tr><tr><th>data_table_not_modified</th><td>True</td></tr><tr><th>forbidden_fields_present</th><td>NONE</td></tr><tr><th>ability_scoring_absent</th><td>True</td></tr><tr><th>ranking_absent</th><td>True</td></tr><tr><th>class_label_absent</th><td>True</td></tr><tr><th>decision_label_absent</th><td>True</td></tr><tr><th>admission_decision</th><td>ADMIT_AS_GOVERNED_FORK_DECISION_POINT_SOURCE_CANDIDATE</td></tr><tr><th>audit_conclusion</th><td>PASS_IB1_ROUTE_TOPOLOGY_GENERATOR_NODE_DEGREE_V1_1_GOVERNED_SOURCE_CANDIDATE</td></tr><tr><th>interpretation_boundary</th><td>Route topology generator/source governance only. Not an ability score, rank, class, final hiking risk score, route suitability score, go/no-go decision, medical diagnosis, or causal claim.</td></tr></table>
+<h2>Source role summary</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>source_role</th>
+      <th>source_count</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>other_context_not_topology_source</td>
+      <td>762</td>
+      <td>context only; not expanded into topology candidates</td>
+    </tr>
+    <tr>
+      <td>report_context_not_topology_source</td>
+      <td>633</td>
+      <td>context only; not expanded into topology candidates</td>
+    </tr>
+    <tr>
+      <td>route_semantic_context_not_fork_inventory</td>
+      <td>188</td>
+      <td>context only; not expanded into topology candidates</td>
+    </tr>
+    <tr>
+      <td>route_anchor_control_context_not_fork_inventory</td>
+      <td>170</td>
+      <td>context only; not expanded into topology candidates</td>
+    </tr>
+    <tr>
+      <td>usable_osm_graph_topology_source</td>
+      <td>149</td>
+      <td>parsed as governed source</td>
+    </tr>
+    <tr>
+      <td>usable_route_position_source</td>
+      <td>72</td>
+      <td>parsed as governed source</td>
+    </tr>
+    <tr>
+      <td>script_hint_not_data_source</td>
+      <td>51</td>
+      <td>context only; not expanded into topology candidates</td>
+    </tr>
+    <tr>
+      <td>route_geometry_self_near_context_not_fork_inventory</td>
+      <td>30</td>
+      <td>context only; not expanded into topology candidates</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Route summary</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>case_id</th>
+      <th>route_source_path</th>
+      <th>graph_source_path</th>
+      <th>route_length_m</th>
+      <th>matched_topology_node_count</th>
+      <th>governed_fork_candidate_count</th>
+      <th>governed_decision_point_candidate_count</th>
+      <th>side_branch_count</th>
+      <th>topology_inventory_status</th>
+      <th>source_gap_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>juansi_waterfall</td>
+      <td>outputs/ib1c_route_profile_semantics/juansi_waterfall_fitcsv_20260503/juansi_waterfall_fitcsv_20260503_route_profile_semantic_enriched.csv</td>
+      <td>MERGED_GRAPH_SOURCES</td>
+      <td>3971.511</td>
+      <td>4806</td>
+      <td>40</td>
+      <td>40</td>
+      <td>102</td>
+      <td>GOVERNED_SOURCE_CANDIDATE</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng</td>
+      <td>outputs/ib1c_route_profile_semantics/qixing_lengshuikeng_main_peak_20260523/qixing_lengshuikeng_main_peak_20260523_route_profile_semantic_enriched.csv</td>
+      <td>MERGED_GRAPH_SOURCES</td>
+      <td>4187.393</td>
+      <td>8496</td>
+      <td>654</td>
+      <td>654</td>
+      <td>1558</td>
+      <td>GOVERNED_SOURCE_CANDIDATE</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>qixing_lengshuikeng_xiaoyoukeng</td>
+      <td>outputs/ib1c_route_profile_semantics_v1_3b_contract_qa/qixing_lengshuikeng_xiaoyoukeng_gpx_osmrefresh_v1_3b/qixing_lengshuikeng_xiaoyoukeng_gpx_osmrefresh_v1_3b_route_profile_semantic_enriched.csv</td>
+      <td>MERGED_GRAPH_SOURCES</td>
+      <td>3695.908</td>
+      <td>12311</td>
+      <td>6</td>
+      <td>6</td>
+      <td>36</td>
+      <td>GOVERNED_SOURCE_CANDIDATE</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>qixing_xiaoyoukeng</td>
+      <td>outputs/ib1c_route_profile_semantics/qixing_xiaoyoukeng_main_peak_20260315/qixing_xiaoyoukeng_main_peak_20260315_route_profile_semantic_enriched.csv</td>
+      <td>MERGED_GRAPH_SOURCES</td>
+      <td>3330.242</td>
+      <td>4294</td>
+      <td>388</td>
+      <td>388</td>
+      <td>1199</td>
+      <td>GOVERNED_SOURCE_CANDIDATE</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>zhonghua_ust_jiuwufeng</td>
+      <td>outputs/ib1c_route_profile_semantics_v1_3b_contract_qa/zhonghua_ust_jiuwufeng_roundtrip_biji_osmrefresh_v1_3b/zhonghua_ust_jiuwufeng_roundtrip_biji_osmrefresh_v1_3b_route_profile_semantic_enriched.csv</td>
+      <td>MERGED_GRAPH_SOURCES</td>
+      <td>5447.778</td>
+      <td>4011</td>
+      <td>269</td>
+      <td>269</td>
+      <td>2539</td>
+      <td>GOVERNED_SOURCE_CANDIDATE</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<h2>Interpretation</h2>
+<p>If governed fork or decision-point candidates are produced, this output can become an upstream source candidate for future navigation-challenge exposure context. If the audit remains source-gap, upstream IA1/IB0 extraction must expose OSM graph topology: node degree, adjacent edges, side branches, side-branch angle, route distance, and lat/lon.</p>
+</body></html>

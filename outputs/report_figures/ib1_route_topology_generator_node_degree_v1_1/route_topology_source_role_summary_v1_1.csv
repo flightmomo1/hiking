@@ -1,0 +1,9 @@
+﻿source_role,source_count,notes
+other_context_not_topology_source,762,context only; not expanded into topology candidates
+report_context_not_topology_source,633,context only; not expanded into topology candidates
+route_semantic_context_not_fork_inventory,188,context only; not expanded into topology candidates
+route_anchor_control_context_not_fork_inventory,170,context only; not expanded into topology candidates
+usable_osm_graph_topology_source,149,parsed as governed source
+usable_route_position_source,72,parsed as governed source
+script_hint_not_data_source,51,context only; not expanded into topology candidates
+route_geometry_self_near_context_not_fork_inventory,30,context only; not expanded into topology candidates
