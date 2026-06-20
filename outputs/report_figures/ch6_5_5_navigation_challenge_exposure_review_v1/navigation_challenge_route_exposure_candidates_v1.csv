@@ -1,0 +1,2 @@
+﻿route_folder,case_id,route_dist_m,feature_type,feature_name,osm_tags,is_fork_candidate,is_decision_point_candidate,is_wrong_branch_exposure_candidate,confidence,source_path,source_status,source_gap_reason
+,,,SOURCE_GAP,,,,,,,,INSUFFICIENT_FORK_SOURCE,"No governed fork / junction / branch / decision point inventory source was found. Guidepost, facility, trail, path, road, way, and graph-summary sources are contextual only."
