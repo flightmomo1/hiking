@@ -1,0 +1,2 @@
+﻿case_id,route_folder,route_length_m,governed_fork_candidate_count,governed_decision_point_candidate_count,wrong_branch_exposure_candidate_count,heuristic_fork_like_candidate_count,heuristic_decision_point_like_candidate_count,source_confidence,topology_inventory_status,source_gap_reason
+ALL_SCANNED_ROUTES,ALL_SCANNED_ROUTES,,0,0,0,2337,2337,SOURCE_GAP,RETAIN_AS_TOPOLOGY_SOURCE_GAP,No governed topology source with node-degree/adjacent-edge/side-branch and route position was found.

@@ -1,0 +1,9 @@
+﻿source_role,source_count,notes
+other_context_not_topology_source,168,compact role count; not expanded into candidate features
+route_anchor_control_context_not_fork_inventory,137,compact role count; not expanded into candidate features
+report_context_not_topology_source,110,compact role count; not expanded into candidate features
+route_semantic_context_not_fork_inventory,96,compact role count; not expanded into candidate features
+topology_position_candidate_source,54,compact role count; not expanded into candidate features
+script_hint_not_data_source,48,compact role count; not expanded into candidate features
+route_geometry_position_context_not_fork_inventory,22,compact role count; not expanded into candidate features
+route_geometry_self_near_context_not_fork_inventory,4,compact role count; not expanded into candidate features

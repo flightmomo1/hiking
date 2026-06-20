@@ -1,0 +1,6 @@
+﻿metric,expected,low_score_group_median,high_score_group_median,passes
+speed_cv_iqr_over_median,low_score_group_median >= high_score_group_median,0.7355277594137257,0.508007416033837,True
+low_speed_high_cluster_max_run_fraction,low_score_group_median >= high_score_group_median,0.0952380952380952,0.0123456790123456,True
+stopped_cluster_max_run_fraction,low_score_group_median >= high_score_group_median,0.0119047619047619,0.0,True
+late_stage_speed_degradation_ratio,low_score_group_median >= high_score_group_median,0.0361702524012664,0.0,True
+high_route_load_speed_maintenance_ratio,high_score_group_median >= low_score_group_median,0.5998745730811572,0.6815813276048975,True

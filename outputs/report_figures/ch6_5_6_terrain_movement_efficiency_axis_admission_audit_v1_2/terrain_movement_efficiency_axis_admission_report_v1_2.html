@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>CH6.5.6 Axis Admission Audit v1.2</title>
+<style>
+body { font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif; margin: 24px; line-height: 1.55; }
+.decision { background: #eef8ee; border-left: 5px solid #2f8f2f; padding: 12px 16px; margin-bottom: 20px; }
+.boundary { background: #fff7e6; border-left: 5px solid #d99000; padding: 12px 16px; margin-bottom: 20px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0 24px 0; font-size: 13px; }
+th, td { border: 1px solid #ccc; padding: 6px 8px; vertical-align: top; }
+th { background: #f2f2f2; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<h1>CH6.5.6 地形移動效率軸 admission audit v1.2</h1>
+<div class="decision">
+<b>Decision:</b> <code>ADMIT_TO_RADAR_V1_DESCRIPTIVE_SUPPORTED_AXIS_WITH_BOUNDARY</code><br>
+<b>Recommended axis:</b> <code>地形移動維持（描述性）</code><br>
+<b>Gate pass:</b> 13 / 13
+</div>
+<div class="boundary"><b>Boundary:</b> CH6.5.6 terrain movement efficiency axis admission audit is governance review only. It decides whether a descriptive evidence axis may enter the next radar revision. It does not compute or authorize ability scores, ability ranks, ability classes, THCI scores, radar scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</div>
+<p><b>Markdown report:</b> <code>D:\mountain_work\115_osm\outputs\report_figures\ch6_5_6_terrain_movement_efficiency_axis_admission_audit_v1_2\terrain_movement_efficiency_axis_admission_report_v1_2.md</code></p>
+<h2>Radar Update Recommendation</h2>
+<p>Use terrain_movement_efficiency_axis_update_v1.csv to replace the previous missing-evidence terrain movement efficiency axis in the next radar revision. Keep route-following stability missing until separate route-following evidence exists.</p>
+<p>If admitted, the axis may replace the previous missing-evidence terrain movement efficiency axis in the next radar revision as descriptive terrain movement maintenance context only. Route-following stability remains missing until separate on-route / wrong-branch / deviation-recovery evidence is available.</p>
+<h2>Gate Detail</h2>
+<table><thead><tr><th>gate_id</th><th>gate_status</th><th>gate_name</th><th>observed_value</th><th>required_value</th><th>notes</th></tr></thead><tbody>
+<tr><td>G01</td><td>PASS</td><td>CH6.5.6 audit conclusion is PASS</td><td>PASS_CH6_5_6_TERRAIN_MOVEMENT_EFFICIENCY_EVIDENCE_V1_DESCRIPTIVE_ONLY</td><td>PASS_CH6_5_6_TERRAIN_MOVEMENT_EFFICIENCY_EVIDENCE_V1_DESCRIPTIVE_ONLY</td><td>Evidence layer must pass before radar admission.</td></tr>
+<tr><td>G02</td><td>PASS</td><td>No zero-fill used</td><td>zero_fill_used=False; weather_zero_fill_used=False</td><td>Both False</td><td>Missing evidence must not become zero, no-rain, normal, calm, or safe evidence.</td></tr>
+<tr><td>G03</td><td>PASS</td><td>No forbidden scoring / decision output</td><td>ability_score_generated=False; ability_rank_generated=False; ability_class_generated=False; route_suitability_score_generated=False; go_no_go_generated=False</td><td>All False</td><td>Admission does not authorize scoring, ranking, suitability, or go/no-go output.</td></tr>
+<tr><td>G04</td><td>PASS</td><td>Audit issues are none</td><td>NONE</td><td>NONE</td><td>Any audit issue must be resolved before admission.</td></tr>
+<tr><td>G05</td><td>PASS</td><td>Expected activity coverage</td><td>activity_rows=25; axis_update_rows=25</td><td>25 activity rows and 25 axis rows</td><td>Radar axis should cover the current full25 activity set.</td></tr>
+<tr><td>G06</td><td>PASS</td><td>All rows have supported terrain movement evidence</td><td>supported=25; limited=0; insufficient=0</td><td>supported=25; limited=0; insufficient=0</td><td>This admits the axis as supported for the current activity set.</td></tr>
+<tr><td>G07</td><td>PASS</td><td>Context groups meet minimum window threshold</td><td>context_group_count=3; min_window_count=39.0</td><td>Each context group &gt;= 20 windows</td><td>Small groups remain caution notes, but are acceptable if above threshold.</td></tr>
+<tr><td>G08</td><td>PASS</td><td>Axis index has useful variation</td><td>unique_n=25; min=4.0; max=100.0</td><td>&gt;=5 unique values within 0-100</td><td>Radar axis should not be flat or out of range.</td></tr>
+<tr><td>G09</td><td>PASS</td><td>Lower/reference/higher labels all appear</td><td>HIGHER_TERRAIN_MOVEMENT_MAINTENANCE_CONTEXT|LOWER_TERRAIN_MOVEMENT_MAINTENANCE_CONTEXT_REVIEW|REFERENCE_TERRAIN_MOVEMENT_MAINTENANCE_CONTEXT</td><td>Contains lower, reference, and higher context labels</td><td>Labels support interpretation; they are not ability classes.</td></tr>
+<tr><td>G10</td><td>PASS</td><td>Upstream provenance is documented</td><td>input_found=True; route_window_found=True</td><td>full25 input and route-window evidence documented</td><td>v1.2 checks run report, CURRENT_INDEX, README, and CH6.5.6 source inventory.</td></tr>
+<tr><td>G11</td><td>PASS</td><td>Upstream route/terrain/map-derived factors are documented</td><td>route_terrain_factor_docs=True</td><td>vertical range, slope, IB2 effort, IB2 terrain, near-steps</td><td>Axis must be grounded in terrain/surface context, not only speed.</td></tr>
+<tr><td>G12</td><td>PASS</td><td>Weather boundary is documented</td><td>weather_boundary_docs=True</td><td>weather descriptive only, not included in index, no zero-fill</td><td>Weather context cannot be hidden route-load or ability evidence.</td></tr>
+<tr><td>G13</td><td>PASS</td><td>Upstream non-score boundary is documented</td><td>upstream_boundary_docs=True</td><td>descriptive and not score/rank/final risk</td><td>The radar admission inherits the same non-scoring boundary.</td></tr>
+</tbody></table>
+<h2>Context Notes</h2>
+<table><thead><tr><th>note_id</th><th>note_type</th><th>subject</th><th>window_count</th><th>activity_count</th><th>note</th></tr></thead><tbody>
+<tr><td>CONTEXT_HIGH_ROUTE_LOAD_OR_SLOPE_CONTEXT</td><td>SMALL_CONTEXT_GROUP_CAUTION</td><td>HIGH_ROUTE_LOAD_OR_SLOPE_CONTEXT</td><td>39</td><td>19</td><td>Smallest context group. It passes the minimum window threshold but should be reported with caution.</td></tr>
+<tr><td>CONTEXT_LOW_INFORMATION_MIXED_CONTEXT</td><td>REFERENCE_CONTEXT_NOTE</td><td>LOW_INFORMATION_MIXED_CONTEXT</td><td>531</td><td>25</td><td>Mixed or lower-information context retained for descriptive comparison.</td></tr>
+<tr><td>CONTEXT_STEPS_CONTEXT</td><td>ROUTE_CHARACTERISTIC_NOTE</td><td>STEPS_CONTEXT</td><td>1484</td><td>25</td><td>Dominant route context; consistent with step/stair-heavy route sections. Not ability evidence by itself.</td></tr>
+<tr><td>LABEL_HIGHER_TERRAIN_MOVEMENT_MAINTENANCE_CONTEXT</td><td>ACTIVITY_LABEL_DISTRIBUTION</td><td>HIGHER_TERRAIN_MOVEMENT_MAINTENANCE_CONTEXT</td><td></td><td>7</td><td>Activities: 14_1|15_1|30_1|33_1|35_1|41_1|45_1. Label is descriptive group-relative context, not ability class.</td></tr>
+<tr><td>LABEL_LOWER_TERRAIN_MOVEMENT_MAINTENANCE_CONTEXT_REVIEW</td><td>ACTIVITY_LABEL_DISTRIBUTION</td><td>LOWER_TERRAIN_MOVEMENT_MAINTENANCE_CONTEXT_REVIEW</td><td></td><td>7</td><td>Activities: 16_1|23_1|28_1|42_1|43_1|46_1|48_1. Label is descriptive group-relative context, not ability class.</td></tr>
+<tr><td>LABEL_REFERENCE_TERRAIN_MOVEMENT_MAINTENANCE_CONTEXT</td><td>ACTIVITY_LABEL_DISTRIBUTION</td><td>REFERENCE_TERRAIN_MOVEMENT_MAINTENANCE_CONTEXT</td><td></td><td>11</td><td>Activities: 13_1|20_1|29_1|36_1|37_1|38_1|3_1|40_1|44_1|8_1|9_1. Label is descriptive group-relative context, not ability class.</td></tr>
+<tr><td>RADAR_UPDATE_RECOMMENDATION</td><td>RADAR_GOVERNANCE</td><td>terrain_movement_efficiency</td><td></td><td></td><td>If admitted, the axis may replace the previous missing-evidence terrain movement efficiency axis in the next radar revision as descriptive terrain movement maintenance context only. Route-following stability remains missing until separate on-route / wrong-branch / deviation-recovery evidence is available.</td></tr>
+</tbody></table>
+</body>
+</html>

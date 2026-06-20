@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CH6.5.5 Route-Following Axis Contract Patch v1</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 24px; color: #1f2933; }
+h1, h2 { margin-bottom: 8px; }
+.boundary { border-left: 4px solid #687078; padding: 8px 12px; background: #f5f7f8; }
+.status { font-weight: 700; }
+table.data { border-collapse: collapse; font-size: 12px; margin: 12px 0 24px; }
+table.data th, table.data td { border: 1px solid #d6dde3; padding: 5px 7px; vertical-align: top; }
+table.data th { background: #eef2f5; }
+</style>
+</head>
+<body>
+<h1>CH6.5.5 Route-Following Axis Contract Patch v1</h1>
+<p class="status">PASS_CH6_5_5_ROUTE_FOLLOWING_AXIS_CONTRACT_PATCH_V1_GOVERNED_CONTRACT_LAYER</p>
+<p class="boundary">CH6.5.5 route-following axis contract patch v1 is a governed contract patch layer only. It upgrades route_following_stability to a limited proxy axis in a new v1_1 contract copy after the route-following proxy admission review. It does not upgrade deviation_correction_ability. It does not compute or authorize ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</p>
+
+<h2>Patch Summary</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>axis_id</th>
+      <th>old_axis_output_mode</th>
+      <th>new_axis_output_mode</th>
+      <th>new_radar_output_permission</th>
+      <th>admission_decision</th>
+      <th>patch_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>route_following_stability</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>LIMITED_PROXY_AXIS</td>
+      <td>GOVERNED_LIMITED_PROXY_PREVIEW_ONLY</td>
+      <td>ADMIT_AS_LIMITED_PROXY_AXIS_CANDIDATE_REQUIRES_CONTRACT_PATCH</td>
+      <td>Route-following proxy admission v1_1 recommends upgrading route_following_stability from missing-evidence annotation to governed limited proxy axis candidate. proxy_basis=route issue event burden: off_route / route_uncertainty / navigation_check / rejoin candidate evidence; review_reasons=NONE.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Audit</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>axis_count</th>
+      <th>route_following_stability_patched</th>
+      <th>route_following_old_output_mode</th>
+      <th>route_following_new_output_mode</th>
+      <th>deviation_correction_ability_output_mode</th>
+      <th>numeric_axis_count</th>
+      <th>limited_proxy_axis_count</th>
+      <th>missing_evidence_annotation_axis_count</th>
+      <th>evidence_inventory_row_count</th>
+      <th>route_following_proxy_admission_evidence_found</th>
+      <th>zero_fill_used</th>
+      <th>forbidden_policy_terms_present</th>
+      <th>forbidden_fields</th>
+      <th>ability_scoring_absent</th>
+      <th>ranking_absent</th>
+      <th>class_label_absent</th>
+      <th>risk_scoring_absent</th>
+      <th>route_suitability_scoring_absent</th>
+      <th>decision_label_absent</th>
+      <th>diagnosis_absent</th>
+      <th>causal_claim_absent</th>
+      <th>admission_audit_conclusion</th>
+      <th>audit_conclusion</th>
+      <th>review_reasons</th>
+      <th>interpretation_boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>11</td>
+      <td>True</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>LIMITED_PROXY_AXIS</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>13</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NONE</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>PASS_CH6_5_5_ROUTE_FOLLOWING_STABILITY_PROXY_ADMISSION_V1_1_GOVERNED_LIMITED_PROXY_CANDIDATE</td>
+      <td>PASS_CH6_5_5_ROUTE_FOLLOWING_AXIS_CONTRACT_PATCH_V1_GOVERNED_CONTRACT_LAYER</td>
+      <td>NONE</td>
+      <td>CH6.5.5 route-following axis contract patch v1 is a governed contract patch layer only. It upgrades route_following_stability to a limited proxy axis in a new v1_1 contract copy after the route-following proxy admission review. It does not upgrade deviation_correction_ability. It does not compute or authorize ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Route-Following Patch Detail</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>axis_id</th>
+      <th>axis_label_zh</th>
+      <th>axis_status</th>
+      <th>axis_output_mode</th>
+      <th>radar_output_permission</th>
+      <th>axis_value_allowed</th>
+      <th>primary_evidence_source</th>
+      <th>required_consumption_gates</th>
+      <th>allowed_use</th>
+      <th>disallowed_use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>route_following_stability</td>
+      <td>路線跟隨穩定性</td>
+      <td>LIMITED_PROXY</td>
+      <td>LIMITED_PROXY_AXIS</td>
+      <td>GOVERNED_LIMITED_PROXY_PREVIEW_ONLY</td>
+      <td>True</td>
+      <td>route_following_stability_proxy_admission_v1_1:outputs\report_figures\ch6_5_5_route_following_stability_proxy_admission_v1_1\route_following_stability_proxy_admission_decision_v1_1.csv</td>
+      <td>baseline_population_gate|route_issue_event_quality_gate|extra_source_exclusion_gate</td>
+      <td>limited proxy radar preview with explicit proxy label and admission boundary</td>
+      <td>ability score|ability rank|ability class|final risk score|route suitability score|go/no-go decision</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Deviation Correction Retained</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>axis_id</th>
+      <th>axis_label_zh</th>
+      <th>axis_status</th>
+      <th>axis_output_mode</th>
+      <th>radar_output_permission</th>
+      <th>missing_evidence_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>deviation_correction_ability</td>
+      <td>偏離修正能力</td>
+      <td>INSUFFICIENT_EVIDENCE</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>SHOW_AS_INSUFFICIENT_EVIDENCE</td>
+      <td>No formal field currently measures deviation, correction latency, backtracking, or rejoin behavior.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Admission Decision</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>axis_id</th>
+      <th>current_axis_output_mode</th>
+      <th>recommended_axis_output_mode</th>
+      <th>admission_decision</th>
+      <th>proxy_basis</th>
+      <th>review_reasons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>route_following_stability</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>LIMITED_PROXY_AXIS</td>
+      <td>ADMIT_AS_LIMITED_PROXY_AXIS_CANDIDATE_REQUIRES_CONTRACT_PATCH</td>
+      <td>route issue event burden: off_route / route_uncertainty / navigation_check / rejoin candidate evidence</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <td>deviation_correction_ability</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>MISSING_EVIDENCE_ANNOTATION</td>
+      <td>RETAIN_AS_CANDIDATE_REQUIRES_EVENT_CHAIN_REVIEW</td>
+      <td>Candidate only; rejoin/correction chain not yet validated.</td>
+      <td>Needs formal deviation-start to correction/rejoin event-chain review.</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,38 @@
+
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><title>CH6.5.5 Fork / Decision-point Inventory v1</title>
+<style>
+body { font-family: Arial, 'Noto Sans TC', sans-serif; line-height: 1.45; margin: 28px; }
+code { background: #f4f4f4; padding: 2px 4px; }
+table { border-collapse: collapse; margin: 12px 0; width: 100%; }
+th, td { border: 1px solid #ddd; padding: 6px; vertical-align: top; }
+th { background: #f7f7f7; }
+.badge { display: inline-block; padding: 4px 8px; border: 1px solid #999; border-radius: 4px; }
+</style></head>
+<body>
+<h1>CH6.5.5 Fork / Decision-point Inventory v1</h1>
+<p class="badge">PASS_CH6_5_5_FORK_DECISION_POINT_INVENTORY_V1_1_SOURCE_GAP_RETAINED</p>
+<p>This review is source governance only. It is not a personal ability axis, navigation ability score, ranking, class, final risk score, route suitability score, or go/no-go decision.</p>
+<h2>Summary</h2>
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>source_inventory_count</td><td>578</td></tr>
+<tr><td>usable_fork_source_count</td><td>0</td></tr>
+<tr><td>candidate_feature_count</td><td>53136</td></tr>
+<tr><td>heuristic_fork_like_candidate_count</td><td>2337</td></tr>
+<tr><td>heuristic_decision_point_like_candidate_count</td><td>2337</td></tr>
+<tr><td>governed_fork_candidate_count</td><td>0</td></tr>
+<tr><td>governed_decision_point_candidate_count</td><td>0</td></tr>
+<tr><td>wrong_branch_exposure_candidate_count</td><td>328</td></tr>
+<tr><td>admission decision</td><td>RETAIN_AS_FORK_DECISION_POINT_SOURCE_GAP</td></tr>
+</table>
+<h2>Source roles</h2>
+<table><tr><th>source_role</th><th>count</th></tr>
+<tr><td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td><td>200</td></tr><tr><td>other_context_not_fork_inventory</td><td>157</td></tr><tr><td>route_geometry_self_near_context_not_fork_inventory</td><td>103</td></tr><tr><td>route_graph_summary_without_position</td><td>42</td></tr><tr><td>route_semantic_context_not_fork_inventory</td><td>46</td></tr><tr><td>script_hint_not_data_source</td><td>30</td></tr>
+</table>
+<h2>Interpretation</h2>
+<p>Guideposts, facilities, POIs, activity wrong-branch diagnostics, and self-near route geometry are useful context, but they are not automatically governed fork / decision-point inventory sources. A governed inventory should ideally contain route graph topology such as node degree, adjacent edges, branch geometry, and route distance or coordinates.</p>
+<h2>Next step</h2>
+<p>If this review remains a source gap, the next upstream work should be an IB0/IB1 route graph node-degree and side-branch proximity extractor. If a candidate source is admitted, it should be connected only as navigation challenge exposure context for route-following stability confidence, not as an ability score.</p>
+</body></html>

@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CH6.5.5 navigation challenge exposure review v1</title>
+  <style>
+    body { font-family: Arial, "Microsoft JhengHei", sans-serif; margin: 32px; color: #172326; background: #f7f8f4; }
+    h1, h2 { margin-bottom: 0.35rem; }
+    .note { max-width: 980px; line-height: 1.5; }
+    .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; background: #e3ece8; color: #153d37; font-weight: 700; }
+    table { border-collapse: collapse; width: 100%; margin: 14px 0 28px; background: white; font-size: 13px; }
+    th, td { border: 1px solid #d8dfda; padding: 7px 8px; vertical-align: top; }
+    th { background: #e8efeb; text-align: left; }
+    code { background: #eef2ef; padding: 2px 4px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>CH6.5.5 Navigation Challenge Exposure Review v1</h1>
+  <p><span class="badge">Contextual evidence, not an axis</span></p>
+  <p class="note">Navigation challenge exposure is contextual evidence for interpreting route-following stability proxy confidence. Many forks with no route issue can support interpretation confidence, but it is not a formal ability score.</p>
+  <p class="note">This review must not be used to infer deviation correction ability. No deviation does not prove correction ability; that requires deviation-start -&gt; correction/rejoin event-chain evidence.</p>
+  <p class="note"><strong>Decision:</strong> <code>RETAIN_AS_SOURCE_GAP_FOR_FORK_DECISION_POINT_INVENTORY</code></p>
+  <p class="note">No governed fork / decision point inventory source was found. Route semantics, guidepost, facility, trail, path, road, way, graph, and self-near sources remain contextual but cannot produce exposure counts.</p>
+  <p class="note">CH6.5.5 navigation_challenge_exposure review v1 is contextual evidence for interpreting route_following_stability confidence only. It is not a personal ability axis and does not compute or authorize ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</p>
+
+  <h2>Audit</h2>
+  <p><code>PASS_CH6_5_5_NAVIGATION_CHALLENGE_EXPOSURE_REVIEW_V1_SOURCE_GAP_ONLY</code></p>
+  <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>baseline_activity_count</th>
+      <th>extra_source_count</th>
+      <th>extra_source_admitted_count</th>
+      <th>route_following_axis_not_modified</th>
+      <th>deviation_correction_axis_not_modified</th>
+      <th>navigation_challenge_not_added_as_axis</th>
+      <th>zero_fill_used</th>
+      <th>forbidden_fields_present</th>
+      <th>forbidden_fields</th>
+      <th>usable_fork_source_count</th>
+      <th>context_source_count</th>
+      <th>admission_decision</th>
+      <th>audit_conclusion</th>
+      <th>review_reasons</th>
+      <th>interpretation_boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>25</td>
+      <td>1</td>
+      <td>0</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NONE</td>
+      <td>0</td>
+      <td>824</td>
+      <td>RETAIN_AS_SOURCE_GAP_FOR_FORK_DECISION_POINT_INVENTORY</td>
+      <td>PASS_CH6_5_5_NAVIGATION_CHALLENGE_EXPOSURE_REVIEW_V1_SOURCE_GAP_ONLY</td>
+      <td>NONE</td>
+      <td>CH6.5.5 navigation_challenge_exposure review v1 is contextual evidence for interpreting route_following_stability confidence only. It is not a personal ability axis and does not compute or authorize ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causality claims.</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Source Inventory Summary</h2>
+  <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>source_role</th>
+      <th>usable_for_fork_exposure</th>
+      <th>source_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>mainline_graph_summary_not_decision_point_inventory</td>
+      <td>False</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <td>route_geometry_self_near_context_not_fork_inventory</td>
+      <td>False</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>route_semantic_context_not_fork_inventory</td>
+      <td>False</td>
+      <td>694</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Route Exposure Candidates</h2>
+  <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>route_folder</th>
+      <th>case_id</th>
+      <th>route_dist_m</th>
+      <th>feature_type</th>
+      <th>feature_name</th>
+      <th>osm_tags</th>
+      <th>is_fork_candidate</th>
+      <th>is_decision_point_candidate</th>
+      <th>is_wrong_branch_exposure_candidate</th>
+      <th>confidence</th>
+      <th>source_path</th>
+      <th>source_status</th>
+      <th>source_gap_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>&lt;NA&gt;</td>
+      <td>SOURCE_GAP</td>
+      <td></td>
+      <td></td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td></td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>No governed fork / junction / branch / decision point inventory source was found. Guidepost, facility, trail, path, road, way, and graph-summary sources are contextual only.</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Activity Context</h2>
+  <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>activity_id</th>
+      <th>study_population_status</th>
+      <th>baseline_population_gate</th>
+      <th>route_following_evidence_state</th>
+      <th>route_issue_event_count</th>
+      <th>candidate_proxy_route_following_stability_0_100</th>
+      <th>navigation_challenge_source_status</th>
+      <th>fork_exposure_count</th>
+      <th>decision_point_exposure_count</th>
+      <th>wrong_branch_exposure_count</th>
+      <th>exposure_confidence</th>
+      <th>interpretation_note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>5</td>
+      <td>51.50</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>6_1</td>
+      <td>EXTRA_SOURCE_ACTIVITY_NOT_IN_RADAR_BASELINE</td>
+      <td>BLOCKED_EXTRA_SOURCE</td>
+      <td>EXTRA_SOURCE_BLOCKED</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap. Extra source activity 6_1 is blocked from baseline admission.</td>
+    </tr>
+    <tr>
+      <td>8_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>6</td>
+      <td>35.35</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>9_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>8</td>
+      <td>44.30</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>13_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>2</td>
+      <td>83.17</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>14_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>7</td>
+      <td>28.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>15_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_NO_ROUTE_ISSUE</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>16_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>16</td>
+      <td>21.10</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>20_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_NO_ROUTE_ISSUE</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>23_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_NO_ROUTE_ISSUE</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>28_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>9</td>
+      <td>34.20</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>29_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_NO_ROUTE_ISSUE</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>30_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_NO_ROUTE_ISSUE</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>33_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>1</td>
+      <td>90.35</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>35_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_NO_ROUTE_ISSUE</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>36_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>2</td>
+      <td>65.47</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>37_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>6</td>
+      <td>13.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>38_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_NO_ROUTE_ISSUE</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>40_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>3</td>
+      <td>74.65</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>41_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>1</td>
+      <td>91.55</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>42_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>18</td>
+      <td>5.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>43_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>29</td>
+      <td>18.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>44_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>5</td>
+      <td>56.60</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>45_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>1</td>
+      <td>91.35</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>46_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>25</td>
+      <td>13.92</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+    <tr>
+      <td>48_1</td>
+      <td>RADAR_BASELINE_ACTIVITY</td>
+      <td>PASS</td>
+      <td>DETECTOR_COVERED_ROUTE_ISSUE_BURDEN</td>
+      <td>36</td>
+      <td>11.00</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>INSUFFICIENT_FORK_SOURCE</td>
+      <td>Fork / decision point source is insufficient. Do not zero-fill navigation challenge exposure; retain as source gap.</td>
+    </tr>
+  </tbody>
+</table>
+
+  <h2>Source Inventory Sample</h2>
+  <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>source_path</th>
+      <th>exists</th>
+      <th>row_count</th>
+      <th>candidate_columns</th>
+      <th>source_role</th>
+      <th>usable_for_fork_exposure</th>
+      <th>source_gap_reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline\qixing_lengshuikeng\37_1\qixing_lengshuikeng_37_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>9533</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\13_1\qixing_lengshuikeng_13_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>8325</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\14_1\qixing_lengshuikeng_14_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>7202</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\15_1\qixing_lengshuikeng_15_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>17282</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\16_1\qixing_lengshuikeng_16_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>10200</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\20_1\qixing_lengshuikeng_20_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>17452</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\28_1\qixing_lengshuikeng_28_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>8636</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\30_1\qixing_lengshuikeng_30_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>17563</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\33_1\qixing_lengshuikeng_33_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>6582</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\36_1\qixing_lengshuikeng_36_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>8015</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\37_1\qixing_lengshuikeng_37_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>9533</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\38_1\qixing_lengshuikeng_38_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>16606</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\3_1\qixing_lengshuikeng_3_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>7873</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\40_1\qixing_lengshuikeng_40_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>7714</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\41_1\qixing_lengshuikeng_41_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>7077</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\42_1\qixing_lengshuikeng_42_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>10287</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\43_1\qixing_lengshuikeng_43_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>11451</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\44_1\qixing_lengshuikeng_44_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>7010</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\45_1\qixing_lengshuikeng_45_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>7227</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\46_1\qixing_lengshuikeng_46_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>10318</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\48_1\qixing_lengshuikeng_48_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>11622</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\8_1\qixing_lengshuikeng_8_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>8433</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\activity_points_osm_nlsc_corrected_v1c_refit_mainline_offset3\qixing_lengshuikeng\9_1\qixing_lengshuikeng_9_1_activity_points_osm_nlsc_corrected_v1c.csv</td>
+      <td>True</td>
+      <td>11399</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|route_context_dist_m|route_context_ele_smooth|route_context_ele_gpx_m|route_context_slope_band_window_nlsc|route_context_terrain_window_risk_score|route_context_hydro_terrain_amplifier_score|route_context_osm_terrain_combined_risk_score|route_context_osm_terrain_combined_risk_band|route_context_osm_highway|route_context_osm_surface|route_context_surface_class|route_context_route_semantic_class|route_context_facility_flags|route_context_rest_flags|route_context_support_flags|route_context_hydrology_flags|route_context_visibility_class|route_context_osm_difficulty_class|route_context_join_dist_diff_m|route_context_match_status|activity_route_context_join_dist_col|route_context_model_status|route_context_model_usable|route_context_model_exclusion_reason|route_context_model_offset_col|route_context_model_max_offset_m|route_context_source_fp|activity_points_source_fp|route_context_model_status_v1c|route_context_model_usable_v1c</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a2_qixing_wrong_branch_evidence_v1_3b\qixing_37_1_wrong_branch_target_segment_evidence.csv</td>
+      <td>True</td>
+      <td>348</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|_row_n|elapsed_min|route_dist_m_num|lat_num|lon_num|offset_m_num|speed_mps_num|route_dist_delta_m_num|reliable_route_dist_delta_m_num|usable_bool|branch_ambiguity_bool|raw_gps_heading_deg|route_axis_heading_deg|heading_diff_deg|raw_heading_delta_deg</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\13_1\qixing_lengshuikeng_13_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>8325</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\14_1\qixing_lengshuikeng_14_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>7202</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\15_1\qixing_lengshuikeng_15_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>17282</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\16_1\qixing_lengshuikeng_16_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>10200</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\20_1\qixing_lengshuikeng_20_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>17452</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\28_1\qixing_lengshuikeng_28_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>8636</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\29_1\qixing_lengshuikeng_29_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>23534</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\30_1\qixing_lengshuikeng_30_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>17563</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\33_1\qixing_lengshuikeng_33_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>6582</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\35_1\qixing_lengshuikeng_35_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>23200</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\36_1\qixing_lengshuikeng_36_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>8015</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\37_1\qixing_lengshuikeng_37_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>9533</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\38_1\qixing_lengshuikeng_38_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>16606</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\3_1\qixing_lengshuikeng_3_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>7873</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\40_1\qixing_lengshuikeng_40_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>7714</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\41_1\qixing_lengshuikeng_41_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>7077</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\42_1\qixing_lengshuikeng_42_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>10287</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\43_1\qixing_lengshuikeng_43_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>11451</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\44_1\qixing_lengshuikeng_44_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>7010</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\45_1\qixing_lengshuikeng_45_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>7227</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\46_1\qixing_lengshuikeng_46_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>10318</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\48_1\qixing_lengshuikeng_48_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>11622</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\8_1\qixing_lengshuikeng_8_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>8433</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_full26_mainline_membership_qa\qixing_lengshuikeng\9_1\qixing_lengshuikeng_9_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>11399</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_mainline_membership_smoke\qixing_lengshuikeng\33_1\qixing_lengshuikeng_33_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>6582</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_mainline_membership_smoke\qixing_lengshuikeng\37_1\qixing_lengshuikeng_37_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>9533</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3a_rc_candidate_selection_v1h_qixing_lengshuikeng_mainline_membership_smoke\qixing_lengshuikeng\40_1\qixing_lengshuikeng_40_1_mainline_membership_labels_v1h.csv</td>
+      <td>True</td>
+      <td>7714</td>
+      <td>raw_point_index|route_folder|subject_id|trial_id|activity_id|timestamp_s|elapsed_sec|dt_sec|duplicate_timestamp_flag|irregular_interval_flag|lat|lon|ele_m|distance_m|heart_rate_bpm|source_file|source_ext|source_row_index|case_id|candidate_route_selection_version|nearest_candidate_way_id|nearest_distance_m|nearest_route_dist_m|projected_lat|projected_lon|candidate_way_id|nearest_osm_way_id|nearest_match_score|nearest_selected_from_ib0|nearest_highway_norm|nearest_route_role|nearest_way_name|rc_elapsed_fraction|rc_terminal_segment|candidate_context|candidate_confidence|rc_review_required|rc_review_reason|training_use_policy|terminal_zone|raw_step_m|raw_speed_estimated_mps|route_dist_delta_m_v1d|route_dist_range_30s_m|candidate_way_switch_count_60s|pause_or_stall_flag|route_dist_reversal_flag|route_dist_jump_flag|route_dist_stall_flag|candidate_way_switch_flag|movement_review_required|movement_review_reason|anchor_stabilized_flag|anchor_type|anchor_name|anchor_distance_m|anchor_refit_lat|anchor_refit_lon|anchor_refit_osm_way_id|anchor_refit_reason|target_route_status|target_route_label|target_route_episode_id|off_target_flag|off_target_reason|retain_for_training_flag|retain_for_review_flag|transition_type|transition_review_level|mainline_membership|mainline_training_flag|connector_training_flag|summit_training_flag|non_mainline_flag|non_mainline_type|non_mainline_reason|membership_review_flag|v1g2_zone_id|v1g2_zone_type|v1g2_zone_quality_flag</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3c_activity_behavior_events_adaptive_speed_v1_phase3_semantics_smoketest\qixing_lengshuikeng\37_1\qixing_lengshuikeng_37_1_ib3c_points_labeled.csv</td>
+      <td>True</td>
+      <td>9533</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|_join_route_dist_m|_ctx_dist_m|osm_highway|osm_surface|surface_class|route_semantic_class|facility_flags|rest_flags|support_flags|hydrology_flags|visibility_class|osm_difficulty_class|slope_band_window_nlsc|terrain_window_risk_score|hydro_terrain_amplifier_score|osm_terrain_combined_risk_score|osm_terrain_combined_risk_band|route_context_dist_diff_m|ib3c_speed_mps|ib3c_speed_source|ib3c_hr_bpm|ib3c_hr_source|ib3c_usable_on_route|ib3c_excluded_reason|ib3c_offset_m|ib3c_low_speed_flag|ib3c_off_route_behavior_flag|ib3c_behavior_candidate_flag|ib3c_stationary_block_id|global_low_speed_reference_mps</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3c_activity_behavior_events_adaptive_speed_v1_phase3a_semantic_annotations_26batch\qixing_lengshuikeng\13_1\qixing_lengshuikeng_13_1_ib3c_points_labeled.csv</td>
+      <td>True</td>
+      <td>8325</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|_join_route_dist_m|_ctx_dist_m|osm_highway|osm_surface|surface_class|route_semantic_class|facility_flags|rest_flags|support_flags|hydrology_flags|visibility_class|osm_difficulty_class|slope_band_window_nlsc|terrain_window_risk_score|hydro_terrain_amplifier_score|osm_terrain_combined_risk_score|osm_terrain_combined_risk_band|route_context_dist_diff_m|ib3c_speed_mps|ib3c_speed_source|ib3c_hr_bpm|ib3c_hr_source|ib3c_usable_on_route|ib3c_excluded_reason|ib3c_offset_m|ib3c_low_speed_flag|ib3c_off_route_behavior_flag|ib3c_behavior_candidate_flag|ib3c_stationary_block_id|global_low_speed_reference_mps</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3c_activity_behavior_events_adaptive_speed_v1_phase3a_semantic_annotations_26batch\qixing_lengshuikeng\14_1\qixing_lengshuikeng_14_1_ib3c_points_labeled.csv</td>
+      <td>True</td>
+      <td>7202</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|_join_route_dist_m|_ctx_dist_m|osm_highway|osm_surface|surface_class|route_semantic_class|facility_flags|rest_flags|support_flags|hydrology_flags|visibility_class|osm_difficulty_class|slope_band_window_nlsc|terrain_window_risk_score|hydro_terrain_amplifier_score|osm_terrain_combined_risk_score|osm_terrain_combined_risk_band|route_context_dist_diff_m|ib3c_speed_mps|ib3c_speed_source|ib3c_hr_bpm|ib3c_hr_source|ib3c_usable_on_route|ib3c_excluded_reason|ib3c_offset_m|ib3c_low_speed_flag|ib3c_off_route_behavior_flag|ib3c_behavior_candidate_flag|ib3c_stationary_block_id|global_low_speed_reference_mps</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3c_activity_behavior_events_adaptive_speed_v1_phase3a_semantic_annotations_26batch\qixing_lengshuikeng\15_1\qixing_lengshuikeng_15_1_ib3c_points_labeled.csv</td>
+      <td>True</td>
+      <td>17282</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|_join_route_dist_m|_ctx_dist_m|osm_highway|osm_surface|surface_class|route_semantic_class|facility_flags|rest_flags|support_flags|hydrology_flags|visibility_class|osm_difficulty_class|slope_band_window_nlsc|terrain_window_risk_score|hydro_terrain_amplifier_score|osm_terrain_combined_risk_score|osm_terrain_combined_risk_band|route_context_dist_diff_m|ib3c_speed_mps|ib3c_speed_source|ib3c_hr_bpm|ib3c_hr_source|ib3c_usable_on_route|ib3c_excluded_reason|ib3c_offset_m|ib3c_low_speed_flag|ib3c_off_route_behavior_flag|ib3c_behavior_candidate_flag|ib3c_stationary_block_id|global_low_speed_reference_mps</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3c_activity_behavior_events_adaptive_speed_v1_phase3a_semantic_annotations_26batch\qixing_lengshuikeng\16_1\qixing_lengshuikeng_16_1_ib3c_points_labeled.csv</td>
+      <td>True</td>
+      <td>10200</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|_join_route_dist_m|_ctx_dist_m|osm_highway|osm_surface|surface_class|route_semantic_class|facility_flags|rest_flags|support_flags|hydrology_flags|visibility_class|osm_difficulty_class|slope_band_window_nlsc|terrain_window_risk_score|hydro_terrain_amplifier_score|osm_terrain_combined_risk_score|osm_terrain_combined_risk_band|route_context_dist_diff_m|ib3c_speed_mps|ib3c_speed_source|ib3c_hr_bpm|ib3c_hr_source|ib3c_usable_on_route|ib3c_excluded_reason|ib3c_offset_m|ib3c_low_speed_flag|ib3c_off_route_behavior_flag|ib3c_behavior_candidate_flag|ib3c_stationary_block_id|global_low_speed_reference_mps</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3c_activity_behavior_events_adaptive_speed_v1_phase3a_semantic_annotations_26batch\qixing_lengshuikeng\20_1\qixing_lengshuikeng_20_1_ib3c_points_labeled.csv</td>
+      <td>True</td>
+      <td>17452</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|_join_route_dist_m|_ctx_dist_m|osm_highway|osm_surface|surface_class|route_semantic_class|facility_flags|rest_flags|support_flags|hydrology_flags|visibility_class|osm_difficulty_class|slope_band_window_nlsc|terrain_window_risk_score|hydro_terrain_amplifier_score|osm_terrain_combined_risk_score|osm_terrain_combined_risk_band|route_context_dist_diff_m|ib3c_speed_mps|ib3c_speed_source|ib3c_hr_bpm|ib3c_hr_source|ib3c_usable_on_route|ib3c_excluded_reason|ib3c_offset_m|ib3c_low_speed_flag|ib3c_off_route_behavior_flag|ib3c_behavior_candidate_flag|ib3c_stationary_block_id|global_low_speed_reference_mps</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3c_activity_behavior_events_adaptive_speed_v1_phase3a_semantic_annotations_26batch\qixing_lengshuikeng\28_1\qixing_lengshuikeng_28_1_ib3c_points_labeled.csv</td>
+      <td>True</td>
+      <td>8636</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|_join_route_dist_m|_ctx_dist_m|osm_highway|osm_surface|surface_class|route_semantic_class|facility_flags|rest_flags|support_flags|hydrology_flags|visibility_class|osm_difficulty_class|slope_band_window_nlsc|terrain_window_risk_score|hydro_terrain_amplifier_score|osm_terrain_combined_risk_score|osm_terrain_combined_risk_band|route_context_dist_diff_m|ib3c_speed_mps|ib3c_speed_source|ib3c_hr_bpm|ib3c_hr_source|ib3c_usable_on_route|ib3c_excluded_reason|ib3c_offset_m|ib3c_low_speed_flag|ib3c_off_route_behavior_flag|ib3c_behavior_candidate_flag|ib3c_stationary_block_id|global_low_speed_reference_mps</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3c_activity_behavior_events_adaptive_speed_v1_phase3a_semantic_annotations_26batch\qixing_lengshuikeng\29_1\qixing_lengshuikeng_29_1_ib3c_points_labeled.csv</td>
+      <td>True</td>
+      <td>23534</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|_join_route_dist_m|_ctx_dist_m|osm_highway|osm_surface|surface_class|route_semantic_class|facility_flags|rest_flags|support_flags|hydrology_flags|visibility_class|osm_difficulty_class|slope_band_window_nlsc|terrain_window_risk_score|hydro_terrain_amplifier_score|osm_terrain_combined_risk_score|osm_terrain_combined_risk_band|route_context_dist_diff_m|ib3c_speed_mps|ib3c_speed_source|ib3c_hr_bpm|ib3c_hr_source|ib3c_usable_on_route|ib3c_excluded_reason|ib3c_offset_m|ib3c_low_speed_flag|ib3c_off_route_behavior_flag|ib3c_behavior_candidate_flag|ib3c_stationary_block_id|global_low_speed_reference_mps</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+    <tr>
+      <td>outputs\ib3c_activity_behavior_events_adaptive_speed_v1_phase3a_semantic_annotations_26batch\qixing_lengshuikeng\30_1\qixing_lengshuikeng_30_1_ib3c_points_labeled.csv</td>
+      <td>True</td>
+      <td>17563</td>
+      <td>route_folder|case_id|subject_id|trial_id|row_index|point_index|activity_id|timestamp_s|elapsed_sec|dt_sec|lat|lon|ele_m|distance_m|heart_rate_bpm|route_dist_m|projected_route_dist_m|nearest_route_dist_m|reliable_route_dist_m|route_progress_reliable|route_progress_state|route_projection_confidence|route_projection_note|offset_m|segment_id|direction_hint|match_quality|source_file|sequence_match_score|candidate_rank|route_dist_delta_m|reliable_route_dist_delta_m|implied_route_speed_mps|sequence_jump_guard_flag|sequence_branch_ambiguity_flag|summit_dist_m|summit_reached_flag|candidate_phase|summit_transition_lock_applied|summit_transition_release_flag|source_csv_row_index|usable_on_route|excluded_reason|excursion_id|manual_override_applied|manual_event_id|manual_label|manual_interpretation|segment_role|route_progress_excluded|_join_route_dist_m|_ctx_dist_m|osm_highway|osm_surface|surface_class|route_semantic_class|facility_flags|rest_flags|support_flags|hydrology_flags|visibility_class|osm_difficulty_class|slope_band_window_nlsc|terrain_window_risk_score|hydro_terrain_amplifier_score|osm_terrain_combined_risk_score|osm_terrain_combined_risk_band|route_context_dist_diff_m|ib3c_speed_mps|ib3c_speed_source|ib3c_hr_bpm|ib3c_hr_source|ib3c_usable_on_route|ib3c_excluded_reason|ib3c_offset_m|ib3c_low_speed_flag|ib3c_off_route_behavior_flag|ib3c_behavior_candidate_flag|ib3c_stationary_block_id|global_low_speed_reference_mps</td>
+      <td>activity_mapmatch_or_wrong_branch_diagnostic_not_fork_inventory</td>
+      <td>False</td>
+      <td>Branch ambiguity and wrong-branch diagnostics are useful navigation behavior context, but they do not enumerate route fork or decision point exposure.</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
