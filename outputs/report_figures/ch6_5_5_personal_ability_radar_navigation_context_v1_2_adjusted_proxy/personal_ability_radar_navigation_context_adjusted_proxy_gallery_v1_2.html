@@ -1,0 +1,1066 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CH6.5.5 Personal Ability Radar Navigation Context v1.2 Adjusted Proxy</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 24px; color: #1f2933; }
+h1, h2 { margin-bottom: 8px; }
+.boundary { border-left: 4px solid #687078; padding: 8px 12px; background: #f5f7f8; }
+.status { font-weight: 700; }
+table.data { border-collapse: collapse; font-size: 12px; margin: 12px 0 24px; }
+table.data th, table.data td { border: 1px solid #d6dde3; padding: 5px 7px; vertical-align: top; }
+table.data th { background: #eef2f5; }
+.plot-card { display: inline-block; width: 390px; vertical-align: top; margin: 8px 14px 24px 0; }
+.plot-card img { max-width: 370px; border: 1px solid #d6dde3; }
+.badge { font-size: 12px; font-weight: 700; }
+.caption { font-size: 12px; line-height: 1.35; }
+</style>
+</head>
+<body>
+<h1>CH6.5.5 Personal Ability Radar Navigation Context v1.2 Adjusted Proxy</h1>
+<p class="status">PASS_CH6_5_5_PERSONAL_ABILITY_RADAR_NAVIGATION_CONTEXT_V1_2_ADJUSTED_PROXY_PREVIEW</p>
+<p class="boundary">CH6.5.5 personal ability radar navigation-context v1.2 adjusted-proxy preview reuses the governed radar preview axes and replaces the route_following_stability proxy value with CH6.5.5 route-following adjusted proxy v1.2. Navigation challenge exposure is shown only as caption/annotation/review context. It is not a personal ability axis and does not create a navigation ability score. This output does not compute or authorize radar scores, ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causal claims.</p>
+
+<h2>Audit</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>source_radar_audit_conclusion</th>
+      <th>source_adjusted_proxy_audit_conclusion</th>
+      <th>source_navigation_context_audit_conclusion</th>
+      <th>manifest_row_count</th>
+      <th>plot_created_count</th>
+      <th>baseline_plot_created_count</th>
+      <th>nonbaseline_plot_created_count</th>
+      <th>route_following_adjusted_proxy_applied_count</th>
+      <th>navigation_context_available_count</th>
+      <th>missing_navigation_context_count</th>
+      <th>stable_under_high_navigation_exposure_count</th>
+      <th>confirmed_route_issue_review_count</th>
+      <th>extra_source_6_1_excluded</th>
+      <th>zero_fill_used</th>
+      <th>radar_axes_reused_only</th>
+      <th>route_following_axis_uses_adjusted_proxy_v1_2</th>
+      <th>navigation_challenge_not_added_as_axis</th>
+      <th>navigation_context_is_annotation_only</th>
+      <th>forbidden_score_rank_class_fields_present</th>
+      <th>forbidden_fields</th>
+      <th>radar_scoring_absent</th>
+      <th>ability_scoring_absent</th>
+      <th>ranking_absent</th>
+      <th>class_label_absent</th>
+      <th>navigation_ability_scoring_absent</th>
+      <th>decision_label_absent</th>
+      <th>diagnosis_absent</th>
+      <th>causal_claim_absent</th>
+      <th>admission_decision</th>
+      <th>audit_conclusion</th>
+      <th>review_reasons</th>
+      <th>interpretation_boundary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PASS_CH6_5_5_PERSONAL_ABILITY_RADAR_PLOT_V1_1_GOVERNED_LIMITED_PROXY_PREVIEW</td>
+      <td>PASS_CH6_5_5_ROUTE_FOLLOWING_ADJUSTED_PROXY_V1_2_MAINLINE_WEIGHTED_LIMITED_PROXY</td>
+      <td>PASS_CH6_5_5_ROUTE_FOLLOWING_NAVIGATION_CONTEXT_INTERPRETATION_V1_GOVERNED_CONTEXT_AVAILABLE</td>
+      <td>25</td>
+      <td>25</td>
+      <td>25</td>
+      <td>0</td>
+      <td>25</td>
+      <td>25</td>
+      <td>0</td>
+      <td>11</td>
+      <td>2</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>NONE</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>ADMIT_AS_RADAR_NAVIGATION_CONTEXT_PREVIEW_WITH_ADJUSTED_ROUTE_FOLLOWING_PROXY</td>
+      <td>PASS_CH6_5_5_PERSONAL_ABILITY_RADAR_NAVIGATION_CONTEXT_V1_2_ADJUSTED_PROXY_PREVIEW</td>
+      <td>NONE</td>
+      <td>CH6.5.5 personal ability radar navigation-context v1.2 adjusted-proxy preview reuses the governed radar preview axes and replaces the route_following_stability proxy value with CH6.5.5 route-following adjusted proxy v1.2. Navigation challenge exposure is shown only as caption/annotation/review context. It is not a personal ability axis and does not create a navigation ability score. This output does not compute or authorize radar scores, ability scores, ability ranks, ability classes, THCI scores, final hiking risk scores, route suitability scores, go/no-go decisions, medical diagnoses, or causal claims.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Source Inventory</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>source_role</th>
+      <th>source_label</th>
+      <th>source_path</th>
+      <th>source_exists</th>
+      <th>file_size_bytes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>plot_ready</td>
+      <td>radar plot ready table v1_1</td>
+      <td>D:\mountain_work\115_osm\outputs\report_figures\ch6_5_5_personal_ability_radar_plot_v1_1\personal_ability_radar_plot_ready_table_v1_1.csv</td>
+      <td>True</td>
+      <td>529751</td>
+    </tr>
+    <tr>
+      <td>plot_index</td>
+      <td>radar plot index v1_1</td>
+      <td>D:\mountain_work\115_osm\outputs\report_figures\ch6_5_5_personal_ability_radar_plot_v1_1\personal_ability_radar_plot_index_v1_1.csv</td>
+      <td>True</td>
+      <td>13872</td>
+    </tr>
+    <tr>
+      <td>plot_audit</td>
+      <td>radar plot audit v1_1</td>
+      <td>D:\mountain_work\115_osm\outputs\report_figures\ch6_5_5_personal_ability_radar_plot_v1_1\personal_ability_radar_plot_audit_v1_1.csv</td>
+      <td>True</td>
+      <td>1082</td>
+    </tr>
+    <tr>
+      <td>annotation_summary</td>
+      <td>radar annotation summary v1_1</td>
+      <td>D:\mountain_work\115_osm\outputs\report_figures\ch6_5_5_personal_ability_radar_plot_v1_1\personal_ability_radar_annotation_summary_v1_1.csv</td>
+      <td>True</td>
+      <td>224103</td>
+    </tr>
+    <tr>
+      <td>route_following_adjusted_proxy</td>
+      <td>route_following_adjusted_proxy</td>
+      <td>D:\mountain_work\115_osm\outputs\report_figures\ch6_5_5_route_following_adjusted_proxy_v1_2\route_following_adjusted_proxy_v1_2.csv</td>
+      <td>True</td>
+      <td>22741</td>
+    </tr>
+    <tr>
+      <td>route_following_adjusted_proxy_audit</td>
+      <td>route_following_adjusted_proxy_audit</td>
+      <td>D:\mountain_work\115_osm\outputs\report_figures\ch6_5_5_route_following_adjusted_proxy_v1_2\route_following_adjusted_proxy_audit_v1_2.csv</td>
+      <td>True</td>
+      <td>1933</td>
+    </tr>
+    <tr>
+      <td>navigation_context_interpretation</td>
+      <td>navigation_context_interpretation</td>
+      <td>D:\mountain_work\115_osm\outputs\report_figures\ch6_5_5_route_following_navigation_context_interpretation_v1\route_following_navigation_context_interpretation_v1.csv</td>
+      <td>True</td>
+      <td>15228</td>
+    </tr>
+    <tr>
+      <td>navigation_context_audit</td>
+      <td>navigation_context_audit</td>
+      <td>D:\mountain_work\115_osm\outputs\report_figures\ch6_5_5_route_following_navigation_context_interpretation_v1\route_following_navigation_context_audit_v1.csv</td>
+      <td>True</td>
+      <td>1383</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Manifest</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>activity_id</th>
+      <th>participant_id</th>
+      <th>plot_created</th>
+      <th>plot_path</th>
+      <th>route_following_adjusted_proxy_applied</th>
+      <th>adjusted_route_following_value</th>
+      <th>adjusted_route_following_band</th>
+      <th>navigation_context_badge</th>
+      <th>navigation_exposure_level</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>13_1</td>
+      <td>13</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_13_1_v1_2.png</td>
+      <td>True</td>
+      <td>88.50</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>14_1</td>
+      <td>14</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_14_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>15_1</td>
+      <td>15</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_15_1_v1_2.png</td>
+      <td>True</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>16_1</td>
+      <td>16</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_16_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>20_1</td>
+      <td>20</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_20_1_v1_2.png</td>
+      <td>True</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>23_1</td>
+      <td>23</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_23_1_v1_2.png</td>
+      <td>True</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>28_1</td>
+      <td>28</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_28_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>29_1</td>
+      <td>29</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_29_1_v1_2.png</td>
+      <td>True</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>30_1</td>
+      <td>30</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_30_1_v1_2.png</td>
+      <td>True</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>33_1</td>
+      <td>33</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_33_1_v1_2.png</td>
+      <td>True</td>
+      <td>90.85</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>35_1</td>
+      <td>35</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_35_1_v1_2.png</td>
+      <td>True</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>36_1</td>
+      <td>36</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_36_1_v1_2.png</td>
+      <td>True</td>
+      <td>66.50</td>
+      <td>LOW_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>CONFIRMED_ACTIVE_OFF_ROUTE_REJOIN_REVIEW</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>37_1</td>
+      <td>37</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_37_1_v1_2.png</td>
+      <td>True</td>
+      <td>66.50</td>
+      <td>LOW_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>CONFIRMED_ACTIVE_OFF_ROUTE_REJOIN_REVIEW</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>38_1</td>
+      <td>38</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_38_1_v1_2.png</td>
+      <td>True</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>3_1</td>
+      <td>3</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_3_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>40_1</td>
+      <td>40</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_40_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>41_1</td>
+      <td>41</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_41_1_v1_2.png</td>
+      <td>True</td>
+      <td>92.05</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>42_1</td>
+      <td>42</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_42_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>43_1</td>
+      <td>43</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_43_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>44_1</td>
+      <td>44</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_44_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>45_1</td>
+      <td>45</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_45_1_v1_2.png</td>
+      <td>True</td>
+      <td>91.85</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>46_1</td>
+      <td>46</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_46_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>48_1</td>
+      <td>48</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_48_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>8_1</td>
+      <td>8</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_8_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+    <tr>
+      <td>9_1</td>
+      <td>9</td>
+      <td>True</td>
+      <td>outputs\report_figures\ch6_5_5_personal_ability_radar_navigation_context_v1_2_adjusted_proxy\plots\personal_ability_radar_navigation_context_adjusted_proxy_9_1_v1_2.png</td>
+      <td>True</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Radar Gallery</h2>
+
+<div class="plot-card">
+  <h3>13_1 | 13</h3>
+  <p class="badge">STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_13_1_v1_2.png" alt="13_1 | 13">
+  <p class="caption">Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=83.2; adjusted proxy=88.5; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>14_1 | 14</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_14_1_v1_2.png" alt="14_1 | 14">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=28.0; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>15_1 | 15</h3>
+  <p class="badge">STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_15_1_v1_2.png" alt="15_1 | 15">
+  <p class="caption">Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>16_1 | 16</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_16_1_v1_2.png" alt="16_1 | 16">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=21.1; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>20_1 | 20</h3>
+  <p class="badge">STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_20_1_v1_2.png" alt="20_1 | 20">
+  <p class="caption">Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>23_1 | 23</h3>
+  <p class="badge">STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_23_1_v1_2.png" alt="23_1 | 23">
+  <p class="caption">Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>28_1 | 28</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_28_1_v1_2.png" alt="28_1 | 28">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=34.2; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>29_1 | 29</h3>
+  <p class="badge">STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_29_1_v1_2.png" alt="29_1 | 29">
+  <p class="caption">Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>30_1 | 30</h3>
+  <p class="badge">STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_30_1_v1_2.png" alt="30_1 | 30">
+  <p class="caption">Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>33_1 | 33</h3>
+  <p class="badge">STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_33_1_v1_2.png" alt="33_1 | 33">
+  <p class="caption">Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=90.3; adjusted proxy=90.8; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>35_1 | 35</h3>
+  <p class="badge">STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_35_1_v1_2.png" alt="35_1 | 35">
+  <p class="caption">Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>36_1 | 36</h3>
+  <p class="badge">CONFIRMED_ACTIVE_OFF_ROUTE_REJOIN_REVIEW</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_36_1_v1_2.png" alt="36_1 | 36">
+  <p class="caption">Adjusted route-following is lowered by confirmed active-route issue evidence; interpret as route-following review context, not as a navigation ability score. Prior proxy=65.5; adjusted proxy=66.5; adjusted band=LOW_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=1; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>37_1 | 37</h3>
+  <p class="badge">CONFIRMED_ACTIVE_OFF_ROUTE_REJOIN_REVIEW</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_37_1_v1_2.png" alt="37_1 | 37">
+  <p class="caption">Adjusted route-following is lowered by confirmed active-route issue evidence; interpret as route-following review context, not as a navigation ability score. Prior proxy=13.0; adjusted proxy=66.5; adjusted band=LOW_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=1; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>38_1 | 38</h3>
+  <p class="badge">STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_38_1_v1_2.png" alt="38_1 | 38">
+  <p class="caption">Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>3_1 | 3</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_3_1_v1_2.png" alt="3_1 | 3">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=51.5; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>40_1 | 40</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_40_1_v1_2.png" alt="40_1 | 40">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=74.7; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>41_1 | 41</h3>
+  <p class="badge">STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_41_1_v1_2.png" alt="41_1 | 41">
+  <p class="caption">Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=91.5; adjusted proxy=92.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>42_1 | 42</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_42_1_v1_2.png" alt="42_1 | 42">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=5.0; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>43_1 | 43</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_43_1_v1_2.png" alt="43_1 | 43">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=18.0; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>44_1 | 44</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_44_1_v1_2.png" alt="44_1 | 44">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=56.6; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>45_1 | 45</h3>
+  <p class="badge">STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_45_1_v1_2.png" alt="45_1 | 45">
+  <p class="caption">Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=91.3; adjusted proxy=91.8; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>46_1 | 46</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_46_1_v1_2.png" alt="46_1 | 46">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=13.9; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>48_1 | 48</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_48_1_v1_2.png" alt="48_1 | 48">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=11.0; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>8_1 | 8</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_8_1_v1_2.png" alt="8_1 | 8">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=35.4; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<div class="plot-card">
+  <h3>9_1 | 9</h3>
+  <p class="badge">ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</p>
+  <img src="plots/personal_ability_radar_navigation_context_adjusted_proxy_9_1_v1_2.png" alt="9_1 | 9">
+  <p class="caption">Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=44.3; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</p>
+</div>
+
+
+<h2>Annotation Table</h2>
+<table border="1" class="dataframe data">
+  <thead>
+    <tr style="text-align: right;">
+      <th>activity_id</th>
+      <th>participant_id</th>
+      <th>prior_route_following_proxy_value</th>
+      <th>route_following_adjusted_proxy_value</th>
+      <th>route_following_adjusted_band</th>
+      <th>navigation_context_badge</th>
+      <th>navigation_exposure_level</th>
+      <th>wrong_branch_evidence_count</th>
+      <th>off_route_evidence_count</th>
+      <th>post_finish_evidence_count</th>
+      <th>adjustment_reason</th>
+      <th>route_following_adjusted_interpretation_label</th>
+      <th>navigation_context_caption</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>13_1</td>
+      <td>13</td>
+      <td>83.17</td>
+      <td>88.50</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_DESCRIPTIVE_EVIDENCE</td>
+      <td>Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=83.2; adjusted proxy=88.5; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>14_1</td>
+      <td>14</td>
+      <td>28.00</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=28.0; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>15_1</td>
+      <td>15</td>
+      <td>100.00</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>PRIOR_PROXY_RETAINED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_DESCRIPTIVE_EVIDENCE</td>
+      <td>Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>16_1</td>
+      <td>16</td>
+      <td>21.10</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=21.1; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>20_1</td>
+      <td>20</td>
+      <td>100.00</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>PRIOR_PROXY_RETAINED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_DESCRIPTIVE_EVIDENCE</td>
+      <td>Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>23_1</td>
+      <td>23</td>
+      <td>100.00</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>PRIOR_PROXY_RETAINED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_DESCRIPTIVE_EVIDENCE</td>
+      <td>Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>28_1</td>
+      <td>28</td>
+      <td>34.20</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=34.2; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>29_1</td>
+      <td>29</td>
+      <td>100.00</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>PRIOR_PROXY_RETAINED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_DESCRIPTIVE_EVIDENCE</td>
+      <td>Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>30_1</td>
+      <td>30</td>
+      <td>100.00</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>PRIOR_PROXY_RETAINED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_DESCRIPTIVE_EVIDENCE</td>
+      <td>Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>33_1</td>
+      <td>33</td>
+      <td>90.35</td>
+      <td>90.85</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_DESCRIPTIVE_EVIDENCE</td>
+      <td>Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=90.3; adjusted proxy=90.8; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>35_1</td>
+      <td>35</td>
+      <td>100.00</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>PRIOR_PROXY_RETAINED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_DESCRIPTIVE_EVIDENCE</td>
+      <td>Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>36_1</td>
+      <td>36</td>
+      <td>65.47</td>
+      <td>66.50</td>
+      <td>LOW_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>CONFIRMED_ACTIVE_OFF_ROUTE_REJOIN_REVIEW</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>ACTIVE_OFF_ROUTE_EVIDENCE_PENALIZED</td>
+      <td>ROUTE_FOLLOWING_LOWERED_BY_ACTIVE_OFF_ROUTE_EVIDENCE</td>
+      <td>Adjusted route-following is lowered by confirmed active-route issue evidence; interpret as route-following review context, not as a navigation ability score. Prior proxy=65.5; adjusted proxy=66.5; adjusted band=LOW_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=1; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>37_1</td>
+      <td>37</td>
+      <td>13.00</td>
+      <td>66.50</td>
+      <td>LOW_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>CONFIRMED_ACTIVE_OFF_ROUTE_REJOIN_REVIEW</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>ACTIVE_OFF_ROUTE_EVIDENCE_PENALIZED</td>
+      <td>ROUTE_FOLLOWING_LOWERED_BY_ACTIVE_OFF_ROUTE_EVIDENCE</td>
+      <td>Adjusted route-following is lowered by confirmed active-route issue evidence; interpret as route-following review context, not as a navigation ability score. Prior proxy=13.0; adjusted proxy=66.5; adjusted band=LOW_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=1; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>38_1</td>
+      <td>38</td>
+      <td>100.00</td>
+      <td>100.00</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>PRIOR_PROXY_RETAINED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_DESCRIPTIVE_EVIDENCE</td>
+      <td>Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=100.0; adjusted proxy=100.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>3_1</td>
+      <td>3</td>
+      <td>51.50</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=51.5; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>40_1</td>
+      <td>40</td>
+      <td>74.65</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=74.7; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>41_1</td>
+      <td>41</td>
+      <td>91.55</td>
+      <td>92.05</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_DESCRIPTIVE_EVIDENCE</td>
+      <td>Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=91.5; adjusted proxy=92.0; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>42_1</td>
+      <td>42</td>
+      <td>5.00</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=5.0; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>43_1</td>
+      <td>43</td>
+      <td>18.00</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=18.0; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>44_1</td>
+      <td>44</td>
+      <td>56.60</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=56.6; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>45_1</td>
+      <td>45</td>
+      <td>91.35</td>
+      <td>91.85</td>
+      <td>HIGH_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>STABLE_MAINLINE_FOLLOWING_UNDER_HIGH_NAVIGATION_EXPOSURE_DESCRIPTIVE_EVIDENCE</td>
+      <td>Adjusted route-following remains high under high navigation-challenge exposure; this is descriptive evidence of stable mainline following under a more complex route context. Prior proxy=91.3; adjusted proxy=91.8; adjusted band=HIGH_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>46_1</td>
+      <td>46</td>
+      <td>13.92</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=13.9; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>48_1</td>
+      <td>48</td>
+      <td>11.00</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=11.0; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>8_1</td>
+      <td>8</td>
+      <td>35.35</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=35.4; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+    <tr>
+      <td>9_1</td>
+      <td>9</td>
+      <td>44.30</td>
+      <td>82.50</td>
+      <td>MID_ROUTE_FOLLOWING_ADJUSTED</td>
+      <td>ADJUSTED_ROUTE_FOLLOWING_CONTEXT_AVAILABLE</td>
+      <td>HIGH_NAVIGATION_EXPOSURE</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>MAINLINE_ADHERENCE_REWEIGHTED_UPWARD</td>
+      <td>ROUTE_FOLLOWING_ADJUSTED_CONTEXT_AVAILABLE_NO_SCORE</td>
+      <td>Adjusted route-following context is available; interpretation remains descriptive and score-free. Prior proxy=44.3; adjusted proxy=82.5; adjusted band=MID_ROUTE_FOLLOWING_ADJUSTED; navigation exposure=HIGH_NAVIGATION_EXPOSURE; confirmed off-route=0; confirmed wrong-branch=0; post-finish artifacts excluded=1.</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
