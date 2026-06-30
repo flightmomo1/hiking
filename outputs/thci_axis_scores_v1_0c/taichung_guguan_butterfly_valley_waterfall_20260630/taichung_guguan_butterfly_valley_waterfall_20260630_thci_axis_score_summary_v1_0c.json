@@ -1,0 +1,173 @@
+{
+  "case_id": "taichung_guguan_butterfly_valley_waterfall_20260630",
+  "scoring_version": "v1.0c",
+  "calibrated_from_v1_0b": true,
+  "weather_semantics_calibrated": true,
+  "input_roots": {
+    "thci_axis_scores_v1_0b": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0b",
+    "weather_sensitivity_diagnostics_v1_0b": "D:\\mountain_work\\115_osm\\outputs\\thci_weather_sensitivity_diagnostics_v1_0b",
+    "ib1e": "D:\\mountain_work\\115_osm\\outputs\\ib1e_route_profile_contour_window_terrain_v1_3b_contract_qa",
+    "ib1c": "D:\\mountain_work\\115_osm\\outputs\\ib1c_route_profile_semantics_v1_3b_contract_qa",
+    "thci_route_metric_summary_v1": "D:\\mountain_work\\115_osm\\outputs\\thci_route_metric_summary_v1"
+  },
+  "source_files": {
+    "v1_0b_axis_score_csv": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0b\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_thci_axis_scores_v1_0b.csv",
+    "v1_0b_axis_score_summary_json": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0b\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_thci_axis_score_summary_v1_0b.json",
+    "weather_diagnostic_csv": "D:\\mountain_work\\115_osm\\outputs\\thci_weather_sensitivity_diagnostics_v1_0b\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_weather_sensitivity_diagnostic_v1_0b.csv",
+    "weather_diagnostic_summary_json": "D:\\mountain_work\\115_osm\\outputs\\thci_weather_sensitivity_diagnostics_v1_0b\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_weather_sensitivity_summary_v1_0b.json",
+    "ib1e_csv": "D:\\mountain_work\\115_osm\\outputs\\ib1e_route_profile_contour_window_terrain_v1_3b_contract_qa\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_route_profile_contour_window_terrain_enriched.csv",
+    "ib1c_csv": "D:\\mountain_work\\115_osm\\outputs\\ib1c_route_profile_semantics_v1_3b_contract_qa\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_route_profile_semantic_enriched.csv",
+    "route_metric_summary_csv": "D:\\mountain_work\\115_osm\\outputs\\thci_route_metric_summary_v1\\five_route_distance_gain_stairs_summary.csv"
+  },
+  "axis_scores": {
+    "physical_difficulty_score": 0.4597626750575075,
+    "technical_difficulty_score": 0.2599999999999999,
+    "baseline_hazard_score": 0.4,
+    "navigation_risk_score": 0.4874999999999999,
+    "support_difficulty_score": 0.3929925883812371,
+    "weather_impact_score": 0.19477957800043755
+  },
+  "previous_v1_0b_weather_impact_score": 0.1120117888740419,
+  "v1_0c_weather_impact_score": 0.19477957800043755,
+  "weather_delta_v1_0c_minus_v1_0b": 0.08276778912639565,
+  "weather_components": {
+    "weather_steps_score": 0.1,
+    "weather_slope_score": 0.3581002852112561,
+    "weather_hydrology_score": 0.3,
+    "weather_slippery_surface_score": 0.05,
+    "weather_exposure_score": 0.05,
+    "weather_component_max": 0.3581002852112561,
+    "weather_component_mean": 0.1716200570422512,
+    "weather_raw_calibrated_score": 0.19477957800043755,
+    "weather_guarded_score": 0.19477957800043755,
+    "weather_cap_limit": 0.3
+  },
+  "weather_diagnostic_inputs": {
+    "steps_length_ratio": 0.0,
+    "steep_slope_ratio": 0.2984169043427134,
+    "very_steep_slope_ratio": 0.0872435964989706,
+    "hydrology_related_length_ratio": 0.1885410777896164,
+    "slippery_surface_length_ratio": 0.0,
+    "exposure_related_length_ratio": 0.0
+  },
+  "weather_diagnostic_summary": {
+    "weather_driver_steps": false,
+    "weather_driver_slope": false,
+    "weather_driver_hydrology": true,
+    "weather_driver_slippery_surface": false,
+    "weather_driver_exposure": false,
+    "weather_score_possible_underestimate": true,
+    "weather_score_possible_overestimate": false
+  },
+  "weather_guard_applied": [],
+  "weather_cap_applied": false,
+  "calibration_note": "v1.0c recalculates only weather_impact_score from v1.0b weather sensitivity diagnostics; all non-weather axes are copied from v1.0b. No LLM, no batch min-max normalization, no IB2D rerun.",
+  "non_weather_axes_copied_from_v1_0b": true,
+  "runtime_llm_allowed": false,
+  "missing_features": {
+    "physical_difficulty_score": [],
+    "technical_difficulty_score": [],
+    "baseline_hazard_score": [
+      "dip_slope"
+    ],
+    "support_difficulty_score": [
+      "gps_blockage_or_drift",
+      "road_access_distance"
+    ],
+    "weather_impact_score": [
+      "exposed_ridge"
+    ],
+    "navigation_risk_score": [
+      "safe_exit_connectivity"
+    ]
+  },
+  "proxy_features": {
+    "physical_difficulty_score": [
+      {
+        "feature_name": "sustained_climb_or_stairs_score",
+        "proxy_method": "0.60*slope_pct_ge_20_ratio + 0.40*highway_steps_ratio",
+        "slope_pct_ge_20_ratio": 0.2984121189998175,
+        "highway_steps_ratio": 0.0,
+        "proxy_score": 0.1790472713998905
+      }
+    ],
+    "technical_difficulty_score": [],
+    "baseline_hazard_score": [
+      {
+        "feature_name": "terrain_hazard_proxy",
+        "proxy_method": "0.45*ib1e_high_or_very_high_risk_band_ratio + 0.25*slope_band_high_or_very_steep_ratio + 0.15*terrain_window_risk_high_ratio + 0.15*osm_terrain_combined_risk_high_ratio",
+        "ib1e_high_or_very_high_risk_band_ratio": 0.0,
+        "slope_band_high_or_very_steep_ratio": 1.0,
+        "terrain_window_risk_high_ratio": 1.0,
+        "osm_terrain_combined_risk_high_ratio": 0.0,
+        "proxy_score": 0.4,
+        "note": "dip_slope remains missing unless a geology layer is available."
+      }
+    ],
+    "support_difficulty_score": [],
+    "weather_impact_score": [
+      {
+        "feature_name": "weather_impact_proxy",
+        "proxy_method": "0.35*weather_sensitive_surface_ratio + 0.25*steep_slope_ratio + 0.20*steps_ratio + 0.20*hydrology_proxy",
+        "surface_mud_ground_dirt_earth_unpaved_ratio": 0.0,
+        "steep_slope_ratio": 0.2984121189998175,
+        "steps_ratio": 0.0,
+        "hydrology_proxy": 0.1870437956204379,
+        "proxy_score": 0.11201178887404195
+      },
+      {
+        "feature_name": "weather_semantics_calibration_v1_0c",
+        "proxy_method": "0.55*v1.0b weather + 0.30*weather_component_max + 0.15*weather_component_mean with deterministic guards/caps",
+        "steps_length_ratio": 0.0,
+        "steep_slope_ratio": 0.2984169043427134,
+        "very_steep_slope_ratio": 0.0872435964989706,
+        "hydrology_related_length_ratio": 0.1885410777896164,
+        "slippery_surface_length_ratio": 0.0,
+        "exposure_related_length_ratio": 0.0,
+        "weather_component_max": 0.3581002852112561,
+        "weather_component_mean": 0.1716200570422512,
+        "proxy_score": 0.19477957800043755
+      }
+    ],
+    "navigation_risk_score": [
+      {
+        "feature_name": "route_confusion_score",
+        "proxy_method": "same_entry/self_near/route_gap/self_near_pair_count ambiguity proxy; not treated as standalone high navigation risk",
+        "same_entry_keep_full": true,
+        "self_near_zones_exists": true,
+        "summit_self_near_zone_exists": false,
+        "route_gap_max_m": 5478.912140050307,
+        "route_gap_score_norm_5km": 1.0,
+        "self_near_pair_count": 60726.0,
+        "self_near_density_score_norm_60000": 1.0,
+        "unexpected_self_near_pair_count": 0.0,
+        "unexpected_self_near_score_norm_1000": 0.0,
+        "proxy_score": 0.75
+      },
+      {
+        "feature_name": "poor_visibility_score",
+        "source": "ib1c",
+        "proxy_method": "length-weighted trail_visibility severity: intermediate=0.30, bad=0.60, horrible/no=0.85, unknown=0.15",
+        "excellent_or_good_ratio": 0.0,
+        "intermediate_ratio": 0.0,
+        "bad_ratio": 0.0,
+        "horrible_or_no_ratio": 0.0,
+        "unknown_ratio": 0.0,
+        "proxy_score": 0.0
+      },
+      {
+        "feature_name": "return_difficulty_score",
+        "proxy_method": "route_gap/same_entry/summit_self_near return difficulty proxy; self_near alone is not treated as reliable return difficulty evidence",
+        "same_entry_keep_full": true,
+        "self_near_zones_exists": true,
+        "summit_self_near_zone_exists": false,
+        "route_gap_max_m": 5478.912140050307,
+        "route_gap_score_norm_5km": 1.0,
+        "has_return_difficulty_evidence": true,
+        "proxy_score": 0.75
+      }
+    ]
+  },
+  "missing_features_n": 5,
+  "proxy_features_n": 7
+}

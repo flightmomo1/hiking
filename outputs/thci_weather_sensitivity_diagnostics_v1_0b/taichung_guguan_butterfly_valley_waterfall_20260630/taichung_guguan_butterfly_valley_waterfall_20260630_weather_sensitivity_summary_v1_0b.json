@@ -1,0 +1,74 @@
+{
+  "case_id": "taichung_guguan_butterfly_valley_waterfall_20260630",
+  "diagnostic_version": "v1.0b",
+  "weather_impact_score": 0.1120117888740419,
+  "input_roots": {
+    "ib1e": "D:\\mountain_work\\115_osm\\outputs\\ib1e_route_profile_contour_window_terrain_v1_3b_contract_qa",
+    "ib1c": "D:\\mountain_work\\115_osm\\outputs\\ib1c_route_profile_semantics_v1_3b_contract_qa",
+    "thci_axis_scores_v1_0b": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0b",
+    "thci_route_metric_summary_v1": "D:\\mountain_work\\115_osm\\outputs\\thci_route_metric_summary_v1"
+  },
+  "source_files": {
+    "ib1e_csv": "D:\\mountain_work\\115_osm\\outputs\\ib1e_route_profile_contour_window_terrain_v1_3b_contract_qa\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_route_profile_contour_window_terrain_enriched.csv",
+    "ib1c_csv": "D:\\mountain_work\\115_osm\\outputs\\ib1c_route_profile_semantics_v1_3b_contract_qa\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_route_profile_semantic_enriched.csv",
+    "axis_score_csv": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0b\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_thci_axis_scores_v1_0b.csv",
+    "route_metric_summary_csv": "D:\\mountain_work\\115_osm\\outputs\\thci_route_metric_summary_v1\\five_route_distance_gain_stairs_summary.csv"
+  },
+  "steps_metrics": {
+    "ascent_steps_length_m": 0.0,
+    "descent_steps_length_m": 0.0,
+    "total_steps_length_m": 0.0,
+    "steps_length_ratio": 0.0,
+    "ascent_steps_ratio": 0.0,
+    "descent_steps_ratio": 0.0
+  },
+  "slope_metrics": {
+    "steep_slope_ratio": 0.2984169043427134,
+    "very_steep_slope_ratio": 0.08724359649897065,
+    "downhill_steep_ratio": 0.14911719317920297,
+    "uphill_steep_ratio": 0.14929971116351043
+  },
+  "hydrology_metrics": {
+    "hydrology_related_rows_n": 1033,
+    "hydrology_related_length_m": 1033.0,
+    "hydrology_related_length_ratio": 0.18854107778961648,
+    "hydrology_related_source_columns": [
+      "hydrology_flags",
+      "near_waterway",
+      "dist_waterway_m",
+      "osm_bridge"
+    ]
+  },
+  "slippery_surface_metrics": {
+    "slippery_surface_rows_n": 0,
+    "slippery_surface_length_m": 0.0,
+    "slippery_surface_length_ratio": 0.0,
+    "slippery_surface_source_columns": []
+  },
+  "exposure_metrics": {
+    "exposure_related_rows_n": 0,
+    "exposure_related_length_m": 0.0,
+    "exposure_related_length_ratio": 0.0,
+    "exposure_related_source_columns": []
+  },
+  "diagnostic_flags": {
+    "weather_driver_steps": false,
+    "weather_driver_slope": false,
+    "weather_driver_hydrology": true,
+    "weather_driver_slippery_surface": false,
+    "weather_driver_exposure": false,
+    "weather_score_possible_underestimate": true,
+    "weather_score_possible_overestimate": false
+  },
+  "thresholds": {
+    "STEEP_SLOPE_PCT": 20,
+    "VERY_STEEP_SLOPE_PCT": 30,
+    "HIGH_STEPS_RATIO": 0.3,
+    "HIGH_HYDROLOGY_RATIO": 0.05,
+    "HIGH_SLIPPERY_SURFACE_RATIO": 0.1,
+    "HIGH_EXPOSURE_RATIO": 0.05,
+    "LOW_WEATHER_SCORE_THRESHOLD": 0.25
+  },
+  "note": "diagnostic only; THCI v1.0b scores and IB2D outputs were not modified.",
+  "runtime_llm_allowed": false
+}

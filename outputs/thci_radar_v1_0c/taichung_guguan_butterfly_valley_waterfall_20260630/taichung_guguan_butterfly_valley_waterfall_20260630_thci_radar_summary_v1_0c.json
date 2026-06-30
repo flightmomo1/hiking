@@ -1,0 +1,60 @@
+{
+  "case_id": "taichung_guguan_butterfly_valley_waterfall_20260630",
+  "radar_status": "PASS",
+  "scoring_version": "v1.0c",
+  "calibrated_from_v1_0b": true,
+  "weather_semantics_calibrated": true,
+  "current_recommended_display_version": true,
+  "previous_recommended_version": "v1.0b",
+  "input_axis_score_csv": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0c\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_thci_axis_scores_v1_0c.csv",
+  "input_axis_score_summary_json": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0c\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_thci_axis_score_summary_v1_0c.json",
+  "axis_definition_csv": "D:\\mountain_work\\115_osm\\configs\\risk_semantics\\thci_axis_definition_v1_0.csv",
+  "axis_definitions_loaded_n": 6,
+  "output_png": "D:\\mountain_work\\115_osm\\outputs\\thci_radar_v1_0c\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_thci_radar_v1_0c.png",
+  "output_plot_data_csv": "D:\\mountain_work\\115_osm\\outputs\\thci_radar_v1_0c\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_thci_radar_plot_data_v1_0c.csv",
+  "axis_order": [
+    {
+      "axis_id": "physical_difficulty_score",
+      "axis_label_zh": "體力難度"
+    },
+    {
+      "axis_id": "technical_difficulty_score",
+      "axis_label_zh": "技術難度"
+    },
+    {
+      "axis_id": "baseline_hazard_score",
+      "axis_label_zh": "基礎危害"
+    },
+    {
+      "axis_id": "navigation_risk_score",
+      "axis_label_zh": "迷航風險"
+    },
+    {
+      "axis_id": "support_difficulty_score",
+      "axis_label_zh": "支援不易"
+    },
+    {
+      "axis_id": "weather_impact_score",
+      "axis_label_zh": "天候影響"
+    }
+  ],
+  "axis_scores": {
+    "physical_difficulty_score": 0.4597626750575075,
+    "technical_difficulty_score": 0.2599999999999999,
+    "baseline_hazard_score": 0.4,
+    "navigation_risk_score": 0.4874999999999999,
+    "support_difficulty_score": 0.3929925883812371,
+    "weather_impact_score": 0.19477957800043755
+  },
+  "weather_impact_score": 0.19477957800043755,
+  "previous_v1_0b_weather_impact_score": 0.1120117888740419,
+  "v1_0c_weather_impact_score": 0.19477957800043755,
+  "weather_delta_v1_0c_minus_v1_0b": 0.08276778912639565,
+  "hydrology_topography_review_status": "WEATHER_CALIBRATION_ESTABLISHED_WITH_HYDROLOGY_TOPOGRAPHY_REVIEW",
+  "score_range_min": 0.19477957800043755,
+  "score_range_max": 0.4874999999999999,
+  "missing_axes": [],
+  "out_of_range_axes": [],
+  "runtime_llm_allowed": false,
+  "blocking_issues": []
+}

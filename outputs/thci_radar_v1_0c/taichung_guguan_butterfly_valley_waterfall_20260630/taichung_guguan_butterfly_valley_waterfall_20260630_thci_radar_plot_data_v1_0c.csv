@@ -1,0 +1,7 @@
+﻿axis_order,axis_id,axis_label_zh,score
+1,physical_difficulty_score,體力難度,0.459762675058
+2,technical_difficulty_score,技術難度,0.26
+3,baseline_hazard_score,基礎危害,0.4
+4,navigation_risk_score,迷航風險,0.4875
+5,support_difficulty_score,支援不易,0.392992588381
+6,weather_impact_score,天候影響,0.194779578

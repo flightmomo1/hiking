@@ -1,0 +1,503 @@
+{
+  "case_id": "taichung_guguan_butterfly_valley_waterfall_20260630",
+  "thci_version": "v1.0b",
+  "scoring_version": "v1.0b",
+  "scoring_mode": "deterministic_config_only_no_runtime_llm",
+  "calibrated_from_v1_0a": true,
+  "navigation_semantics_calibrated": true,
+  "config_paths": {
+    "axis_definition": "D:\\mountain_work\\115_osm\\configs\\risk_semantics\\thci_axis_definition_v1_0.csv",
+    "feature_mapping": "D:\\mountain_work\\115_osm\\configs\\risk_semantics\\thci_feature_mapping_v1_0.csv",
+    "axis_scoring_rule": "D:\\mountain_work\\115_osm\\configs\\risk_semantics\\thci_axis_scoring_rule_v1_0.csv",
+    "normalization_threshold": "D:\\mountain_work\\115_osm\\configs\\risk_semantics\\thci_normalization_threshold_v1_0.csv"
+  },
+  "input_roots": {
+    "thci_axis_scores_v1_0a": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0a",
+    "diagnostics": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0a_diagnostics",
+    "ib1a": "D:\\mountain_work\\115_osm\\outputs\\ib1_route_profile_v1_3b_contract_qa",
+    "ib1c": "D:\\mountain_work\\115_osm\\outputs\\ib1c_route_profile_semantics_v1_3b_contract_qa",
+    "ib1e": "D:\\mountain_work\\115_osm\\outputs\\ib1e_route_profile_contour_window_terrain_v1_3b_contract_qa",
+    "ib0d": "D:\\mountain_work\\115_osm\\outputs\\ib0d_trimmed_mainline_v1_3b_control_points_only_contract_qa"
+  },
+  "input_files": {
+    "v1_0a_axis_score_csv": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0a\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_thci_axis_scores_v1_0a.csv",
+    "v1_0a_axis_score_summary_json": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0a\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_thci_axis_score_summary_v1_0a.json",
+    "diagnostic_csv": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0a_diagnostics\\taichung_guguan_butterfly_valley_waterfall_20260630\\taichung_guguan_butterfly_valley_waterfall_20260630_thci_feature_coverage_diagnostic_v1_0a.csv"
+  },
+  "output_root": "D:\\mountain_work\\115_osm\\outputs\\thci_axis_scores_v1_0b",
+  "axis_scores": {
+    "physical_difficulty_score": 0.4597626750575075,
+    "technical_difficulty_score": 0.2599999999999999,
+    "baseline_hazard_score": 0.4,
+    "navigation_risk_score": 0.48749999999999993,
+    "support_difficulty_score": 0.3929925883812371,
+    "weather_impact_score": 0.1120117888740419
+  },
+  "direct_features": {
+    "physical_difficulty_score": [
+      "dist_m",
+      "cum_gain_m",
+      "cum_loss_m",
+      "slope_pct"
+    ],
+    "technical_difficulty_score": [
+      "osm_highway",
+      "osm_surface",
+      "osm_sac_scale"
+    ],
+    "baseline_hazard_score": [
+      "near_cliff",
+      "near_landslide"
+    ],
+    "support_difficulty_score": [
+      "near_shelter"
+    ],
+    "weather_impact_score": [
+      "osm_surface",
+      "osm_ford"
+    ],
+    "navigation_risk_score": [
+      "ib1c.osm_trail_visibility"
+    ]
+  },
+  "proxy_features": {
+    "physical_difficulty_score": [
+      {
+        "feature_name": "sustained_climb_or_stairs_score",
+        "proxy_method": "0.60*slope_pct_ge_20_ratio + 0.40*highway_steps_ratio",
+        "slope_pct_ge_20_ratio": 0.2984121189998175,
+        "highway_steps_ratio": 0.0,
+        "proxy_score": 0.1790472713998905
+      }
+    ],
+    "technical_difficulty_score": [],
+    "baseline_hazard_score": [
+      {
+        "feature_name": "terrain_hazard_proxy",
+        "proxy_method": "0.45*ib1e_high_or_very_high_risk_band_ratio + 0.25*slope_band_high_or_very_steep_ratio + 0.15*terrain_window_risk_high_ratio + 0.15*osm_terrain_combined_risk_high_ratio",
+        "ib1e_high_or_very_high_risk_band_ratio": 0.0,
+        "slope_band_high_or_very_steep_ratio": 1.0,
+        "terrain_window_risk_high_ratio": 1.0,
+        "osm_terrain_combined_risk_high_ratio": 0.0,
+        "proxy_score": 0.4,
+        "note": "dip_slope remains missing unless a geology layer is available."
+      }
+    ],
+    "support_difficulty_score": [],
+    "weather_impact_score": [
+      {
+        "feature_name": "weather_impact_proxy",
+        "proxy_method": "0.35*weather_sensitive_surface_ratio + 0.25*steep_slope_ratio + 0.20*steps_ratio + 0.20*hydrology_proxy",
+        "surface_mud_ground_dirt_earth_unpaved_ratio": 0.0,
+        "steep_slope_ratio": 0.2984121189998175,
+        "steps_ratio": 0.0,
+        "hydrology_proxy": 0.1870437956204379,
+        "proxy_score": 0.11201178887404195
+      }
+    ],
+    "navigation_risk_score": [
+      {
+        "feature_name": "route_confusion_score",
+        "proxy_method": "same_entry/self_near/route_gap/self_near_pair_count ambiguity proxy; not treated as standalone high navigation risk",
+        "same_entry_keep_full": true,
+        "self_near_zones_exists": true,
+        "summit_self_near_zone_exists": false,
+        "route_gap_max_m": 5478.912140050307,
+        "route_gap_score_norm_5km": 1.0,
+        "self_near_pair_count": 60726.0,
+        "self_near_density_score_norm_60000": 1.0,
+        "unexpected_self_near_pair_count": 0.0,
+        "unexpected_self_near_score_norm_1000": 0.0,
+        "proxy_score": 0.75
+      },
+      {
+        "feature_name": "poor_visibility_score",
+        "source": "ib1c",
+        "proxy_method": "length-weighted trail_visibility severity: intermediate=0.30, bad=0.60, horrible/no=0.85, unknown=0.15",
+        "excellent_or_good_ratio": 0.0,
+        "intermediate_ratio": 0.0,
+        "bad_ratio": 0.0,
+        "horrible_or_no_ratio": 0.0,
+        "unknown_ratio": 0.0,
+        "proxy_score": 0.0
+      },
+      {
+        "feature_name": "return_difficulty_score",
+        "proxy_method": "route_gap/same_entry/summit_self_near return difficulty proxy; self_near alone is not treated as reliable return difficulty evidence",
+        "same_entry_keep_full": true,
+        "self_near_zones_exists": true,
+        "summit_self_near_zone_exists": false,
+        "route_gap_max_m": 5478.912140050307,
+        "route_gap_score_norm_5km": 1.0,
+        "has_return_difficulty_evidence": true,
+        "proxy_score": 0.75
+      }
+    ]
+  },
+  "missing_features": {
+    "physical_difficulty_score": [],
+    "technical_difficulty_score": [],
+    "baseline_hazard_score": [
+      "dip_slope"
+    ],
+    "support_difficulty_score": [
+      "gps_blockage_or_drift",
+      "road_access_distance"
+    ],
+    "weather_impact_score": [
+      "exposed_ridge"
+    ],
+    "navigation_risk_score": [
+      "safe_exit_connectivity"
+    ]
+  },
+  "proxy_features_n": 6,
+  "missing_features_n": 5,
+  "axis_details": {
+    "physical_difficulty_score": {
+      "source": "ib1a_route_profile",
+      "raw_features": {
+        "route_distance_m": 5478.912140051903,
+        "route_distance_km": 5.478912140051904,
+        "cum_gain_m": 414.121942287538,
+        "cum_loss_m": 414.121942287538,
+        "steep_slope_ratio": 0.2983576642335766
+      },
+      "component_scores": {
+        "distance_score": 0.5399093450043253,
+        "cum_gain_score": 0.42843495190628167,
+        "cum_loss_score": 0.42843495190628167,
+        "steep_slope_score": 0.580596107055961,
+        "sustained_climb_or_stairs_score": 0.1790472713998905
+      },
+      "formula_used": "0.30 distance + 0.30 cum_gain + 0.15 cum_loss + 0.15 steep_slope_ratio + 0.10 sustained_climb_or_stairs_score",
+      "missing_features": [],
+      "score_before_calibration": 0.4418579479175185,
+      "score_after_calibration": 0.4597626750575075,
+      "direct_features": [
+        "dist_m",
+        "cum_gain_m",
+        "cum_loss_m",
+        "slope_pct"
+      ],
+      "proxy_features": [
+        {
+          "feature_name": "sustained_climb_or_stairs_score",
+          "proxy_method": "0.60*slope_pct_ge_20_ratio + 0.40*highway_steps_ratio",
+          "slope_pct_ge_20_ratio": 0.2984121189998175,
+          "highway_steps_ratio": 0.0,
+          "proxy_score": 0.1790472713998905
+        }
+      ],
+      "calibration_note": "v1.0a fills sustained_climb_or_stairs_score from diagnostics proxy."
+    },
+    "technical_difficulty_score": {
+      "source": "ib1e_enriched_profile",
+      "mapping_rows": 3,
+      "used_feature_count": 3,
+      "missing_features": [],
+      "feature_details": [
+        {
+          "mapping_id": "osm_highway_steps_technical_v1",
+          "source_key": "highway",
+          "source_value": "steps",
+          "matched_column": "osm_highway",
+          "effect_direction": "increase",
+          "base_weight": 0.6,
+          "base_score": 0.55,
+          "presence_ratio": 0.0,
+          "max_presence": 0.0,
+          "contribution": 0.0,
+          "status": "used"
+        },
+        {
+          "mapping_id": "osm_surface_unpaved_technical_v1",
+          "source_key": "surface",
+          "source_value": "ground|dirt|earth|gravel|unpaved",
+          "matched_column": "osm_surface",
+          "effect_direction": "increase",
+          "base_weight": 0.45,
+          "base_score": 0.45,
+          "presence_ratio": 0.0,
+          "max_presence": 0.0,
+          "contribution": 0.0,
+          "status": "used"
+        },
+        {
+          "mapping_id": "osm_sac_scale_technical_v1",
+          "source_key": "sac_scale",
+          "source_value": "*",
+          "matched_column": "osm_sac_scale",
+          "effect_direction": "increase",
+          "base_weight": 0.7,
+          "base_score": 0.65,
+          "presence_ratio": 0.4529269697335862,
+          "max_presence": 1.0,
+          "contribution": 0.65,
+          "status": "used"
+        }
+      ],
+      "aggregation_method": "weighted deterministic draft using presence or length-weighted mean",
+      "direct_features": [
+        "osm_highway",
+        "osm_surface",
+        "osm_sac_scale"
+      ],
+      "proxy_features": [],
+      "score_before_calibration": 0.25999999999999995,
+      "score_after_calibration": 0.25999999999999995
+    },
+    "baseline_hazard_score": {
+      "source": "ib1e_enriched_profile",
+      "mapping_rows": 3,
+      "used_feature_count": 2,
+      "missing_features": [
+        "dip_slope"
+      ],
+      "feature_details": [
+        {
+          "mapping_id": "osm_natural_cliff_hazard_v1",
+          "source_key": "natural",
+          "source_value": "cliff",
+          "matched_column": "near_cliff",
+          "effect_direction": "increase",
+          "base_weight": 0.9,
+          "base_score": 0.9,
+          "presence_ratio": 0.0,
+          "max_presence": 0.0,
+          "contribution": 0.0,
+          "status": "used"
+        },
+        {
+          "mapping_id": "terrain_landslide_hazard_v1",
+          "source_key": "landslide_or_debris_flow",
+          "source_value": "*",
+          "matched_column": "near_landslide",
+          "effect_direction": "increase",
+          "base_weight": 0.85,
+          "base_score": 0.85,
+          "presence_ratio": 0.0,
+          "max_presence": 0.0,
+          "contribution": 0.0,
+          "status": "used"
+        },
+        {
+          "mapping_id": "terrain_dip_slope_hazard_v1",
+          "source_key": "dip_slope",
+          "source_value": "*",
+          "status": "missing_column",
+          "candidate_columns": [
+            "dip_slope",
+            "osm_dip_slope",
+            "near_dip_slope",
+            "dip_slope_flags",
+            "dip_slope",
+            "near_dip_slope"
+          ]
+        }
+      ],
+      "aggregation_method": "weighted deterministic draft using presence or length-weighted mean",
+      "direct_features": [
+        "near_cliff",
+        "near_landslide"
+      ],
+      "proxy_features": [
+        {
+          "feature_name": "terrain_hazard_proxy",
+          "proxy_method": "0.45*ib1e_high_or_very_high_risk_band_ratio + 0.25*slope_band_high_or_very_steep_ratio + 0.15*terrain_window_risk_high_ratio + 0.15*osm_terrain_combined_risk_high_ratio",
+          "ib1e_high_or_very_high_risk_band_ratio": 0.0,
+          "slope_band_high_or_very_steep_ratio": 1.0,
+          "terrain_window_risk_high_ratio": 1.0,
+          "osm_terrain_combined_risk_high_ratio": 0.0,
+          "proxy_score": 0.4,
+          "note": "dip_slope remains missing unless a geology layer is available."
+        }
+      ],
+      "score_before_calibration": 0.0,
+      "score_after_calibration": 0.4
+    },
+    "support_difficulty_score": {
+      "source": "ib1e_enriched_profile",
+      "mapping_rows": 3,
+      "used_feature_count": 1,
+      "missing_features": [
+        "gps_blockage_or_drift",
+        "road_access_distance"
+      ],
+      "feature_details": [
+        {
+          "mapping_id": "osm_shelter_support_decrease_v1",
+          "source_key": "shelter",
+          "source_value": "*",
+          "matched_column": "near_shelter",
+          "effect_direction": "decrease",
+          "base_weight": 0.5,
+          "base_score": -0.4,
+          "presence_ratio": 0.017518529046907445,
+          "max_presence": 1.0,
+          "contribution": 0.3929925883812371,
+          "status": "used"
+        },
+        {
+          "mapping_id": "support_road_access_difficulty_v1",
+          "source_key": "road_access_distance",
+          "source_value": "*",
+          "status": "missing_column",
+          "candidate_columns": [
+            "road_access_distance",
+            "osm_road_access_distance",
+            "near_road_access_distance",
+            "road_access_distance_flags",
+            "road_access_distance"
+          ]
+        },
+        {
+          "mapping_id": "support_gps_signal_blocked_v1",
+          "source_key": "gps_blockage_or_drift",
+          "source_value": "*",
+          "status": "missing_column",
+          "candidate_columns": [
+            "gps_blockage_or_drift",
+            "osm_gps_blockage_or_drift",
+            "near_gps_blockage_or_drift",
+            "gps_blockage_or_drift_flags",
+            "gps_blockage",
+            "gps_drift",
+            "gps_blockage_or_drift"
+          ]
+        }
+      ],
+      "aggregation_method": "weighted deterministic draft using presence or length-weighted mean",
+      "direct_features": [
+        "near_shelter"
+      ],
+      "proxy_features": [],
+      "score_before_calibration": 0.3929925883812371,
+      "score_after_calibration": 0.3929925883812371
+    },
+    "weather_impact_score": {
+      "source": "ib1e_enriched_profile",
+      "mapping_rows": 3,
+      "used_feature_count": 2,
+      "missing_features": [
+        "exposed_ridge"
+      ],
+      "feature_details": [
+        {
+          "mapping_id": "surface_mud_weather_impact_v1",
+          "source_key": "surface",
+          "source_value": "mud|ground|earth|dirt",
+          "matched_column": "osm_surface",
+          "effect_direction": "increase",
+          "base_weight": 0.7,
+          "base_score": 0.7,
+          "presence_ratio": 0.0,
+          "max_presence": 0.0,
+          "contribution": 0.0,
+          "status": "used"
+        },
+        {
+          "mapping_id": "hydrology_crossing_weather_impact_v1",
+          "source_key": "water_crossing",
+          "source_value": "*",
+          "matched_column": "osm_ford",
+          "effect_direction": "increase",
+          "base_weight": 0.85,
+          "base_score": 0.85,
+          "presence_ratio": 0.0,
+          "max_presence": 0.0,
+          "contribution": 0.0,
+          "status": "used"
+        },
+        {
+          "mapping_id": "ridge_exposure_weather_impact_v1",
+          "source_key": "exposed_ridge",
+          "source_value": "*",
+          "status": "missing_column",
+          "candidate_columns": [
+            "exposed_ridge",
+            "osm_exposed_ridge",
+            "near_exposed_ridge",
+            "exposed_ridge_flags",
+            "exposed_ridge",
+            "near_exposed_ridge"
+          ]
+        }
+      ],
+      "aggregation_method": "weighted deterministic draft using presence or length-weighted mean",
+      "direct_features": [
+        "osm_surface",
+        "osm_ford"
+      ],
+      "proxy_features": [
+        {
+          "feature_name": "weather_impact_proxy",
+          "proxy_method": "0.35*weather_sensitive_surface_ratio + 0.25*steep_slope_ratio + 0.20*steps_ratio + 0.20*hydrology_proxy",
+          "surface_mud_ground_dirt_earth_unpaved_ratio": 0.0,
+          "steep_slope_ratio": 0.2984121189998175,
+          "steps_ratio": 0.0,
+          "hydrology_proxy": 0.1870437956204379,
+          "proxy_score": 0.11201178887404195
+        }
+      ],
+      "score_before_calibration": 0.0,
+      "score_after_calibration": 0.11201178887404195
+    },
+    "navigation_risk_score": {
+      "previous_v1_0a_navigation_risk_score": 0.9,
+      "route_confusion_score": 0.75,
+      "poor_visibility_score": 0.0,
+      "return_difficulty_score": 0.75,
+      "safe_exit_connectivity_score": 0.0,
+      "navigation_cap_applied": false,
+      "score_before_cap": 0.48749999999999993,
+      "final_score": 0.48749999999999993,
+      "direct_features": [
+        "ib1c.osm_trail_visibility"
+      ],
+      "proxy_features": [
+        {
+          "feature_name": "route_confusion_score",
+          "proxy_method": "same_entry/self_near/route_gap/self_near_pair_count ambiguity proxy; not treated as standalone high navigation risk",
+          "same_entry_keep_full": true,
+          "self_near_zones_exists": true,
+          "summit_self_near_zone_exists": false,
+          "route_gap_max_m": 5478.912140050307,
+          "route_gap_score_norm_5km": 1.0,
+          "self_near_pair_count": 60726.0,
+          "self_near_density_score_norm_60000": 1.0,
+          "unexpected_self_near_pair_count": 0.0,
+          "unexpected_self_near_score_norm_1000": 0.0,
+          "proxy_score": 0.75
+        },
+        {
+          "feature_name": "poor_visibility_score",
+          "source": "ib1c",
+          "proxy_method": "length-weighted trail_visibility severity: intermediate=0.30, bad=0.60, horrible/no=0.85, unknown=0.15",
+          "excellent_or_good_ratio": 0.0,
+          "intermediate_ratio": 0.0,
+          "bad_ratio": 0.0,
+          "horrible_or_no_ratio": 0.0,
+          "unknown_ratio": 0.0,
+          "proxy_score": 0.0
+        },
+        {
+          "feature_name": "return_difficulty_score",
+          "proxy_method": "route_gap/same_entry/summit_self_near return difficulty proxy; self_near alone is not treated as reliable return difficulty evidence",
+          "same_entry_keep_full": true,
+          "self_near_zones_exists": true,
+          "summit_self_near_zone_exists": false,
+          "route_gap_max_m": 5478.912140050307,
+          "route_gap_score_norm_5km": 1.0,
+          "has_return_difficulty_evidence": true,
+          "proxy_score": 0.75
+        }
+      ],
+      "missing_features": [
+        "safe_exit_connectivity"
+      ],
+      "note": "v1.0b recalculates navigation from semantics components. Junction or route complexity does not directly equal high navigation risk; safe-exit connectivity is missing and therefore not credited yet. No formal safe-exit connectivity extractor is available in v1.0b; score is held at 0 and recorded as missing."
+    }
+  },
+  "runtime_llm_allowed": false
+}
