@@ -50,7 +50,7 @@ from pyproj import CRS
 from shapely.geometry import LineString, MultiLineString, Point
 
 
-PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+PROJECT_ROOT = Path(r"D:\mountain_work\115_osm")
 
 
 def parse_args() -> argparse.Namespace:

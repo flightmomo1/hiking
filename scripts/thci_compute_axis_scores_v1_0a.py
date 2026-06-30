@@ -23,7 +23,7 @@ if str(SCRIPT_DIR) not in sys.path:
 import thci_compute_axis_scores_v1_0 as v10  # noqa: E402
 
 
-PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+PROJECT_ROOT = Path(r"D:\mountain_work\115_osm")
 OUT_ROOT = PROJECT_ROOT / "outputs" / "thci_axis_scores_v1_0a"
 DIAG_ROOT = PROJECT_ROOT / "outputs" / "thci_axis_scores_v1_0a_diagnostics"
 
@@ -303,16 +303,39 @@ def write_batch_summary(case_rows: list[pd.DataFrame]) -> None:
     )
 
 
+# THCI_V10A_CASE_ID_CLI_PATCH_V1
 def main() -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="Compute THCI v1.0a axis scores. Default keeps legacy fixed-case batch; --case-id runs one case."
+    )
+    parser.add_argument(
+        "--case-id",
+        default=None,
+        help="Run only one case_id. If omitted, run legacy v10.CASES batch.",
+    )
+    args = parser.parse_args()
+
     config = v10.load_config_bundle()
+
+    if args.case_id:
+        case_ids = [args.case_id]
+    else:
+        case_ids = list(v10.CASES)
+
     case_rows: list[pd.DataFrame] = []
-    for case_id in v10.CASES:
+
+    for case_id in case_ids:
         case_scores, summary = compute_case_scores_v1_0a(case_id, config)
         write_case_outputs(case_id, case_scores, summary)
         case_rows.append(case_scores)
         print(case_scores.to_string(index=False))
-    write_batch_summary(case_rows)
-    print("batch summary:", OUT_ROOT / "_batch_summary" / "thci_axis_scores_v1_0a_case_summary.csv")
+
+    if case_rows:
+        write_batch_summary(case_rows)
+        print("batch summary:", OUT_ROOT / "_batch_summary" / "thci_axis_scores_v1_0a_case_summary.csv")
+
     return 0
 
 

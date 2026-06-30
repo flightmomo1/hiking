@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """Compute THCI v1.0b axis scores with navigation semantics calibration.
 
 This version does not overwrite v1.0 or v1.0a outputs. It reads v1.0a axis
@@ -15,7 +15,7 @@ import argparse
 from pathlib import Path
 from typing import Any
 
-PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+PROJECT_ROOT = Path(r"D:\mountain_work\115_osm")
 
 try:
     import pandas as pd
@@ -514,3 +514,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

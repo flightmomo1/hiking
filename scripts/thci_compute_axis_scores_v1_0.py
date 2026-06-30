@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 
 
-PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+PROJECT_ROOT = Path(r"D:\mountain_work\115_osm")
 
 CASES = [
     "qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b",

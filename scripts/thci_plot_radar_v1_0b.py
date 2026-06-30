@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 
-PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+PROJECT_ROOT = Path(r"D:\mountain_work\115_osm")
 
 try:
     import matplotlib.font_manager as fm

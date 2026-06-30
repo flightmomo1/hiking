@@ -11,7 +11,7 @@ import pandas as pd
 from shapely.geometry import LineString, Point
 
 
-PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+PROJECT_ROOT = Path(r"D:\mountain_work\115_osm")
 DEFAULT_INPUT_ROOT = (
     PROJECT_ROOT / "outputs" / "ib0b_mainline_route_definition_v1_3b_control_points_only"
 )

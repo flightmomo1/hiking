@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any
 
 
-PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+PROJECT_ROOT = Path(r"D:\mountain_work\115_osm")
 
 try:
     import pandas as pd
@@ -475,6 +475,21 @@ def write_batch_summary(rows: list[dict[str, Any]]) -> None:
     )
 
 
+
+# THCI_WEATHER_DIAG_NONE_SAFE_PRINT_PATCH_V1
+def _fmt_weather_diag_value_v1b(v, digits: int = 4) -> str:
+    try:
+        if v is None or pd.isna(v):
+            return "NA"
+    except Exception:
+        if v is None:
+            return "NA"
+    try:
+        return f"{float(v):.{digits}f}"
+    except Exception:
+        return str(v)
+
+
 def main() -> int:
     args = parse_args()
     rows: list[dict[str, Any]] = []
@@ -484,7 +499,7 @@ def main() -> int:
         rows.append(row)
         print(
             f"{case_id}: {row['status']} "
-            f"weather={row['weather_impact_score']:.4f} "
+            f"weather={_fmt_weather_diag_value_v1b(row.get('weather_impact_score'))} "
             f"steps={row['steps_length_ratio']:.4f} "
             f"steep={row['steep_slope_ratio']:.4f} "
             f"hydro={row['hydrology_related_length_ratio']:.4f} "

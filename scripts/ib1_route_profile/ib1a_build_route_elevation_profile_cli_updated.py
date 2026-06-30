@@ -675,8 +675,33 @@ m = folium.Map(
 )
 
 # ib0b mainline segments：僅作背景參考，避免誤認為正式取樣線
+# FOLIUM_JSON_SAFE_PATCH_IB1A_TS_V1
+# Convert pandas Timestamp/date-like values before Folium JSON serialization.
+import datetime as _dt
+
+def _folium_json_safe_value_ib1a(v):
+    if isinstance(v, pd.Timestamp):
+        return None if pd.isna(v) else v.isoformat()
+    if isinstance(v, (_dt.datetime, _dt.date)):
+        return v.isoformat()
+    try:
+        if pd.isna(v):
+            return None
+    except Exception:
+        pass
+    return v
+
+mainline_for_folium = mainline.copy()
+for _col in mainline_for_folium.columns:
+    if _col == mainline_for_folium.geometry.name:
+        continue
+    if pd.api.types.is_datetime64_any_dtype(mainline_for_folium[_col]):
+        mainline_for_folium[_col] = mainline_for_folium[_col].apply(_folium_json_safe_value_ib1a)
+    else:
+        mainline_for_folium[_col] = mainline_for_folium[_col].map(_folium_json_safe_value_ib1a)
+
 folium.GeoJson(
-    mainline,
+    mainline_for_folium,
     name="ib0b mainline segments reference",
     style_function=lambda feat: {
         "color": "gray",

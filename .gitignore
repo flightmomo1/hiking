@@ -29,3 +29,12 @@ scripts/Il3b_closed_zones_stats_map.html
 *.tar
 *.tar.gz
 *.rar
+
+# Local patch backups / temporary staging
+*.bak_*
+*.bak_project_root_D
+*.bak_project_root_D_*
+outputs/_ib1e_alias_backup/
+outputs/ib0d_stage/
+__pycache__/
+*.pyc

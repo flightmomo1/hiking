@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """Compute THCI v1.0c weather semantics calibrated axis scores.
 
 v1.0c keeps the five non-weather axes from THCI v1.0b and recalculates only
@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 
 
-PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+PROJECT_ROOT = Path(r"D:\mountain_work\115_osm")
 
 try:
     import pandas as pd
@@ -452,3 +452,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

@@ -10,7 +10,7 @@ import pandas as pd
 from pandas.errors import EmptyDataError
 
 
-PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+PROJECT_ROOT = Path(r"D:\mountain_work\115_osm")
 
 CASES = [
     "qixing_lengshuikeng_main_peak_20260523_osmrefresh_v1_3b",
@@ -271,9 +271,28 @@ def write_batch_summary(rows: list[dict[str, Any]]) -> None:
     pd.DataFrame(rows).to_csv(out_fp, index=False, encoding="utf-8-sig")
 
 
+# THCI_DIAG_V10A_CASE_ID_CLI_ROOT_D_PATCH_V1
 def main() -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="Diagnose THCI v1.0a feature coverage. Default keeps legacy fixed-case batch; --case-id runs one case."
+    )
+    parser.add_argument(
+        "--case-id",
+        default=None,
+        help="Run only one case_id. If omitted, run legacy CASES batch.",
+    )
+    args = parser.parse_args()
+
+    if args.case_id:
+        case_ids = [args.case_id]
+    else:
+        case_ids = list(CASES)
+
     rows = []
-    for case_id in CASES:
+
+    for case_id in case_ids:
         row = diagnose_case(case_id)
         write_case_output(case_id, row)
         rows.append(row)
@@ -284,8 +303,11 @@ def main() -> int:
             f"risk_high={row.get('ib1e_high_or_very_high_risk_band_ratio')}; "
             f"self_near_gap={row.get('route_gap_max_m')}"
         )
-    write_batch_summary(rows)
-    print("batch summary:", OUT_ROOT / "_batch_summary" / "thci_feature_coverage_diagnostic_v1_0a_case_summary.csv")
+
+    if rows:
+        write_batch_summary(rows)
+        print("batch summary:", OUT_ROOT / "_batch_summary" / "thci_feature_coverage_diagnostic_v1_0a_case_summary.csv")
+
     return 0
 
 

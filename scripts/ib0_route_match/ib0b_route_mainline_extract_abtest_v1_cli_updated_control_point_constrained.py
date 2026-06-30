@@ -31,7 +31,7 @@ import folium
 # =========================================================
 # 0a. Project / Route / Case / Activity / A-B Test 設定
 # =========================================================
-PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+PROJECT_ROOT = Path(r"D:\mountain_work\115_osm")
 
 
 def resolve_path(value, project_root=PROJECT_ROOT):
@@ -1581,8 +1581,34 @@ m = folium.Map(
 )
 
 # 背景：ib0 / ib0a 輸入路段
+# FOLIUM_JSON_SAFE_PATCH_TS_V1
+# Convert pandas Timestamp/date-like values before Folium JSON serialization.
+import pandas as pd
+import datetime as _dt
+
+def _folium_json_safe_value(v):
+    if isinstance(v, pd.Timestamp):
+        return None if pd.isna(v) else v.isoformat()
+    if isinstance(v, (_dt.datetime, _dt.date)):
+        return v.isoformat()
+    try:
+        if pd.isna(v):
+            return None
+    except Exception:
+        pass
+    return v
+
+gdf_wgs84_for_folium = gdf_wgs84.copy()
+for _col in gdf_wgs84_for_folium.columns:
+    if _col == gdf_wgs84_for_folium.geometry.name:
+        continue
+    if pd.api.types.is_datetime64_any_dtype(gdf_wgs84_for_folium[_col]):
+        gdf_wgs84_for_folium[_col] = gdf_wgs84_for_folium[_col].apply(_folium_json_safe_value)
+    else:
+        gdf_wgs84_for_folium[_col] = gdf_wgs84_for_folium[_col].map(_folium_json_safe_value)
+
 folium.GeoJson(
-    gdf_wgs84,
+    gdf_wgs84_for_folium,
     name=f"input_segments_{INPUT_STAGE}",
     style_function=lambda feat: {
         "color": "gray",
@@ -1612,8 +1638,19 @@ folium.PolyLine(
 #     },
 # ).add_to(m)
 
+# FOLIUM_JSON_SAFE_PATCH_MAINLINE_TS_V1
+# Convert pandas Timestamp/date-like values before Folium JSON serialization.
+mainline_wgs84_for_folium = mainline_wgs84.copy()
+for _col in mainline_wgs84_for_folium.columns:
+    if _col == mainline_wgs84_for_folium.geometry.name:
+        continue
+    if pd.api.types.is_datetime64_any_dtype(mainline_wgs84_for_folium[_col]):
+        mainline_wgs84_for_folium[_col] = mainline_wgs84_for_folium[_col].apply(_folium_json_safe_value)
+    else:
+        mainline_wgs84_for_folium[_col] = mainline_wgs84_for_folium[_col].map(_folium_json_safe_value)
+
 folium.GeoJson(
-    mainline_wgs84,
+    mainline_wgs84_for_folium,
     name=f"mainline_{INPUT_STAGE}",
     style_function=mainline_style,
 ).add_to(m)

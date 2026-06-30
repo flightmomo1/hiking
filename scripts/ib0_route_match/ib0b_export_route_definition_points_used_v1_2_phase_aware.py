@@ -39,7 +39,7 @@ import pandas as pd
 from shapely.geometry import Point, LineString
 
 
-PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
+PROJECT_ROOT = Path(r"D:\mountain_work\115_osm")
 
 
 def resolve_path(value):
