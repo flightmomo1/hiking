@@ -44,7 +44,7 @@ def parse_args():
     parser.add_argument(
         "--mapping-csv",
         default=None,
-        help="OSM semantic risk mapping CSV. Default: configs/risk_semantics/osm_semantic_risk_mapping_v1.csv",
+        help="OSM semantic risk mapping CSV. Default: configs/risk_semantics/osm_semantic_risk_mapping_v1_5_support_updated.csv",
     )
     parser.add_argument(
         "--out-dir",
@@ -75,7 +75,7 @@ if args.mapping_csv is None:
         PROJECT_ROOT
         / "configs"
         / "risk_semantics"
-        / "osm_semantic_risk_mapping_v1_2_updated.csv"
+        / "osm_semantic_risk_mapping_v1_5_support_updated.csv"
     )
 else:
     MAPPING_CSV = resolve_path(args.mapping_csv)

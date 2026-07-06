@@ -21,7 +21,7 @@ import pandas as pd
 PROJECT_ROOT = Path(r"C:\mountain_work\115_osm")
 
 AXIS_DEFINITION_CSV = (
-    PROJECT_ROOT / "configs" / "risk_semantics" / "thci_axis_definition_v1_0.csv"
+    PROJECT_ROOT / "configs" / "risk_semantics" / "thci_axis_definition_v1_2_support_updated.csv"
 )
 AXIS_SCORE_ROOT = PROJECT_ROOT / "outputs" / "thci_axis_scores_v1_0"
 OUT_ROOT = PROJECT_ROOT / "outputs" / "thci_radar_v1_0"

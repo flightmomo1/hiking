@@ -1,0 +1,77 @@
+﻿semantic_group,source_field,source_value,derived_class,risk_domain,risk_meaning,risk_direction,base_score,weather_sensitive,needs_nlsc,needs_activity,implemented_in_ib1c,used_in_ib2,notes
+navigation,trail_visibility,excellent,clear_visibility,navigation_risk,路徑非常清楚，迷途風險低,lower,0.0,no,no,no,yes,no,OSM trail_visibility
+navigation,trail_visibility,good,clear_visibility,navigation_risk,路徑清楚，迷途風險低,lower,0.05,no,no,no,yes,no,OSM trail_visibility
+navigation,trail_visibility,intermediate,intermediate_visibility,navigation_risk,路徑可辨識度中等，需注意判路,higher,0.35,yes,no,no,yes,no,天候差時風險放大
+navigation,trail_visibility,bad,poor_visibility,navigation_risk,路徑不清楚，迷途或走錯路風險高,higher,0.8,yes,no,yes,yes,no,需結合 guidepost density / GPX 偏移
+navigation,trail_visibility,horrible,poor_visibility,navigation_risk,路徑極不清楚，導航風險高,higher,0.9,yes,no,yes,yes,no,高風險
+navigation,trail_visibility,no,poor_visibility,navigation_risk,幾乎無明顯路跡,higher,1.0,yes,no,yes,yes,no,高風險
+navigation,trail_visibility,unknown,unknown_visibility,navigation_risk,OSM 未標註可辨識度，屬不確定風險,higher,0.25,yes,no,no,yes,no,unknown 不應視為安全
+surface,surface,sett,paved_stone,slip_risk,石板或鋪石路面，乾燥時穩定但雨天可能濕滑,higher,0.25,yes,no,no,yes,no,絹絲瀑布命中很多
+surface,surface,asphalt,paved_asphalt,slip_risk,柏油鋪面，通常穩定但雨天仍需注意,lower,0.1,yes,no,no,yes,no,
+surface,surface,paved,paved_generic,slip_risk,泛用鋪面，通常穩定但雨天仍可能濕滑,lower,0.15,yes,no,no,yes,no,2026-06-01 v1.3b 多路線 audit 新增；OSM 常見 surface=paved，baseline 低風險，天候濕滑效應留給後續 weather/activity layer。
+surface,surface,concrete,paved_concrete,slip_risk,水泥鋪面，濕滑時風險提高,higher,0.2,yes,no,no,yes,no,
+surface,surface,gravel,gravel_compacted,slip_risk,碎石或礫石，可能造成滑動或扭傷,higher,0.35,yes,no,no,yes,no,
+surface,surface,fine_gravel,gravel_compacted,slip_risk,細碎石路面，可能滑動,higher,0.3,yes,no,no,yes,no,
+surface,surface,dirt,natural_ground,slip_risk,自然土徑，雨後泥濘風險高,higher,0.45,yes,no,no,yes,no,
+surface,surface,earth,natural_ground,slip_risk,自然土徑，雨後泥濘風險高,higher,0.45,yes,no,no,yes,no,
+surface,surface,mud,natural_ground,slip_risk,泥濘路面，濕滑風險高,higher,0.75,yes,no,no,yes,no,
+surface,surface,wood,wood_boardwalk,slip_risk,木棧道或木面，雨後濕滑風險高,higher,0.6,yes,no,no,yes,no,
+surface,surface,rock,rock,slip_risk,岩面路段，濕滑或落差風險較高,higher,0.55,yes,yes,no,yes,no,
+route_type,highway,footway,footway,route_difficulty,一般步道或人行路徑,neutral,0.15,no,no,no,yes,no,
+route_type,highway,path,path,route_difficulty,山徑或小徑，需結合可辨識度與坡度判斷,higher,0.3,yes,no,no,yes,no,
+route_type,highway,steps,steps,effort_risk,階梯路段，增加體力負荷與下坡膝關節負擔,higher,0.45,yes,no,yes,yes,no,需與 slope / descent 結合
+route_type,highway,unclassified,road,route_difficulty,未分類道路或園區道路，若出現在登山路線上多半代表接近道路或入口接駁段,neutral,0.15,no,no,no,yes,no,需避免搶走 footway/path 語意；後續應加入步道優先規則
+route_type,highway,tertiary,road,route_difficulty,三級道路，通常代表車行道路或主要接近道路，登山風險本身較低但不屬山徑主體,neutral,0.1,no,no,no,yes,no,若大量出現需檢查 nearest highway 是否被道路搶走
+route_type,bridge,yes,bridge,route_continuity,橋梁可跨越溪溝、落差或不平地形，通常改善通行連續性並減少地勢起伏；其風險需視材質、護欄、寬度、水文與天候條件判斷,conditional,0.0,yes,yes,no,yes,no,不直接加風險；後續結合 surface、waterway、wetland、slope、handrail、width、weather 判斷濕滑或暴露風險
+route_type,ford,yes,ford,hydrology_risk,涉水或過溪路段，雨後風險明顯提高,higher,0.8,yes,yes,no,yes,no,
+route_type,tunnel,yes,tunnel,navigation_risk,隧道或遮蔽路段，可能影響視線與定位,neutral,0.3,no,no,no,yes,no,
+route_type,sac_scale,hiking,easy_hiking,route_difficulty,OSM SAC hiking 等級，表示一般健行難度,lower,0.1,no,no,no,yes,no,對應 ib1c 的 easy_hiking
+technical,handrail,yes,technical_context,technical_risk_hint,有扶手，通常代表該處需要輔助通行,higher,0.35,yes,yes,no,yes,no,不可單純當安全加分
+technical,handrail,no,handrail_absent,technical_context,未設扶手或標記為無扶手；單獨出現時僅作技術脈絡，不直接提高 baseline 風險,neutral,0.0,no,yes,no,yes,no,2026-06-01 v1.3b 多路線 audit 新增；binary absence tag，避免直接視為 hazard；若與 steps/very_steep/weather 結合，應由後續 terrain/activity context 判讀。
+technical,safety_rope,yes,technical_context,technical_risk_hint,有繩索，通常代表地形較陡或較滑,higher,0.55,yes,yes,no,yes,no,
+technical,ladder,yes,technical_context,technical_risk_hint,梯具路段，技術性與暴露風險提高,higher,0.75,yes,yes,no,yes,no,
+technical,rungs,yes,technical_context,technical_risk_hint,踏釘或鐵件路段，技術性風險提高,higher,0.7,yes,yes,no,yes,no,
+technical,via_ferrata,yes,technical_context,technical_risk_hint,鐵道攀登或技術路段，需視為高技術風險,higher,0.95,yes,yes,no,yes,no,
+hazard,cliff,near,cliff_nearby,exposure_risk,鄰近崖線或落差地形，暴露風險提高,higher,0.85,yes,yes,no,yes,no,需結合 NLSC 坡度/等高線
+hazard,scree,near,scree_nearby,terrain_risk,碎石坡或崩積地，滑動與落石風險提高,higher,0.75,yes,yes,no,yes,no,
+hazard,bare_rock,near,bare_rock_nearby,terrain_risk,裸岩地形，濕滑與跌倒風險提高,higher,0.65,yes,yes,no,yes,no,
+hazard,landslide,near,landslide_nearby,terrain_risk,鄰近崩塌地或疑似滑動區,higher,0.9,yes,yes,no,yes,no,
+hydrology,waterway,near,waterway_nearby,hydrology_risk,鄰近溪流或水道，雨後濕滑與水位風險提高,higher,0.45,yes,yes,no,yes,no,
+hydrology,wetland,near,wetland_nearby,hydrology_risk,濕地或潮濕環境，泥濘與濕滑風險提高,higher,0.55,yes,yes,no,yes,no,
+hydrology,water_area,near,water_area_nearby,hydrology_risk,鄰近水域，需注意濕滑與水文環境,higher,0.4,yes,yes,no,yes,no,
+navigation_support,guidepost,near,guidepost_nearby,navigation_support,附近有路標，可降低部分導航不確定性,lower,-0.2,no,no,no,yes,no,未來應改成距離/密度
+navigation_support,trailhead,near,trailhead_nearby,navigation_support,鄰近登山口，有助於起終點定位,lower,-0.15,no,no,no,yes,no,
+navigation_support,peak,near,peak_nearby,landmark_context,鄰近山頂或高點地標，可作為路線控制點,neutral,0.0,no,no,no,yes,no,
+support,shelter,near,shelter_nearby,support_availability,附近有避難或遮蔽設施，可降低事故後果嚴重度,lower,-0.25,yes,no,no,yes,no,
+support,bench,near,bench_nearby,rest_availability,附近有座椅或休息點，有助疲勞恢復,lower,-0.1,no,no,no,yes,no,
+support,picnic_table,near,picnic_table_nearby,rest_availability,附近有休息設施,lower,-0.1,no,no,no,yes,no,
+support,drinking_water,near,drinking_water_nearby,support_availability,附近有飲水設施，可降低補給風險,lower,-0.2,no,no,no,yes,no,
+support,toilets,near,toilets_nearby,support_availability,附近有廁所，通常代表接近服務區或管理區,lower,-0.1,no,no,no,yes,no,
+support,information_office,near,information_office_nearby,support_availability,附近有資訊服務點，可提高支援能力,lower,-0.2,no,no,no,yes,no,
+lighting,lit,yes,lit_available,night_navigation_support,有照明支援，夜間路線辨識風險較低,lower,-0.2,no,no,no,yes,no,
+lighting,lit,no,lit_unavailable,night_navigation_risk,缺乏照明，夜間路線辨識風險提高,higher,0.5,no,no,no,yes,no,
+lighting,lit,unknown,unknown_lighting,night_navigation_risk,OSM 未標註照明狀態，夜間風險不可視為低風險,higher,0.25,no,no,no,yes,no,unknown 應給予不確定性懲罰
+lighting,street_lamp,near,street_lamp_nearby,night_navigation_support,附近有路燈，夜間支援較佳,lower,-0.2,no,no,no,yes,no,
+surface,surface,paving_stones,paved_stone,slip_risk,鋪石路面，乾燥時相對穩定但雨天可能濕滑,higher,0.2,yes,no,no,yes,no,冷水坑路線大量命中；風險低於碎石/泥土，但仍具天候敏感性
+route_type,highway,service,service_road,route_difficulty,服務道路或設施接近路段，通常通行條件較穩定但不屬山徑主體,neutral,0.1,no,no,no,yes,no,多見於登山口或設施接近段；若大量出現需檢查 nearest highway 是否被道路搶走
+support,picnic_site,near,picnic_site_nearby,rest_availability,rest / informal stopping support,lower,-0.1,no,no,no,yes,no,OSM tourism=picnic_site；代表野餐區或可停留休息空間，屬於休息支援語意，降低少量風險，不代表路線本身較容易。
+support,picnic_site,picnic_site,picnic_site_nearby,rest_availability,野餐區或可停留休息空間，屬於休息支援語意,lower,-0.1,no,no,no,yes,no,2026-06-01 v1.3b 多路線 audit 新增；與 picnic_site=near 同義，表示支援/休息脈絡，不代表路線本身較容易。
+navigation_support,route_marker,near,route_marker_nearby,navigation_support,route marker / trail marking nearby,lower,-0.15,no,no,no,yes,no,OSM information=route_marker；代表路線標記或登山路標，有助於方向辨識與降低迷路風險。
+navigation_support,milestone,near,milestone_nearby,route_continuity,milestone or distance marker nearby,lower,-0.1,no,no,no,yes,no,OSM highway=milestone；代表里程樁或距離標示，有助於確認路線連續性與進度感。
+navigation_support,board_map,near,board_map_nearby,navigation_support,map board nearby,lower,-0.12,no,no,no,yes,no,OSM information=board/map；代表導覽牌或地圖牌，有助於路線確認與方向判斷，屬於導航支援。
+landmark,guide_map_attraction,near,guide_map_attraction_nearby,landmark_context,guide map / attraction board nearby,neutral,0.0,no,no,no,yes,no,導覽圖或景點牌可作為中繼點、景點點位或 waypoint 候選，但不直接代表風險降低，因此設為中性。
+support,defibrillator,near,defibrillator_nearby,emergency_support,AED nearby / emergency support,lower,-0.08,no,no,no,yes,no,OSM emergency=defibrillator；代表附近有 AED，屬於都市或郊山救援支援條件，降低少量整體風險。
+support,fire_hydrant,near,fire_hydrant_nearby,emergency_support,fire hydrant nearby / rescue infrastructure context,lower,-0.03,no,no,no,yes,no,OSM emergency=fire_hydrant；代表消防栓等公共救援基礎設施，屬於弱支援訊號，不應過度降低風險。
+support,emergency,near,emergency_nearby,emergency_support,generic emergency feature nearby,lower,-0.04,no,no,no,yes,no,OSM emergency=*；代表一般緊急設施或救援相關標籤，屬於外部支援條件，不代表路線本身危險度降低。
+hazard,hazard,near,hazard_nearby,technical_risk_hint,explicit OSM hazard nearby,higher,0.85,yes,no,no,yes,no,OSM hazard=*；代表明確危險標註，例如落石、崩塌、危險路段等，應視為強風險訊號，天候不佳時可再放大。
+hazard,obstacle,near,obstacle_nearby,route_continuity,obstacle nearby,higher,0.65,yes,no,no,yes,no,OSM obstacle=*；代表路徑障礙或通行受阻，會影響路線連續性與通行安全，屬於中高風險訊號。
+hazard,overgrown,near,overgrown_nearby,route_continuity,overgrown trail context,higher,0.55,yes,no,no,yes,no,OSM overgrown=*；代表草木茂密、路跡不清或維護不足，可能增加迷路、滑倒與通行困難風險。
+landmark,summit_board,near,summit_board_nearby,landmark_context,summit board nearby,neutral,0.0,no,no,no,yes,no,OSM man_made=summit_board；代表山頂牌或地標牌，適合作為目的地或 waypoint，不直接增加或降低風險。
+landmark,survey_point,near,survey_point_nearby,landmark_context,survey point nearby,neutral,0.0,no,no,no,yes,no,OSM man_made=survey_point 或 survey_point=*；代表三角點、測量點或地理參考點，屬於地標脈絡，不直接影響風險。
+support,monitoring_station,near,monitoring_station_nearby,support_availability,monitoring station nearby,lower,-0.03,no,no,no,yes,no,OSM monitoring:*；代表監測站或基礎設施，通常表示附近有人為設施與管理脈絡，僅給弱支援分數。
+hazard,upslope_proxy,high,upslope_source_hazard,terrain_risk,上方坡面落石或土石崩落來源區 proxy，表示路線上方存在可能影響步道之固有地形來源條件,higher,0.85,yes,yes,no,no,yes,v1.3 新增；由 NLSC 等高線、坡面高差、下落坡降比、來源密度與影響步道長度等條件推估。屬 THCI 基礎危害軸向之細部證據；若具雨水匯流敏感，雨後放大另由天候影響處理。屬 review evidence，不代表正式落石、崩塌或土石流潛勢判定。
+hydrology,rainwash_sensitivity,high,rainwash_sensitive_upslope_hazard,hydrology_risk,雨水匯流或沖刷敏感區，降雨後可能放大既有坡面、溪谷或上方來源區風險,higher,0.75,yes,yes,no,no,yes,v1.3 新增；主要支援 THCI 天候影響軸向，並以基礎危害為次要脈絡。需與近期降雨量、近 24h/72h 累積雨量、高濕持續時數、溪溝、水系或凹谷條件共同判讀；避免與 baseline_hazard 重複計分。
+hazard,upslope_hotspot,yes,upslope_review_hotspot,terrain_risk,上方坡面 proxy 高分複核區，表示需人工檢核之局部風險段,higher,0.9,yes,yes,no,no,yes,v1.3 新增；用於標示 upslope proxy 高分區段，例如落下距離長、下落路徑陡直、上方可疑坡面密集、影響步道較長或雨水匯流沖刷敏感。屬人工複核與行前保守判斷證據，不代表正式災害潛勢判定。
+navigation,junction_density,high,junction_density_high,navigation_risk,岔路密度高或路線選擇點密集，使用者較容易選錯方向或進入非目標支線,higher,0.7,yes,no,no,no,yes,v1.4 新增；由 OSM graph、route-axis 或路線周邊支線密度推估。主要支援 THCI 迷航風險軸向之『路線選擇複雜度』；天候低能見度時可放大，但本項本身不代表即時天氣。
+navigation,guidepost_deficit,high,guidepost_deficit,navigation_risk,指標、路條或明確方向提示不足，降低路線辨識與錯路修正能力,higher,0.65,yes,no,no,no,yes,v1.4 新增；由 guidepost/marker/route sign 密度、缺口或重要岔路口是否缺乏標示推估。主要支援 THCI 迷航風險軸向之『導航支援不足』；可與 trail_visibility、OSM 路徑連續性共同判讀。
+navigation,wrong_turn_recovery_access,poor,poor_wrong_turn_recovery_access,navigation_risk,錯入支線後不易接回主線，且周邊缺乏柏油路、產業道路、service road、track 或其他車輛可達路線，導致自行修正與撤退可恢復性差,higher,0.85,yes,yes,no,no,yes,v1.4 新增；描述迷航風險中的錯路後可恢復性，而非單純救援距離。可由 OSM road/service/track/unclassified 等車輛可達路線距離、回主線距離、回爬高差與地形阻隔共同推估；與 support_road_access_distance 需用 double-count guard 分流。

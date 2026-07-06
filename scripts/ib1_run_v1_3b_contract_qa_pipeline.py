@@ -33,7 +33,7 @@ SEMANTIC_RISK_MAPPING_CSV = (
     PROJECT_ROOT
     / "configs"
     / "risk_semantics"
-    / "osm_semantic_risk_mapping_v1_2_updated.csv"
+    / "osm_semantic_risk_mapping_v1_5_support_updated.csv"
 )
 
 OUT_ROOTS = {

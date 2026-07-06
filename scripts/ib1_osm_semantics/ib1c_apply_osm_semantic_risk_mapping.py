@@ -3,7 +3,7 @@
 #
 # 目的：
 # - 讀取 ib1c OSM semantic enriched route profile
-# - 讀取 configs/risk_semantics/osm_semantic_risk_mapping_v1.csv
+# - 讀取 configs/risk_semantics/osm_semantic_risk_mapping_v1_5_support_updated.csv
 # - 將 OSM 原始語意與 flags 轉換成 risk_domain score
 # - 將 conditional 語意例如 bridge 先保留為條件因子，不直接加風險
 # - 輸出可供 ib2 使用的 OSM semantic risk profile
@@ -37,7 +37,7 @@ SEMANTIC_GEOJSON = (
 MAPPING_CSV = (
     Path("configs")
     / "risk_semantics"
-    / "osm_semantic_risk_mapping_v1.csv"
+    / "osm_semantic_risk_mapping_v1_5_support_updated.csv"
 )
 
 OUT_DIR = Path("outputs") / "ib1c_osm_semantic_risk" / CASE_ID

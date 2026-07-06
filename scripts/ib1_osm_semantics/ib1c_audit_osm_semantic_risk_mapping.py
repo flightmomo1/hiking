@@ -30,7 +30,7 @@ SEMANTIC_CSV = (
 MAPPING_CSV = (
     Path("configs")
     / "risk_semantics"
-    / "osm_semantic_risk_mapping_v1.csv"
+    / "osm_semantic_risk_mapping_v1_5_support_updated.csv"
 )
 
 OUT_DIR = (

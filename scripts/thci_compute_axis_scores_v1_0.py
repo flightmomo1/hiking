@@ -38,19 +38,19 @@ CONFIG_PATHS = {
     "axis_definition": PROJECT_ROOT
     / "configs"
     / "risk_semantics"
-    / "thci_axis_definition_v1_0.csv",
+    / "thci_axis_definition_v1_2_support_updated.csv",
     "feature_mapping": PROJECT_ROOT
     / "configs"
     / "risk_semantics"
-    / "thci_feature_mapping_v1_0.csv",
+    / "thci_feature_mapping_v1_3_support_updated.csv",
     "axis_scoring_rule": PROJECT_ROOT
     / "configs"
     / "risk_semantics"
-    / "thci_axis_scoring_rule_v1_0.csv",
+    / "thci_axis_scoring_rule_v1_2_support_updated.csv",
     "normalization_threshold": PROJECT_ROOT
     / "configs"
     / "risk_semantics"
-    / "thci_normalization_threshold_v1_0.csv",
+    / "thci_normalization_threshold_v1_2_support_updated.csv",
 }
 
 INPUT_ROOTS = {

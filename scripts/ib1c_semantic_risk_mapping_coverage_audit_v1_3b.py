@@ -18,7 +18,7 @@ CASES = [
 
 SEMANTICS_ROOT = PROJECT_ROOT / "outputs" / "ib1c_route_profile_semantics_v1_3b_contract_qa"
 RISK_ROOT = PROJECT_ROOT / "outputs" / "ib1c_osm_semantic_risk_v1_3b_contract_qa"
-MAPPING_CSV = PROJECT_ROOT / "configs" / "risk_semantics" / "osm_semantic_risk_mapping_v1.csv"
+MAPPING_CSV = PROJECT_ROOT / "configs" / "risk_semantics" / "osm_semantic_risk_mapping_v1_5_support_updated.csv"
 OUT_ROOT = PROJECT_ROOT / "outputs" / "ib1c_semantic_risk_mapping_coverage_audit_v1_3b"
 
 FIELD_TO_SOURCE_FIELD = {
