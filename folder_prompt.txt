@@ -1,11 +1,11 @@
-cd C:\mountain_work\115_osm
+cd D:\mountain_work\115_osm
 
 & ".\.venv\Scripts\python.exe" -c @"
 from pathlib import Path
 import csv
 from datetime import datetime
 
-ROOT = Path(r'C:\mountain_work\115_osm')
+ROOT = Path(r'D:\mountain_work\115_osm')
 INVENTORY_OUT = ROOT / 'folder_inventory_depth4.csv'
 ROLE_AUDIT_OUT = ROOT / 'folder_role_audit_depth4.csv'
 MAX_DEPTH = 4
