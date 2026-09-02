@@ -38,3 +38,9 @@ outputs/_ib1e_alias_backup/
 outputs/ib0d_stage/
 __pycache__/
 *.pyc
+
+# OSM local source cache / generated assets
+data/osm/snapshots/
+data/osm/tiles/
+data/osm/diagnostic/
+*.osm.pbf
