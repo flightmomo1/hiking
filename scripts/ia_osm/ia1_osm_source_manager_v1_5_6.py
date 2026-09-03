@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import tempfile
 import time
+import traceback
 import xml.etree.ElementTree as ET
 
 import folium
@@ -3458,9 +3459,55 @@ def write_tile_full_highway_map(
     if highway_gdf is not None and not highway_gdf.empty:
         sample = highway_gdf[highway_gdf.geometry.notna()].copy()
         if not sample.empty:
+            map_cols = [
+                c for c in [
+                    "osm_type",
+                    "osm_id",
+                    "highway",
+                    "name",
+                    "ref",
+                    "route",
+                    "surface",
+                    "sac_scale",
+                    "trail_visibility",
+                    "geometry",
+                ] if c in sample.columns
+            ]
+            sample = make_folium_json_safe(sample[map_cols].copy())
             folium.GeoJson(sample, name=f"TILE_FULL highway ways ({len(sample)})").add_to(m)
     folium.LayerControl(collapsed=False).add_to(m)
     m.save(out_fp)
+
+
+def json_safe_scalar(value):
+    if value is None:
+        return None
+    try:
+        if pd.isna(value):
+            return None
+    except (TypeError, ValueError):
+        pass
+    if isinstance(value, pd.Timestamp):
+        return value.isoformat()
+    if isinstance(value, datetime):
+        return value.isoformat()
+    if hasattr(value, "item"):
+        try:
+            value = value.item()
+        except (TypeError, ValueError):
+            pass
+    if isinstance(value, (str, int, float, bool)):
+        return value
+    return str(value)
+
+
+def make_folium_json_safe(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    safe = gdf.copy()
+    for col in safe.columns:
+        if col == safe.geometry.name:
+            continue
+        safe[col] = safe[col].map(json_safe_scalar)
+    return safe
 
 
 def parse_osmium_tags_count(stdout: str, *, object_scope: str) -> list[dict]:
@@ -3517,16 +3564,35 @@ def write_tile_dataset_qa(entry: dict | None, args: argparse.Namespace) -> dict:
     summary_fp = qa_dir / "osm_tile_full_highway_summary.csv"
     manifest_fp = qa_dir / "osm_tile_full_manifest.json"
     expected_geojson = qa_dir / "osm_tile_full_highway_ways.geojson"
+    expected_map = qa_dir / "osm_tile_full_highway_map.html"
     if manifest_fp.exists() and summary_fp.exists() and not args.force_refresh:
         try:
             cached = json.loads(manifest_fp.read_text(encoding="utf-8"))
             cache_schema_ok = cached.get("qa_schema") == TILE_QA_SCHEMA
             relation_qa_ok = isinstance(cached.get("route_relation_entities"), dict)
-            optional_map_ok = (not args.write_tile_full_highway_geojson) or expected_geojson.exists()
+            optional_map_ok = (
+                not args.write_tile_full_highway_geojson
+            ) or (expected_geojson.exists() and expected_map.exists())
             if cache_schema_ok and relation_qa_ok and optional_map_ok:
+                if args.write_tile_full_highway_geojson:
+                    changed = False
+                    geojson_path = portable_path(expected_geojson)
+                    map_path = portable_path(expected_map)
+                    if cached.get("optional_highway_way_geojson") != geojson_path:
+                        cached["optional_highway_way_geojson"] = geojson_path
+                        changed = True
+                    if cached.get("optional_highway_map") != map_path:
+                        cached["optional_highway_map"] = map_path
+                        changed = True
+                    if changed:
+                        atomic_write_json(manifest_fp, cached)
                 return cached
-        except Exception:
-            pass
+        except Exception as exc:
+            print(
+                "WARNING: TILE_FULL QA manifest cache could not be read; "
+                f"rebuilding QA. exception_type={type(exc).__name__}: {exc}"
+            )
+            print(traceback.format_exc())
     osmium = require_osmium(args)
 
     rows: list[dict] = []
@@ -3568,15 +3634,18 @@ def write_tile_dataset_qa(entry: dict | None, args: argparse.Namespace) -> dict:
     if args.write_tile_full_highway_geojson:
         highway_pbf = qa_dir / "osm_tile_full_highway_ways.osm.pbf"
         highway_geojson = qa_dir / "osm_tile_full_highway_ways.geojson"
-        run_command(
-            [osmium, "tags-filter", str(semantic_pbf), "w/highway", "-O", "-o", str(highway_pbf)],
-            timeout=args.download_timeout,
-        )
-        run_command(
-            [osmium, "export", str(highway_pbf), "-f", "geojson", "-O", "-o", str(highway_geojson)],
-            timeout=args.download_timeout,
-        )
-        optional_geojson = portable_path(highway_geojson)
+        if not highway_geojson.exists():
+            if not highway_pbf.exists():
+                run_command(
+                    [osmium, "tags-filter", str(semantic_pbf), "w/highway", "-O", "-o", str(highway_pbf)],
+                    timeout=args.download_timeout,
+                )
+            run_command(
+                [osmium, "export", str(highway_pbf), "-f", "geojson", "-O", "-o", str(highway_geojson)],
+                timeout=args.download_timeout,
+            )
+        if highway_geojson.exists():
+            optional_geojson = portable_path(highway_geojson)
         try:
             highway_gdf = gpd.read_file(highway_geojson)
             theoretical_bbox = entry.get("tile_theoretical_bbox")
@@ -3590,7 +3659,11 @@ def write_tile_dataset_qa(entry: dict | None, args: argparse.Namespace) -> dict:
                 tile_fetch_geometry=fetch_geom,
             )
         except Exception as exc:
-            print(f"WARNING: TILE_FULL highway GeoJSON exported but HTML QA map could not be written: {exc}")
+            print(
+                "WARNING: TILE_FULL highway GeoJSON exported but HTML QA map could not be written; "
+                f"exception_type={type(exc).__name__}: {exc}"
+            )
+            print(traceback.format_exc())
 
     qa = {
         "qa_schema": TILE_QA_SCHEMA,
