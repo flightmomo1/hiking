@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="ia1-schema-contract-fixture-v1">
+  <node id="1" version="1" lat="25.0000000" lon="121.5000000"/>
+  <node id="2" version="1" lat="25.0000000" lon="121.5005000"/>
+  <node id="3" version="1" lat="25.0000000" lon="121.5010000"/>
+  <node id="4" version="1" lat="25.0000000" lon="121.5015000"/>
+  <node id="5" version="1" lat="25.0000000" lon="121.5020000"/>
+  <node id="6" version="1" lat="25.0000000" lon="121.5025000"/>
+  <node id="7" version="1" lat="25.0000000" lon="121.5030000"/>
+  <node id="8" version="1" lat="25.0000000" lon="121.5035000"/>
+  <node id="9" version="1" lat="25.0000000" lon="121.5040000"/>
+  <node id="10" version="1" lat="25.0000000" lon="121.5045000"/>
+  <node id="11" version="1" lat="25.0005000" lon="121.5000000"/>
+  <node id="12" version="1" lat="25.0005000" lon="121.5005000"/>
+  <node id="13" version="1" lat="25.0005000" lon="121.5010000"/>
+  <node id="14" version="1" lat="25.0005000" lon="121.5015000"/>
+  <node id="15" version="1" lat="25.0005000" lon="121.5020000"/>
+  <node id="16" version="1" lat="25.0005000" lon="121.5025000"/>
+  <node id="17" version="1" lat="25.0005000" lon="121.5030000"/>
+  <node id="18" version="1" lat="25.0005000" lon="121.5035000"/>
+  <node id="19" version="1" lat="25.0005000" lon="121.5040000"/>
+  <node id="20" version="1" lat="25.0005000" lon="121.5045000"/>
+  <node id="21" version="1" lat="25.0010000" lon="121.5000000"/>
+  <node id="22" version="1" lat="25.0010000" lon="121.5005000"/>
+  <node id="23" version="1" lat="25.0010000" lon="121.5010000"/>
+  <node id="24" version="1" lat="25.0010000" lon="121.5015000"/>
+  <node id="25" version="1" lat="25.0010000" lon="121.5020000"/>
+  <node id="26" version="1" lat="25.0010000" lon="121.5025000"/>
+  <node id="27" version="1" lat="25.0010000" lon="121.5030000"/>
+  <node id="28" version="1" lat="25.0010000" lon="121.5035000"/>
+  <node id="29" version="1" lat="25.0010000" lon="121.5040000"/>
+  <node id="30" version="1" lat="25.0010000" lon="121.5045000"/>
+  <node id="31" version="1" lat="25.0015000" lon="121.5000000"/>
+  <node id="32" version="1" lat="25.0015000" lon="121.5005000"/>
+  <node id="33" version="1" lat="25.0015000" lon="121.5010000"/>
+  <node id="34" version="1" lat="25.0015000" lon="121.5015000"/>
+  <node id="35" version="1" lat="25.0015000" lon="121.5020000"/>
+  <node id="36" version="1" lat="25.0015000" lon="121.5025000"/>
+  <node id="37" version="1" lat="25.0015000" lon="121.5030000"/>
+  <node id="38" version="1" lat="25.0015000" lon="121.5035000"/>
+  <node id="39" version="1" lat="25.0015000" lon="121.5040000"/>
+  <node id="40" version="1" lat="25.0015000" lon="121.5045000"/>
+  <node id="41" version="1" lat="25.0020000" lon="121.5000000"/>
+  <node id="42" version="1" lat="25.0020000" lon="121.5005000"/>
+  <node id="43" version="1" lat="25.0020000" lon="121.5010000"/>
+  <node id="44" version="1" lat="25.0020000" lon="121.5015000"/>
+  <node id="45" version="1" lat="25.0020000" lon="121.5020000"/>
+  <node id="46" version="1" lat="25.0020000" lon="121.5025000"/>
+  <node id="47" version="1" lat="25.0020000" lon="121.5030000"/>
+  <node id="48" version="1" lat="25.0020000" lon="121.5035000"/>
+  <node id="49" version="1" lat="25.0020000" lon="121.5040000"/>
+  <node id="50" version="1" lat="25.0020000" lon="121.5045000"/>
+  <node id="51" version="1" lat="25.0025000" lon="121.5000000"/>
+  <node id="52" version="1" lat="25.0025000" lon="121.5005000"/>
+  <node id="53" version="1" lat="25.0025000" lon="121.5010000"/>
+  <node id="54" version="1" lat="25.0025000" lon="121.5015000"/>
+  <node id="55" version="1" lat="25.0025000" lon="121.5020000"/>
+  <node id="56" version="1" lat="25.0025000" lon="121.5025000"/>
+  <node id="57" version="1" lat="25.0025000" lon="121.5030000"/>
+  <node id="58" version="1" lat="25.0025000" lon="121.5035000"/>
+  <node id="59" version="1" lat="25.0025000" lon="121.5040000"/>
+  <node id="60" version="1" lat="25.0025000" lon="121.5045000"/>
+  <way id="1001" version="1">
+    <nd ref="1"/>
+    <nd ref="2"/>
+    <nd ref="3"/>
+    <tag k="highway" v="path"/>
+    <tag k="surface" v="ground"/>
+    <tag k="surface:material" v="stone"/>
+    <tag k="smoothness" v="bad"/>
+    <tag k="sac_scale" v="mountain_hiking"/>
+    <tag k="trail_visibility" v="intermediate"/>
+    <tag k="incline" v="12%"/>
+    <tag k="future:test_tag" v="yes"/>
+  </way>
+  <way id="1002" version="1">
+    <nd ref="3"/>
+    <nd ref="4"/>
+    <nd ref="5"/>
+    <tag k="highway" v="steps"/>
+    <tag k="step_count" v="120"/>
+    <tag k="handrail" v="yes"/>
+    <tag k="handrail:center" v="yes"/>
+    <tag k="ramp" v="no"/>
+    <tag k="tactile_paving" v="no"/>
+    <tag k="conveying" v="no"/>
+  </way>
+  <way id="1003" version="1">
+    <nd ref="11"/>
+    <nd ref="12"/>
+    <nd ref="13"/>
+    <tag k="natural" v="cliff"/>
+  </way>
+  <way id="1004" version="1">
+    <nd ref="21"/>
+    <nd ref="22"/>
+    <nd ref="32"/>
+    <nd ref="31"/>
+    <nd ref="21"/>
+    <tag k="natural" v="scree"/>
+  </way>
+  <way id="1005" version="1">
+    <nd ref="23"/>
+    <nd ref="24"/>
+    <nd ref="34"/>
+    <nd ref="33"/>
+    <nd ref="23"/>
+    <tag k="natural" v="bare_rock"/>
+  </way>
+  <way id="1006" version="1">
+    <nd ref="25"/>
+    <nd ref="26"/>
+    <nd ref="36"/>
+    <nd ref="35"/>
+    <nd ref="25"/>
+    <tag k="natural" v="wetland"/>
+    <tag k="wetland" v="marsh"/>
+  </way>
+  <way id="1007" version="1">
+    <nd ref="27"/>
+    <nd ref="28"/>
+    <nd ref="38"/>
+    <nd ref="37"/>
+    <nd ref="27"/>
+    <tag k="natural" v="landslide"/>
+  </way>
+  <way id="1008" version="1">
+    <nd ref="6"/>
+    <nd ref="7"/>
+    <nd ref="8"/>
+    <tag k="highway" v="path"/>
+    <tag k="ford" v="yes"/>
+    <tag k="depth" v="0.4"/>
+    <tag k="bridge" v="no"/>
+  </way>
+  <way id="1009" version="1">
+    <nd ref="8"/>
+    <nd ref="9"/>
+    <nd ref="10"/>
+    <tag k="highway" v="path"/>
+    <tag k="hazard" v="rockfall"/>
+    <tag k="obstacle" v="fallen_tree"/>
+    <tag k="overgrown" v="yes"/>
+  </way>
+  <way id="1010" version="1">
+    <nd ref="41"/>
+    <nd ref="42"/>
+    <nd ref="43"/>
+    <tag k="highway" v="path"/>
+    <tag k="safety_rope" v="yes"/>
+    <tag k="assisted_trail" v="yes"/>
+  </way>
+  <way id="1011" version="1">
+    <nd ref="43"/>
+    <nd ref="44"/>
+    <nd ref="45"/>
+    <tag k="highway" v="ladder"/>
+    <tag k="rungs" v="12"/>
+  </way>
+  <way id="1012" version="1">
+    <nd ref="51"/>
+    <nd ref="52"/>
+    <nd ref="53"/>
+    <tag k="waterway" v="stream"/>
+    <tag k="intermittent" v="yes"/>
+  </way>
+  <way id="1013" version="1">
+    <nd ref="53"/>
+    <nd ref="54"/>
+    <nd ref="55"/>
+    <tag k="barrier" v="fence"/>
+  </way>
+</osm>

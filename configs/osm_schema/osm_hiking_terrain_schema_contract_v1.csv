@@ -1,0 +1,50 @@
+﻿category,tag_key,expected_value_or_pattern,osm_object_scope,preservation_mode,ia1_normalized_or_derived_fields,expected_layer,required_in_fixture,notes
+identity,osm_type,node|way|relation,derived,CANONICAL_ID,osm_type,,YES,IA1 canonical element type; not an OSM source tag
+identity,osm_id,integer,derived,CANONICAL_ID,osm_id,,YES,True OSM element ID; never dataframe index
+route,highway,*,way,EXPLICIT_COLUMN,highway_norm;highway_family;route_role;matching_semantic_score,highway,YES,Primary traversable-road classification
+route,surface,*,way,EXPLICIT_COLUMN,,highway,YES,Physical surface value when explicitly mapped
+route,surface:material,*,way,EXPLICIT_COLUMN,,highway,YES,Additional surface material detail
+route,tracktype,grade1..grade5|*,way,EXPLICIT_COLUMN,,highway,NO,Track quality class
+route,smoothness,*,way,EXPLICIT_COLUMN,,highway,YES,Passability / smoothness descriptor
+route,sac_scale,strolling|hiking|mountain_hiking|demanding_mountain_hiking|alpine_hiking|demanding_alpine_hiking|difficult_alpine_hiking,way,EXPLICIT_COLUMN,sac_scale_rank;sac_scale_t_grade;trail_difficulty_hint,highway,YES,Seven-grade project normalization in IA1 v1.5.14
+route,trail_visibility,*,way,EXPLICIT_COLUMN,,highway,YES,Trail visibility evidence
+route,incline,*,way,EXPLICIT_COLUMN,incline_raw,highway,YES,Preserve source; do not infer missing values
+route,oneway,*,way,EXPLICIT_COLUMN,,highway,NO,Direction constraint when mapped
+route,oneway:foot,*,way,EXPLICIT_COLUMN,,highway,NO,Pedestrian direction constraint when mapped
+steps,highway,steps,way,EXPLICIT_COLUMN,is_steps=1;route_role=trail_core,highway,YES,Steps are represented through highway=steps
+steps,step_count,integer|string,way,EXPLICIT_COLUMN,step_count_raw,highway,YES,Number of steps when mapped
+steps,step:height,*,way,EXPLICIT_COLUMN,,highway,NO,Step riser height when mapped
+steps,step:length,*,way,EXPLICIT_COLUMN,,highway,NO,Step tread/length detail when mapped
+steps,handrail,*,way,EXPLICIT_COLUMN,,handrail,YES,Handrail evidence
+steps,handrail:left,*,way,EXPLICIT_COLUMN,,handrail,NO,Side-specific handrail evidence
+steps,handrail:right,*,way,EXPLICIT_COLUMN,,handrail,NO,Side-specific handrail evidence
+steps,handrail:center,*,way,EXPLICIT_COLUMN,,handrail,YES,Central handrail evidence
+steps,ramp,*,way,EXPLICIT_COLUMN,,highway,YES,Ramp-related step facility tag
+steps,tactile_paving,*,way,EXPLICIT_COLUMN,,highway,YES,Tactile paving evidence
+steps,conveying,*,way,EXPLICIT_COLUMN,,highway,YES,Escalator/moving walkway semantics when mapped
+technical,safety_rope,*,way|node,EXPLICIT_COLUMN,,safety_rope,YES,Technical-assistance evidence
+technical,assisted_trail,*,way|node,EXPLICIT_COLUMN,,assisted_trail,YES,Assisted trail evidence
+technical,rungs,*,way|node,EXPLICIT_COLUMN,,rungs,YES,Rung/iron-step evidence
+technical,highway,ladder,way,EXPLICIT_COLUMN,route_role=technical_route,ladder,YES,Ladder route classification
+technical,via_ferrata_scale,*,way,EXPLICIT_COLUMN,base_difficulty_source,via_ferrata,NO,Via ferrata difficulty evidence
+vertical,bridge,*,way,EXPLICIT_COLUMN,has_bridge;vertical_context,highway,YES,Bridge context
+vertical,ford,*,way|node,EXPLICIT_COLUMN,has_ford;vertical_context,highway,YES,Ford/water crossing context
+vertical,depth,*,way|node,EXPLICIT_COLUMN,,highway,YES,"Depth evidence, useful at fords/water"
+terrain,natural,cliff,way,EXPLICIT_COLUMN,,cliff,YES,Terrain layer value
+terrain,natural,scree,way|area,EXPLICIT_COLUMN,,scree,YES,Terrain layer value
+terrain,natural,bare_rock,way|area,EXPLICIT_COLUMN,,bare_rock,YES,Terrain layer value
+terrain,natural,wetland,way|area,EXPLICIT_COLUMN,,wetland,YES,Terrain layer value
+terrain,wetland,*,way|area,EXPLICIT_COLUMN,,wetland,YES,Wetland subtype/details
+terrain,natural,landslide,way|area,EXPLICIT_COLUMN,,landslide,YES,Project layer keyed by natural=landslide
+water,waterway,*,way,EXPLICIT_COLUMN,,waterway,YES,Stream/river/drain evidence
+water,intermittent,*,way|area,EXPLICIT_COLUMN,,waterway,YES,Intermittent water evidence
+water,seasonal,*,way|area,EXPLICIT_COLUMN,,waterway,NO,Seasonal evidence
+risk,hazard,*,way|node,EXPLICIT_COLUMN,,hazard,YES,Explicit hazard evidence
+risk,obstacle,*,way|node,EXPLICIT_COLUMN,,obstacle,YES,Obstacle evidence
+risk,overgrown,*,way|node,EXPLICIT_COLUMN,,overgrown,YES,Vegetation obstruction evidence
+risk,barrier,*,way|node,EXPLICIT_COLUMN,,barrier,YES,Barrier evidence
+navigation,trailblazed,*,way,EXPLICIT_COLUMN,,,NO,Trailblazing evidence
+navigation,trailblazed:visibility,*,way,EXPLICIT_COLUMN,,,NO,Trailblaze visibility
+navigation,trail_marking,*,way,EXPLICIT_COLUMN,,,NO,Trail marking evidence
+navigation,osmc:symbol,*,way|relation,EXPLICIT_COLUMN,,hiking_route,NO,Route marker/symbol evidence
+forward_compat,future:test_tag,*,any,EXTRA_JSON_FALLBACK,osm_extra_tag_count;osm_extra_tag_keys;osm_tags_extra_json,,YES,Synthetic unknown key; MUST survive in osm_tags_extra_json
